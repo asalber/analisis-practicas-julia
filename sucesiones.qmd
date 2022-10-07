@@ -1,0 +1,183 @@
+---
+lang: es
+---
+<!-- LTeX: language = es-ES -->
+
+# Sucesiones de números reales
+
+## Ejercicios Resueltos
+
+Para la realización de esta práctica se requieren los siguientes paquetes:
+
+```{julia}
+using SymPy  # Para el cálculo simbólico de límites y derivadas
+using Plots  # Para el dibujo de gráficas
+using LaTeXStrings  # Para usar código LaTeX en los gráficos.
+```
+
+:::{#exr-sucesiones}
+Dar los 10 primeros términos de las siguientes sucesiones:
+
+a. $(2n+1)_{n=1}^\infty$
+
+:::{.callout-note collapse="true"}
+## Pista
+Definir una función para el término general y aplicar la función a los naturales de 1 a 10 usando compresiones de arrays.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = 2n + 1
+print([x(n) for n = 1:10])
+```
+:::
+
+
+b. $\left(\frac{1}{n}\right)_{n=1}^\infty$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+# Como reales
+x(n) = 1 / n
+print([x(n) for n = 1:10])
+# Como racionales
+x(n) = 1//n
+print([x(n) for n = 1:10])
+```
+:::
+
+c. $\left((-1)^n\right)_{n=1}^\infty$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = (-1)^n
+print([x(n) for n = 1:10])
+```
+:::
+
+d. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = (1 + 1 / n)^n
+print([x(n) for n = 1:10])
+```
+:::
+
+d. $x_1=1$ y $x_{n+1}=\sqrt{1+x_n}$ $\forall n\in\mathbb{N}$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = n == 1 ? 1 : sqrt(1+x(n-1))
+print([x(n) for n = 1:10])
+```
+:::
+:::
+
+:::{#exr-limite-grafica-sucesiones}
+Dibujar en una gráfica los 50 primeros términos de las siguientes sucesiones y deducir si son convergentes o no. En el caso de que sean convergentes, dar un valor aproximado de su límite.
+
+a. $\left(\frac{n}{4n+2}\right)_{n=1}^\infty$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = n / (4n + 2)
+scatter([x(n) for n = 1:50], legend=false)
+```
+
+La sucesión converge al número $0.25$.
+:::
+
+a. $\left(\frac{2^n}{n^2}\right)_{n=1}^\infty$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = 2^n / (4n + 2)
+scatter([x(n) for n = 1:50], legend=false)
+```
+
+La sucesión diverge.
+:::
+
+a. $\left(\frac{(-1)^n}{n}\right)_{n=1}^\infty$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = (-1)^n / n
+scatter([x(n) for n = 1:50], legend=false)
+```
+
+La sucesión converge al $0$.
+:::
+
+a. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = (1 + 1 / n)^n
+scatter([x(n) for n = 1:50], legend=false)
+```
+
+La sucesión converge aproximadamente a $2.7$.
+:::
+
+a. $x_1 = 2$ y $x_{n+1}=1+\frac{1}{x_n}$ $\forall n\in\mathbb{N}$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) =  n == 1 ? 2 : 1 + 1 / x(n-1)
+scatter([x(n) for n = 1:50], legend=false)
+```
+
+La sucesión converge aproximadamente a $1.62$.
+:::
+:::
+
+:::{#exr-limite-sucesiones}
+Calcular el límite, si existe, de las siguiente sucesiones.
+
+a. $\left(\frac{1}{n}\right)_{n=1}^\infty$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+@syms n::(integer, positive)
+x(n) = 1/n
+limit(x(n), n=>oo)
+```
+:::
+
+c. $\left((-1)^n\right)_{n=1}^\infty$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+@syms n::(integer, positive)
+x(n) = (-1)^n
+limit(x(n), n=>oo)
+```
+:::
+
+d. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+@syms n::(integer, positive)
+x(n) = (1 + 1 / n)^n
+limit(x(n), n=>oo)
+```
+:::
+
+
+:::

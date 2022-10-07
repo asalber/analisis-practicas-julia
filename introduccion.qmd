@@ -1,0 +1,391 @@
+---
+lang: es
+---
+<!-- LTeX: language = es-ES -->
+
+# Introducción
+
+La gran potencia de cálculo alcanzada por los ordenadores en las últimas décadas ha convertido a los mismos en poderosas herramientas al servicio de todas aquellas disciplinas que, como las matemáticas, requieren cálculos largos y complejos.
+
+[Julia](https://julialang.org/) es un lenguaje de programación especialmente orientado al cálculo numérico y el análisis de datos. Julia permite además realizar cálculos simbólicos y dispone de una gran [biblioteca de paquetes](https://julialang.org/packages/) con aplicaciones en muy diversas áreas de las Matemáticas como Cálculo, Álgebra, Geometría, Matemática Discreta o Estadística. 
+
+![](img/logos/logo-julia.svg)
+
+La ventaja de Julia frente a otros programas habituales de cálculo como Mathematica, MATLAB o Sage radica en su potencia de cálculo y su velocidad (equiparable al lenguaje C), lo que lo hace ideal para manejar grandes volúmenes de datos o realizar tareas que requieran largos y complejos cálculos. Además, es software libre por lo que resulta ideal para introducirlo en el aula como soporte computacional para los modelos matemáticos sin coste alguno.
+
+En el siguiente enlace se explica el procedimiento de [instalación de Julia](https://aprendeconalf.es/manual-julia/intro.html#instalaci%C3%B3n-de-julia).
+
+Existen también varios entornos de desarrollo online que permiten ejecutar código en Julia sin necesidad de instalarlo en nuestro ordenador, como por ejemplo [Replit](https://replit.com/languages/julia), [Cocalc](https://cocalc.com/) o [Codeanywhere](https://codeanywhere.com/languages/julia).
+
+El objetivo de esta práctica es introducir al alumno en la utilización de este lenguaje, enseñándole a realizar las operaciones básicas más habituales en Cálculo.
+
+## El REPL de Julia
+
+Para arrancar el REPL^(REPL es el acrónimo de Read, Evaluate, Print and Loop, que describe el funcionamiento del compilador de Julia) de julia basta con abrir una terminal y teclear `julia`. 
+
+```julia
+prompt> julia
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.7.3 (2022-05-06)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
+
+julia>
+```
+
+## El gestor de paquetes de Julia
+
+Julia viene con varios paquetes básicos preinstalados, como por ejemplo el paquete `LinearAlgebra` que define funciones básicas del Álgebra Lineal, pero en estas prácticas utilizaremos otros muchos paquetes que añaden más funcionalidades que no vienen instalados por defecto y tendremos que instalarlos aparte. Julia tiene un potente gestor de paquetes que facilita la búsqueda, instalación, actualización y eliminación de paquetes. 
+
+Por defecto el gestor de paquetes utiliza el [repositorio de paquetes oficial](https://julialang.org/packages/) pero se pueden instalar paquetes de otros repositorios.
+
+Para entrar en el modo de gestión de paquetes hay que teclear `]`. Esto produce un cambio en el _prompt_ del REPL de Julia.
+
+Los comandos más habituales son:
+
+- `add p`: Instala el paquete `p` en el entorno activo de Julia.
+- `update`: Actualiza los paquetes del entorno activo de Julia.
+- `status`: Muestra los paquetes instalados y sus versiones en el entorno activo de Julia.
+- `remove p`: Elimina el paquete `p` del entorno activo de Julia.
+
+:::{.callout-note collapse="true"}
+## Ejemplo
+Para instalar el paquete `SymPy` para cálculo simbólico basta con teclear `add Sympy`.
+
+```julia
+(@v1.7) pkg> add SymPy
+    Updating registry at `~/.julia/registries/General.toml`
+   Resolving package versions...
+    Updating `~/.julia/environments/v1.7/Project.toml`
+  [24249f21] + SymPy v1.1.6
+    Updating `~/.julia/environments/v1.7/Manifest.toml`
+  [3709ef60] + CommonEq v0.2.0
+  [38540f10] + CommonSolve v0.2.1
+  [438e738f] + PyCall v1.93.1
+  [24249f21] + SymPy v1.1.6
+```
+:::
+
+## Aritmética
+
+El uso más simple de Julia es la realización de operaciones aritméticas como en una calculadora. En Julia se utilizan los siguientes operadores.
+
+### Operadores aritméticos.
+
+| Operador | Descripción           |
+|:---------- |:-------------- |
+| `x + y`    | Suma                       |
+| `x - y`    | Resta                    |
+| `x * y`    | Producto                 |
+| `x / y`    | División                       |
+| `x ÷ y`    | Cociente división entera          |
+| `x % y`    | Resto división entera                |
+| `x ^ y`    | Potencia           |
+
+## Operadores de comparación
+
+| Operador                   | Descripción                     |
+|:---------------------------- |:------------------------ |
+| `==`                 | Igualdad                 |
+| `!=`, `≠` | Desigualdad               |
+| `<`                  | Menor que                |
+| `<=`, `≤` | Menor o igual que    |
+| `>`                  | Mayor que             |
+| `>=`, `≥` | Mayor o igual que |
+
+## Operadores booleanos
+
+| Operador | Descripción |
+|:---------- |:------------------------------|
+| `!x` | Negación             |
+| `x && y`   | Conjunción (y)|
+| `x || y` | Disyunción (o)  |
+
+Existen también un montón de funciones predefinidas habituales en Cálculo.
+
+### Funciones de redondeo
+
+| Función         | Descripción                        |
+|:--------------------- |:-----------------------------|
+| `round(x)`    | Devuelve el entero más próximo a `x` |
+| `round(x, digits = n)`    | Devuelve al valor más próximo a `x` con `n` decimales |
+| `floor(x)`    | Redondea `x` al próximo entero menor |
+| `ceil(x)`     | Redondea `x` al próximo entero mayor |
+| `trunc(x)`    | Devuelve la parte entera de `x`      |
+
+:::{.callout-note collapse="true"}
+## Ejemplo
+```julia
+julia> round(2.7)
+3.0
+
+julia> floor(2.7)
+2.0
+
+julia> floor(-2.7)
+-3.0
+
+julia> ceil(2.7)
+3.0
+
+julia> ceil(-2.7)
+-2.0
+
+julia> trunc(2.7)
+2.0
+
+julia> trunc(-2.7)
+-2.0
+
+julia> round(2.5)
+2.0
+
+julia> round(2.786, digits = 2)
+2.79
+```
+:::
+
+### Funciones de división
+
+| Función                  | Descripción                                                                                               |
+|:------------------------- |:--------------------------------------------------------------------------------------------------------- |
+| `div(x,y)`, `x÷y` | Cociente de la división entera                                                         |
+| `fld(x,y)`        | Cociente de la división entera redondeado hacia abajo               |
+| `cld(x,y)`        | Cociente de la división entera redondeado hacia arriba                                                         |
+| `rem(x,y)`, `x%y` | Resto de la división entera. Se cumple `x == div(x,y)*y + rem(x,y)`                                       |
+| `mod(x,y)`        | Módulo con respecto a `y`. Se cumple `x == fld(x,y)*y + mod(x,y)`                                        |
+| `gcd(x,y...)`    | Máximo común divisor positivo de `x`, `y`,...                                                          |
+| `lcm(x,y...)`   | Mínimo común múltiplo positivo de `x`, `y`,...                                                            |
+
+:::{.callout-note collapse="true"}
+## Ejemplo
+
+```julia
+julia> div(5,3)
+1
+
+julia> cld(5,3)
+2
+
+julia> 5%3
+2
+
+julia> -5%3
+-2
+
+julia> mod(5,3)
+2
+
+julia> mod(-5,3)
+1
+
+julia> gcd(12,18)
+6
+
+julia> lcm(12,18)
+36
+```
+:::
+
+### Funciones para el signo y el valor absoluto
+
+| Función                | Descripción                                                |
+|:----------------------- |:---------------------------------------------------------- |
+| `abs(x)`        | Valor absoluto de `x`                 |
+| `sign(x)`       | Devuelve -1 si `x` es positivo, -1 si es negativo y 0 si es 0.       |
+
+:::{.callout-note collapse="true"}
+## Ejemplo
+```julia
+julia> abs(2.5)
+2.5
+
+julia> abs(-2.5)
+2.5
+
+julia> sign(-2.5)
+-1.0
+
+julia> sign(0)
+0
+
+julia> sign(2.5)
+1.0
+```
+:::
+
+### Raíces, exponenciales y logaritmos
+
+| Función                | Descripción                                                                |
+|:------------------------ |:-------------------------------------------------------------------------- |
+| `sqrt(x)`, `√x`  | Raíz cuadrada de `x`                                                         |
+| `cbrt(x)`, `∛x`  | Raíz cúbica de `x`                                                           |
+| `exp(x)`         | Exponencial de `x`                                        |
+| `log(x)`         | Logaritmo neperiano de `x`                                                   |
+| `log(b,x)`       | Logaritmo en base `b` de `x`                                                  |
+| `log2(x)`        | Logaritmo en base 2 de `x`                                                    |
+| `log10(x)`       | Logaritmo en base 10 de `x`                                                   |
+
+::::{.callout-note collapse="true"}
+## Ejemplo
+
+```julia
+julia> sqrt(4)
+2.0
+
+julia> cbrt(27)
+3.0
+
+julia> exp(1)
+2.718281828459045
+
+julia> exp(-Inf)
+0.0
+
+julia> log(1)
+0.0
+
+julia> log(0)
+-Inf
+
+julia> log(-1)
+ERROR: DomainError with -1.0:
+log will only return a complex result if called with a complex argument.
+...
+
+julia> log(-1+0im)
+0.0 + 3.141592653589793im
+
+julia> log2(2^3)
+3.0
+```
+:::
+
+### Funciones trigonométricas
+
+| Función                | Descripción                                                                |
+|:------------------------ |:-------------------------------------------------------------------------- |
+| `hypot(x,y)`     | Hipotenusa del triángulo rectángulo con catetos `x` e `y` |
+| `sin(x)`  | Seno del ángulo `x` en radianes                                                        |
+| `sind(x)`  | Seno del ángulo `x` en grados                                                          |
+| `cos(x)`         | Coseno del ángulo `x` en radianes                                       |
+| `cosd(x)`         | Coseno del ángulo `x` en grados                                                  |
+| `tan(x)`       | Tangente del ángulo `x` en radianes                                                  |
+| `tand(x)`       | Tangente del ángulo `x` en grados                                                  |
+| `sec(x)`        | Secante del ángulo `x` en radianes                                                 |
+| `csc(x)`        | Cosecante del ángulo `x` en radianes                                                 |
+| `cot(x)`       | Cotangente del ángulo `x` en radianes                                                  |
+
+:::{.callout-note collapse="true"}
+## Ejemplo
+
+```julia
+julia> sin(π/2)
+1.0
+
+julia> cos(π/2)
+6.123233995736766e-17
+
+julia> cosd(90)
+0.0
+
+julia> tan(π/4)
+0.9999999999999999
+
+julia> tand(45)
+1.0
+
+julia> tan(π/2)
+1.633123935319537e16
+
+julia> tand(90)
+Inf
+
+julia> sin(π/4)^2 + cos(π/4)^2
+1.0
+```
+:::
+
+### Funciones trigonométricas inversas
+
+| Función                | Descripción                                                                |
+|:------------------------ |:-------------------------------------------------------------------------- |
+| `asin(x)`        | Arcoseno (inversa del seno) de `x` en radianes                                                 |
+| `asind(x)`        | Arcoseno (inversa del seno) de `x` en grados                                                 |
+| `acos(x)`       | Arcocoseno (inversa del coseno) de `x` en radianes                                                  |
+| `acosd(x)`       | Arcocoseno (inversa del coseno) de `x` en grados                                                  |
+| `atan(x)` | Arcotangente (inversa de la tangente) de `x` en radianes |
+| `atand(x)` | Arcotangente (inversa de la tangente) de `x` en grados |
+| `asec(x)` | Arcosecante (inversa de la secante) de `x` en radianes |
+| `acsc(x)` | Arcocosecante (inversa de la cosecante) de `x` en radianes |
+| `acot(x)` | Arcocotangente (inversa de la cotangente) de `x` en radianes |
+
+:::{.callout-note collapse="true"}
+## Ejemplo
+
+```julia
+julia> asin(1)
+1.5707963267948966
+
+julia> asind(1)
+90.0
+
+julia> acos(-1)
+3.141592653589793
+
+julia> atan(1)
+0.7853981633974483
+
+julia> atand(tan(π/4))
+45.0
+```
+:::
+
+### Precedencia de operadores
+
+A la hora de evaluar una expresión aritmética, Julia evalúa los operadores según el siguiente orden de prioridad (de mayor a menor prioridad).
+
+| Categoría       | Operadores                                                                                      | Asociatividad              |
+|:-------------- |:------------------------------------------------------------------------------------------------- |:-------------------------- |
+| Funciones | `exp`, `log`, `sin`, etc. | |
+| Exponenciación | `^`                                                                                               | Derecha                      |
+| Unarios          | `+ - √`                                                                                           | Derecha                |
+| Fracciones     | `//`                                                                                              | Izquierda                       |
+| Multiplicación | `* / % & \ ÷`                                                                                     | Izquierda                |
+| Adición       | `+ - |` | Izquierda  |
+| Comparaciones    | `> < >= <= == != !==`                                                                      |            |
+| Asignaciones    | `= += -= *= /= //= ^= ÷= %= |= &=`                                            | Derecha                      |
+
+Cuando se quiera evaluar un operador con menor prioridad antes que otro con mayor prioridad, hay que utilizar paréntesis.
+
+:::{.callout-note collapse="true"}
+## Ejemplo
+
+```julia
+julia> 1 + 4 ^ 2 / 2 - 3
+6.0
+
+julia> (1 + 4 ^ 2) / 2 - 3
+5.5
+
+julia> (1 + 4) ^ 2 / 2 - 3
+9.5
+
+julia> 1 + 4 ^ 2 / (2 - 3)
+-15.0
+
+julia> (1 + 4 ^ 2) / (2 - 3)
+-17.0
+```
+:::
+
+## Definición de variables
+
+Para definir variables se pueden utilizar cualquier carácter [Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters).
+Los nombres de las variables pueden contener más de una letra y, en tal caso, pueden usarse también números, pero siempre debe comenzar por una letra.
+Así, para Julia, la expresión `xy`, no se interpreta como el producto de la variable $x$ por la variable $y$, sino como la variable $xy$.
+Además, se distingue entre mayúsculas y minúsculas, así que no es lo mismo $xy$ que $xY$.
