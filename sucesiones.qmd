@@ -15,6 +15,13 @@ using Plots  # Para el dibujo de gráficas
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 ```
 
+```{julia}
+#| echo: false
+#| results: "hidden"
+using CalculusWithJulia
+nothing
+```
+
 :::{#exr-sucesiones}
 Dar los 10 primeros términos de las siguientes sucesiones:
 
@@ -82,11 +89,17 @@ print([x(n) for n = 1:10])
 :::{#exr-limite-grafica-sucesiones}
 Dibujar en una gráfica los 50 primeros términos de las siguientes sucesiones y deducir si son convergentes o no. En el caso de que sean convergentes, dar un valor aproximado de su límite.
 
+:::{.callout-note collapse="true"}
+## Pista
+Definir una función para el término general y aplicar la función a los naturales de 1 a 50 usando compresiones de arrays como en el ejercicio anterior. Después usar la función `scatter` del paquete `Plots` para dibujar el array de términos.
+:::
+
 a. $\left(\frac{n}{4n+2}\right)_{n=1}^\infty$
 
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
+using Plots
 x(n) = n / (4n + 2)
 scatter([x(n) for n = 1:50], legend=false)
 ```
@@ -99,6 +112,7 @@ a. $\left(\frac{2^n}{n^2}\right)_{n=1}^\infty$
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
+using Plots
 x(n) = 2^n / (4n + 2)
 scatter([x(n) for n = 1:50], legend=false)
 ```
@@ -111,6 +125,7 @@ a. $\left(\frac{(-1)^n}{n}\right)_{n=1}^\infty$
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
+using Plots
 x(n) = (-1)^n / n
 scatter([x(n) for n = 1:50], legend=false)
 ```
@@ -123,6 +138,7 @@ a. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
+using Plots
 x(n) = (1 + 1 / n)^n
 scatter([x(n) for n = 1:50], legend=false)
 ```
@@ -135,6 +151,7 @@ a. $x_1 = 2$ y $x_{n+1}=1+\frac{1}{x_n}$ $\forall n\in\mathbb{N}$
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
+using Plots
 x(n) =  n == 1 ? 2 : 1 + 1 / x(n-1)
 scatter([x(n) for n = 1:50], legend=false)
 ```
@@ -148,9 +165,15 @@ Calcular el límite, si existe, de las siguiente sucesiones.
 
 a. $\left(\frac{1}{n}\right)_{n=1}^\infty$
 
+:::{.callout-note collapse="true"}
+## Pista
+Definir una función para el término general usar la función `limit` del paquete `SymPy` para calcular el límite de la sucesión.
+:::
+
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
+using SymPy
 @syms n::(integer, positive)
 x(n) = 1/n
 limit(x(n), n=>oo)
@@ -178,6 +201,140 @@ x(n) = (1 + 1 / n)^n
 limit(x(n), n=>oo)
 ```
 :::
+:::
 
+:::{#exr-calculo-pi}
+En el siglo III A.C [Arquímedes](https://es.wikipedia.org/wiki/Arqu%C3%ADmedes) usó el [método por agotamiento](https://es.wikipedia.org/wiki/M%C3%A9todo_por_agotamiento) para calcular el área encerrada por una circunferencia (y de paso el valor de $\pi$). La idea consiste en inscribir la circunferencia en polígonos regulares con un número de lados cada vez mayor.
 
+![Aproximación del área de una circunferencia mediante polígonos regulares](img/sucesiones/poligonos-circunferencia.png)
+
+El área de estos polígonos puede calcularse fácilmente descomponiendo los polígonos regulares en triángulos como en el siguiente ejemplo.
+
+::: {.content-visible when-format="html"}
+![Descomposición de un hexágono en triángulos](./img/sucesiones/area-poligono-regular-inscrito.png)
+:::
+
+::: {.content-visible unless-format="html"}
+![Descomposición de un hexágono en triángulos](./img/sucesiones/area-poligono-regular-inscrito.tex)
+:::
+
+En el caso de los polígonos inscritos dentro de la circunferencia, como dos de los lados siempre coinciden con el radio de la circunferencia $r$, el área del polígono de $n$ lados puede calcularse con la fórmula
+
+$$
+a_n = \frac{1}{2}nr^2\operatorname{sen}\left(\frac{360}{n}\right)
+$$
+
+a. Calcular el área de los polígonos de $10^i$ lados, para $i=1,\ldots, 6$ tomando $r=1$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+a(n) = n*sind(360/n)/2
+print([a(10^i) for i = 1:6])
+```
+:::
+
+b. Dibujar con los primeros 50 términos de la sucesión de las areas de los polígonos tomando $r=1$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots
+a(n) = n*sind(360/n)/2
+scatter([a(n) for n = 1:50], legend=false)
+```
+:::
+
+c. Calcular el límite de la sucesión de las areas de los polígonos tomando $r=1$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@syms n::(integer, positive)
+a(n) = n*sin(2pi/n)/2
+limit(a(n), n=>oo)
+```
+:::
+
+d. Usando el resultado anterior, calcular el area del círculo de radio $r$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@syms n::(integer, positive), r
+a(n) = n*r^2*sin(2pi/n)/2
+limit(a(n), n=>oo)
+```
+:::
+:::
+
+## Ejercicios propuestos
+
+```{julia}
+#| echo: false
+#| results: "hidden"
+using QuizQuestions
+nothing
+```
+
+:::{#exr-sucesiones-propuesto-1}
+Calcular el décimo término de la sucesión $\left(\frac{3n^2+n}{6n^2-1}\right)_{n=1}^\infty$.
+
+```{julia}
+#| hold: true
+#| echo: false
+x(n)=(3n^2+n)/(6n^2-1)
+numericq(x(10), 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-sucesiones-propuesto-2}
+Calcular los 10 primeros términos de la sucesión  $\left(\frac{3n^2+n}{6n^2-1}\right)_{n=1}^\infty$ y averiguar hacia dónde converge.
+
+```{julia}
+#| hold: true
+#| echo: false
+x(n)=(3n^2+n)/(6n^2-1)
+choices = ("0", "0.5", "1", "1.5", "No converge")
+answer = 2
+radioq(choices, answer)
+```
+:::
+
+:::{#exr-sucesiones-propuesto-3}
+A la vista de la gráfica de los 20 primeros términos de la sucesión $\left(\frac{2^n}{n!}\right)_{n=1}^\infty$, ¿crees que la sucesión converge? 
+
+```{julia}
+#| echo: false
+yesnoq("yes")
+```
+:::
+
+:::{#exr-sucesiones-propuesto-4}
+A la vista de la gráfica de los 10 primeros términos de la sucesión $\left(\frac{n^n}{n!}\right)_{n=1}^\infty$, ¿crees que la sucesión converge? 
+
+```{julia}
+#| echo: false
+yesnoq("no")
+```
+:::
+
+:::{#exr-sucesiones-propuesto-5}
+A la vista de la gráfica de los 20 primeros términos de la sucesión dada por $x_1=1$ y $x_{n+1}=\sqrt{x_n+2}$ $\forall n\in \mathbb{N}$, ¿crees que la sucesión converge? 
+
+```{julia}
+#| echo: false
+yesnoq("yes")
+```
+:::
+
+:::{#exr-sucesiones-propuesto-6}
+¿Cuál es el límite de la sucesión $\left(\left(1+\frac{2}{n}\right)^n\right)_{n=1}^\infty$
+
+```{julia}
+#| echo: false
+numericq(exp(2), 1e-5, hint="Introducir hasta 5 decimales")
+```
 :::

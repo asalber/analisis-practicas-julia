@@ -11,10 +11,10 @@ website:
       openSidebar: true
 
 book:
-  title: "Pácticas de Cálculo con Julia"
+  title: "Pácticas de Análisis Matemático con Julia"
   author: "Alfredo Sánchez Alberca"
   date: "1/6/2022"
-  output-file: "practicas-calculo-julia"
+  output-file: "practicas-analisis-julia"
   image: cover.png
   cover-image: img/logos/infinito.png
   sharing: [twitter, linkedin]
