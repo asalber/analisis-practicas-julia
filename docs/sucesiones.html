@@ -325,10 +325,7 @@ Solución
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">1</span><span class="op">//</span>n</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1.0, 0.5, 0.3333333333333333, 0.25, 0.2, 0.16666666666666666, 0.14285714285714285, 0.125, 0.1111111111111111, 0.1]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rational{Int64}[1//1, 1//2, 1//3, 1//4, 1//5, 1//6, 1//7, 1//8, 1//9, 1//10]</code></pre>
+<pre><code>[1.0, 0.5, 0.3333333333333333, 0.25, 0.2, 0.16666666666666666, 0.14285714285714285, 0.125, 0.1111111111111111, 0.1]Rational{Int64}[1//1, 1//2, 1//3, 1//4, 1//5, 1//6, 1//7, 1//8, 1//9, 1//10]</code></pre>
 </div>
 </div>
 </div>
@@ -350,8 +347,8 @@ Solución
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[-1, 1, -1, 1, -1, 1, -1, 1, -1, 1]</code></pre>
 </div>
@@ -375,8 +372,8 @@ Solución
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[2.0, 2.25, 2.3703703703703702, 2.44140625, 2.4883199999999994, 2.5216263717421135, 2.546499697040712, 2.565784513950348, 2.581174791713198, 2.5937424601000023]</code></pre>
 </div>
@@ -400,8 +397,8 @@ Solución
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> n <span class="op">==</span> <span class="fl">1</span> ? <span class="fl">1</span> <span class="op">:</span> <span class="fu">sqrt</span>(<span class="fl">1</span><span class="fu">+x</span>(n<span class="op">-</span><span class="fl">1</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> n <span class="op">==</span> <span class="fl">1</span> ? <span class="fl">1</span> <span class="op">:</span> <span class="fu">sqrt</span>(<span class="fl">1</span><span class="fu">+x</span>(n<span class="op">-</span><span class="fl">1</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Real[1, 1.4142135623730951, 1.5537739740300374, 1.5980531824786175, 1.6118477541252516, 1.616121206508117, 1.6174427985273905, 1.617851290609675, 1.6179775309347393, 1.6180165422314876]</code></pre>
 </div>
@@ -444,10 +441,10 @@ Solución
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> n <span class="op">/</span> (<span class="fl">4</span>n <span class="op">+</span> <span class="fl">2</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> n <span class="op">/</span> (<span class="fl">4</span>n <span class="op">+</span> <span class="fl">2</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="143">
 <p><img src="sucesiones_files/figure-html/cell-8-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -471,10 +468,10 @@ Solución
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>n <span class="op">/</span> (<span class="fl">4</span>n <span class="op">+</span> <span class="fl">2</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>n <span class="op">/</span> (<span class="fl">4</span>n <span class="op">+</span> <span class="fl">2</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="144">
 <p><img src="sucesiones_files/figure-html/cell-9-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -498,10 +495,10 @@ Solución
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n <span class="op">/</span> n</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n <span class="op">/</span> n</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="145">
 <p><img src="sucesiones_files/figure-html/cell-10-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -525,10 +522,10 @@ Solución
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="146">
 <p><img src="sucesiones_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -552,10 +549,10 @@ Solución
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span>  n <span class="op">==</span> <span class="fl">1</span> ? <span class="fl">2</span> <span class="op">:</span> <span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> <span class="fu">x</span>(n<span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span>  n <span class="op">==</span> <span class="fl">1</span> ? <span class="fl">2</span> <span class="op">:</span> <span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> <span class="fu">x</span>(n<span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="147">
 <p><img src="sucesiones_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -598,11 +595,11 @@ Solución
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)  <span class="co"># Declaración de la variable simbólica n.</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span>n</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)  <span class="co"># Declaración de la variable simbólica n.</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span>n</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="148">
 <pre><code>0</code></pre>
 </div>
 </div>
@@ -625,10 +622,10 @@ Solución
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="149">
 <pre><code>nan</code></pre>
 </div>
 </div>
@@ -651,10 +648,10 @@ Solución
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="150">
 <pre><code>ℯ</code></pre>
 </div>
 </div>
@@ -699,8 +696,8 @@ Solución
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sind</span>(<span class="fl">360</span><span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">a</span>(<span class="fl">10</span><span class="op">^</span>i) for i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sind</span>(<span class="fl">360</span><span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">a</span>(<span class="fl">10</span><span class="op">^</span>i) for i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[2.938926261462366, 3.1395259764656687, 3.1415719827794755, 3.141592446881286, 3.141592651522708, 3.1415926535691225]</code></pre>
 </div>
@@ -724,10 +721,10 @@ Solución
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sind</span>(<span class="fl">360</span><span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">a</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sind</span>(<span class="fl">360</span><span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">a</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="152">
 <p><img src="sucesiones_files/figure-html/cell-17-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -750,11 +747,11 @@ Solución
 <div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sin</span>(<span class="fl">2</span>pi<span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">a</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sin</span>(<span class="fl">2</span>pi<span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">a</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="153">
 <pre><code>3.14159265358979</code></pre>
 </div>
 </div>
@@ -777,11 +774,11 @@ Solución
 <div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive), r</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> n<span class="op">*</span>r<span class="op">^</span><span class="fl">2</span><span class="fu">*sin</span>(<span class="fl">2</span>pi<span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">a</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive), r</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> n<span class="op">*</span>r<span class="op">^</span><span class="fl">2</span><span class="fu">*sin</span>(<span class="fl">2</span>pi<span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">a</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="154">
 <pre><code>                  2
 3.14159265358979⋅r </code></pre>
 </div>
@@ -796,49 +793,49 @@ Solución
 <div id="exr-sucesiones-propuesto-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 2.5 </strong></span>Calcular el décimo término de la sucesión <span class="math inline">\(\left(\frac{3n^2+n}{6n^2-1}\right)_{n=1}^\infty\)</span>.</p>
 <div class="cell" data-hold="true" data-execution_count="20">
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="156">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "kmTfNxJo"
+var ID = "QSMdQPOv"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="kmTfNxJo" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="QSMdQPOv" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_kmTfNxJo">
+      <div class="form" id="controls_QSMdQPOv">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="kmTfNxJo" type="number" class="form-control" placeholder="Numeric answer">
+    <input id="QSMdQPOv" type="number" class="form-control" placeholder="Numeric answer">
     <span class="input-group-append" href="#" title="Introducir hasta 5 decimales">&nbsp;🎁</span>
 </div>
 
     
         </div>
       </div>
-      <div id="kmTfNxJo_message" style="padding-bottom: 15px"></div>
+      <div id="QSMdQPOv_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("kmTfNxJo").addEventListener("change", function() {
+document.getElementById("QSMdQPOv").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0.5175292153589316) <= 1.0e-5);
-  var msgBox = document.getElementById('kmTfNxJo_message');
+  var msgBox = document.getElementById('QSMdQPOv_message');
   
-    quizquestions_scorecard["kmTfNxJo"]["attempts"] += 1;
+    quizquestions_scorecard["QSMdQPOv"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_kmTfNxJo")
+    var explanation = document.getElementById("explanation_QSMdQPOv")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["kmTfNxJo"]["correct"] = true;
+      quizquestions_scorecard["QSMdQPOv"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -846,11 +843,11 @@ document.getElementById("kmTfNxJo").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_kmTfNxJo")
+    var explanation = document.getElementById("explanation_QSMdQPOv")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["kmTfNxJo"]["correct"] = false;
+      quizquestions_scorecard["QSMdQPOv"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -866,33 +863,33 @@ document.getElementById("kmTfNxJo").addEventListener("change", function() {
 <div id="exr-sucesiones-propuesto-2" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 2.6 </strong></span>Calcular los 10 primeros términos de la sucesión <span class="math inline">\(\left(\frac{3n^2+n}{6n^2-1}\right)_{n=1}^\infty\)</span> y averiguar hacia dónde converge.</p>
 <div class="cell" data-hold="true" data-execution_count="21">
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="157">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "N7XIyZhq"
+var ID = "XCMVv5nG"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="N7XIyZhq" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="XCMVv5nG" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_N7XIyZhq">
+      <div class="form" id="controls_XCMVv5nG">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_N7XIyZhq_1">
-      <input class="form-check-input" type="radio" name="radio_N7XIyZhq" id="radio_N7XIyZhq_1" value="1">
+    <label class="form-check-label" for="radio_XCMVv5nG_1">
+      <input class="form-check-input" type="radio" name="radio_XCMVv5nG" id="radio_XCMVv5nG_1" value="1">
       
       <span class="label-body px-1">
-        1
+        1.5
       </span>
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_N7XIyZhq_2">
-      <input class="form-check-input" type="radio" name="radio_N7XIyZhq" id="radio_N7XIyZhq_2" value="2">
+    <label class="form-check-label" for="radio_XCMVv5nG_2">
+      <input class="form-check-input" type="radio" name="radio_XCMVv5nG" id="radio_XCMVv5nG_2" value="2">
       
       <span class="label-body px-1">
         No converge
@@ -900,8 +897,8 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_N7XIyZhq_3">
-      <input class="form-check-input" type="radio" name="radio_N7XIyZhq" id="radio_N7XIyZhq_3" value="3">
+    <label class="form-check-label" for="radio_XCMVv5nG_3">
+      <input class="form-check-input" type="radio" name="radio_XCMVv5nG" id="radio_XCMVv5nG_3" value="3">
       
       <span class="label-body px-1">
         0
@@ -909,20 +906,20 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_N7XIyZhq_4">
-      <input class="form-check-input" type="radio" name="radio_N7XIyZhq" id="radio_N7XIyZhq_4" value="4">
+    <label class="form-check-label" for="radio_XCMVv5nG_4">
+      <input class="form-check-input" type="radio" name="radio_XCMVv5nG" id="radio_XCMVv5nG_4" value="4">
       
       <span class="label-body px-1">
-        0.5
+        1
       </span>
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_N7XIyZhq_5">
-      <input class="form-check-input" type="radio" name="radio_N7XIyZhq" id="radio_N7XIyZhq_5" value="5">
+    <label class="form-check-label" for="radio_XCMVv5nG_5">
+      <input class="form-check-input" type="radio" name="radio_XCMVv5nG" id="radio_XCMVv5nG_5" value="5">
       
       <span class="label-body px-1">
-        1.5
+        0.5
       </span>
     </label>
 </div>
@@ -930,26 +927,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="N7XIyZhq_message" style="padding-bottom: 15px"></div>
+      <div id="XCMVv5nG_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_N7XIyZhq"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_XCMVv5nG"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 4;
-    var msgBox = document.getElementById('N7XIyZhq_message');
+    var correct = rb.value == 5;
+    var msgBox = document.getElementById('XCMVv5nG_message');
     
-    quizquestions_scorecard["N7XIyZhq"]["attempts"] += 1;
+    quizquestions_scorecard["XCMVv5nG"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_N7XIyZhq")
+    var explanation = document.getElementById("explanation_XCMVv5nG")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["N7XIyZhq"]["correct"] = true;
+      quizquestions_scorecard["XCMVv5nG"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -957,11 +954,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_N7XIyZhq")
+    var explanation = document.getElementById("explanation_XCMVv5nG")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["N7XIyZhq"]["correct"] = false;
+      quizquestions_scorecard["XCMVv5nG"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -975,65 +972,57 @@ rb.addEventListener("change", function() {
 </div>
 </div>
 <div id="exr-sucesiones-propuesto-3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.7 </strong></span>A la vista de la gráfica de los 20 primeros términos de la sucesión <span class="math inline">\(\left(\frac{2^n}{n!}\right)_{n=1}^\infty\)</span>, ¿crees que la sucesión converge?</p>
+<p><span class="theorem-title"><strong>Ejercicio 2.7 </strong></span>¿Cuál de las siguientes gráficas corresponde a la sucesión <span class="math inline">\(x_1=3\)</span> y <span class="math inline">\(x_{n+1}=\sqrt{2x_n}\)</span> <span class="math inline">\(\forall n=2,3,\ldots\)</span>.</p>
 <div class="cell" data-execution_count="22">
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="158">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "n4o02jtx"
+var ID = "xXVONdGR"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="n4o02jtx" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="xXVONdGR" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_n4o02jtx">
+      <div class="form" id="controls_xXVONdGR">
         <div style="padding-top: 5px">
-    <div class="form-check">
-    <label class="form-check-label" for="radio_n4o02jtx_1">
-      <input class="form-check-input" type="radio" name="radio_n4o02jtx" id="radio_n4o02jtx_1" value="1">
-      
-      <span class="label-body px-1">
-        Si
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_n4o02jtx_2">
-      <input class="form-check-input" type="radio" name="radio_n4o02jtx" id="radio_n4o02jtx_2" value="2">
-      
-      <span class="label-body px-1">
-        No
-      </span>
-    </label>
+    <div>
+<img id="hotspot_xXVONdGR" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAoUAAAHMCAIAAAAs9EW6AAAABmJLR0QA/wD/AP+gvaeTAAAgAElEQVR4nOzdZUAUWxsH8Gc2gYWlGykBkRAUUcFAxQC9imJ3d8e1O67d3XWvXdjYDWKBAQgIkiKSG2zvvB92dcXXlmUXfH6fmJmzM39qn5045xAkSQJCCCGENIqi6QAIIYQQwnqMEEIIaQGsxwghhJDmYT1GCCGENA/rMUIIIaR5WI8RQgghzcN6jBBCCGke1mOEEEJI87AeI4QQQpqnLfW4qKhI0xEQQr+lpKRELpdrOgVClZVW1OPExMR27doBQGlpqaazfJlIJJLJZJpO8QUymUwkEmk6xZdp7W8Tg6nJsGHDrl+/Dlr8jWCwn6W1wcRisVQq1XSKL5DL5UKh8NdeqxX1WCKRKH6yWvvhWmuDkSSptSOQa+0PTTuDCQSCFy9eFBYWajrIr5NKpRKJBP8mfwEG+1la+2eWlZX16tWrX/usQCv3NAihnyIQCMZPnXnw0BGGdXVpYY6Xu9u/OzY5OTlpOhdCfyKJRPLmzRtLS0s2mw0A9+/fj4uLMzExCQoKMjQ03LRl25U70SyWXnhoi4aBAWOnzLp//x5Jkg0CAvt2CZs6dzFXTiMYuvLCrPmzpo8dNeKnDq3Genz37t23b99+XHR0dPT391ff4RCqdAoKCkxNTXsMGBpZZCRckAh0HQCIijncMDgk5cVTPT09TQdEqNKTyWTx8fH5+fnu7u7W1tbp6ekHDx9JfpNVy92lb5/ed+7eXbByQ3raazt7x/FD+z9PSNq+cxfD0klSmONV010kEqZy5KXOTZiiFzB2MpVCiGuHl9bsDxLhlZVbha/Hkl1XyGZuBoKIvLbx0tCx5Ngz4OgHAFCSO2tbPyqFMmrEsB+PqsZ6HBsb+/z5c8XXp06dGjt2LNZjhABAIBDMmLdw1+49FD1DKbdQQmWKFycDharYStbrzk25eeLEiT59+mg2J0LaicvlxsbG0mg0X19fXV3ds2fPnrtyQygStw4KbNGixd+z5p+/eFEsFLh5eA3v023RyvVchjGwLaVvnro7VUt8ncYPGCgzrce8+mL6Ak+KuWNpx+XQ1bMgL2XI9N6kUz3Z/ARgsgAgekUwuDcjB8wCADEA5OdCzWAIGqLIwHt0Aroshwa9FYvy/HTo/I+yGAOAoRW3986Fy0K0pR6PHj1a8UVeXt7+/fv79u2rvmMhVIm069LzvsROMC8BmCx4eYW4tuFjMVbg2dWNfZmI1Rj9UXJzc83MzGg0mlQqPXPmzJO453bWlqGhoVwud8KMeU+fPGYZGIa1DTE3MV61YTPVvhbIpGROgrmlRS5hzKnTE6j0kxtOCYePIUKnSKY+Aobu49izQ8cNI8edBef6AACFGTH/NIK5j8DAAgBEJU3g/kEYewkYegAAJvZSsQj6bgcqHQBAIiTzUmDSZVW+lPsweL9qMS0Guq5QLb5LgmZlr06bVOPx+WKxmMFg/OBPoCLuH+/fv79p06b29vYVcCyEtJBIJFqyYvX2PftLCvNNzS0KJFTBjCNAEAAAhlakiP9Zezo/z8rMRANB/09CQsJnp+kXLlywsLDQVB5UeWVkZOTm5rq6uhobG8fHx2/asSfx9RuvGtWHDei7/9DRzVu3UQ1MJSX5zZs1jXv+osTCu6RafUZs5uQ5gTKSIuq6hmy1vUDI23porKw4Rz4tBlgmAABnFhS9fw2D9ikOwSt4A+xq0HKi8pAFGWSzEcpiDAAvr0L9HopiDACQ+hA8WiiLMQDkpYCtt7IYAwC/EAzMy3xQlsuA9kllpVBBJlEt6hkBNw/AU7VGKiJI2Y8XY6iYerxnz5758+d/owGHw0lOTg4PD5dKpTQaDQBmz57t6upaAdl+kEAgYDAYVCr1+00rlvQDTQf5Aj7/8zKjJSo4GEmSrcM6xxH2pSMvg6FV6aWVkP9GWYwBwNYTOHnwOhqqN/iQr1Anen+rOSd5PJ5ihY6OjuL/ouI5OzsfPXpU8fWJEyf+/fdfLMboiyQSSUJCgkAg8PDw0NfX/+/Q4QPHIgqKiurXrtU9vP3ov2dm5JdQTezEGS/c3aq/epPNbTqedA+5mfNyc8PmFO8Q8dyXoGMAcum5eXXIv2ZCvW4AIAYQx16APluU14F1DCSFWTBwj7IYA8Cr29BjjSpE2kMIHqNazE8Dl0DVYmkxGJh/9RvQMwJevmpR3ww470EqAhpTucbUATKegn1t5WKNphBzBFqOUy7W6QgXV0CNICCUvZZoN7e0ah3yUz9Dtf+TR0VFvXv3TtG9+Gv09fUtLS1HjBghEAh0dXUBwNXVVaseZiEIQpvrsY6OjqaDfIFcLteqX+JHFRBMLpfv2L1n98HjhYUFNhZmL94LS8dtVm6zdIPcV6qmBAUG7SE2dKDX7yJ2qEctzGBF7144Y4q3t/fHJhSKxvolMplMZ2dnxdeRkZGDBg3SVBKkDdLT01kslpmZmVgs3rB566UbdwEgtHljezvbkROnyIztga4jy3ppamqar2fHaTwSWKZxCVe3hLSDgXtJn7YAAEVZDxcFwPxY0DcFALmZs/zKeui9VXkmys0nSbmiGAMASITAyVPdlAWAggywdlctCkpUtRkAqHSQiVWLBuZQlK1atK4B9z654OzsD0cmgbhUeYps6QZCLqTcA5eGAAA0BtRqA4cmQK/1QKEBADQeRGzpSo44Bva+AEA4+sORiQxRicivKxAEsyCVyH1JXx7Iq9ePZOixky5bl77ZduXCT/141V6Pd+3a1bdvXyaT+Y02FAqFzWa3bNmSx+Pp6+urO9IvoHyg6SCf09pg8CGbplN8gbqDyeXy5m3CYvn63GbzwMAi7eRM0r2parNbIzg8HkpywdBKucbUQV+XObuV44ukB+71HLqtuPqxBGqPN2/e3Lt37/Dhw99oI5VKc3NzU1NTBQKBnp6eubm5gYFBhSVE5UsikRw/fvzOg0fVrC3b/9U25tHjyTPmkPqmcmGpMYshFolKXJrzvYcAkPcObhMlR8snXwULFwCA+/s5Dw6RQ44rLgJJM+OgXjdQFGMASLoLfuGKYgwAkPMSqjdQXRbmF4KhtSoEQQCU7WTMMi7zv2PjAa+joW4n5WKNphB1EGoGKxfrdoa1f0GDnsC2BADwbAWHJxHXN5PNhgNBAZYJ1dyBWNFM2m0N2HlDbhLLwFC6rRvRoKfQvi6lOFs/9ZajnfWbRb4UlwBKaREl58XoMYP2HRmaX1Agl0q8avmsu37pWMS5yPOj5XJ5q6aN5+6Oj4+PP3sxsrA4rcX4Lp06dfrZ9xn11mM+n3/06NE7d+6o9SgIaYMLFy4cO3uphMsz1qXGFlO4Q/9VrCcd/UD8yXg9LBPouIhYVB9Cp5I2HkRuosGt9csXzRs2eKDWfh4FgN27d4eFhZmZmX2jTXJy8vTp03V1dUmSJAgiKCho48aNFZbwR+A9lM/k5uamp6dXq1bNxsbm8uXLc5evTU9JMrG07tim1YmIc0VWdXjOjanZBQtXtJaxLcXjroNJNQAo2dmPsHQl281S7EQQ9R90XaksxgCQEkUGDVXdkclLUV3jBQAxH3QNVYs6BsAvVi2aVIO8FJCKlXdqaUwwsYeU+6rLzv7d4NQs6LdDuf8WY4iN4aRpNXCqBwDgEkg5M5+xb4AwaBToGlITrzPkQuqyAFmdcJGBtUF6lLGpnt37yNhZK+nm9uLc1PCOHVo0CVy3Y2F6WqptNfuxU4e0CQk5ePDQk5e3Hd2sOk094ubmlpGR8fLlSyMjI8Wz3JMmThAKhVQqlU6nA4Cnp+e8GVM/xq9Vq5aXl5dQKNTT0/tsaDMKhfLdy3Lqrcdnz5718/Pz8fFR61EQ0iyZTNa+a697r9+X1B8IxizahcXS5mNVm2s0hb1DIGSS6lGRms1ZNLKfZearlPserk4jr56rUaOGRpL/ILlcvm/fvh07dny7Wc2aNQcNGhQSElJaWspisSom28/S2k88FRAsLy8vIiLiTWa2Rw3XRo0aDRkzKSbuBdXKTfbutYke/b2Uzuu8BgbU4RZlb1jbRv7XTLJBLwCQAQjuH4DB/ymKMQBAZizZZdkn+30NdqrbKyAVKXrSf/jGTKEkV7Vo5w33D6gWHetC9gvITQIrNwAAHQPwCIb/RkOvDcobtw16Eps6Ed1Wyms2BxFfT1ICSdfpKxvyvdpT5BLduJMNmzZMjBhdUMIn6AwdUrJ+56bs3HeHTi3gcrkB/nUWPH9MpVIjIyNz3+V59x8WEhJCoVB4PF5mZqazs7Piwm3fsk8sTpo08dNFDw8PDw+PT9d8+zcll8tpNNqv3RFTbz3u3r179+7d1XoIhDQlPj7+7t27MpnsfUHBnWwxd9RF5QW6F5FA/eQ/y94XXBsRS5uQ4YvA1BEyYtkX569atmTwwP6aSv6zLl++LJfLg4ODv98UaZPTpyN2Hjr+Pr+gbi1PL3fXGQuWCH07CY3s9e/fFI4YT7abJZt1EAgCxKUl01xh0QvQMwYAYJnIJCJo0Eu5F5IEbgFYVFftVyxQ9NBVMjCD4hyw+vCZ0qEOxF8F71Dlom8YrG4NQUOUDzY71QO5jDg8gQxfDAw9kIoY9l7ylc2g5TipbS0iP90gPbqGc7XEeZ50Bx+Sk2tCk608sHP/0dMPt69i6Rt0bt9m5smk58+f37h1i8lgBy84pHjSorCwUCKRWFpaKo45fsyoT38O/fr1+3RRX1+/Zs2a5fMjLlc4XiZCP00ulw8fN+nouctC7/YkhSa/t0/ad7vqAp1zPXh2Hup2Vr0g9G+9f/zrJ+3Mys6uWcNt7umDtWvX/uKetdPu3bsHDRqkhc8zIgXFDQIOhzNj3qIzFy7xuRyf2nWoBBmTyeU0HQeu5o/jL8t3TidnPwITOwDgpT2E9ARoNlL5+uwX4OSvLMYAICgp8xwyQQCFAhKh6qzX3hde3QKfv5SL/l3h3D/g0lB5kblRf2KWJ2FiK282CmhMEHJ06VT4p54soJ/Y0FY/+5G+vLCpreDcnBpUlpG8tGTYkMEjh2zYvf/f2PijLg52gy+d9PT0LCoqSkhIsLCwcHZ2plAoHTp0+PT7rVevno+PD4VCUVw0BgATE63oH/ibsB4j9KP4fH5CQgKdTr9z7/7h6NfcaQ+Vl6BfPwRdI1U7/65wfTMcngBtpwPLBFIfsI+NW71qxaAB/b62Z21GkqTiQrSmgyAliURCoVCoVGpiYuKw8VOePIohSXB1r/k2O6ukTk/hkPOgY3AzcjU8P0/OuK/ofiPLjIWAvopiDACQ9xoc6qj2SFBA/sn8dYZWUPIWRDxgfrgw69UabmyBVhOUi6FTiY0dSIYe1GwOAKBvzHifxFjsJ6rXQ0bTZSdecvFyd2K+ipxTQyaT2lRzWLV9bW1f3zNnz6Zn5fiEtgwP36LoElJYWPixji6cO/vT79HY2DgwMBD+MFiPEfohK9asW7x8NdW2JiGTlLyJl445o7ofbOsFyfdUvTJoDBiwS299iOGb67ySIpcaHit3rGnevLmmkv8mgiC+PX4AqjB37twZOn5KZkY6yOUurq5pb9K5nVaRnY4BELEHRoKLJ7RRPmNFinjQdMTHvrDAzQdjW9WO9E2hJEe1aOcN2S+g5K3y2WYqHQL7Ejv7kQP3gC4bAMCnHWX/UN3sJ3zPv0DEN3y037e+X0nUkuS9/QDArabHjstnmUzmtWvXeaWlAcNmffxrV5y4K74eOeLzyRWqxkltOcJ6jNC3KN5QtmzfsXBPBHdqNOibAQDM8izz7tZ8JCxvBpYuUKsNAMD7VIODQ9euXDKwf6U8IUba49q1a2Omzkl/nUSjM2r71nqS8JrbZ7diwKm4dX9Bm3lQ+8OFXG4etP7kQSSJsMwtXgsXeHZetejWCA6MhMxnUK0WAACNCc1GEf80JHuuB8e6UJhpkBdvKct+t7AW3dqV5BeZsxj/3YhMSkq6fi/GwEi3/cZFzZo1AwDFSEQfB6vx8vL6LP/HYox+BNZjhL7sUmTkuGlzsjPeUChUGVBKJ1xVFmMAsHCBtwmqe2wm1aDHOuZ/IxhHaRSGrg6FXL1kQc8e+CQj+mmPHj2atmBp/MuXphaWdWq6nroRxe25DZzqgVR8e1F9stc21eiPxW/Bo4XqlQQFPp2r2L42xF9VPcTg0wZOzYLHJ8EvHACAyqB5Noe1IYz6XUrN3fUKUpjPz86fP/XctcPxl+dYWduMHN2rf98+YrE4NjbW1tbWzs4OAOrWrduzZ89P02pq2LiqCn+aCH3Bf4cOj5y1hNNrB9jXBpkEJtqWeb40aCgcnQJjI5TjDJQWGdxav3rF4t49e/D5fFNT06/tFqHPvHv3bteevQ+fJXi4OpkaG81fs5UTtgSa1XvLyXu5JoScckPZr5fGIDl5yqGjFOg6IP6kh6tbY3h8AtwaKxfrd4dLK4jzS8hWE4CuAwWZ+mxjw6sL+Vf+oZg5SrNeNmsUsOHfJ9evX3+VkuoS7Bt+eIGRkdGYD5MAKTCZTE9PT63tIVb1YD1GSCk9PX3xyrVPXyRYW1jcuX2TM/YqmDsBAFDpoGcEpUWqB1B92kLaA+o8X0PPRiSFJk99+Pf4MYMHDgAA7Ry7FGmV169fK/q/xick9Bg4nF+vr8S2/ZnEFPLcXHLuE2U3X7oOSddVDbIBAFQ6SIVA11UuerSAe/ug4wLlYpPBMK8OlRgvazYKmPqUhGv6IAokn92f6y6Ty03NzJcunNmje7c3b95kZWW5ubkpxiH/rCMQ0iysxwgBAERevtxtwHBu84nyxj0g7zUhvKYsxgp1O8OZRdB9lXJRLjV492LxkgW1fWpJpdLatWsbGhp+cbcIfSotLa1L38Gv3xZQrFxlmS9Li/Mkf99U9NyVv02EJxGqMTeodJCKyrzYsyXc2QvNPzwV1XoiMa8OjZ8nadAHqHTduNNG+rQuvvqXTw3h87j+df2W37tevXp1AJDJZB/7qjk6Ojo6OlbMN4t+FtZj9OeSSCSRkZEpKSl2dnYjJ00rGXYKbDwAAKxqkEf/LtO03SxY04a2JFBetzNFJmE9PdqhRZNRI4Zr5wDdSKscO3Z824EjOW/fenu43759+13reWS/LgAASbfh4nLVMBokqXocGgDoOmDhAvFXVTeJOywgFtaj5yeLfcJAJjF4criak23v0JqRt9eLxeJWQQ3/PvLki8OiYcfxygLrMfpDPX/+vG2nHhwLT56Fh27Obb6UoSzGAMDQA1PHMm+FDD19c9vRQdX12aQOkxU8a7+vr6+mkiPtx+FwSkpK7OzsuvYZePllNid4MtSzTby7G1gOZN0uykZCbpm5E6xcoeANFOeAkY1yTbdVxJpQSpu/Ze4tQFBicH97DR/PDs2rXbu3lUGnd+wVPHjgbiqVOn3q50dHlRTWY/RnkUgkWVlZzs7OoR27ZoetVQxowMt6DocmlGnXcy2sb09pPlLu2Qr4Rex722oZCBctWoSnGujb4uPjew8dnZL6hqZvJMnPkpk4CKbcUcxfRJo6AOOT81drD0ibAaRceVpMoUGHBcTy5mSfTVA9AEpyWfe2V/d0b2STf//aFGNj4+4D2gwe0J9CoczU0LeG1A3rMfpTFBYWjpww5dz58wxja2FeutzGQzm6EABYukBeMpQWg96HYbaq+bDcGzaSPCm4c9fY0LDXqPC+vXthZ0r0RRwO5/HjxyKRyMbGplloWFGntWT/NgAAx6aCqYNqMkEDC8iMU73M3AlsveC/MdB1BTD0QC6l8d/bGDJs49a/OjzcxMxiQK+uk8dvYjAYGviWkCZgPUZ/BLlc3qT1X0mObSX/pPIpNHh0DJ59MlU4XReCx8D6MBi4CyxcQFzKvLbGmvf6zK1ofDdE37Zj996ps+eDox9JYwqeXZUEDScVw8IAAI0B9E+mfvdsAcemwNtEsHZXrmk2XHdXb8rzCIZZNXFBduvWrbfev21ubv75MdCfAesxqsoUj9K8zc21MjXKlOpLWk9RbrB0g/ebyzQNmawbf1Fv619CPp9Go3Xu3GnlrutYjNEXlZSUxMXFEQRRXFw8efEazsTbYGgFALCtJ1QPULVzrAvR/0HjD0N/6xpC9zXE0iZ6gd34pq4GeS/0Uu+duXDaz8/v1atXLi4u+Pf2h8N6jKqszr36X4nP4QRPhno2CeeXkNWcVdvsaoFcCre2Q9BQ5ZoXl9ilb1MTnzOZTLxJjL5hxZp1i1esoTr5AUlyEqOlvbcoizEAsIyBX6Rq6vMXXF4DB8dB2FxgmUD2C4Oba8dOmVjTxfl12ht3t9B27Tbr6uoCgL29PRZjhPUYVSkFBQV37twpKSmRyWRXY1M4468pHpYhawZDxlNVO4KAEUdpK5rq3N1Gc6xN5Kda0MQnL0T82izi6E+g6MW778C/C3ed4E59ACwTAIDFgaoOSwDg2w4uroA6HYBCAwCgUImmQy2vLZGtvsznlNjYO/4zb2qXLp2/fAD0x8N6jKqOXXv3T545V+7eTKpjJHt0QtRikqpDp2cLODMf2k5XDTotEehTZTdPH8jMzLS3t/fy8sLOxOiLbt68OXLyzIy01wQBQNfhDT2uLMYAYGwLBemqsVS9QiDuHDGnFtlqIrBM9FJuGqXeuH3lvGJcDoS+DesxqiIeP348cc4/nEl3lGNKy6mq6dMBwNAa2s0m5vtB60mkhQst5zkravf+bZt8fHx8fHw0lRlpv7Nnz/UeM5XTazs41QO5DCZXA+uaqs0NesGZBeBcXzmZEinXpUL7loE21pl5Bc8ad67dr98aHEIV/SCsx6gSS09PHzlp+t1bN2VymZ6BETf4b2UxBgAnf4g5Co0GqFrXbs86O2uEc3Fi6gn/Oh6DN963trb+4m4Run379rNnz8zMzKbOX8Lpt185LyGFCsZ2UJQF5h+eRajTAZJuU2a66wZ2l1F1mImRTf289u3cyWQyv7FzhL4I6zGqrDIyMuo0bFoSMke2aCdQqPzVoWVGnPZtD5fXwJFJ0G426BlB9gv20TFTp/w9Y8okHo+HU9agr3n//n1ox26veQTfqaFOaTwv/Y2yGCvU6w6n58CgfcpexXKpPi97woSRrs5OAoGg/qK9eLkF/TL11uN9+/atXLkyNzfXzc3t4sWLbDZbrYdDf4Lr16/fvHOPRqU+fPqspOl4WYPeyg3VasG7ZHBrolykUGHMafpcL8PEc6U8Lj5Kg35QjwHD4uzbSpuPBQAJScL9Y6ohtACg5VjY2pM6x5tavxsBcp1nER1bN583exY+fIB+nxrr8blz5xYuXHjo0CEvL6/4+Hg6na6+Y6E/gVAobNOp+5PMYo5XB0Iug5t35RPnqDYH9IGt3cCzNZjYAQDIZTqXlnbu0vnAji2aCowqC5FIdPr06efxiZZmJg8ePpQuOqzcQBBQvT48Ogn+Hz7JUWh6RqYjW3Sq7mxHEESjf456enpqKjaqYtRYjxcsWLB06VJ/f38A8PPzU9+BUJUnFArpdPr8f5ZFi60FY48BAAkAsWdBIlQ1qlYLwuYR8+sY1Wkt1TOhJN9uWq/2tnXbNJUZVRYvXrxo3aELt1p9rrUv83acmMKCTwdG7bIcVrWmZD+T+7QDEc/gwV4Xec6ihZvwDjEqd+qqxzKZLC4u7tmzZzNnzhSJRAMHDpwzZ8432otEotTU1NLSUkUHUEdHR7z+gwDg7LlzoyfPKCwqIqUSKUmIpkepttVsBlEHoMvyjysIUta0adD08YOKiop8fce7ublpIDGqVEiS/KtLz5ywNVAzGABE4lKYWRNkEqB+uJ5n6UptNsS/4DbEPNdnsbr0bz2ofz8cMQapg7rqMYfDEYvFiYmJL1++LCgoCAgI8PLyCg8P/2Lj4uLi5OTkzp07f5w3e9OmTd7e3mrK9gsEAgGDwdDCf0LpB5oO8gV8Pv8393D8xMmxC1Zz++4HW08AgAk2YGip2hw8BlYEE3sGkU2HAZXBfHHe4OH+9RfPfJxuncfjqSmYmnwtmI6ODo2Gj16WM4lEkpOTU1RUxKUaKIoxAABDD7xD4dhU6LpcOaZHTgLr/u7/7l13dnb+xt4Q+n3q+ic3MjJiMBiDBw+m0WiWlpadOnW6efPm1+qxkZGRl5dXdHS01j74SqVStbkea20Hx1/4bUokkuPHjz+MfW5tbrp683buwJNg9eE016YmZMSCY13loo4BhC+2vzjN9uFSoVDYvFGDmbufGBkZfW3PvxmsYmhtsKqEw+GMnTz9+MmTTDO70repcuf6ZTZ3Xw3r2jNnuet6NqXw8+l5yfv37cBijCqAuuoxQRB169YtLCxULBYUFNjY2Hz7JQilpaU1DW1fZFWH6xBATXonf5enKsYA0GIsHBgFo04on9h6n8aOmLpj2+qWLVtqKjCqjFqFdX7K9hcvSuHTGJCfBqtaA0mq7hkz9Fj27guHd3B1dTU3N/fx8dHaz7uoilHjRbApU6ZMnjyZRqPl5uZGREQ8ePBAfcdCVUOXvoMzm84g63YGABlJwrWNIJeppo+tHQYZT2iL/NmOnkDKKSU5G1YuxWKMfsrjx49f5fHEveYpl82coJoPnJoFHeYrL1A/O89Kujbk1Cq8VoEqmBrrcVhYmI6OzsmTJ42NjaOiolxcXNR3LFRJkSS5e+++eUtXFbx7q8vS54mkZL8PHUsIAqoHwMOjUL/Hx/as4vQlSxY0bxpEpVJdXFzwrir6cdnZ2SkpKQkJCRKHsheoB+yirmlNn3VIr7ofWZBha6R39NJZLMao4qn37ax169atW7dW6yFQpTZx2qxdVx5z+58AcydBxlNi75Aym7uuhJUtqOlPZLXagojPfrC7lpFs+NAh2Jcd/ZTXr193HzAsOfMt1cyhNOWRzC2ozGZdtp6z7+ruDdzd3W1tbR0dHYlP+zshVFHw9AJVNIlEcuvWrfT0dFNT011793PnvQS6LgCAdU2S+x4kAuUiAJg7MRr2aiJ9QSbvMGIbdJrYq3u3rvheiX6KQCBo3LJNbtg5zkQAACAASURBVKv5ZN9OAAD8QpjtDYWZYFJN2aI4h/LySnj4chMTk2/sByF1w3qMKlRcXFz7rr05xtVFFu60lD18c3dV9aXrgH832DcM+mxRzpaTeIP1+NCBx9FWVlbf2CdC3xAREcFzCCDrdlIus0yg10ZiYT1Kq/Eyaw9qboJ+1K4ta1dgMUYah/UYVRyRSNQ6rPO7rluVo0y/joazC8u06LSY2BDGmOnGcvYhue/NWYzD505hMUa/I+FVMteq7BwPfh3ZTw+HsVNLOW+8fZ0HrLlVrVq1r7waoYqD9Rip3fkLFzbsPJCVnW1mqC+w8lZN+eBQG94mQGGWsv8SAJAkW5B34cJpXV1dU1NTe3t7TWVGld2jR48OHz+Vk1cg4RUxBY6islupopKxo2fiOL5Iq2A9Ruo1eNS4Y7eecFpOA99qxNX1pL6uahuNCZ2XwrImRNg80rEuFKSzryzr1jY4MDBQc3lRVTBh6sw9x8+WBA4HA19m2iXxo13QdBQYfpjuOuWeLjendu3aGs2I0OewHiO1kEgkhYWFSUlJxy/f5ky+pxgNmPTvDNfLzrbk35X9YE/dd2fyEg7Y29mOXTMHH8hHv+nOnTu7T0Vy/r4PNCYAiOp0AD0zynw/etAgkbEDK+cpK+XGmZNHcIR8pG2wHqNylp6ePnDUhJgH0VRdtoSTLwwerxqa37UxHBwHzy5ArTaKFcSz8wa87Eunn2EXJm0mEAiePn3KYrG8vLy0cNTYzxw+eYYbOFRRjJU6LtJ/dmpGI+Oc92/8WjTq3HmtYt4ahLQK1mNUnoqLi+s1CS5oOVP2z2EgCDg+A+ifvPHRGDDqBGV1CMvGmbT1pr9LMAfemfOnsRhrs8jIyP79+7u6ukql0vr1669Zs0bTib4jv6iEZH3+sDTNyCIsLMzOzg4H+kBaC+sxKgf5+fmK6UBin7/geHWQNeit3FCzKVzdAC3GqJoa27EYlFPr5ubl5bm49Pfz88PLhtqMx+P169fv+PHjjRo1AgCZTKbpRN/C4/H4fH49H48z1x4Ia4epNoh4kndpjo6O2jkTGkIKWI/R79q0bcesBf9AjSAZXU/45Jyk+zrVNo+WcGkV/DsKOi4Elgm8SzY4Nm7YoP7BwcFf3x/SIseOHfPx8XF3d79165abm5u1tfX3X6MJcXFxfYeNScvIpDL1aJJSulgssqujGAgdePn6B0cMGzJIR0fna1NwIqQNsB6j33Lz5s0ZyzZw/r4P+mYAADIqlBarNhMEjDnFnOPJSrki4HHNrW3nT5/cr0/vr+0NaZvk5OT8/PzWrVt7enpeuXJlxYoVvXt/9df3/v37I0eOPH36VCwWMxgMDw+Ptm3bVkDIN2/eBIW2L+m+FQa3AAAoSGft6OZ0d0Xe6al0tpmsOPfvieP/njBO8kEFRPpZGOxnSSQS7by0JpfLv/hDIwjiu+PtYz1GvyIiIiLyxh2pTBb3/CUnZLayGANArTZwdhHU766cKgcAUh842Nm8io3RVFT0O0QiUUZGRlpamr6+/u3btzt06NCzZ8+vvQ9KpVIej1dYWCiVSul0enFxsVwur4CQK9Zt4jWbAB4tlMumDvwhR3mbW6fHxxYWFtrZ2SnGWJV/UAGRfhYG+1mKVFqY7Wt/Zj8y0C/WY/RzBAJBi3bhL4opHJ/OQKFSE85A0+qqzR4tIO4cMa8O2WYa6JsyU+/pPz1y5OxJzeVFv8XW1rZmzZqKZ6Dq1atXVFT0/v17S0vLLza2trYeNGhQSEhIaWkpi8WqsJCxLxNljXqUWWVqLxBJdHR0PptWTiKRMJlM0D4Y7BdQKBQtfBRULpeTJPlrPzRtPN9H2mzJitVPKU6c4achoDfU7yFzaQh5r8u06LBAT5g/WOdp64x/5zY0ef3iqa+vr4bCot/Vtm3bpKSk0tJSAHj8+LGxsbG5ubmmQ33OkM2G0qIyq+QyuUSotYUEoS/C82P0fQUFBXMXL7sdFcNgMtNSUwXDz6i2BfaFQxPArZHykrVcqnt62qCBg9atXMrj8bBvSWVXo0aNbt26NWjQoH79+pcuXdqwYYMW3rTr3andg41buO7N4cMlQUr0gYCGjbW/qzRCn8J6jL4jKSkpMDiEGzBEHLoOpCIirgN82rmzRhA0G07M8mTXD5PR9KhJN0OaBKz4Z4Hm8qJytm7duri4uIyMjPnz59vY2Gg6jkpCQsLdu3flcnn9+vWbOUXeWt+ipN5A0NFnvbpsknFvz/VITQdE6OdgPUbfMWLitMI2i0j/LopF0skfUh+Ad6iqha2nl6fX4vHhPB7Pz2+cm5ubZoIitfHx8fHx8fl+u4oil8uHj5989EykqFY7Eig6K7a0blj34LJpZyKvFRZzmnfxHzhgI4PB0HRMhH4O1mP0BTExMRNmzn/5LJbFNnqfm0Ou+k+1rdUE2DMEjGyhWi0AgLeJ7COjV2xb3bpVK02lRX+arTt2HopK4U2LARoDAER/zTn/7xCPp8+2rlul6WgI/Tqsx+hzpyPO9BszhdNpFXQKKhGUwCxPID65D+fSENpOp60N1TcxBwpFl5RsXbcCizGqSFv3HuS1WakoxgAAFCr/rwU7drabO3OaRnMh9FvUWI9zcnLi4+M/LgYHB/9IByykcaMmTuUMPQ5WNQAADCygmi8k3YYaQR8b0ITFA/r0XDRnhkwm09oBm1AV9v5dLhjblVllbFucn6ehOAiVDzXW44sXLy5cuLBevXqKxWbNmuHjjlrrv4OHZixc+v5tto6uHl9GKIuxQof5sKMP9NoIXi1BJqE9OGR4Z+Pc6DsWFhaay4v+aPaOTrm5ieDSULXqbaJ1NUeNBUKoPKj3enXjxo0PHDig1kOg3zdv8dLVhy9xex0EKzdBcTb806jMZpdACJlsfHqS9BCPSqM3bdpsQ9RtW1tbDYVFCKaNHdZ/6hTO8NNgYA4AUFpscGLC1HEjNJ0Lod+i3nqckZGxadMmW1vb0NBQ7JuvheRyuVAoXL1uA3f2M9BlAwAY2YK+Kbx5DI5+H5vpZz1eOnvq0CGDNRYUoU907NAhKyd3zqJAipMfCRR52sNJY0cNHjhA07kQ+i1qrMfGxsZOTk5ZWVlHjx6dMWNGVFSUoaHhF1vyeLy0tLTBgwdLJBLF+GeTJ092dHRUX7afJRQK5XK5Fl5vl0qlvzCFnFQq3bB565qNW/h8Ho1KlZpWVxZjhe6rYVMnouNCsmZz4Bey7mxxFCR377ZBKBT+1FGEQuF3x0/XiEoXjE6na+HfXsWTSqWpqakMBsPBwWHMyOH9eveMjY2VSqV16uwwMjLSdDqEfpca35XCw8PDw8MBgCTJFi1abN26derUqV9sqaOjw2azW7ZsKRQKdXR0AMDc3FyrBiZVjI+vhe+JBEEQBPGzP6uBI8aceVXCH3cTDK0gNZo4OK7MZrcmRJNBrk+2iqLXGxmbdO/QdvyYDb/w66DT6Vr1S/yo0gXTwiGxKt72XbunzZ5PGNuSUrGulL9r89qQ1q2bNGmi6VwIlZuKOEsgCMLPzy8zM/OrIWg0U1PTbt26ae0Ii9QPNB3kcyRJkiT5U8HevHlz/tpt/qxY5RRMjv4kvwjeJYOlq7KFXMZOurJj28rffLPTzp8YYLBKaO/+A5NX7eJOvA1GNgBQlP2y2+CuV078+/FxUYSqADV+7s7KylJ8kZ+fHxERUbduXfUdC32bRCJZvGyFrYsHy8isfpPmEscGqvkQKVTosRZWtiDu7ILsF/Aikr0xtE0DbzzzQNpj/rLV3J7bFMUYAMDWk9Nu8YIV6zQaCqFypsbz43Hjxj1+/Njc3Dw5OblHjx59+/ZV37HQt7UJ7xbFZfNHXAJD69I7u4nnF8psrtWGWeevOpkn+SlHbaysRiye2L5dOw0lRegL8t5ml+mDBwCOfvG3l2ooDkJqocZ6fOLEibdv3xYXF9vb21fkZKjoM1FRUY9e5/InHFbOfuMXTp5dBNw8MPjQgVjEZybd/PfWJWdnZw3mROhrmDq6pQJOmacOOe9MTE01lwih8qfe50Ssra1r1qyJxbjiyWSyDZu2+DZsbuviMWDYSG6NVh+nogM9I2g/h1gcSET9C5nP4NEJ9pqm44b2x2KMtFZ4xw6Mq2tUyySpf23VgB6dNJcIofKnjb0+0G8iSbJ5m7AnpWxey5VgaAlnFoKQV6ZFo/76z0/5vz1dlHzQxdFh/P7NgYGBGgqL0PetXrLwSWj71O3hJTXbElIR+/HBYL+aw7FDPKpasB5XQRcuXIjLl/FG7FMuNx8Fm7tA2DygfRiShZdPZL84ce0Z9tpElQKbzX5898a5c+du3I3S1WGGjljVqFGj778MoUoF63HVcenSpUOnzhUVcwrzc0u8O6s2WLuDb3vin4Zkp3/A3BmynrMvzl88dyYWY1SJEATRrl27dvikIaq6sB5XBXK5vGOPvrcSskoChoK1AfXpErAv+2RAp8X6SZFezzcVFhXXcHWZdXSvv7+/hsIihBD6AqzHVcHRY8duvC7mjrmseGhLJhHDnV3QsJ+qRclbCr/w1sVH2jkuFUL/r6SkZO2GzXcePjUzNureoW2HDmGaToSQeuE4fJVYVlbWsWPHDh8+vOPfo9zAwaonqH3/AokQdg2A92kgEULiDfamtisWL8BijCqLly9funjXWfKIf81t6BFWq/7zN7YJ7yaXyzWdCyE1wvPjymruoiXrtu6Se7SU05iimBjwGK3aRlBg3FmdWTWs/o0vLnhfw8Nr2Z6NQUFBmguL0M/pM2xMfodVUKutYrHEt/3d7Z0PHznSs0cPzQZDSH2wHldKx44dX3PoAnf6Q2DqAwBQ9eHVTXD95IlTXr4ek5b64jHx8aQZoUqitLQ0OTkZ+rdVrSIIbsDAwxEnsR6jKgyvV1cyYrFYIpGs27mf23aeshgDQNNhcGcvPDqmXMx/Y7Cn14LZM7AYo8pIKBRSdf5vECEdNpfH10QchCoInh9XGnfv3h0y7u+sjAySlEtIAoI/GU7L0AomXaIsbax7YjJNR59JJZcvnNuvT2/NhUXo1xkbG9PlYijKBmPbjysZyTcb1fXVYCqE1A3rceVw+/btdr2HcHrthOoNAABWtIB3SWBip2rB0LM0N3+TEMfn842NjTWVE6HfRxDEojkzp6zqzumzGyxdgSSpMQcNH/83bscDTUdDSI2wHlcOk+cs5nTdoCzGANBqAhyfBhMvAcsEAEAi0D8+cczwwQwGg8FgaDAnQuVi2JBBxobsCTM6cXmlcokooGGj7beumpmZaToXQmqE9Vh7icXiffv233zw2IRt8DLuCfRsrNrm0xZy4olZHoZ+oXIqE17d6tOt09RJEzQXFqFy1rVrl65du5SWljKZTCqVquk4CKkd1mMtlZmZ2ahFaIFdAL9GSyjiEBI5iPiga6hqUbeTQ8KxDZO7CwSCwMAFtra2X98ZQpWVnp6epiMgVEGwHmupgSPHZzUcJw/sr1gk0x7Bre0Q8vfHBjr3dnYNbx8SEiKVSnV0dDSTEiGEUDnBeqx1CgsL9fX1o+7flS/5T7U2bA4sDaLmpcj8u4JcZvDkSDV+8qyplzUXEyGEUHnC/sfagiTJDZu2mNo6OtcONLG2F0lJoHxyz8zAHAbvscmNaZW6t232oVV9gp49uGtgYKC5vAghhMoTnh9ri1nzF60/G8WbeBsMrYEkYYoTFGZ92qOJkv64bWjrLetWaTAkQgghNcHzY60gEok2bN7K638ADK0BAAgC2s+Grd2gMEvZIuEa+/qaKeNHf2MnCFVqN2/erN8sxMTa3qWW/+JlK8RisaYTIVSh1H5+nJKSMmLEiOHDh3fq1Endx6p0pFJpZGRkcnIyQRA0cwfQZau2NR4E2S8Zi+uxzG1kAp69rfX+86ecnJw0FxYhNdqyfee0ZRs44auga/2i4rdLLq+IOB8affMKhYLnDOhPod56LJfLhw8fnpOTk56ertYDVUYJCQmh4d1KTGpwLb113yfy32V/3qKaz0BPxuypk1gslqGh4Zf2gZDabd68mcvlKr4OCAho0qRJuR9CLBZPnzOfMyUK2JYAAOZO/B6bX+3oHBER0bFjx3I/HELaSb2fPTdv3ly3bl0vLy+1HqUyIkkyNLxbRuvFxQMOytpM5/XbR+oYQNIdVQuZhB29s2uHv2xsbLAYIw1aunRpampqUVFRUVGRQCBQxyESExOpVi7KYvwBx7P9lVv31HE4hLSTGs+P09PTt2/fHhUVNWDAgO82lslkRUVFfD5fIpHQ6XR9ff3vvqRSi4uL49KNSa8Q1aoBu4j17alBg6TVGwH3veGdjV1bNWrWrJnmMiKk9Pfff7u4uKhv/xQKBeTyz9fK5VS8WI3+JOqqxyRJDhs2bPXq1SzW/82b9n+Ki4vj4uKcnZ1JkiQIgkqlRkRE+Pj4qCnbLxAIBAwG4/cH7Xvx4sWW3fuT0zJYdELCti6zzaEO2XJcQOENvfRUSzPTnusXNWzYkMfjfXuH0g9+M5g68PlaOjtepQumo6NDo2myK8SSJUsMDAwaN24cHh6ujkk83d3dyfw3n3UoMHx2PGTh2HI/FkJaS13/5KdOncrNzS0qKjp27FhmZqauru7Dhw/9/f2/2NjIyKhOnTrR0dE8Hk87z4ypVOrv1+N1m7bMWb6eGzyZ9OtGvLoNyfs/a6Bf/GbowH69e//EPImKYqy143Np528TMNjP6Nevn5ubW2lp6YwZM+7evbtmzZqvtUxKShozZoyBgQFJkhQKJTAwcOnSpT94lKUL506eH8oNWwrO/lCcq391RS0zWpMmTb77kfSnVLqPYhqntcFEIhGFQqHT6ZoO8jm5XC4UCuX/d72HQqF8d/BXddVjU1PT+vXrX716FQDy8vIIgnj58uXX6vGfIDc3d87i5Zyp0YoZmUiXQHgZCVfWQotxoDjhSLiu8+pqWBh2L0baZeHChYovmjRp4uPjs3TpUiaT+cWWDg4OrVq1CggIEAqFurq6NjY2P/7xYuiggXV8ak1fuCz+4gxzK+vBvbqMGDZEHdNIaOEnHgUM9lPodLrW1mMajfZr466rqx4HBQUFBQUpvu7atWuDBg369++vpmNVCjdu3JB7hyqnR1QYcYS6ojnz/m5GdX9KwRsTovTE+dM45BbSWra2thKJRDHh0hcbMJlMFxcXPz+/0tLSH7lR9Zm6deteiTj22zERqqwq4qZUWFiYvb19BRxI25AkefDQ4Y17/svNyTHQpUssG5fZbGCh4xOyoKVDjRo17OzsvL29sasl0jY5OTnv3r3z9fUVCAQzZsyoW7eusbGxpkMhVDVVRD3u1atXBRxFC3Xq1f9aUj6n5TQwtoNHx4h7e6HjEtVmkqQl32q98j9PT0+NRUTomzgcTt++fTMyMhgMRsOGDY8eParpRAhVWTh+tbrcvXv3emwyZ8INICgAAK0mkPFXYf9w6LYSmPogKNE7PT2wVg0sxkibubu7P3/+XNMpEPojYD1Wl2s3bnFqhSuLscKo4zpLAqhz3CkMXYpcOnL40DnTp2guIEIIIS2C9bg8yeXybTt37T8WUVRYSAcZ1OhRZjNdV8/GJWLlttq1a//C0y4IIYSqMKzH5UYmkzVp1fa5yJgbNB1YJsSt7RBzGJqPUrUoLZakPfb19cVijBBC6DP4QG+5OXrs2PNSFrf/fnCqBxYuZOdlJEEjdveHwiyQy+DNY/aW9lMnjtfOznwIIYQ0C8+Py82ZyBvc2t1UywQBkyKZs91Nd7YrKcx3cHZdvGx6WPv2mguIEEJIe2E9/l2XL1+OuHilhMtLTkkB39Ay22gMXWPze1dOOTg4aCgdQgihygHr8a+TyWRh3XrffZVT4t8PGHrM98+IJ6dIn7aqFoWZBL+wWrVqmsuIEEKocsD7x79u9569t7IlJWOvQGAfqNtJNO4imXSbcnoOlBaBXAYp99lbw9Yu/wdH3ULo/8lksnUbN1s71WCZWJhXc549f5FQKNR0KIQ0Cc+Pf93+42d4jT/MBgEAdF2YcZ86r5bZ8+OlfG51t5qrd65r3ry5RjMipKUGjxx3PC6HN+oyGNmU8gtXn51zJ6rLzUtnNZ0LIY3BevzT+Hx+fHw8SZLFxcVl5ocAAAMzBoOe/TpBs7PVIqTlMjMzT56P5M2OAyodAIBlUtp9Y9zaZvfu3WvYsKGm0yGkGVg2fs7WHbumz11ItfUAguAmvyJqRJG2nwx4mffayMgYizFC3/b06VPCrZGyGH/Ac2v58NEjrMfoj4WV4yecPHlq6sptnEl3wNAKACA1mtgYDpZu4NYEACD/jcH+/ovnTNdsSIS0H5PJJCSf3y2mSgQ6TEuN5EFIG2A9/gmL127mhK9SFmMAcG5Adl7O3NWHqatHZepRxbxVSxb27f2HTmaF0I9r0KCBPHkIcPPAwEK5SlzKjDsVvPqcRnMhpElYj39CRtpr6Fp2OqZ6XXXOz3rz4pFAILC2ttZQLoQqGUNDw2UL505d1ILbagZp5w15r9lX/hnRr6erq6umoyGkMViPv6O0tHTdxs1X7kTps1g0hg4U54BVDdXmomxjM0sjIyMjIyPNZUSo8hk+ZFBAvbpL1256eWmXs6PDhB2rg4KCNB0KIU3Cevwt6enpAc1aFXu0E7gPB6mQCfGUkzPlw48AhQoAQMpZFxcO6tNd0zERqpR8fHwO7dmu6RQIaQusx98ybPyUd02nyAP7KhZFHi2oiwN0FtaR1etOAsF6diq4Xq1pkydqNiRCCKEqAOvxt9y9fVP+zx7VMoUm67PV9cL4oY0NSZIMmrHDz89Pc+kQQghVHWqsxxKJ5NmzZ7m5uRYWFn5+fpVu2EiSJEmS/KyLJOiygUKdMH6chkIhhBCqmtRYj6dPnx4TE2Nra5uYmEin069evcpms9V3uPLy8OHDCTPnv3wWxzY2ZeoZlGbEgr3vx62UxOsN/GprMB5CCKEqSY31eOXKlYov5HJ53bp1IyIi+vTpo77DlYuTp04PGDeN02kVdGxSzC9iHJtE2dJFPuIo2NcGAOJpBPvayjn3bmg6JkIIoaqmIu4fi8Xi0tJSKyur7zfVtJETp3CGnQZLVwAAI2vxkIPMzR0M9vYUCEpBLvet47fj2kUnJydNx0QIIVTVqLcenzp1avHixenp6SNGjGjZsuXXmgkEgszMzL///lssFjMYDBqNNnToUBsbG7Vm+3/v378XkjRlMf5A1GR4cNah3ZvW6OnpMRgMABCJRBUc7BukUqlUKiU+zjGlTUQiEZ1O/367ClfpgtHp9Er3+AVC6Geptx4HBwd7enrGxcWNHz++ZcuWjRs3/mIzCoVCo9GMjY0/1mMGg1Hxb0BUKhXkss/XymVUKlVXV1c73xMpH2g6yBdgsJ+ltcEQQhVAvfWYzWaz2Ww3N7eYmJgjR458rR4zmUxra+sZM2bweDx9fX21Rvp/MTExMxevSEhIsLSypsjEkPkMqtX6uFU/9kSH/s3pdDqdTqdSqRWc7bsIgiAIQjvP9hQ/NE2n+AIMhhDSQmr8MF5SUqL4QiaTPXr0yN7eXn3H+mW79+5v2XXAVYde2cMvPWm6WGRUjba+LfHwCJS8hZx41qGRzqK0Pn16azomQgihKk6N58ehoaEAYGpq+vz5c3d399GjR6vvWL9GLBZPnDaTM/keGFkDALAtS8dfNVjZyCvl36xby41MTHuGt5s4dhOdTpdKpZoOixBCqCpTYz2+c+dOQkJCYWGhg4ODg4OD+g70y168eEG1cVcWYwWC4Pn3aeyQt2zxQs3lQggh9MdRYz2mUqleXl7q2//vk8vlypkhPkESVJlMrpE8CCGE/lh/4vjVYrE4MjIyNTXV2tpakvEcePmgb/Zxq2H82eY9xmgwHkIIoT/QH1ePnz592q5LL561D9+8BqvwCUkCa30ov+s6cPKHomxW5BJPI1Jx5xshhBCqMH9WPRaLxW3Cu+V23QaujQCgBAAyYg02/+VzZ17qrkQzS5vBfXtMHr9VO4fXQAghVIX9WfX4/v37IsuaimKsZO9L1Goza2Tbzp07ay4XQgihP92fNRhQbm6uxKjaZysFhvZv377VSB6EEEJI4c86P3Z0dKS/2/nZSr33ic7OfTWSB6HKYvr06fHx8REREb+zk6KiojNnzqS+yXB3cwkLC9PT0yuveAhVAX/E+fHLly8nTJnevlvfsxcjDYV5lOj/Pm4i4s6x3sa1aNFCg/EQ0nLnz5+/fPnyzZs3f2cnFy5crO5VZ+ShxwsS9YftuuZU0ycmJqacAiJUFVT98+PV6zcuWLmR02Q0aR14Mf65bmFR9Ycb39/dRFp7UN6nWOuQJy9EMJlMTcdESEtxOJyZM2euWbOmQ4cOv7yTwsLCXoOGF4+5BBYuAMAF4KbFtO/aKyPppWLaNIRQFa/HaWlp85ev5UyJAj0jAJB6hXBrd6RvCr1+7lRWVpaDg4O3tzc+TY3QN0yaNGnSpEkWFhbfbSmXy3k8XlFRkUAgEIvFOjo6urq6ik2XLl2SeoUqirGSUz2xhXtUVFRQUJCakiNUuVTxehwZGSmq3VlRjJUsXMhqPhwOp127dprLhVDlcP369bS0tO3bt8fHx3+3cWJi4pgxY3R1dUmSJAiiYcOGW7duVWzKysoSGHw+o7nU0DYjI4PH45V/7q/g8/kVdqyfgsF+lkgkolAoWjgfmlwuFwqFcvnngzxSKJTvPjBRxesxh8OV6Bh+tpLUM+ZyuRrJg1DlMmbMmP79+x8/fjwzM1MikRw7dqxNmzYsFuuLjT08PAYNGhQSElJaWvpZGw8PD/2I/SVl29Nynnl7D6/gKVYrfkbXH4TBfopiQnrtrMc0Gu3XnlWs4s9zeXt7sTOiyqySy+Qp0d7e3hpKhFBlEhoampKScvXq1ejoaJlMdvXqVYFA8Av7adWqlUHeC+LhUeUySdKurXMwpPv4+JRnXIQqs6p5fiwUcl/TswAAIABJREFUCmNiYvLz82vUqGElecePXC5pMQGodBBydU9Oad6wnnbON4WQtlm5cqXii5cvX0ZGRm7btu3X9sNgMG5fPt+135CUa8sp5s6y7IT6dbwPnD6GT28g9FEVrMdXr17rNXiExNpTpm9OSVvg62LvwUiKnOFMNzKXcfKHDx2yYPYMTWdEqJIxMzMbP3787+zBycnp4e2raWlpmZmZ1atXt7W1La9sCFUNVa0eZ2ZmduozkDPiDNh4AACQ5P1LS5ryXxS/y8rLy7O2tsbP4wj9AktLy/nz5//+fpycnJycnH5/PwhVPVXt/vGB/w4JAgcqizEAEIQ4ZFpUzOOSkhIbGxssxgghhLRTVavHr9IyJOZuZVYRFLqVc2ZmpoYSIYQQQt9X1eqxczUbWkFamVUkKc1Lt7H5vO8jQgghpD2qWj3u3aOb3r0dUJDxcQ3t1pZaNd1+ZHQhhBBCSFPU+DxXXFzc7t274+Pj2Wz2gAED/vrrL/Udq6io6MGDByUlJbVr1961cfXQMS3kNZqK9K100u47G1KPnzikvkMjhBBCv0+N9fjatWtOTk7du3fPzMzs06fP8ePHg4OD1XGgPfsOTJwxB1wbyZgGlOSFwQF14x9HRUdHv3//3surfUBAgDoOihBCCJUjNdbjiRMnKr4ICAi4du3alStX1FGPHzx4MH7OEs7EW2BoDQAgl108MXnWwiU7N60r92MhhBBCalIR949lMllMTIyahqjcsGMvp9U0ZTEGAApV0OGfI0eOymQydRwOIYQQUoeKGA9k5syZhoaGPXr0+FqD4uLihw8ffuwcTKVSb9269YMD26akpUOD3mVW0XUpeuycnBxjY+PfSF2GQCBgMBhUKrW8dlhepB9oOsgXaO3MMJUumI6ODo1W1YbuQQh9Ru3/5EuXLr18+fL169cplK+eixsZGfn7+0dHR/N4vJ+dS8TFyeFBXio41VOtkghIAdfGxqYcyyeVStXmeqyjo6PpIF+mnTPDAAZDCGkf9V6vXrt27aFDhy5fvmxkZPT91r9k1KC+7CtLgZunXCblOhGzO3fupIW1EyGEEPoaNZ4f79y5c86cOVu3bo2NjQUAa2trT0/Pcj9KQEDA8tmTp81uSLo3kzINaEk3m/h5b1q9s9wPhBBCCKmPGuuxUCgMCQk5ffq0YjEoKKgc63FSUtLt27elUmmDBg2GDRrQuUP7e/fucTicOnWGe3h4fP/1CCGEkDZRYz0ePXr06NGjy323JEmOmTzt3xNnRd7tSApNZ9X24Hq1Du3Z3r59+3I/FkIIIVQxKt94mXv27d9/I65kWowwbJGo3bySKVGXsol5i5dqOhdCCCH06ypfPd6y9yA3dDbQmMplglLabsHu/f9pNBRCCCH0WypfPX73LheMq5VZZWjFLS7UUByEEEKoHFS+euzo4AhvE8qsynttbm2roTgIIYRQOah89XjauOHsM9OhJFe5LCgxODZu8ujhGg2FEEII/ZbKNwhfm9DQZVNyps9tTHGsQ1JostSYcSOGjh6J9RghhFAlVvnqMQAMHzKoV/eusbGxYrG4du2tJiYmmk6EEEII/ZbKVI9FIhGFQqHT6QBgYGDQuHFjTSdCCCGEykfluH9869YtVx9/c3sXExuHOo2aP336VNOJEEIIofJUCc6Pr1+/3rH/SE7fPeBYFwCexl9t/lenu5fPqmM0bIQQQkgjKsH58aQ5izg9tiiKMQCAR4uSNvNnLlqm0VAIIYRQeaoE9Tgl4SW4BH66hnQPevI0VlN5EEIIoXJXCeoxnakD4tIyqwRcXT2WhuIghBBC5a8S1OPQkBDa3V2frtG5t6NL+zaayoMQQgiVu0rwPNeapQvvB7V4X/Ca79UeZBKDJ4edxBnT/47UdC6EEEKo3FSCemxhYZEY+3Dbjp0XbxxgMOhhg1r379uHQqkEZ/YIIYTQD6oE9RgAmEzm2NGjxo4epekgCCGEkFrgWSZCCCGkeViPEUIIIc1T+/Xq0tJSqVTKZrPVfSCEkDoIhcLk5GSSJKtXr85iYT9DhNRFjefH0dHR7u7uhoaGwcHBP/va9PT0ngOHVa/lX7tR8OJlK8VisToSIoS+raioyM7ObsSIESNHjnR0dIyIiPjx18rl8l179tZrFuLkWadd195xcXHqy4lQFaDGeuzo6Hjs2LHDhw//7Aujo6N9AoKOkH6pvQ7Htlix5FqqT/1GAoFAHSERQt/AZrNzc3Pv3r179+7dtWvXTp069QdfSJJkSIcuE7adeRg4503/k+fN2jdp1/XQkaNqTYtQpabGemxlZeXt7U2lUn/2hQNGTSjps0fecACY2oOdN7/rugyzOlu371BHSITQN1CpVBpNeVeLyWT++PXqy5cvx2SUcAcdBqf/sXffcU3c/x/A3xkEEvZeskFkI7gFVARURETBvepordpaW0etVq3WVuu3aoetv1ax1kXVOqC4EfdAHMhUEJA9heyd3O+Ps4AIFq1yob6fD/7Ife6TyyufcHnnRi69wdiWCBjDX3BywcdLlUrlGwuLUNemEd93kslktbW127dvJ3/huLioCNyCWnYQ9xx3/MyPH8yfR1VChUJBo9HUajVVAdqjVCqVSuUrfOjpBAqFQqFQUJ2iDV0uGJPJpNFonZ+nydy5cwsLC8vLy48cOfKCbk+ePDlx4kRxcbFcLv/r9Dmebyy0jG1qTzN3vn//vq+v7xtP3I4u99JTTpODaeZVKNRqdZuDRqPRmj7atkcj6rFKpZLJZEVFRZmZmc7OzgQ899ZDZyqVKgrL4YULF+zt7T09PakK0J7c3Nyqqqrw8HCqg7TW0NCQnJw8ffp0qoO0RhDEzp07Fy5cSHWQNuzdu3fGjBk6Ojqt2gmCoLYeL1iwoLy8fNu2bRs2bNi3b1973WQyWXV1tUqlKisr43J5YPXc2wuDoVAoqFqRlUrlb7/9tmCBJl7GYNeuXfPmzdPAD9bHjx8PCwuzsLCgOkhr169f19fXDwgIoDpIa4WFhTk5OdHR0a3aO7QKE2/YsWPHevXq9eI+mZmZffv2JQiiX79+d+/edfTwg9W3YYe86U9n5JJ1X21401FfYO7cuTt37qQwQHu2b9/+wQcfUJ2iDWlpacHBwVSnaINUKjUyMqI6Rdvc3d0fP35MdYp2cblcAKivr2+vQ2xs7MmTJ8+cORMVFXX06FGDPqNbrsWwpcLAwlYqlXZm5pZqa2vt7e2pevQXs7a2bmxspDpFG4YNG3bhwgWqU7Rh2bJlmzdvpjpFGxISEqZNm/Zq99XE7f3tW78xiJ8IWadAKQPhE+3TG00fJH/0wXyqcyH01mn51Yb8/Hw2m93B7y6OHj3ahcnlHPoIGitArYTCmwY/j1q3eqW2tvYbC4tQ1/YG91eXl5fPnDmzrq6uuLg4PDw8PDx82bJlHbnj8GHDUhP/WLTii+yDC7TZnNGjRm7ccR2/wYxQ50tOTl63bp2fn59EIrlw4cJ3332npaXVkTvS6fTr509/vWnz7l2jufW1zm49vtn29bBhw950YIS6rjdYj83MzDZu3Ng0aWpq+oLOKpWqsbFRpVLx+fzGxkZnZ+ekP/a07NDY2PimgnaAXC4Xi8XUZmiTSCSSyWQaGEwgECiVSg0MJpPJCILQwGAAoFKpeDze89kMDQ2pOnVl7Nix7u7uBQUFbDZ727ZtLz6OSBCEUChkMBgKhYJ8Fh9/OP/jD5v3bFE77FwuV61Wa+ZLr1aruVwuQRBUB2lNoVAIBAINHDSpVCqRSDQwmFAolMvlzwfT1tbmcDgvvi9NE/4D7t+/369fPzabLRKJ2Gy2Bp41J5VKGQxGB7cMOpNCoVCpVM+fAUQ5tVotlUr/8f+PEgKBQF9fn+oUbRCJRBwO5/nzPpYuXfrZZ59REuml9OvXLy8vDwDkcjmbzaY6TmsEQYhEIj09PaqDtEEoFOrq6lJ71l6bxGKxtra2Bp5oJpPJaDQai8WiOkhr5Hdenn9P1tPTy8rKMjQ0fMF9NaIeI4QQQm85jdsSRQghhN5CWI8RQggh6mE9RgghhKiH9RghhBCiHtZjhBBCiHoacf1q0p07d1JTU62srCZMmED5Wezl5eUZGRm6urpDhgxpapTJZH/88UdtbW14eLi/vz8lwe7cuXPjxg2CIEJDQ728vJrab968efnyZTs7u/Hjx1Py5YS0tLQ7d+6IxeIePXpERkY2fWnt4cOHycnJBgYGkyZNovarJufPn9fS0goJCSEnhUJhQkICn88fNWpU9+7dOz9PQUFBRkYGeZtOp8fGxpK3RSJRQkICl8uNiorq0aNH5wf7N8RicUJCQmNjY2RkJOXXe5fJZPfv3y8pKQkJCbG0tGxqz8rKOn36tJmZ2aRJkyj5riCXyz137tzjx4/t7e1jYmKarlkmEAgSEhIEAkF0dLSbm1vnB3vy5ElqampJSYment7IkSPt7OzIdqVSeejQofLy8sGDB/fp06fzgzWpqqq6evXqkCFDzMzMyJa0tLRLly5169Zt/Pjx//iDDW9CYmJi02XsfHx8mtbZ27dvp6am2tjYTJgwoaNX0XlTGV/SX3/9FRUVpVQqDxw4MGbMGGrDHD58uFevXsuXL1+9enXL9pEjRx4+fFihUAwfPvzs2bOdHyw5OXnGjBklJSUVFRUhISEHDhwg2xMSEsaNG6dWq3fs2DF16tTODwYA//vf/8rKyiQSyerVq8eNG0c23r59e8CAASKRKDU1NSQkhMLf2rty5UpMTMz69evJSYVCERQUdOHCBZFINGDAgLt373Z+pJMnT65ZsyYlJSUlJSU1NZVsVKlUgwcPPnv2rEQiCQoKSktL6/xgr0ytVoeGhp46dUoqlQ4aNOjatWvU5unXr9/cuXNnzZqVlZXV1HjhwoXQ0FC5XJ6YmBgREUHJFz6joqKOHTsmkUji4+P79+9P/ri7QqEYOHDgpUuXhEJh//79mz6rdabU1NSTJ09KpdKsrCxvb+9bt26R7RMnTty1a5darR47duyff/7Z+cFIBEHMmjVr+vTpDx8+JFsOHjwYGxurVqvj4+MnT55MSaqZM2cmJSWRK/Ljx4/JxuPHj0dHR6tUqr179za9H/6z13IF7X+vT58+CQkJBEHIZDJra+v09HQKwygUCoIgEhISgoKCmhqvXLlib29Pzvr9999DQkI6P5hYLFar1eTt+Pj4fv36EQShVqs9PT2Tk5PJDsbGxnl5eZ2frUl1dTWNRuPxeARBxMXFffPNN2TIgICAI0eOUBJJLBYHBASsWbMmPDycbDl8+HBgYCA5mN98882ECRM6P9V33303d+7cVo1JSUk+Pj4qlYogiK1bt44ZM6bzg72ykydPenh4kOF//PHHqKgoavOQa2uPHj3OnTvX1BgWFvbLL78QBKFUKl1dXc+fP9/5wUQiEXlDqVQ6OjqeOnWKIIiDBw/27t2b/J/8+uuvJ02a1PnBWpo3b97ixYsJgsjKyjIxMZFIJARBJCYm+vr6UhXp119//fjjj+3s7K5evUq2eHt7JyUlEQQhFotNTExyc3M7P5WxsXFlZWWrxoCAgMOHDxMEIZVKLSwsMjIyOrIojdg+lkqlt27dCgsLAwAWixUSEnL58mUK87S50+PKlSuDBw8mZ4WFhV27dk2lUnVyMDab3XQFH5FIRF5k6smTJ3l5eeTosdnsAQMGXLlypZODtZSamurm5kbumr58+TL5W5A0Gi0sLIyql3XVqlWzZs1q2vkGAFeuXAkLCyMHk8Jg2dnZq1evjo+PFwqFZMvly5eHDh1K7u2nMNir0bTwz6/IBEFcuXKF/J9kMBhDhgyhJGTTdesIgpBIJOTF+S9fvqwJ/5OkxsbGe/fukUflrly5EhQURO7YDw8Pz8zMJH/pq5NVVlb+9NNP69ataxkyOzu76a1v4MCBVA3atm3bNm7cePPmTXJSJBLdvXuXDKatrR0cHNzBYBpRj2tqauh0uomJCTlpYWFRVVVFbaTnVVdXNx2xMDc3V6lUtbW1VIUpLy9fv379ypUryWD6+vpNh6DMzc2pGr3Y2Fg2mz1//vzffvuNTqerVKr6+vqmQbOwsKiuru78VGlpaTdu3Jg3b17LxlavZm1tbed/urKzswsODjYxMUlMTPTz8yPf41oFa2hokMlknRzslbUKz+fzRSIRtZFa4XK5MpmM8v/JJqtXr/b29u7fvz88N3o1NTWU/FD0rVu3TExMTExMHBwcpkyZ0ioYm83W09Oj5B1m/vz569evb3kOSnV1tZ6eXtOVWakqHGPGjDE1NRWLxaNHj/7+++/JYFpaWkZGRi8bTCPqMZvNVqvVTQcXpVKprq4utZGex2azmw7ak2+RVF2cua6ubtiwYatWrRo0aBAZrOVbNoVXjT5y5Aifz9++fXtMTExDQwODwdDW1m4aNEqCyeXyefPm7dixo9VF0Vu9miwWq/NPghs7duyGDRsWLVqUlJTk4OCwe/fu54MxmUwNvGp6e1qFp9PpmvbriuR7N7X/k022bdt2/PjxhIQEcpu41ejp6OhQciX/Pn36NDQ0lJeX19TUrF27tlUwAJDL5Z0/aPv27TMwMIiKimrZSL71EX+fAUDVqxkfH//JJ5+sW7fu0KFDX3zxBUEQbDabvIr1ywbTiHpsZmbGZrOLi4vJyeLi4pa7FjWEvb19y4SGhoYvvjL4G/LkyZPw8PCZM2d+8MEHZIu1tbVKpaqsrGzKZm9v3/nBSFpaWhMnTtTX1yfPRunWrRu1L2tFRUVmZmZQUJCJicnChQsvXrxInkrd6tV0cHDo5GCtuLu719TUwHPB7OzsNPDnVdrTKrytrS0l57u+gI6Ojrm5uSa81ezYsePHH39MSUkxNzcnW1qNHoVrMQDY2trOnDnzwoULAGBnZ9cUrLy8HACsrKw6OU9KSsqxY8fIDfeKiooRI0bEx8eTMSoqKsg+lA+au7s7j8cjDxizWKySkpKXDvZ6j2y/shkzZixatIggiJycHENDw/r6eqoTtT6fq6qqysDA4OHDhwRBzJ8///kzcToBl8vt1avX+vXrW7WPHTt21apVBEHcvn3byMhIIBB0frDCwkLydmpqqq6uLnmCw6pVq8izHysqKszNzSk526LJzp07m87nys7ONjc3r6ysVKvVsbGxa9as6fw8mZmZ5KlPDx8+tLS0JM/Ie/jwoYmJSVlZGUEQEydOXLFiRecHe2WPHj0yNjYuKSkhCGLq1KlLly6lOhFBPHc+14cffjhr1iyCIAoLC42MjMih7mS7d+92cnJ6/Phxy8b79++TOzbVanVMTMzatWs7P1h2drZcLicIQigURkdHL1y4kCAILpdraGh47949giBWrFhBycmPLbU8n2vcuHErV64kCOLu3btGRkZ8Pr+Tw1RXV1dVVREEoVQqlyxZ0rt3b7J9ypQpS5YsIQiC/E2nxsbGjixNU+pxeXl57969nZycLCwsfv/9d2rD5OTkGLdAflAgCGLHjh3m5uaOjo4DBgyorq7u/GAHDx5sGczd3Z1sLyoq8vPzc3Z2trKy+vPPPzs/WGlpqbOzs7W1tY2Njaur69GjR8l2Ho8XERFhZ2dnZmZGnmhNob1797Y8XXnDhg1mZmZ2dnbDhw/v/NWYIIiJEycaGhra29ubmZlt2LChqX3z5s1ksLCwMPI3cbuQ7777zszMzN7ePjQ0tKGhgdow06dPb7m+kO+bdXV1wcHBDg4O5ubmP//8MyXBAgICWgbbtWsX2f7VV1+ZmZl169YtMjKy8z9VEwTx+eefGxsbOzk5GRkZTZo0ifyWBEEQCQkJlpaWzs7OPXv2bPUxovN5e3vfvHmTvF1cXOzv7+/s7GxpaXno0KHOD3Pjxg1zc3NbW1tTU9OgoKAHDx6Q7aWlpYGBgWRF279/fweXplm/t8jj8TgcjiYfMJPL5RKJhJI91f+Iy+Xq6elRuIdQJBLRaLTnj5QIBAIWi6VphxIBQCaTyeVyCn8LWSaTSaXS5/+dKA/2b8hkMplMRp4zrLH4fL6Ojg7l1x16nlQqVSgUFL70arWax+MZGRm1+jFmhUIhEomazlHSKFwuV1dXl8LCwePx2Gz28/9OL1vRNKseI4QQQm+nLnOqCEIIIfQfhvUYIYQQoh7WY4QQQoh6WI8RQggh6mE9RgghhKiH9RghhBCiHtZjhBBCiHpYjxFCCCHqYT1GCCGEqIf1GCGEEKIe1mOEEEKIeliPEUIIIephPUYIIYSoh/UYIYQQoh7WY4QQQoh6WI8RQggh6mE9RgghhKiH9RghhBCiHtZjhBBCiHpYjxFCCCHqYT1GCCGEqKcp9bixsZHqCAihf4XH46nVaqpTINRVaUQ9fvDgwahRowBALBZTnaVtMplMpVJRnaINKpVKJpNRnaJtGvtqYrA3ZO7cuampqaDBTwSDvSyNDSaXy5VKJdUp2qBWq6VS6avdl9mRTufOnbt69SqPx3Nzc5s+fbq+vv7zCfbs2ZORkeHt7f3OO+8wmU8Xm5qampSUZG1t/d577xkbG7e3fIVCQY5syw/XSqWysLBQX1/fxsbmpZ/W66axn/oJgiAIguoUbdPYQXs7g9XU1Pz555+FhYUcDicyMnLAgAHP9ykoKNi9e7darZ42bZqnpyfZyOVyf/3118rKypEjR4aHh7/gIZRKpUKhaPU/+eTJk6qqKjc3N21t7df7jF7B2/nS/xsaG+w/+dbXoe3jlJQUQ0NDPz+/lJSUoKCg57cUP/30019//TUgIODAgQMffvgh2ZiYmDht2jRfX9+ioqLBgwd3fPuSIIhNW74ztXUcEDvLK3i4i3fAzZs3O/6UEELPKygoKC4u9vb2NjAwGD169J9//tmqQ0VFRf/+/fX09MzMzIKDgwsLCwGAIIihQ4c+ePDAz89v9uzZz9/rxY/YOyTMpeeAQZMXmHVz+mjJco3dl4OQRiBehlKp1NbWLigoaNnI4/H09PSKi4sJgqitreVwOLW1tQRBDBw4cN++fQRBqNVqb2/vEydOtLfYzMzMvn37EgQhEAgIgvh607d6PYfD1krYIYcdclh+2dDaodWDdjKxWKxUKikM0B6FQiGRSKhO0Tby1dRAGOzLL7+cOnVqq8ZVq1a988475O2FCxd+/PHHBEGcPXvWzc1NrVYTBHH48OHevXu/YLGxsbEnT55Uq9VCoZDH41nYu9DmHXq6Fv/EZQ+ZPWX23DfzhDoKX/qXpbHBpFKpXC6nOkUbVCqVSCR6tft29PixSCSqr6/ft2+fvb29nZ1dy1k5OTmmpqaOjo4AYG5u7uzsnJGRQRDErVu3goODAYBGowUHB6elpXXwsf639QfhtJ2gZ/Z02qWfIPSTzT9u7+DdEUJtUqvVjY2NBQUFp0+fHjJkSKu5t27dCgkJIW+HhISQK2xaWlpQUBCNRgOA4ODgO3fudPCgXULCH0KPEURAzNNpFkcy4Yek5FMNDQ2v6+kg9B/ToePHALBq1aqDBw/y+fy9e/e2Og5UU1PT8tiwqalpdXV1Q0ODQqEwMTFp2djewrlcbk5OTkBAALlPmy+Rgb5Fyw5qx963r54QCoUdTPvaSSQSFovFYDCoCtAe5d+oDtIGkUhEdYS2dblgOjo6Tedk/BulpaVDhw6trq4eOHDghAkTWs2tqalpucLW1NQAQG1tbctGtVpdV1dnbW3d5vIfPnz44Ycf6uvrEwRRUdcoHr72mdkMLWY3z6ysrMDAwH//XF5Nl3vpKaexwWQyGZ1O19LSojpIa+T5XM8fQqbT6RwO58X37ehKvmXLli1btty7dy80NNTDw8Pd3b1plr6+fsvTyUQikYGBgb6+Po1Gk0gkenp6ZKOhoWF7CzcyMnJyctqxY4dYLNbW1h48LEqiVgG9RfHj11pamJOLogSDwdDkeqyjo0N1kLZR+JK92NsZzNHRsbCwUC6Xv//++/PmzduzZ0+rh5ZIJORtci0mG/l8PtlInmr7/OmcLZcfERHRv39/qVS6Z3/Crsa61ueMCOpsbW2pHfy386X/NzQzmJaWlsbWYyaT+Y+lt00v932nnj17uru7379/v2Wjk5NTaWkpWZJVKlVRUZGTkxOLxbKxsSkoKCD7FBQUkDu028PhcAIDA3v27NmnT5+QQYMZV+Ob56mVBpe+nzUp9qWiIoTaxGKxxo0bd+fOnVbtzs7O+fn55O2CggInJycAcHJyatloYWHxgndnbW1tV1dXckX+cP77ujd2gYTfPDsv1ZipcnV1fb1PB6H/jH+uxxKJJDU1lTxyfuLEiby8vF69egHAmTNn4uPjAcDZ2blnz57btm0DgJ07d9rZ2fn6+gLAtGnTtmzZolQq7969e/Xq1XHjxnUw02/bv3e4u1N/zztwfQ8t9SfDTf3jBvqMiYn553sihNqRlpZWWVkJAHV1df/3f//X9H2nRYsWke3Tpk3bvXt3bW1tY2Pjjh07pk2bBgBxcXHp6elpaWlKpXLz5s1Tp07t4MP5+PisWDjXYFM/xplvIS2Bc+gjiyMfHEv4/c08OYT+C/65HqtUqvXr11tZWZmamn755ZcJCQnOzs4AUFxc3LShvGvXriNHjpiamu7cuXPfvn1k48qVKxkMhpWVVVxcXHx8vLm5eQczWVtbP8xI/2Ve1DyDvM/dBecSdsT//D15RglC6NXk5OSEhIQYGhr27NnT1tZ28+bNZHtKSopAIACAsLCwmTNn+vr6enh4xMTEjB49GgCMjY137949efJkS0tLhUKxZs2ajj/ip4sX3UpJXhdIn6N99/vxAcW598lP6gihNtEIDfhKdVZW1rvvvnvz5k2hUKiZxyo0/HwuzTx+rLGvJgZ7Q+Li4mbPnj18+HCxWKyrq0t1nDZo7AhjsJel4edzdcbxY4QQQgi9CViPEUIIIephPUYIIYSoh/UYIYQQoh7WY4QQQoh6WI8RQggh6mE9RgghhKiH9RghhBCiHtb/2b2RAAAgAElEQVRjhBBCiHpYjxFCCCHqYT1GCCGEqIf1GCGEEKIe1mOEEEKIeliPEUIIIephPUYIIYSoh/UYIYQQoh7WY4QQQoh6WI8RQggh6mE9RgghhKiH9RghhBCiHtZjhBBCiHpYjxFCCCHqYT1GCCGEqIf1GCGEEKIe1mOEEEKIeliPEUIIIephPUYIIYSoh/UYIYQQoh7WY4QQQoh6WI8RQggh6mE9RgghhKiH9RghhBCiHtZjhBBCiHpYjxFCCCHqYT1GCCGEqMfsSKezZ88eOXKktLTUwcHho48+8vDwaNVhyZIlAoGgaXLy5MmDBg26du3anj17mhp//vlnBoPxWkIjhF5WfX19fHx8WloaQRDh4eHvvfcek/nM6n/x4sWEhISmSQMDg//9738AsHz58sbGRrIxMjJy9OjRnRkbobdHh+rxoUOH+vfvP3369NTU1ODg4NzcXAsLi5YdQkJCZDIZAAiFwjlz5nz44YcA8ODBg7y8PPI2ANBotNcdHiHUUffu3ausrJw7dy6NRluyZElVVdWXX37ZskO3bt3CwsLI27///vuTJ0/I2wcOHFi6dKmVlRUAuLi4dHJshN4eHarHO3fuJG8MHDgwISHh1q1bUVFRLTtER0eTN3bt2tWrVy9vb29y0sHBYdy4ca8vLULoFYWHh4eHh5O3P//8802bNrWqx66urq6urgBAEMTy5cu3bdvWNGvEiBHkLITQm/Nyx4/r6urKysrc3d3b6xAfHz979uymycuXLwcFBU2cOPHatWuvnhEh9Fqlp6d7enq2NzclJUUmk0VERDS1zJw5MywsbO3atSKRqFMCIvQ26tD2MUmhUEydOvX99993c3Nrs8PDhw8zMjJOnDhBTgYEBPz666/W1tZXr14dNmzY5cuXAwIC2rwjl8u9e/eusbExQRDkbu3k5GQ/P7+XfC5vkEQiYbFYGnj8W/k3qoO0QWPfu7tcMB0dnVbHev+N1NTUPXv23L59u70O8fHxM2fObPpv//rrr728vAQCwRdffJGZmXnkyJH27pidnT1+/PimqEOHDt29e/friv1adLmXnnIaG0wmk9HpdC0tLaqDtKZWq6VSqVqtbtVOp9M5HM6L79vRlVypVE6ZMsXU1HTjxo3t9YmPj4+LizMyMiIne/bsSd7w9fXNyMg4dOhQe/XYyMgoICDg5s2bQqFQT0+vg5E6E4PB0OR6rKOjQ3WQtmnmqwlvcbDr169PmzYtKSnJzs6uzQ4NDQ1JSUmZmZlNLVOnTiVv7Nu3z87OTiQS6erqtnlfb2/vrVu3Dh8+XCwWt9eHcm/tS//KNDOYlpaWxtZjJpP5j6W3TR2qxyqVaubMmSqV6sCBA+3VJKVSuW/fvj/++KPNuQwGQ6VSvUI+hNDrcvfu3fHjxx84cKBv377t9dm/f3+/fv3aPFpMrvvPf/BHCL0WHTp+/P7779+4cWPOnDkXL15MSUmpqKgAgMzMzLi4uKY+ycnJbDY7ODi4qWXv3r03btx49OjRnj179u3b17IzQqiT5eTkDB069J133lEoFCkpKVeuXCHblyxZkpSU1NRt165ds2bNaposLCzcv39/Xl7e3bt333nnncjISH19/c6OjtDboUPbx9ra2gEBAb/99hs5OXfuXFtbWwaD0XI/Rnl5+dq1a1t+qYnP569YsYLH4zk6OiYmJr7gIzlC6E2rr68PDw/Pz8/Pz88HABMTE/LTM4fDadrpV1NT06NHj9jY2KZ7MZnM5OTkLVu26OrqhoSELF26lJLwCL0NaARBUJ0BsrKy3n33XU0+fqzh53Np5vFjjX01MdgbEhcXN3v2bE0+fqyxI4zBXpaGn8/1aseP8XqZCCGEEPWwHiOEEELUw3qMEEIIUQ/rMUIIIUQ9rMcIIYQQ9bAeI4QQQtTDeowQQghRD+sxQgghRD2sxwghhBD1sB4jhBBC1MN6jBBCCFEP6zFCCCFEPazHCCGEEPWwHiOEEELUw3qMEEIIUQ/rMUIIIUQ9rMcIIYQQ9bAeI4QQQtTDeowQQghRD+sxQgghRD2sxwghhBD1sB4jhBBC1MN6jBBCCFEP6zFCCCFEPazHCCGEEPWwHiOEEELUw3qMEEIIUQ/rMUIIIUQ9rMcIIYQQ9bAeI4QQQtTDeowQQghRD+sxQgghRD2sxwghhBD1sB4jhBBC1MN6jBBCCFGP+Y89FArFypUrU1JSeDyer6/vxo0b3d3dW/WZMWNGZWUleXvcuHHvvfceAMhkssWLF584ccLc3Hzjxo2hoaGvPT1CqIMuXry4ZcuWnJwcfX396dOnf/LJJ606pKSkfPPNN02Tf/31l46ODgBcunRp2bJlNTU1kZGRW7ZsIRu7IoIgeDyenp4eOZmfn19UVOTk5OTu7k4QxPXr1x8+fGhraxscHMxmsy9dupSZmWlmZhYaGmplZXX16tW0W+n6erpDhgxxc3NLT0+/cvUag04PCQnu2bNndnb2hQsXhWLxwP79QkJCCgsLz507V1vf0CvAf8SIEdXV1SdOnCivrPbx8oiOjhaJRMePHy96XOru5hITE0On048fP34/K8fdzWX06NEGBgZJSUn3s3JsrS0jIyNtbW1Pnz6dfueeqYlReFhY9+7dr1y5cvX6DW0WK3TIYH9//7t37164eEmuUIQEDRw4cOCDBw9Szp9vaOT17R0YERFRVlZ26tSpqpo6f1/vUaNGNTY2JiUlPS4t9+zRPSYmRqlUHjt2rKCw2MXJISYmhs1mJyYmZuXk2XeziYqKsrCwOHHixM1bt+1srSMiIpydnc+fP3/zVroehzN0aKi3t3daWtqly1cAYPCgkD59+mRlZaWmXhCKxf379gkNDS0qKjp79mxN3ZPAnn6RkZG1tbXJycml5ZU+Xh6jR4+WSCTHjx8vLC7p7uocExPDZDKPHz+e+yDf0b5bdHS0kZHRX3/9dT8rx9rSfMSIEXZ2dmfPnk1Lv2NibBg2dGiPHj2uXr168dJlbW3W0NDQgICAe/fuXbh4SSaXBw3oHxwc/PDhw3MpKQ2NvD69AoYNG1ZeXn7q1KmKqhpyEHg8XmJi4uPScg93t5iYGLVafezYsfxHRc6O9jExMbq6uuQgdLOxioqKsrS0PHny5J179y3MTCIiIlxcXC5cuHAj7RZHR2fo0FAfH5/09PSLly4TBDEoJLhv3745OTkpKecbuLzggf3DwsJe9l+URhDEi3uIxeL169dPmTLF0tJy69athw8fzs/Pb9XH1dV148aNTk5OAGBpadmtWzcAWL9+/eXLlw8ePJiWljZlypSioiJDQ8M2HyIrK+vdd9+9efOmUChsWls0ikQiYbFYDAaD6iCtKZVKpVKpmW+RGvtqvp3B9u/fz+FwBgwYUFlZOWbMmK+++mrKlCktO+zdu3fv3r0bNmwgJ3v27Emn0wUCgZOT02+//RYcHDx16tSAgIB169a19xBxcXGzZ88ePny4WCzW1dV9Q0+kg65cubL/z+OVNXUDAnwnjo/7fP3GxGPH6Rx9mlwyZ8a0SzfTH1U30qw9oPqBrQFLrlDU0Qyltj21eeXM4jQjE+MnDBOB4wAdaQM9I8nSwqJOzRa6RzDkIp17RyxMjWolapH3aBqoOfePmelq1fPFYv84NVNH/8FpIzW/gSeQBk5Uso0Mii9znuQLRRJ54HiZvo1+ebr24xtypVrhN1ps4qxXm6uVc4pGZyh6DBVY+nC4j7XuHtHW0ZF2CxTY9dUWVrNuHzTQ1xUaOvFdBjNlfJ3bf5joc7gMA4FHJE2l0M04ZMLWapCqRf5xBI2hn5tsBOIGgVgaOEHJ0jcoTNXjl/KFYlmviXJdC4PSGzrldyVyhaLnWImRg371fa0H5wmgK7yGC8176DY8YmYkarFYcueBfJsAHV651u1DenocsbkH3ylYS9ygffuAsYEeX9uC7x7BUEo4tw+a6Os0KJlCnxggCL2s4yZaqidCqSRwgorJNnh4xkBaxxWIpL0mKTgmBsVXOLW5IolUHjheamBrUHFHu+iqXKlW+o0Smbjq1T3QyjpBYzIV3YcIrHzZ3BKtu3/q6OhIbXsK7PuzhDXat/8w0NcTGtjzXYYw5QL2nYPG+hwuTVfgMZJGqHQz/jRh0xvEKpF/HMHQ0s89YUgIGvliaa+JSm0Dg8ILuo3FArFYFjhRrmepX5amU3ZLJlfJ/cdIjB31a7K0cs8RNJrCa7jQ3IPTUKiVcZzF0pY59uN366XDr2DdPqinpysy7c53CtGScnVuHzDW1+OxTPk9hjGUMs6dP0z12U/kNKHPGKDR9LMSjZmKJwKJJHCCSotjkH/O3Yh2NvFPAwODjv/T/vP2MYfD+frrr8nbixcv/vrrr7lcrpGRUatunp6enp6eLVvi4+N37dplbGw8fPjwXr16HT58eM6cOR1PhhB6jZqqr6WlZXR09O3bt1vVYwAwNjYODAxs2XL06FFvb+9Ro0YBwIoVK8aPH/+CekwhuVy+9cefDiedEolEA/r0ksmkyVfu8IIXgKXp2SvXP18fSA//SPF1ETC0QFC3ZV0vGPs1Mf3p029c4wfDl0H/KQAgAYCtI+o9hkP4RwAgBAChiM8xhHGbAEAJIKOz+ZXZxIK9QKMDAM/IgX91F7H8EjC0AIDr0p+7Zx6sTAdtPQDg1kZxvw2Hz2+AgSUA8MVcWO0HS1PA0g0AhGolrDwHc34Hl/4AIAaAB9chYhH0GgcAUgBpdRHf3h9GLAMAOYBcKuZL+DD1JzI2j23EzzpFLDsKdAYAcG28ucdXw2fpoMUGAK7HUO5PsfD5TdA1AQAeL473ZR/47CqY2gOAQCGFlZ7wwWGw9wcAEQBkXYAxG8Fn+NOHLskU+I+Gwe89fWherUBHH+I2AoAagAdMXul9eO/vQTBx4F/cTiy/AkwWAHCd+3N3z4GV6aCjDwC8+lG8TUNg5XUwtAYAvoQPq33gkzNg3QMAhGoV3D8Hk3dA92By/CX5afwh70PfSQAgA5DVlgisexBRK54mkct5/FqY/n9AowEAj2PKv3uM+DQR6EwA4Hbz4x7+FD5LBxYHALie4dwfouHzNNAzBQC+YDx/bS9YfhnMHAFAoJTBSk+YdxAcA5+Of85lGL0W/EY+HYTSHL53BIQuePrQ/Cd8hhZM+PbpIDC0+YVpxMIEchC4Zi68c98Rn/09COEf3zvx5YLFn+7dsb3j/8b/XI9bSkpK8vb2fr4YA0BYWBiNRhs4cODmzZvt7OzkcnlJSYmXlxc518vLq6Cg4AVLlsvlRUVFYrGYw+EwGAx7e3sajfZS2RBCHSGVSs+dO/fll18+P+v06dNmZmY2NjYfffTR7NmzAaCgoKDlWlxRUSESidrb9lWpVNXV1UVFRRKJhMPhmJqatrdL7HXh8XgqlYrNZgcOHFxq2lM0aD3o6Bdc+Emdd41YdYuskTK1GspyVSM+e3qf6odEN1+y+gIA1BQAi9M8KeFDdT4sOtn8GFmn4avc5sm7R4n5h8m3YACAO38So78gHwgAIP0wjPiULMYAAPeOw6B3yWIMAJCbAn4jyWIMAPD4Dli5k8UYAIBbCTIhWYwBANRKKLgK7+5pfug7x2DFtebJ20eI8f8jizEAwO3DEPU5WYwBAO4chbCFZDEGAMg8Cf0mk8UYAKDgKrj0JYsxAEB1PmjrkcUYAEAqgKo8+Ci5+bHun4D1OS2SHIX39jcPwu0/ieg1ZB0iJ2H4UrIYAwDcS4TgWWQxBgDISwXvYWQxBgAozQAzJ7IYAwDwa0BYTxZjAABCDQ8uEDN3PvPQy1KhqTrcPkKM/ZIsxgAA6YchaiVZjJ92HvoBWYwBALJOQ+/xZDEGAHh0AxwCyGIMAFBXBAwmWYwBAORiKLsPHx5rMQh/wRcZzZO3jxKz4lsMwmFi1KrmQQCQRyxJXO0Ob6geZ2ZmLl++PDEx8flZ+/bt8/Pzk0gky5cvj42NvXXrFp/PJwiCw3k6Lrq6ujU1Ne0tmcvl5uXlDR06lCAIsgzv37/f19e349neNA3fX61UKqkO0gaRSER1hLZ1uWA6OjpM5st9dG4PQRDz58/38PCIi4trNSskJCQjI6Nbt243b94cO3astbV1ZGQkj8drWovJfek8Hq+9evzw4cPPPvuMzWaTK3JQUND27S/xZvRSrl27Nu+T5fVcPo3OoMlFUq+Rsgk/krNUNC0IX9RcI8szwWNw8z3rH4NNiz15jRXNb9AAIKwHQ+vmt3u1EgBAu8XzFdSCkU2LyfpnJ+vAyPqZuU2Fp825rSYNWyxKKgRtveZKAwASfnNp+eel1UE3n2cmDdt/LOGzixJzQd+ieRAIAlTKZwfh+YdufxCE9c+MsKDuRQ8tfPLMouRiYLFbFrmn2Z65+wsf2qr7i+a+4L5iHuibNZdbAFDIgN1i57PwuSFtuTQA0GKrafSGhgYWiwUAdDq9aVVqT0dX8ry8vJEjR+7atatv377Pz+3Xrx8AsNnsrVu36uvr19bWmpmZMZlMLpdLrsONjY2WlpbP35FkZGTk5+enycePGQyGJtdjzTx+DH+/g2ugtzMYQRALFy4sLS1NTk5+fq6DgwN5Izg4eNasWSdOnIiMjDQ3Ny8rKyPbGxsb6XS6ubl5e8v39PTsnOPHaWlp4+d8wJ+xBxx7AQBsHQF9JjfPlgmB02IfnrYuiHnNkwYW0FDWPGlqDzWPmicNraCxHJTypzWAzgQtbRDUNtcAcxeoyAaHgL8nnaEiGyxcnpnrEdo8tzyzeeHmzvDgwjOT5VnPJskHtfJpDWYbglwMYm7zczHpBtX5zQXGwgXKs8DT8plJp97NCy/LhMCxzXOzTjc/loUzXN3VPGnmDBU5QKiflh8DS+BVgULydGubRgO2ATRWgLHt33d3hfIscO7bvPDyLLByf2auV0SLJPefeeisUy0GweWZQTCxg7pCUCmefpzS1gO1EkQNzRv6pg5Qldf8icrcBcozmwsh+dBNuxzI8e89vrnzveMtHtoZUn9uMQiOUJnXPAj6ZiCoA5mo+YOInik8KW3ex2DhChVZ4DrwmUGw9WpeIK+araNjYmICHdah7zsVFBSMGDFi27ZtkZGRL+5ZX19Po9E4HA6dTvfz80tLSyPb09LSevbs2fFYCKHX7rPPPrt3797x48f/8QNcXV0d+cmgZ8+eTWvxzZs3vby8tLS0XnjXzvD519/yYzY9LcYAwGABo8UmlK0XFLTYr+s9DNISQPb3vofuIVCUBo9vP500dwamFlz85ekkiwPOfeHg4qdbxgDQczQtfhbIhE8nA2Npu98DQe3Tyd7jaH98AnXFTyd7jaWd3Ail955O+o2kpSVA3vmnk+4htOJ0WtqBp5PWPWgKKe3UN0CoAQA4RmDVnZawCJRyAAAaDbwjaLtmNj90z9G0+HdAWN+cZN8HzZ8tAsfSjq+Bir/3KgfE0C79Ao/+HgevMFr2abj7dzVyCKQ1lNFSfwbyfF4ja5q+Ge3IiqfPmskClwG03e+BQvK0v/8oWvwMEDc2L3z3e8Ct+vtZx9IOLYXaR81zz2xuHmHfSFr6Icg+83TSbSCtLIN27fenkxauNCBoyV89HQQdfbDxoh1YCErZ0w4+I2jx74BU0DwIu2aBoK55EPYvhCclzeOftK65wPeMpl2Oh/zLTyc9Qml5qXD7yNNJOz8av4Z27oeng2BgCUY2tMOfgkoBAMDQgu4htN3vglz89yBE0+JngKjh76c5hvb7+8CtbB7/P5dD9d8nO4u5en/MX7xwAbyMfz6/WiAQeHh4+Pv7R0dHky3jx483MjL6/vvvs7Ozd+zYkZeXt2fPnj59+ojF4m+//dbf3/+3334DgL17965bt27r1q03b978448/8vLy2luT8fzqV6bJ28ca+2q+ncG2bNmyevXqdevWkQ/h4uIydOhQAHBwcDh9+rSHh8fGjRvNzMysrKxu3Ljx448/pqWleXh4qFQqT0/PmJiYkJCQJUuWLF26dNasWe09xBs9v5rL5a7ftPnCtTQdbe3szPv85WmgZ/Z03l/rgVBD9OqnkxIerO1Fi/6c6D8daDTgVbF+GElTSGXDPgVTB0bZXXbq90wtLXX3wULzHnr1D1gFl80tLKukNKVDL62GEp26fA8P99uZeXSXvnRhHetJccjA/qfPX2A69wapgF77KDpy2NGkE3Q7byDUREXeuJhRR5NPqs2cgKmjLM2Mix555sJlCdsU2EaKkoyoiLA7mVl1MhrNyFZRcn/QgD7VtXWPKmrpFq6qygf+Hq5aWlq3MrIZtp5EfbGjhbGTg935S1eZ9r4Er9qEoRjYr/ex5FNa9r40qUBbVBs1PPzg0USGrQeolbS6ogljog8eTSIsnIHOVFfkTRwbnXjqnFzfitDWU5ZmjokafuVmOpfQAX0LRcn9iCHBBUWPS58I6GZOyrLsfgG+Epks80Ehw6aHqjq/h6Otuanp5Ru3mPY+REOZpa6Wv4/XiTPnmA5+NHGjrowbETro8PG/mHbeoJAyGkvHjx514MgxmlV3ACCq8yfHxhxKTFYZ24OWjrIse9zoqDMXLom1jYFjoijJGBkxNCM7r0akpJl0U5ZmBffrXfekIb+0km7ppqp84OvuzGazb965z7TzVtcX25sauLk4nU29pOXgB/waI7o8qF+f48knmfa+IBVoC2uiIyMOHkmk2/QAtYpWVzRxbPQfx5IIc2egM1UVeRPGjEo+c16ma0Ho6CtLM6Mjh91Iv9OoYoGBpaLkfvigoKLS8se1jXRzZ2V5Th9/L4VCdS83n2nroaopcOtmZW1lcfHqTS0HX6KxwlyHFujvm3z6rJajP4gaOdKG4WFDDh1L0rLzBqWM3lAybnTUH0cSaVZuADR11cOJsaOPJJ1UGnUDFltZlr1owftffP7ZS50I9c/1mMfjNX0FgrR48WJzc/OLFy9WVlZOnjy5oaFh27ZtBQUFbDZ74MCBU6dObapbBw8e/OuvvywsLD755BPyS1Btwnr8yrAev4K3M9iRI0fS09ObJv38/CZNmgQAq1atWrBggZWV1cmTJ0+cONHQ0ODo6DhnzhwXl6f7YCsrK7ds2VJVVTVy5MjJkye3vXQAeJP1uKioqN/gcH7v6TKvSFDJaTumEotOgoXr09miBvhqIC1kFjFoLrDYkJeqd+hDV0eHgoJ8LT1jmky4+rNlQf377thzoKC4pJeP50cL3jcxMTl58mTx48dOjo4jRozgcDj37t178OCBra1tv379WCxWWVlZVlaWubm5r6+vtrZ2Y2NjZmamrq6uj4+Ptra2SCTKzs6m0+leXl4cDkcul+fk5MhkMi8vL319faVSmZ+f39jY6OXlZWRkpFari4qKKisrPTw8yL39jx8/Li0tdXFxsbW1BYCqqqqsrKzu3bs7OjoCwJMnT3Jzc62srFxcXOh0Oo/Hy83NNTQ07N69O5PJFIlEubm5Wlpanp6eLBZLJpPl5uYqlUoyiUKhyM/P5/P5Xl5eBgYGKpWqqKiopqbG09OT3HFaXFxcXl7u5uZmZWUFABUVFUVFRQ4ODvb29gBQW1v78OFDGxsbZ2dnGo3W2Nh4586dbt26ubm5MRgMgUCQm5vLZrM9PDy0tLQkEklubi4AeHl56ejoKBSKvLw8iUTi6empr6+vUqkKCgqePHni6elpbGxMEAQ5CD169CAHobS0tKSkxNnZmRyE6urqgoKCbt26kd+bbWhoyM3NtbS0JAeBz+fn5OQYGBi4u7szmUyxWHzv3j0Wi0W+OnK5PDc3V6FQeHp66urqKpXKhw8f8vl8T09PQ0NDtVpdWFhYXV3t6elpampKjn9ZWZmrq6u1tXXTINjb25OHbOrq6h48eGBjY+Pk5ESn07lcbm5urrGxsZubG5PJFAqFubm52traHh4eLBZLKpXm5uYSBOHp6clmsxUKRW5uLpfLDQgI0NfXh5f0z/W4E3SkHt+/fz8tLY3JZAYHB7u5ubXZ583BevwK3s6y929obLAOenP1ePiYCWdNRxD9/j4L+sTX0FgJU7c1dWAd/cyh8nLjk3qZVOrt5//DxnW9evWSy+VcLtfCovn0H40dYQz2smQyGZ1O14SjJ62o1WqpVPqPp2616fWctPlGKRSKybPmpty8J/EYTlcrWWv/N23c6B/+twG/EIXQW+L61cvE+t+ap8MXwZYR9K0j1EGzgM7QzzpuJ318/dK5Vl+vYrFYLYsxQhquC9TjdV9/c7JUJV56g/ymnSRqze+/xPb8fc+sd2ZQHQ0h1BnUKtUz3/xhcWDWbxY7oiLgulKhGjEvavKkSXQ6Xo0fdW1doB7H79kvnnem+WvvTG1B5Jqfdq3BeozQW6K7p/e9/MvgPqiphZF7ZnjEsN9+2faCeyHUtXSBT5T8xifPfE0bAMwcaqqr2umOEPqPkEqlmZmZJSUlP2xcZ5DwPuScA7UKlHLGzX2GF7auXbmM6oAIvU5dYPvY3NpWVPuo+VxKAKjMc3R0oi4RQujNUqvVa7/auHXbz1rW3QkJz5Ch+u7Lldt//y53z0wGnREUMuinaxfIU4IR+s/oAvV48YK5n+38WDhz/9NrlQlqDRKXf7rlC4pjIYTemFXrvvrh1D3hynvk1akai9I+Xjn17tVUZ2dnqqMh9KZ0gXq8YN7c6rr6bRt60V36glpJFN/+ctVno6KiqM6FEHoj1Gr1T9t/aSrGAADOfQWDF36//dfv/7eR0mgIvUFdoB7TaLT1az5ftOD9e/fuMZnMwMDAl/pFSYRQ19LQ0EBjGzxzDWoAtX1ARub3VEVCqBN0gXpMMjMzCw8PpzoFQuiN09fXV4q4zVf2J/FqrCzM2r8TQl1eFzi/GiH0VtHW1u7Xrz/janxzk1JmcHHrrEmtfyMSof+SLrN9jBB6e+z5dVvIsKjaR5f4rkMY4kbd9L2zJ44dNmwY1bkQeoOwHiOENI61tfWDe7eOHTt2Pf2uuVUsAqEAACAASURBVInRqDWHvL29qQ6F0JuF9RghpIkYDEZcXFxcHO6jRm8LPH6MEEIIUQ/rMUIIIUQ9rMcIIYQQ9fD4MUJII4jF4gMHDqRn5jraWsWOienevTvViRDqVLh9jBCiXlZWlrOX/0eH7v4q9lt1W9VnaNQ3m7+jOhRCnQq3jxFC1BszaUbN2B/AYygAqAB4Ie99/W3QiPBQX19fqqMh1Elw+xghRLGioqIGOZDF+Cm2gXDAnIN/HqMuFEKdDesxQohijY2NNH3zVo1qPYvq+gZK8iBECazHCCGKubi4KCryQClv2cguvx3o40FVJIQ6H9ZjhBDFjIyMoqMi2Yc+ApmIbKHdS9TLSZ4yeRK1wRDqTHg+F0KIevE/fW+6cs2uLzxZ1m5KbrWbQ7f9504aGhpSnQuhzoP1GCFEPW1t7e+/3fjN+i8KCgqsra3NzPCnjtFbB+sxQkhT6Ojo+Pj4UJ0CIWrg8WOEEEKIeliPEUIIIephPUYIIYSoh/UYIYQQoh7WY4QQQoh6WI8RQggh6mE9RgghhKiH9RghhBCi3kvUY7FY/C87IISopVAo5HL5CzrIZDKVStVpeRBCTTpUjz/99FMLCwtnZ2crK6vt27c/32Hy5MnGxsbOzs5OTk6JiYlk4759+0xaUCgUrzM4QuhlZGZm9u3b19zc3MbGZujQoeXl5a06nD171sfHx9ra2tzcfPz48UKhkGz38fFpWovXr1/f6cERelt0qB77+/vn5eVVV1efO3du6dKlOTk5rTqEh4eXl5dXV1f//PPPkyZNEggEACCTyUaOHNnwNy0trdcfHyHUMQwGY9OmTY2NjdXV1fb29osXL27VgcPh7N27t6Ghoby8vL6+/ptvviHbeTzerVu3yLX4888/7/TgCL0tOlSPJ02aZGpqCgA+Pj52dnaPHz9u1WHmzJm6uroAEB4erlarq6uryXaCIGpra3H3F0KU8/LyGjRoEI1GYzKZw4cPLy4ubtUhKCjI398fADgcTmhoaMsOYrGYx+N1alyE3j4v93sSV69ebWhoGDBgQHsd9u7d6+rq6uLiQk4mJyenpaXV1NTMnz9/w4YNNBqtzXup1Wo+n5+SkiKRSNhsNgAEBQXp6Oi8VDaEUEcQBLFr167o6Oj2OojF4gMHDqxZs4acpNFoMTExQqHQxsZm9+7dZM1uk0gkunfvHpPJlMlkOjo6NjY2np6er/8JIPQf9RL1uKioaMqUKTt37jQ2Nm6zw40bN1auXJmcnEyn0wFg7NixM2bMYDKZZWVlISEh/v7+EydObPOOAoGgpqbm559/ViqVTCYTAIyNjd3d3V/+6bwpEomExWIxGAyqg7Sm/BvVQdogEomojtC2LhdMR0eHXC9eixUrVojF4mXLlrU5V6VSvfPOOwEBARMmTCBb7ty5Y2ZmRhDEV199NWnSpLy8vPaWXFtbe+LEidu3b6tUKgaD4enpuXz58heHUSqVVVVVlpaWLBbrlZ9Rx3W5l55yGhtMJpPR6XQNPAyqVqulUqlarW7VTqfTORzOP9yZ6JiSkhJnZ+e9e/e21+H27ds2NjYXL15sc+6SJUs++OCD9u5LnmlCEIRAIOhgnk4mFouVSiXVKdqgUCgkEgnVKdqmsa/m2xxs7dq1vXv35nK5bc5VqVTTp0+PiYmRy+XPzyXP8Kqrq2tv4bGxsSdPnlSr1UKh8B+TiESieR8t1jO1Mu4eoGtqFTd15guW/Lq8zS/9q9HYYFKptM3/UsqpVCqRSPRq9+3Qh+7y8vKhQ4cuW7Zs6tSpTY0qlUoqlZKHje/fvx8TE7Nnz55Bgwa1uYTc3NwX7OV+NWSNNDAweL2LRei/avPmzUePHj1//ryhoWFTo0QiYTKZWlpaBEEsWLCgtrb2+PHjbW525OTk6OjoGBkZvZYwoydOu6qwk375ELTYoFYeP/99TsTIrPTrGrgXCqHO0aF6HBsbq1Qq7969O3fuXACYNm1aUFDQlStX4uLi6uvr1Wp1WFiYra3toUOHDh06BACLFy/u3r373LlzDQwMzM3Nr127lp2dvXv37tcV+tatW+/M+6i8sgpodBND/f/7btPwYcNe18IR+k86derUkiVLYmNjV6xYAQBGRkbkGdQjRoyIi4v74IMPfvzxxx07dkydOnXhwoUA0L1798WLF6elpW3atCkwMFAkEu3ateuLL754LXvO8/Pz07PzpZ8lAHlOCZ2pDF9cVXT1/PnzERER/375CHVFHVq11qxZ0/Iogo2NDQB4enr+8ssvAECj0X7++eeW/ckDzPPmzbt8+TKPxxs3btyBAwfILel/7/79+xFjJ/Em74DuwQAgKMuc8P70g/+3BUsyQi/g4eFBflwmkSdOAsDnn39ub28PAKGhoQkJCU0dzM3NAcDLy2vChAn5+flmZmbJycmBgYGvJUxubi4494VnT/AU2PfLzsnBeozeWh2qx5GRkc83WlhYxMbGAgCNRhs3btzzHfz9/V9wKuYrW71hM3/kOrIYAwDY+fIn/t/S1SuwHiP0Ao6Ojo6Ojs+3h4WFkTe8vb29vb1bzdXT0xs/fvxrD2NgYEAXN7RqZEmeGBnavPbHQqir6HrXr76fmUW4BT3T5Ny3uOAhRXEQQi+tf//+tJK7UPuouUlQp5VxfBh+qkZvsdf2JYpOo6unB2IuGLX4HC0XsbTxy8oIdRlsNnvvju1T3o0U9p2htPWj1xboX/t105erbW1tqY6GEGW63vbxhNEjOVd/admiden/Ro4cSVUehNAriIwckXfnxto+7Fhu8goP6Z1LZ96bPZPqUAhRqettHy/95KPkM1EPd07gB0wEhpZedpJlXcbWi+eozoUQejlWVlYrln9KdQqENEXXq8dsNjvtUsrBg4cSz5xXKJURkwfOfOdXDbxKC0IIIdRxXa8eAwCNRps4ccLEiROoDoIQQgi9Hl3v+DFCCCH034P1GCGEEKIe1mOEEEKIeliPEUIIIephPUYIIYSoh/UYIYQQoh7WY4QQQoh6WI8RQggh6mE9RgghhKiH9RghhBCiXpe8XubzHj9+nJKSwucLAgMDBg0aRHUchBBC6OX8F+rx2g2btvz0q7xnrIKlr//72u5GjDOJh42MjKjOhRBCCHVUl6/HKSkpW347xP8sHbT1AIALn2ac2jB7waIj+3dTnAwhhBDqsC5//PiX3xP4Q5eSxZgkj1hy5vRppVJJYSqEEELopXT5elxZUwvGts80MbSYuoZ8Pp+iRAghhNBL6/L12MPNmVaZ+0yThAcyER4/Rggh1IV0+Xr80ftz9FM2QXX+02mFhHPwozmzZ9LpXf6pIYQQent0+fO5fHx8Dvzyw6z5MUozJ2AbKQpvTZ80fuO6NVTnQgghhF5Cl6/HADByZGRp/tDs7Gw+n+/ru93U1JTqRAghhNDL+S/UYwDQ1tYODAxs1SiXy1ksFiV5EEIIoZfyHzzI+uTJkymz5hqYW5t2c7Z18di9Zy/ViRBCCKF/8B/ZPm4ilUoDBw6u9JuiWF8IDC1h/eOF384traha/dkyqqMhhBBC7fqvbR8fSEh4YtNHEb4YGFoAAGaOgjkHv936vVQqpToaQggh1K7/Wj2+lp4hdB3yTBPHSMume0FBAUWJEEIIoX/2X9tfrcvRodUJiWcb1RL+nTt30tPTXV1dg4KC8KvJCCGENM1/rTLFRA4zuL0X1Krmpmu/8ysff7zz5AdH82I+/tojoF9hYSF1ARFCCKE2/Ne2j0NDQyP7/HHyxwje4I9B35z58ILq9Gb14rNc+54AIAHg3jseMTou//7turo6c3NzBoNBdWSEEELoP7d9DAAHfvt1/zfLxzb+1e/WhlDpLfaAiWDfs2ku4RVR0SA0MLf2GBBmaGE7a96HPB6PwrQIIYQQdHz7uLi4mMfjOTs7GxgYtNmhsbGxqKjI0dGx5eWx5HJ5dna2qampg4PDawjbYSMjI0dGRgLAN99sOnf72aPJO6fL3MNg3EYxiwNK+f7TGy/1C6KzdKrKSnQNjGZOm7z6s2UFBQUZGRkmJiZBQUHGxsYA0NDQoK+v395zR6hLEAqFhYWFenp6Li4u7fXJzc1Vq9VeXl40Gq2psbS0tL6+3svLS1tbu1OSIvQ2+uftY4lE4urqOmLEiEWLFjk5Oe3Zs+f5PidOnPDw8Fi5cqWXl9eRI0fIxqKioh49eixdujQkJGT58uWvOXjH2Nvb6TY+ap6uzIUnpTD5e2BxAACYLLmWbrFE69HYX0WbKmoXXf7hZq2Vs8fg8XMWHMyYtvWIi3fAh4s+sXHu4dlvSLcevt69Bx47diw8Os7QwtbQ3CZsVGx6evq8RUvsPfwsHFxHxk3Oycn56ptvvfoE27p6RsZOyszMjP9td69BEd26e4eNirt58+ZfyckDI0bZufuEDB999uzZ69evR8SMd/Dw7x82MuGPgzk5OaMnTHPyCug1KOKn7b8UFxdPnjXXxaeX38DQdV9/U1VVNX/REveA/l59gpesWFVdXb181Rf+A0O9+4a89+HHFRUVG7/dEhAc5uLTa9LM9woLC3fu+q3PkOFOXgHRE6ZlZmYePXosaFi0g4d/ePS4K1euXLp0aeioOAcP/+DhoxOTkjIyMqLGTXHyCugbOmLX7t8fPXo0fsYcF59eASHh/9v6fVlZ2ez5H7n59/XpP3jFmnVVVVUff7rSs3dQj8ABH3yyrKqqau1XG/0Ghrr69p7x3oKSkpIfftrea1CEd9/gsZPfycvLO5DwR/+wkY6ePYePnXjr1q0zZ84Mjhzj4OE3OHLM2bNnb926NXzsREfPnv3DRh5I+CMvL2/MpBnO3oG9BkVs+/n/SkpKpr8739W3t9/A0LVfbayqqlrw8dIegQM8ewd9snxlVVXVijXrfPoPdvPv++4Hi8rKyjZt+Y4chPEz5jx69GjX7t/7ho5w8gqIGjclIyMjMSkpaFi0Z68BYdHjLl26dOXK/7d3ngFRXGsff7az9LJ0FgRFQBGlBhFQkY4SEIiAJgq5xqDGGKMpGrDEKzHERKPG1yiW1+iK2MCWSFNAQQSMgCKJqChdylK2zJaZ98OsywoG+y7vvfP7tOfZmTn/eWbOec7MnFIUEB5j5TDJOyj81KnTVVVVs96bZz3exWN68N59++vr62MXLBw9wc3Fx3/zlp8aGxs/+uQz20nvTPCc+lXyutbW1s+//ma8h4+dy+TFy1e2tLR8m/r9JO8Zo53c5/0r6cGDBzt37XabFmTj6BoZN//27dsZGce8AmaOGuccFDmntLQ0Nzd3ethsK4eJU0MjL/z++/Xr10Oi4sa7T5nsH/bb4SMYhv3TLf3K/PzzzzY2NkuWLAkODvbx8Rn6WkgkEgUFBcXHxy9YsGDatGkCgQC3Jycne3t7f/HFF/b29q85TuF0VhZ+E/qHxxQWFr7OoQgI/vMgPbfki0Si6upqfDbK/Pz8WbNmcblcGo0m3wBFUTs7u61bt4aFhRUVFcXFxT148IBKpS5YsMDU1DQ1NbWjo8PBwaG4uNjOzu6ZWVRXVy9cuLC0tLS/v19TU/MNnl5fX5+1g1PnvAMwxgsA4Hom1F2CeTtlfyM8+GY8bLgJTB2ZZV8i6JlDxAbAHw4K95JytmJLT4GxLQDA1f8lHVsF83Zik8KBRCKVcUhHV1KDl4u8EoCuTqq+QOZ8RnePFPh9Chp6pL+vUDjLaDZugtBk0DOHhkr6kSVkPXNhxCYwHgMtdWqcJRiQkKjvwdIZOh+oH1sh5rZIotOwMV7Q165+JllUX4nN3ih18Adhn3r+T0jlGUrYlyKndwGVMkoOSArTadM/ErrPBSqddvM0ev57httsvs/HoKFHvpNHPrmGPtaLH/gl6JiS6ktpmSsoxjaCWd+CoQ00VjGOLiMxNISzN4O5I7TfZWZ8KhX0iaN/wKzdgdusfuorUXMdGpWK2k0DXpf676nI7Uvk8GSxYyiIhWrFu8VXOdTATxDXOUAi08uPSnO206fECyZ/CGqa1JoLkL2B7ujPn/EZaBqS7hZTM1fRLCfwQ1PAwBIaKulHl5G1jYSRqWBiBy13mBmfoFIUiU4DKxfobFA//rm4s0kS8z02egr0taufWy+6WwaRGyTjAkHYr17wM1JxmhKySjQpEjCUUXpQcmkPbeq/hB7zgKZGq8pGz33HcA3n+y4GDX1y3SXyia/oYzz5QV+Brhnpfhkt4zOKoZUgfCMYjYbGagZnGdDVkKjNYOEEj+8xMz6V8rji6DTM5h3oaVE//bWo8TYalYraTQdeN/PiZlFNHjl8jdgxDCQitSt7xFd+o/ovQVxjgUyhV2ZK/9hK94oTeH0IalqUWxdJWWvp4/34M1aAlhGp/io1cyXNYhw/bC0YWEHDDUbGMpKGvnD2d2DqAK11zKPLpBKRKPoHGOUKnQ+1c76bYWtwkvOMhu/rUF1dbWNjo6GhIZVK/f39AwICVq9erbjBoUOHfvnll+LiYjKZHBgYOHv27KSkpHv37rm5udXW1hobG69bt+7vv/8+fPjwP2URHR394YcfBgcH8/l8DQ2NQf8uWrbiaEFlb0gK7n/ts8lfLXr/61Ur3uxpDs8br2HeFISwlwVBEDKZrBiJRggoigqFQnV19VfY9/nvq+l0unxqaHt7e6FQKBKJFL1QU1PT1dUVEhICAD4+PmQyuayszMvL6/Tp00VFRQDAYrECAwOzsrK++ELZk2RpaWn9kXU8Mm5+v46V2MAaq80XGowZ6HvdfBssnAaCsVgItXmwuR7kb+ou7caSMmXBGABu52Hx28AtGk9hjxswvyWiEFmlhkkl0nH+gvhfZElNlsTAWvLxCSCRAQBM7EVkBnyWAzQ1AAA1LaGADynloGkAAKBjwu/rhhU5srz0zPn9PPjoCNhPw4/GR8QQkyb1+gBPIkCB6Uuk4Sky4TRNmDCL/yRrVNsENXOULDyGnwhmai9S04NPL8rmSKHSEbEU1lwGpjYAgLaRoL8XvrwE+uwnWffC0iwY5QoAoM/mIwjM2yV1jcQPLpQChH0tDViOJ0UUNXgnThD9I56UqBuAjZckQRZLMJa1WNdCvOQMkCkAAKhURKLBygKgMQEA1HUFfD4kXwMtIwAAHVN+Xw989geY2gMA6Fvw+Xz41yEY5y9zglgCs1OlPolPnECDqR9LI9bLnEDXgvHB/Lm7ZU7QMUWNHSSLjsucIHQQMbRheQ5Q6QAANDVELIY110BdFwBA21jQ3wOr8sHA6okT+mHxSbB5B3eCABFB/Hape8wTJ5AgaJU0eOUTJzDBLUYQ8xOelGqyYJSHJPE3mRN6R4u1TMRLz8mcAICgZFh5CRgaAAAa+gJ+P6wpAR0TAABds16bk/k/TS8qKvLx8YE3x4QJE/AfFArF1tZ26PPxqVOn5syZg/dwjIuLO3r0aFJSUlZWlp+fn7GxMQDEx8c7OztjGKb4KvsFqa2tzTjzR++XZTL/65r1jvb8bpPrwoQPWCzWa54aAcF/Bi/Xv3rTpk0xMTGDWr6NjY3m5ubyQb1sNruxsbGvr6+np4fNZsuNTU1N/3RYBEHa29t37dqFIAj+gSoiIuJNlVInJ6c7f5Zdv3790aNH5uZRkXEf9HQ9ksUeCg0kCvN29XeClhGQn/gEw4DbDGYOAxvcvw7xWweS9SUQtWkg+XexPFQDAPxdBG7RsmAMAHevgFOYLBgDwIMKsHaXBWMA6GwAdd2BwC8Vw+N6eTAGAPirED7YNZCsK4QFe55Kei9QSBaB+5yBVsVfheASKQvGAFB/DeynyYIxADTXgqGNzCEAwOeCsE8WjHHuXYfFx5/KK+RLBWFFEPb1UzrfiX0q6RYtj0Pw9xWYECILxgDw8AZYOsuCMQB0NwGdKQvGAIBKobkWHGY8lXWcgv//KoS52/856yLweE/BCUXg/K4sGADA/TIY6yMLxgDQ+hfosWXBGACQfuh/LAvGOPWl8DHnqbyWnHgqGaTwnFdXCB5PO8E1asAJd6+CY5AsGAPAo5tg4SQLxjgkcq9T1B85eZ6enriBSqW+Qgj8J+rr60+ePFlQUDDI3tTUJC+wFhYWeIFVNLLZbD6f393dra+v/8wjd3Z2njt37v79+yKRiMFgWFpaBgYG4n/l5+cLJ4QP+B8AmDoku6nFxcVhYWFv6tSei1gsFovFSsvuxSGEvSxisXhkziSBougznUYikajU5wTcl4jHO3bsuHTp0uXLl4dmr1hZkMlkqVSKoiiuQG6USCT/dGSpVIogyL1796qqqsaOHaumpsbn8/EjvBEoFIqnpydeu+388fvFK2fwfJKkpg7k1r+whzewzgZZRazFgr52kIhktQaJBGQKSBCgPunDQqWBGBk4LokEmIJIDBuIvgCAok8lMRQoCt5GpQOBf2gSQ2FQ/YuhAxU6vr3i0bBBuw/6d8i+w2SNSp/aGADg6fPCpEB5maPR6MP9O8xZAAZk8lN+wKQveSKDnDBs1oOvztNOGHxxB+U17MGfmxzscAAKTfykEAHAqz2SPpP29vbw8PBvv/1W/rg8IEShIFMoFLzAKhZDvPqTSqXwDyAI0traKpVKHz165ODgQKVS5btLpVKUPLi2wShUsVj8Bkv68Egkkv379y9ZskQ52b0U+/btS0pKGoHDL0+fPu3v729kZPT8TZXL1atXtbS0XFxcVC1kMPX19bdu3QoPDx9kf5Ei/KLti717927fvv3ixYtDVxc2MzNrbW2VJ1taWszMzHR0dNTV1eV23PhPB1dXV2ez2Wlpab29vYmJiWlpaaNHj2a8HebGx1WXXl41ljez5dgK6+4fU7/V2RFKunYU2u9CfSlNTYN8cvVAlB3tBZcVHkPt/aBE4eOZ7RQozxxIjvGCipMKyclwI3sgafMOVF0A9EmjxMoZ6ksB6ZclWaOgpwW6n7xCoDJAxxQaKp/a/eb5p5J/nnk6mT1csuocyDsKWLvDnQKQPGlYmDlASy30d8iSmgZAIkFr3cDuFk5wJ1/haJ7w51mFpMdzsr6psPHod6DmjwEnsCfB/esg6JUl9dnQ3wldj2RJMhX0LeF+2VNZ3zz3ek54cmVHuUFdIYhlXZbAeCy034W+dlmSqQM0JjTfHtjdyhlu5SiciCfcVMx6iBNuDHHCgP894FYOSJ80n9lO0FAJgqfeHmvXnvXz9ZbftG/qOaCrqyswMDAhISEpKWnov6ampvIC29zcbG5ujhvb2tpwY0tLC51OH+bFlZmZ2YcffhgZGUkikdLS0hYuXCg/BW9vb/Xb559qv4qFUHtpypQpb6mkD4XP52/btk1p2b0UW7ZswV8qjDQyMjLq6+tVreIZ5OXllZSUqFrFM6iqqjpz5sxQ+4ss/vtC5fzgwYObNm26ePGiYkxtbm6+e/cuADg5OVGp1JKSEgCoqanhcrkeHh4AEBISkp2dDQB8Pj8nJyc4OPhF8lIClpaWqd+uP5NxKC114/Jln1z5/dRsYcHY44nTanelf782VOexTqqbVuanegfn6TaXG17ZqcFJghvZcP2Y9uNbjNwfmWdS4NFNeFSlJuqnFO9Ty06Bx/ehp4WMick1F9QyV0BnAyA8kCDU1ttq+xfA43sgEQGviybhMX6JhJY7gEqgu5muqUP7MRAe3gBUCp0PGcajqFv84a9CkIqB28IwtibviICqcyBBgNdFY7HJh5LIZUcB4YGgl6pnSjq7kXp5Fwh6QMQnabLIpb/Rz22E/g6QiICmRqm/yji6DLjNgEpAKqb2tjL2xEF7PWAo9D2m02j0baHQVAMYCl2PGAbm1C3+cO8aoBLobmKYjKZsDYHbuSARQd9jupEVec/7pMqTIBYAn0vVNyef+IpyZT8I+wDpp+gYkwp20S7+APxuEAtJTB1y9Xn6yS+htw2kYiCRqW11jAOJ0PkQUCnwe2ioiL4zAlruAIYCt5muZUD7KRAaKgGVQtcjhok1ZUuAzAk9rQzjUeSdUaSbZ0GCAL+bxmKTDy+lXDsCCA+EfRRdE9KF76gFO0HQA2IBSdOAXJZBP7se+h6DRARUBuXBdcaRJdDdBKgExEIqr4Oxew603wUMhd52OoNJ3xYKjdUyJ7DY1B/8ob4EUAlwmxnGNpRtYXDrIkhE0N9BZ7HJ+xaQyo+DiA+CHqqeGfnkN5SivSDoBYRH1jYiX95D++N74HWBBCExtci3cxgnVkFPKx53qR31jP3zoeMBoFIQcOkgpe94F5prAUOhu4mua0T7MQAelON3gsbhRY76FPmb3jdFT09PcHBwTEzMypUrFe3Xr1/Hu1IHBwdnZWXhxuzsbLzABgcH5+Xl9ff348agoKBXe1J3cXGZ5uyguf99mf8bq7V2Ry6YO2eYZjoBwX8d2PNoa2ujUCiOjo7+T3j48CGGYRs2bIiIiMC32b9/v7m5+UcffWRpablz507ceOPGDSMjo4SEBFdX1/j4+GGyqKqqeueddzAM8/T0rKysfK6kt82dO3eOHj2ak5PT29srEon+Z/evox2dvfyCsrKy+vr6vk5Z7+w9w9l7xpffrG1paVm5OnnMRA+23YSY9xNra2tXr91g4+iqb2Y1NeTdkpKSzVt+Gj3BTdvQ1HmK3/nz53/dm2470UPLwNjO2fPA/x46fuLEeHdvLQNj6/EuaT9uzc3NdfMN0GKZsO0mfPnN2qtXr/oEzdI1tjCysv3Xkk/Ly8tDZsfqm49iWVhHz0uoqKiIXbBQk2WqpmsY+G5MWVlZ0qefm1jb6RiZe/mHFhcXr167gW03QYtlMslr+oULF37ctt16vIumgbG9y+QjRziHfjts5+ypaWBs4+j6845fzp475+Q5VYtlwrZ3Stnw78uXL3v6hWgbmZna2C9d8UVZWZn/rCg9U0tDy9HxiYsqKysj4+YbWFgbmI+aGR1fUVGR8PEnRla2uiZs/KxXfLXG0MqWoq7tNjUgLy9v0/c/WDlM0jIwHu/uffLUqV/3po9xctc0mTnURwAAD7FJREFUMLad6LEnfd+JkydxJ4wa55z6/Q95eXluvgHahqbmtuM///qbkpKSqSHv6pqwjaxsEz7+pKKiYmZ0vIH5KAML68i4+ZWVlfGJiwwtR+uZWvrPiiorK1vy2SpTG3ttI7PJM0IKCwtTNvybbe+kxTKZOHnauXPnft7xi/V4FxJDw87Z87fDRw5zOPYukzUNjK3Hu/z0844LFy5M8pqO+/+bdd8WFxd7+YfqGJmbWNstXr6yrKwsIDxa38yKxbaJXbCwoqIial4Cy8Ja33xUaFRceXn5v5Z8amRlq2ts4RscfvXq1S/WpJjbjtc2NHX18c/Jyfnuhx9HjXPWMjAe5zYlM/N4+v4DthM9NA2Mxzi5796z93RWlqOHD1lN03ys48bvvkcQ5I3f1UuXLlVXV5eX4o0bN+J2Mpn8559/YhjW19fn5OQUGhoaERFhb2/f1dWFbzB//vxJkyYlJCQYGxtfv359mCyioqLOnz//xx9/zJw5c+i/Eolk2/adNo6umgbGds6eh49wUBR902c5HO3t7ZaWlsrM8cUxNTXt7u5WtYpnEBQUVFBQoGoVz+CLL77YsmWLqlU8Aw6H8/7777/avi863knRMn78eDU1tdbWVj6fb2NjgxvxOTQmTJhgb28v37Kjo6OoqMjQ0HDKlCnDNKurq6sTExMvXrwYFBSUlpbm5OT0Gg2Mt8Lnn3/u7Ow8b948VQsZzL59++rq6jZv3qxqIYOprKxMTk4+d+7c8zdVLgiC2Nvb379/X9VCnoGHh8eJEyfk/afk6OjovP4r64aGho6ODnlSX1/f2toaAG7cuGFvb89kMgEAQZCCggIURadPn45bAADDsJKSkra2tilTpgz/HTEqKio2NpZCofz6668cDmeYLVVCR0eHn59fVVWVqoU8AwcHh9LSUh0dnedvqlyio6OXL1/u7e2taiGDWbdunZGR0eLFi1UtZDAnTpzIzc3dtWvXIDuDwXjuIKjnx2MlcPPmTU9PTyaTyePxmEzmCOw1JxQKKRTKCBzrJhaLpVKpmpra8zdVLq8zCO9t09fXp6WlpWoVz4DH46mrqw9tua5aterrr79+5i4jCk9Pz9raWgAQiUTycD5ywDCMx+ONzNG0/f39Ghoab7AX/ZuCz+czGIwR2NEMQRASifQiH2WVjEQikUgkQ+tkTU3N6urq4ZtcIyIeExAQEBAQ/Jcz4p5ECQgICAgI/gsh4jEBAQEBAYHqIeIxAQEBAQGB6iHiMQEBAQEBgeoh4jEBAQEBAYHqebn1JN4qFRUV+fn5JiYmc+bMUXkv9sbGxj///FNDQ2P69OlyI4IgR48ebW9vDwgImDRpkkqEVVRUlJSUYBjm5+c3fvx4ub20tLSwsJDNZr/33nsqGZxw7dq1iooKPp9vb28fGhoqH7RWV1d39uxZbW3tuLg41Q41ycvLo9Fovr6+eLK/v5/D4fT29s6aNWvs2LHK14MP2cd/k8nkqKgo/DePx+NwOFwud+bMmYqj+f9fwOfzORxOd3d3aGjouHHjVCsGQZCbN282NDT4+vriS1ThVFdX//777ywWKy4uTiVjBblcbk5OzoMHDywtLSMiIhgM2Qz5fX19HA6nr68vPDzc1tZ2+IO8DTo7O/Pz8xsaGjQ1NcPCwuRD4SUSybFjxxobG6dNm4ZPv6gqWlpaiouLp0+fLp+39dq1a5cvX7awsHjvvfeeu2DD2yArK0skEuG/FWfgKC8vz8/PNzMzmzNnzguOlR0pz8dnzpyZOXOmRCI5cuRIZGSkasVkZma6ubl99dVXKSkpivawsLDMzEyxWBwcHHzx4kXlCzt79uz8+fMbGhqampp8fX2PHDmC2zkcTkxMDIqie/bsUdWkJWlpaY8ePRIIBCkpKTExsnUJy8vLvby8eDxefn6+r6/vMGuKvG2KiooiIiI2btyIJ8Visbe3d0FBAY/H8/LyqqysHH73t8H58+fXrl2bm5ubm5ubny+bIVwqlU6bNu3ixYsCgcDb2/vatWvKF/bKoCjq5+d34cIFoVA4derUK1euqFaPp6fnokWLEhMTFWc0Kigo8PPzE4lEWVlZgYGBKhnwOXPmzFOnTgkEgvT09MmTJ+PzlYrF4ilTply+fLm/v3/y5Mnytpoyyc/PP3/+vFAorK6udnR0LCuTzR4fGxu7b98+FEVnz559/Pjx4Q/y9sAwLDEx8YMPPqirk02wn5GRERUVhaJoenp6fHy8SlQlJCRkZ2fjBfnBgwe48fTp0+Hh4VKp9NChQ/L68Pm8mSnCXhsPDw8Oh4NhGIIgpqamw0/L97YRi8UYhnE4HG9vb7mxqKjI0tIS/+vgwYO+vr7KF4Yve4X/Tk9P9/T0xDAMRdFx48adPXsW30BPT6+2tlb52uS0traSSKSenh4Mw6Kjozdv3oyLdHFxOXHihEok8fl8FxeXtWvXBgQE4JbMzExXV1fcmZs3b54zZ47yVW3dunXRokWDjNnZ2RMmTJBKpRiG/fTTT5GRkcoX9sqcP3/ewcEBF799+/ZnzpqpTPDSam9vn5OTIzf6+/vv3r0bwzCJRDJmzJi8vDzlC+PxePgPiUQyatSoCxcuYBiWkZHh7u6O35ObNm2Ki4tTvjBFkpKSPv/8cwzDqqur9fX1BQIBhmFZWVlOTk6qkvTrr79+9tlnbDa7uLgYtzg6OmZnZ2MYxufz9fX1b9++rXxVenp6zc3Ng4wuLi6ZmZkYhgmFQiMjI3xK2ucyIp6PhUJhWVmZv78/ANDpdF9f38LCQhXqeeZLj6KiomnTpuF/+fv7X7lyZZiF594STCZTPoMPj8fDJ5nq7Oysra3FvcdkMr28vIqKipQsTJH8/HxbW1v81XRhYWFAQAAAkEgkf39/VV3W5OTkxMRExXkoi4qK/P39cWeqUFhNTU1KSkp6ejq+YAMAFBYWzpgxA3/br0Jhr8ZIEz+0IGMYVlRUhN+TFApl+vTpKhEpn7cOwzCBQKCtrQ0AhYWFI+GexOnu7r5x4wb+Va6oqMjb2xt/sR8QEFBVVcXlcpUvqbm5eefOnRs2bFAUWVNTI6/6pkyZoiqn7dix47vvvistLcWTPB6vsrISF8ZgMHx8fF5Q2IiIx21tbWQyWb7IuZGRUUtLi2olDaW1tVX+xcLQ0FAqlba3tw+/y9ujsbFx48aNa9aswYVpaWnJP0EZGhqqyntRUVFMJnPx4sX79+/Hl8Hu6OiQO83IyEhxXU6lce3atZKSkkErDA66mu3t7cpvXbHZbB8fH319/aysrIkTJ+J13CBhXV1dCIIMe5gRxCDxvb29PB5PtZIGweVyEQRR+T0pJyUlxdHRcfLkyTDEe21tbUpbGVqRsrIyfX19fX19KyuruXPnDhLGZDI1NTVVUsMsXrx448aNin1QWltbNTU15TOzqipwREZGGhgY8Pn8d999d9u2bbgwGo2mq6v7ssJGRDxmMpkoiso/LgqFQg0NDdVKGgqTyZR/tMerSFVNzvz48eOgoKDk5OSpU6fiwhSrbBXOGn3ixIne3t5du3ZFRER0dXVRKBQGgyF3mkqEiUSipKSkPXv2DJoUfdDVpNPpyu8EN3v27NTU1OXLl2dnZ1tZWR04cGCoMCqVOgJnTf8nBoknk8nyZuIIAa+7VXtPytmxY8fp06c5HA7+TDzIe2pqaiqZyd/Dw6Orq6uxsbGtrW39+vWDhAGASCRSvtN+++03bW3tmTNnKhrxqg970gNAVVczPT19xYoVGzZsOHbs2Lp16zAMYzKZ+CzWLytsRMRjFovFZDLlS+7cv39/6BI3KsfS0lJRoY6OjkoWY+ns7AwICEhISFi6dCluMTU1lUqlzc3Ncm2WlpbKF4ZDo9FiY2O1tLTw3igWFhaqvaxNTU1VVVXe3t76+vrLli27dOkS3pV60NW0srJSsrBB2NnZtbW1wRBhbDZ7BC6v8k8MEm9ubq6S/q7DoKamZmhoOBKqmj179mzfvj03N9fQ0BC3DPKeCksxAJibmyckJBQUFAAAm82WC2tsbAQAExMTJevJzc09deoU/uDe1NQUEhKSnp6Oy2hqasK3UbnT7Ozsenp68A/GdDq9oaHhpYW92S/br8z8+fOXL1+OYditW7d0dHQ6OjpUrWhwf66WlhZtbe26ujoMwxYvXjy0J44S4HK5bm5u8pVr5cyePTs5ORnDsPLycl1d3b6+PuULq6+vx3/n5+draGjgHRySk5Px3o9NTU2GhoYq6W0hZ+/evfL+XDU1NYaGhs3NzSiKRkVFrV27Vvl6qqqq8K5PdXV1xsbGeI+8uro6fX39R48eYRgWGxu7evVq5Qt7Ze7evaunp9fQ0IBh2Lx581atWqVqRRg2pD/XJ598kpiYiGFYfX29rq4u7molc+DAAWtr6wcPHigab968ib/YRFE0IiJi/fr1yhdWU1MjEokwDOvv7w8PD1+2bBmGYVwuV0dH58aNGxiGrV69WiWdHxVR7M8VExOzZs0aDMMqKyt1dXV7e3uVLKa1tbWlpQXDMIlEsnLlSnd3d9w+d+7clStXYhiGr+n0gotbj5R43NjY6O7ubm1tbWRkdPDgQdWKuXXrlp4CeEMBw7A9e/YYGhqOGjXKy8urtbVV+cIyMjIUhdnZ2eH2e/fuTZw40cbGxsTE5Pjx48oX9vDhQxsbG1NTUzMzszFjxpw8eRK39/T0BAYGstlsFouFd7RWIYcOHVLsrpyamspisdhsdnBwsPKLMYZhsbGxOjo6lpaWLBYrNTVVbt+yZQsuzN/fn8vlKl/Y67B161YWi2Vpaenn59fV1aVaMR988IFiecHrzcePH/v4+FhZWRkaGv7yyy8qEebi4qIobN++fbj93//+N4vFsrCwCA0NVX6rGsOwb775Rk9Pz9raWldXNy4uDh8lgWEYh8MxNja2sbFxdnYe1IxQPo6OjqWlpfjv+/fvT5o0ycbGxtjY+NixY8oXU1JSYmhoaG5ubmBg4O3tfefOHdz+8OFDV1dXPKIdPnz4BY82stZb7OnpUVdXH8kfzEQikUAgGIHLhgMAl8vV1NRU4RtCHo9HIpGGfinp6+uj0+kj7VMiACAIIhKJVLgWMoIgQqFw6O2kcmGvA4IgCILgfYZHLL29vWpqaiqfd2goQqFQLBar8NKjKNrT06OrqztoMWaxWMzj8eR9lEYUXC5XQ0NDhYGjp6eHyWQOvZ1eNqKNrHhMQEBAQEDw38n/m64iBAQEBAQE/8EQ8ZiAgICAgED1EPGYgICAgIBA9RDxmICAgICAQPUQ8ZiAgICAgED1EPGYgICAgIBA9RDxmICAgICAQPUQ8ZiAgICAgED1EPGYgICAgIBA9RDxmICAgICAQPUQ8ZiAgICAgED1/B9wNcbanZzSTgAAAABJRU5ErkJggg==">
 </div>
 
     
         </div>
       </div>
-      <div id="n4o02jtx_message" style="padding-bottom: 15px"></div>
+      <div id="xXVONdGR_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_n4o02jtx"]').forEach(function(rb) {
-rb.addEventListener("change", function() {
-    var correct = rb.value == 1;
-    var msgBox = document.getElementById('n4o02jtx_message');
-    
-    quizquestions_scorecard["n4o02jtx"]["attempts"] += 1;
+  document.getElementById("hotspot_xXVONdGR").addEventListener("click", function(e) {
+      var u = e.offsetX;
+      var v = e.offsetY;
+      var w = this.offsetWidth;
+      var h = this.offsetHeight
+
+      var x = u/w;
+      var y = (h-v)/h
+
+      var correct = (x >= 0.0 && x <= 0.5 && y >= 0.0 && y <= 0.5);
+      var msgBox = document.getElementById('xXVONdGR_message');
+      
+    quizquestions_scorecard["xXVONdGR"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_n4o02jtx")
+    var explanation = document.getElementById("explanation_xXVONdGR")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["n4o02jtx"]["correct"] = true;
+      quizquestions_scorecard["xXVONdGR"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1041,44 +1030,45 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_n4o02jtx")
+    var explanation = document.getElementById("explanation_xXVONdGR")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["n4o02jtx"]["correct"] = false;
+      quizquestions_scorecard["xXVONdGR"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
 
   }
 
-})});
+
+  })
 
 </script>
 </div>
 </div>
 </div>
 <div id="exr-sucesiones-propuesto-4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.8 </strong></span>A la vista de la gráfica de los 10 primeros términos de la sucesión <span class="math inline">\(\left(\frac{n^n}{n!}\right)_{n=1}^\infty\)</span>, ¿crees que la sucesión converge?</p>
+<p><span class="theorem-title"><strong>Ejercicio 2.8 </strong></span>A la vista de la gráfica de los 20 primeros términos de la sucesión <span class="math inline">\(\left(\frac{2^n}{n!}\right)_{n=1}^\infty\)</span>, ¿crees que la sucesión converge?</p>
 <div class="cell" data-execution_count="23">
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="159">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "enpJXjak"
+var ID = "WdGYg658"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="enpJXjak" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="WdGYg658" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_enpJXjak">
+      <div class="form" id="controls_WdGYg658">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_enpJXjak_1">
-      <input class="form-check-input" type="radio" name="radio_enpJXjak" id="radio_enpJXjak_1" value="1">
+    <label class="form-check-label" for="radio_WdGYg658_1">
+      <input class="form-check-input" type="radio" name="radio_WdGYg658" id="radio_WdGYg658_1" value="1">
       
       <span class="label-body px-1">
         Si
@@ -1086,8 +1076,8 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_enpJXjak_2">
-      <input class="form-check-input" type="radio" name="radio_enpJXjak" id="radio_enpJXjak_2" value="2">
+    <label class="form-check-label" for="radio_WdGYg658_2">
+      <input class="form-check-input" type="radio" name="radio_WdGYg658" id="radio_WdGYg658_2" value="2">
       
       <span class="label-body px-1">
         No
@@ -1098,26 +1088,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="enpJXjak_message" style="padding-bottom: 15px"></div>
+      <div id="WdGYg658_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_enpJXjak"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_WdGYg658"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 2;
-    var msgBox = document.getElementById('enpJXjak_message');
+    var correct = rb.value == 1;
+    var msgBox = document.getElementById('WdGYg658_message');
     
-    quizquestions_scorecard["enpJXjak"]["attempts"] += 1;
+    quizquestions_scorecard["WdGYg658"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_enpJXjak")
+    var explanation = document.getElementById("explanation_WdGYg658")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["enpJXjak"]["correct"] = true;
+      quizquestions_scorecard["WdGYg658"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1125,11 +1115,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_enpJXjak")
+    var explanation = document.getElementById("explanation_WdGYg658")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["enpJXjak"]["correct"] = false;
+      quizquestions_scorecard["WdGYg658"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1143,26 +1133,26 @@ rb.addEventListener("change", function() {
 </div>
 </div>
 <div id="exr-sucesiones-propuesto-5" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.9 </strong></span>A la vista de la gráfica de los 20 primeros términos de la sucesión dada por <span class="math inline">\(x_1=1\)</span> y <span class="math inline">\(x_{n+1}=\sqrt{x_n+2}\)</span> <span class="math inline">\(\forall n\in \mathbb{N}\)</span>, ¿crees que la sucesión converge?</p>
+<p><span class="theorem-title"><strong>Ejercicio 2.9 </strong></span>A la vista de la gráfica de los 10 primeros términos de la sucesión <span class="math inline">\(\left(\frac{n^n}{n!}\right)_{n=1}^\infty\)</span>, ¿crees que la sucesión converge?</p>
 <div class="cell" data-execution_count="24">
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="160">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "JftLzBiE"
+var ID = "F5kpEA2i"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="JftLzBiE" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="F5kpEA2i" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_JftLzBiE">
+      <div class="form" id="controls_F5kpEA2i">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_JftLzBiE_1">
-      <input class="form-check-input" type="radio" name="radio_JftLzBiE" id="radio_JftLzBiE_1" value="1">
+    <label class="form-check-label" for="radio_F5kpEA2i_1">
+      <input class="form-check-input" type="radio" name="radio_F5kpEA2i" id="radio_F5kpEA2i_1" value="1">
       
       <span class="label-body px-1">
         Si
@@ -1170,8 +1160,8 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_JftLzBiE_2">
-      <input class="form-check-input" type="radio" name="radio_JftLzBiE" id="radio_JftLzBiE_2" value="2">
+    <label class="form-check-label" for="radio_F5kpEA2i_2">
+      <input class="form-check-input" type="radio" name="radio_F5kpEA2i" id="radio_F5kpEA2i_2" value="2">
       
       <span class="label-body px-1">
         No
@@ -1182,26 +1172,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="JftLzBiE_message" style="padding-bottom: 15px"></div>
+      <div id="F5kpEA2i_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_JftLzBiE"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_F5kpEA2i"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 1;
-    var msgBox = document.getElementById('JftLzBiE_message');
+    var correct = rb.value == 2;
+    var msgBox = document.getElementById('F5kpEA2i_message');
     
-    quizquestions_scorecard["JftLzBiE"]["attempts"] += 1;
+    quizquestions_scorecard["F5kpEA2i"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_JftLzBiE")
+    var explanation = document.getElementById("explanation_F5kpEA2i")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["JftLzBiE"]["correct"] = true;
+      quizquestions_scorecard["F5kpEA2i"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1209,11 +1199,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_JftLzBiE")
+    var explanation = document.getElementById("explanation_F5kpEA2i")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["JftLzBiE"]["correct"] = false;
+      quizquestions_scorecard["F5kpEA2i"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1227,51 +1217,65 @@ rb.addEventListener("change", function() {
 </div>
 </div>
 <div id="exr-sucesiones-propuesto-6" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 2.10 </strong></span>¿Cuál es el límite de la sucesión <span class="math inline">\(\left(\left(1+\frac{2}{n}\right)^n\right)_{n=1}^\infty\)</span></p>
+<p><span class="theorem-title"><strong>Ejercicio 2.10 </strong></span>A la vista de la gráfica de los 20 primeros términos de la sucesión dada por <span class="math inline">\(x_1=1\)</span> y <span class="math inline">\(x_{n+1}=\sqrt{x_n+2}\)</span> <span class="math inline">\(\forall n\in \mathbb{N}\)</span>, ¿crees que la sucesión converge?</p>
 <div class="cell" data-execution_count="25">
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="161">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "T1XCB5xU"
+var ID = "49mbajh9"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="T1XCB5xU" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="49mbajh9" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_T1XCB5xU">
+      <div class="form" id="controls_49mbajh9">
         <div style="padding-top: 5px">
-    <br>
-<div class="input-group">
-    <input id="T1XCB5xU" type="number" class="form-control" placeholder="Numeric answer">
-    <span class="input-group-append" href="#" title="Introducir hasta 5 decimales">&nbsp;🎁</span>
+    <div class="form-check">
+    <label class="form-check-label" for="radio_49mbajh9_1">
+      <input class="form-check-input" type="radio" name="radio_49mbajh9" id="radio_49mbajh9_1" value="1">
+      
+      <span class="label-body px-1">
+        Si
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_49mbajh9_2">
+      <input class="form-check-input" type="radio" name="radio_49mbajh9" id="radio_49mbajh9_2" value="2">
+      
+      <span class="label-body px-1">
+        No
+      </span>
+    </label>
 </div>
 
     
         </div>
       </div>
-      <div id="T1XCB5xU_message" style="padding-bottom: 15px"></div>
+      <div id="49mbajh9_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("T1XCB5xU").addEventListener("change", function() {
-  var correct = (Math.abs(this.value - 7.38905609893065) <= 1.0e-5);
-  var msgBox = document.getElementById('T1XCB5xU_message');
-  
-    quizquestions_scorecard["T1XCB5xU"]["attempts"] += 1;
+document.querySelectorAll('input[name="radio_49mbajh9"]').forEach(function(rb) {
+rb.addEventListener("change", function() {
+    var correct = rb.value == 1;
+    var msgBox = document.getElementById('49mbajh9_message');
+    
+    quizquestions_scorecard["49mbajh9"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_T1XCB5xU")
+    var explanation = document.getElementById("explanation_49mbajh9")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["T1XCB5xU"]["correct"] = true;
+      quizquestions_scorecard["49mbajh9"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1279,11 +1283,81 @@ document.getElementById("T1XCB5xU").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_T1XCB5xU")
+    var explanation = document.getElementById("explanation_49mbajh9")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["T1XCB5xU"]["correct"] = false;
+      quizquestions_scorecard["49mbajh9"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+})});
+
+</script>
+</div>
+</div>
+</div>
+<div id="exr-sucesiones-propuesto-7" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2.11 </strong></span>¿Cuál es el límite de la sucesión <span class="math inline">\(\left(\left(1+\frac{2}{n}\right)^n\right)_{n=1}^\infty\)</span></p>
+<div class="cell" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="162">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "6YMqsDoT"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="6YMqsDoT" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_6YMqsDoT">
+        <div style="padding-top: 5px">
+    <br>
+<div class="input-group">
+    <input id="6YMqsDoT" type="number" class="form-control" placeholder="Numeric answer">
+    <span class="input-group-append" href="#" title="Introducir hasta 5 decimales">&nbsp;🎁</span>
+</div>
+
+    
+        </div>
+      </div>
+      <div id="6YMqsDoT_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.getElementById("6YMqsDoT").addEventListener("change", function() {
+  var correct = (Math.abs(this.value - 7.38905609893065) <= 1.0e-5);
+  var msgBox = document.getElementById('6YMqsDoT_message');
+  
+    quizquestions_scorecard["6YMqsDoT"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_6YMqsDoT")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["6YMqsDoT"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_6YMqsDoT")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["6YMqsDoT"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }

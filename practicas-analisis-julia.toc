@@ -1,0 +1,22 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Prefacio}{3}{chapter*.2}%
+\contentsline {section}{Licencia}{3}{section*.3}%
+\contentsline {chapter}{\numberline {1}Introducción}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}El REPL de Julia}{6}{section.1.1}%
+\contentsline {section}{\numberline {1.2}El gestor de paquetes de Julia}{6}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Aritmética}{7}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Operadores aritméticos.}{7}{subsection.1.3.1}%
+\contentsline {section}{\numberline {1.4}Operadores de comparación}{7}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Operadores booleanos}{8}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Funciones de redondeo}{8}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Funciones de división}{9}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}Funciones para el signo y el valor absoluto}{10}{subsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.5.4}Raíces, exponenciales y logaritmos}{11}{subsection.1.5.4}%
+\contentsline {subsection}{\numberline {1.5.5}Funciones trigonométricas}{12}{subsection.1.5.5}%
+\contentsline {subsection}{\numberline {1.5.6}Funciones trigonométricas inversas}{13}{subsection.1.5.6}%
+\contentsline {subsection}{\numberline {1.5.7}Precedencia de operadores}{14}{subsection.1.5.7}%
+\contentsline {section}{\numberline {1.6}Definición de variables}{15}{section.1.6}%
+\contentsline {chapter}{\numberline {2}Sucesiones de números reales}{16}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Ejercicios Resueltos}{16}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Ejercicios propuestos}{23}{section.2.2}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

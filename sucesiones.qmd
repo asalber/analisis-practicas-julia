@@ -297,6 +297,25 @@ radioq(choices, answer)
 :::
 
 :::{#exr-sucesiones-propuesto-3}
+¿Cuál de las siguientes gráficas corresponde a la sucesión $x_1=3$ y $x_{n+1}=\sqrt{2x_n}$ $\forall n=2,3,\ldots$.
+```{julia}
+#| echo: false
+using Plots
+x(n) = n==1 ? 3 : sqrt(2x(n-1))
+y(n) = n==1 ? 3 : 1 + 3/x(n-1)
+p1 = scatter([sqrt(n) for n=1:50], legend=false)
+p2 = scatter([(1+2/n)^n for n=1:50], legend=false)
+p3 = scatter([x(n) for n=1:50], legend=false)
+p4 = scatter([y(n) for n=1:50], legend=false)
+l = @layout [a b; c d]
+p = plot(p1, p2, p3, p4, layout=l)
+imgfile = "img/sucesiones/graficas-sucesiones.png"
+savefig(p, imgfile)
+hotspotq(imgfile, (0,1/2), (0, 1/2))
+```
+:::
+
+:::{#exr-sucesiones-propuesto-4}
 A la vista de la gráfica de los 20 primeros términos de la sucesión $\left(\frac{2^n}{n!}\right)_{n=1}^\infty$, ¿crees que la sucesión converge? 
 
 ```{julia}
@@ -305,7 +324,7 @@ yesnoq("yes")
 ```
 :::
 
-:::{#exr-sucesiones-propuesto-4}
+:::{#exr-sucesiones-propuesto-5}
 A la vista de la gráfica de los 10 primeros términos de la sucesión $\left(\frac{n^n}{n!}\right)_{n=1}^\infty$, ¿crees que la sucesión converge? 
 
 ```{julia}
@@ -314,7 +333,7 @@ yesnoq("no")
 ```
 :::
 
-:::{#exr-sucesiones-propuesto-5}
+:::{#exr-sucesiones-propuesto-6}
 A la vista de la gráfica de los 20 primeros términos de la sucesión dada por $x_1=1$ y $x_{n+1}=\sqrt{x_n+2}$ $\forall n\in \mathbb{N}$, ¿crees que la sucesión converge? 
 
 ```{julia}
@@ -323,7 +342,7 @@ yesnoq("yes")
 ```
 :::
 
-:::{#exr-sucesiones-propuesto-6}
+:::{#exr-sucesiones-propuesto-7}
 ¿Cuál es el límite de la sucesión $\left(\left(1+\frac{2}{n}\right)^n\right)_{n=1}^\infty$
 
 ```{julia}
@@ -331,3 +350,4 @@ yesnoq("yes")
 numericq(exp(2), 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
+
