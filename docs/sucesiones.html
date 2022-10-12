@@ -255,8 +255,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="2.1" class="anchored" data-anchor-id="ejercicios-resueltos"><span class="header-section-number">2.1</span> Ejercicios Resueltos</h2>
 <p>Para la realización de esta práctica se requieren los siguientes paquetes:</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy  </span><span class="co"># Para el cálculo simbólico de límites y derivadas</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots  </span><span class="co"># Para el dibujo de gráficas</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy  </span><span class="co"># Para el cálculo simbólico de límites.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots  </span><span class="co"># Para el dibujo de gráficas.</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LaTeXStrings  </span><span class="co"># Para usar código LaTeX en los gráficos.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="exr-sucesiones" class="theorem exercise">
@@ -276,7 +276,7 @@ Pista
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Definir una función para el término general y aplicar la función a los naturales de 1 a 10 usando compresiones de arrays.</p>
+<p>Definir una función para el término general y aplicar la función a los naturales de 1 a 10 usando <a href="https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html#comprensi%C3%B3n-de-arrays">compresiones de arrays</a>.</p>
 </div>
 </div>
 </div>
@@ -292,7 +292,7 @@ Solución
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">2</span>n <span class="op">+</span> <span class="fl">1</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -317,7 +317,7 @@ Solución
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Como reales</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> n</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span>
@@ -325,7 +325,10 @@ Solución
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">1</span><span class="op">//</span>n</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1.0, 0.5, 0.3333333333333333, 0.25, 0.2, 0.16666666666666666, 0.14285714285714285, 0.125, 0.1111111111111111, 0.1]Rational{Int64}[1//1, 1//2, 1//3, 1//4, 1//5, 1//6, 1//7, 1//8, 1//9, 1//10]</code></pre>
+<pre><code>[1.0, 0.5, 0.3333333333333333, 0.25, 0.2, 0.16666666666666666, 0.14285714285714285, 0.125, 0.1111111111111111, 0.1]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rational{Int64}[1//1, 1//2, 1//3, 1//4, 1//5, 1//6, 1//7, 1//8, 1//9, 1//10]</code></pre>
 </div>
 </div>
 </div>
@@ -346,9 +349,9 @@ Solución
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[-1, 1, -1, 1, -1, 1, -1, 1, -1, 1]</code></pre>
 </div>
@@ -371,9 +374,9 @@ Solución
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[2.0, 2.25, 2.3703703703703702, 2.44140625, 2.4883199999999994, 2.5216263717421135, 2.546499697040712, 2.565784513950348, 2.581174791713198, 2.5937424601000023]</code></pre>
 </div>
@@ -396,9 +399,9 @@ Solución
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> n <span class="op">==</span> <span class="fl">1</span> ? <span class="fl">1</span> <span class="op">:</span> <span class="fu">sqrt</span>(<span class="fl">1</span><span class="fu">+x</span>(n<span class="op">-</span><span class="fl">1</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> n <span class="op">==</span> <span class="fl">1</span> ? <span class="fl">1</span> <span class="op">:</span> <span class="fu">sqrt</span>(<span class="fl">1</span><span class="fu">+x</span>(n<span class="op">-</span><span class="fl">1</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Real[1, 1.4142135623730951, 1.5537739740300374, 1.5980531824786175, 1.6118477541252516, 1.616121206508117, 1.6174427985273905, 1.617851290609675, 1.6179775309347393, 1.6180165422314876]</code></pre>
 </div>
@@ -421,7 +424,7 @@ Pista
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Definir una función para el término general y aplicar la función a los naturales de 1 a 50 usando compresiones de arrays como en el ejercicio anterior. Después usar la función <code>scatter</code> del paquete <code>Plots</code> para dibujar el array de términos.</p>
+<p>Definir una función para el término general y aplicar la función a los naturales de 1 a 50 usando compresiones de arrays como en el ejercicio anterior. Después usar la función <a href="https://docs.juliaplots.org/latest/api/#Plots.scatter-Tuple"><code>scatter</code></a> del paquete <code>Plots</code> para dibujar el array de términos.</p>
 </div>
 </div>
 </div>
@@ -440,12 +443,12 @@ Solución
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> n <span class="op">/</span> (<span class="fl">4</span>n <span class="op">+</span> <span class="fl">2</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="65">
-<p><img src="sucesiones_files/figure-html/cell-9-output-1.svg" class="img-fluid"></p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> n <span class="op">/</span> (<span class="fl">4</span>n <span class="op">+</span> <span class="fl">2</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<p><img src="sucesiones_files/figure-html/cell-8-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <p>La sucesión converge al número <span class="math inline">\(0.25\)</span>.</p>
@@ -467,12 +470,12 @@ Solución
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>n <span class="op">/</span> (<span class="fl">4</span>n <span class="op">+</span> <span class="fl">2</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="66">
-<p><img src="sucesiones_files/figure-html/cell-10-output-1.svg" class="img-fluid"></p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">2</span><span class="op">^</span>n <span class="op">/</span> (<span class="fl">4</span>n <span class="op">+</span> <span class="fl">2</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<p><img src="sucesiones_files/figure-html/cell-9-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <p>La sucesión diverge.</p>
@@ -494,12 +497,12 @@ Solución
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n <span class="op">/</span> n</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="67">
-<p><img src="sucesiones_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n <span class="op">/</span> n</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<p><img src="sucesiones_files/figure-html/cell-10-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <p>La sucesión converge al <span class="math inline">\(0\)</span>.</p>
@@ -521,12 +524,12 @@ Solución
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="68">
-<p><img src="sucesiones_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<p><img src="sucesiones_files/figure-html/cell-11-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <p>La sucesión converge aproximadamente a <span class="math inline">\(2.7\)</span>.</p>
@@ -548,12 +551,12 @@ Solución
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span>  n <span class="op">==</span> <span class="fl">1</span> ? <span class="fl">2</span> <span class="op">:</span> <span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> <span class="fu">x</span>(n<span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="69">
-<p><img src="sucesiones_files/figure-html/cell-13-output-1.svg" class="img-fluid"></p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span>  n <span class="op">==</span> <span class="fl">1</span> ? <span class="fl">2</span> <span class="op">:</span> <span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> <span class="fu">x</span>(n<span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">x</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<p><img src="sucesiones_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <p>La sucesión converge aproximadamente a <span class="math inline">\(1.62\)</span>.</p>
@@ -578,7 +581,7 @@ Pista
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Definir una función para el término general usar la función <code>limit</code> del paquete <code>SymPy</code> para calcular el límite de la sucesión.</p>
+<p>Definir una función para el término general usar la función <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Limits-1"><code>limit</code></a> del paquete <code>SymPy</code> para calcular el límite de la sucesión.</p>
 </div>
 </div>
 </div>
@@ -594,12 +597,12 @@ Solución
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span>n</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="70">
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)  <span class="co"># Declaración de la variable simbólica n.</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span>n</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>0</code></pre>
 </div>
 </div>
@@ -621,11 +624,11 @@ Solución
 </div>
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="71">
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>nan</code></pre>
 </div>
 </div>
@@ -647,11 +650,11 @@ Solución
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="72">
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">x</span>(n) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> n)<span class="op">^</span>n</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>ℯ</code></pre>
 </div>
 </div>
@@ -695,9 +698,9 @@ Solución
 </div>
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sind</span>(<span class="fl">360</span><span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">a</span>(<span class="fl">10</span><span class="op">^</span>i) for i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sind</span>(<span class="fl">360</span><span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">a</span>(<span class="fl">10</span><span class="op">^</span>i) for i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[2.938926261462366, 3.1395259764656687, 3.1415719827794755, 3.141592446881286, 3.141592651522708, 3.1415926535691225]</code></pre>
 </div>
@@ -720,12 +723,12 @@ Solución
 </div>
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sind</span>(<span class="fl">360</span><span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">a</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="74">
-<p><img src="sucesiones_files/figure-html/cell-18-output-1.svg" class="img-fluid"></p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sind</span>(<span class="fl">360</span><span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>([<span class="fu">a</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>], legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<p><img src="sucesiones_files/figure-html/cell-17-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -746,12 +749,12 @@ Solución
 </div>
 <div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sin</span>(<span class="fl">2</span>pi<span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">a</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="75">
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fu">n*sin</span>(<span class="fl">2</span>pi<span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">a</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>3.14159265358979</code></pre>
 </div>
 </div>
@@ -773,12 +776,12 @@ Solución
 </div>
 <div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive), r</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> n<span class="op">*</span>r<span class="op">^</span><span class="fl">2</span><span class="fu">*sin</span>(<span class="fl">2</span>pi<span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">a</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="76">
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n<span class="op">::</span><span class="dt">(integer</span>, positive), r</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> n<span class="op">*</span>r<span class="op">^</span><span class="fl">2</span><span class="fu">*sin</span>(<span class="fl">2</span>pi<span class="op">/</span>n)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">a</span>(n), n<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>                  2
 3.14159265358979⋅r </code></pre>
 </div>
@@ -792,62 +795,62 @@ Solución
 <h2 data-number="2.2" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">2.2</span> Ejercicios propuestos</h2>
 <div id="exr-sucesiones-propuesto-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 2.5 </strong></span>Calcular el décimo término de la sucesión <span class="math inline">\(\left(\frac{3n^2+n}{6n^2-1}\right)_{n=1}^\infty\)</span>.</p>
-<div class="cell" data-hold="true" data-execution_count="21">
-<div class="cell-output cell-output-display" data-execution_count="78">
+<div class="cell" data-hold="true" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "ftC13OVW"
+var ID = "kmTfNxJo"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="ftC13OVW" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="kmTfNxJo" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_ftC13OVW">
+      <div class="form" id="controls_kmTfNxJo">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="ftC13OVW" type="number" class="form-control" placeholder="Numeric answer">
+    <input id="kmTfNxJo" type="number" class="form-control" placeholder="Numeric answer">
     <span class="input-group-append" href="#" title="Introducir hasta 5 decimales">&nbsp;🎁</span>
 </div>
 
     
         </div>
       </div>
-      <div id="ftC13OVW_message" style="padding-bottom: 15px"></div>
+      <div id="kmTfNxJo_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("ftC13OVW").addEventListener("change", function() {
+document.getElementById("kmTfNxJo").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0.5175292153589316) <= 1.0e-5);
-  var msgBox = document.getElementById('ftC13OVW_message');
+  var msgBox = document.getElementById('kmTfNxJo_message');
   
-    quizquestions_scorecard["ftC13OVW"]["attempts"] += 1;
+    quizquestions_scorecard["kmTfNxJo"]["attempts"] += 1;
 
   if(correct) {
-    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_ftC13OVW")
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_kmTfNxJo")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["ftC13OVW"]["correct"] = true;
+      quizquestions_scorecard["kmTfNxJo"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
 
 
   } else {
-    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_ftC13OVW")
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_kmTfNxJo")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["ftC13OVW"]["correct"] = false;
+      quizquestions_scorecard["kmTfNxJo"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -862,52 +865,25 @@ document.getElementById("ftC13OVW").addEventListener("change", function() {
 </div>
 <div id="exr-sucesiones-propuesto-2" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 2.6 </strong></span>Calcular los 10 primeros términos de la sucesión <span class="math inline">\(\left(\frac{3n^2+n}{6n^2-1}\right)_{n=1}^\infty\)</span> y averiguar hacia dónde converge.</p>
-<div class="cell" data-hold="true" data-execution_count="22">
-<div class="cell-output cell-output-display" data-execution_count="79">
+<div class="cell" data-hold="true" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "2X7dcw5f"
+var ID = "N7XIyZhq"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="2X7dcw5f" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="N7XIyZhq" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_2X7dcw5f">
+      <div class="form" id="controls_N7XIyZhq">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_2X7dcw5f_1">
-      <input class="form-check-input" type="radio" name="radio_2X7dcw5f" id="radio_2X7dcw5f_1" value="1">
-      
-      <span class="label-body px-1">
-        No converge
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_2X7dcw5f_2">
-      <input class="form-check-input" type="radio" name="radio_2X7dcw5f" id="radio_2X7dcw5f_2" value="2">
-      
-      <span class="label-body px-1">
-        1.5
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_2X7dcw5f_3">
-      <input class="form-check-input" type="radio" name="radio_2X7dcw5f" id="radio_2X7dcw5f_3" value="3">
-      
-      <span class="label-body px-1">
-        0.5
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_2X7dcw5f_4">
-      <input class="form-check-input" type="radio" name="radio_2X7dcw5f" id="radio_2X7dcw5f_4" value="4">
+    <label class="form-check-label" for="radio_N7XIyZhq_1">
+      <input class="form-check-input" type="radio" name="radio_N7XIyZhq" id="radio_N7XIyZhq_1" value="1">
       
       <span class="label-body px-1">
         1
@@ -915,11 +891,38 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_2X7dcw5f_5">
-      <input class="form-check-input" type="radio" name="radio_2X7dcw5f" id="radio_2X7dcw5f_5" value="5">
+    <label class="form-check-label" for="radio_N7XIyZhq_2">
+      <input class="form-check-input" type="radio" name="radio_N7XIyZhq" id="radio_N7XIyZhq_2" value="2">
+      
+      <span class="label-body px-1">
+        No converge
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_N7XIyZhq_3">
+      <input class="form-check-input" type="radio" name="radio_N7XIyZhq" id="radio_N7XIyZhq_3" value="3">
       
       <span class="label-body px-1">
         0
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_N7XIyZhq_4">
+      <input class="form-check-input" type="radio" name="radio_N7XIyZhq" id="radio_N7XIyZhq_4" value="4">
+      
+      <span class="label-body px-1">
+        0.5
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_N7XIyZhq_5">
+      <input class="form-check-input" type="radio" name="radio_N7XIyZhq" id="radio_N7XIyZhq_5" value="5">
+      
+      <span class="label-body px-1">
+        1.5
       </span>
     </label>
 </div>
@@ -927,38 +930,38 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="2X7dcw5f_message" style="padding-bottom: 15px"></div>
+      <div id="N7XIyZhq_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_2X7dcw5f"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_N7XIyZhq"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 3;
-    var msgBox = document.getElementById('2X7dcw5f_message');
+    var correct = rb.value == 4;
+    var msgBox = document.getElementById('N7XIyZhq_message');
     
-    quizquestions_scorecard["2X7dcw5f"]["attempts"] += 1;
+    quizquestions_scorecard["N7XIyZhq"]["attempts"] += 1;
 
   if(correct) {
-    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_2X7dcw5f")
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_N7XIyZhq")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["2X7dcw5f"]["correct"] = true;
+      quizquestions_scorecard["N7XIyZhq"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
 
 
   } else {
-    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_2X7dcw5f")
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_N7XIyZhq")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["2X7dcw5f"]["correct"] = false;
+      quizquestions_scorecard["N7XIyZhq"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -973,34 +976,34 @@ rb.addEventListener("change", function() {
 </div>
 <div id="exr-sucesiones-propuesto-3" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 2.7 </strong></span>A la vista de la gráfica de los 20 primeros términos de la sucesión <span class="math inline">\(\left(\frac{2^n}{n!}\right)_{n=1}^\infty\)</span>, ¿crees que la sucesión converge?</p>
-<div class="cell" data-execution_count="23">
-<div class="cell-output cell-output-display" data-execution_count="80">
+<div class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "QnsRi1Wd"
+var ID = "n4o02jtx"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="QnsRi1Wd" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="n4o02jtx" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_QnsRi1Wd">
+      <div class="form" id="controls_n4o02jtx">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_QnsRi1Wd_1">
-      <input class="form-check-input" type="radio" name="radio_QnsRi1Wd" id="radio_QnsRi1Wd_1" value="1">
+    <label class="form-check-label" for="radio_n4o02jtx_1">
+      <input class="form-check-input" type="radio" name="radio_n4o02jtx" id="radio_n4o02jtx_1" value="1">
       
       <span class="label-body px-1">
-        Yes
+        Si
       </span>
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_QnsRi1Wd_2">
-      <input class="form-check-input" type="radio" name="radio_QnsRi1Wd" id="radio_QnsRi1Wd_2" value="2">
+    <label class="form-check-label" for="radio_n4o02jtx_2">
+      <input class="form-check-input" type="radio" name="radio_n4o02jtx" id="radio_n4o02jtx_2" value="2">
       
       <span class="label-body px-1">
         No
@@ -1011,38 +1014,38 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="QnsRi1Wd_message" style="padding-bottom: 15px"></div>
+      <div id="n4o02jtx_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_QnsRi1Wd"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_n4o02jtx"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
     var correct = rb.value == 1;
-    var msgBox = document.getElementById('QnsRi1Wd_message');
+    var msgBox = document.getElementById('n4o02jtx_message');
     
-    quizquestions_scorecard["QnsRi1Wd"]["attempts"] += 1;
+    quizquestions_scorecard["n4o02jtx"]["attempts"] += 1;
 
   if(correct) {
-    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_QnsRi1Wd")
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_n4o02jtx")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["QnsRi1Wd"]["correct"] = true;
+      quizquestions_scorecard["n4o02jtx"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
 
 
   } else {
-    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_QnsRi1Wd")
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_n4o02jtx")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["QnsRi1Wd"]["correct"] = false;
+      quizquestions_scorecard["n4o02jtx"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1057,34 +1060,34 @@ rb.addEventListener("change", function() {
 </div>
 <div id="exr-sucesiones-propuesto-4" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 2.8 </strong></span>A la vista de la gráfica de los 10 primeros términos de la sucesión <span class="math inline">\(\left(\frac{n^n}{n!}\right)_{n=1}^\infty\)</span>, ¿crees que la sucesión converge?</p>
-<div class="cell" data-execution_count="24">
-<div class="cell-output cell-output-display" data-execution_count="81">
+<div class="cell" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "wsPs86TD"
+var ID = "enpJXjak"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="wsPs86TD" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="enpJXjak" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_wsPs86TD">
+      <div class="form" id="controls_enpJXjak">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_wsPs86TD_1">
-      <input class="form-check-input" type="radio" name="radio_wsPs86TD" id="radio_wsPs86TD_1" value="1">
+    <label class="form-check-label" for="radio_enpJXjak_1">
+      <input class="form-check-input" type="radio" name="radio_enpJXjak" id="radio_enpJXjak_1" value="1">
       
       <span class="label-body px-1">
-        Yes
+        Si
       </span>
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_wsPs86TD_2">
-      <input class="form-check-input" type="radio" name="radio_wsPs86TD" id="radio_wsPs86TD_2" value="2">
+    <label class="form-check-label" for="radio_enpJXjak_2">
+      <input class="form-check-input" type="radio" name="radio_enpJXjak" id="radio_enpJXjak_2" value="2">
       
       <span class="label-body px-1">
         No
@@ -1095,38 +1098,38 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="wsPs86TD_message" style="padding-bottom: 15px"></div>
+      <div id="enpJXjak_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_wsPs86TD"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_enpJXjak"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
     var correct = rb.value == 2;
-    var msgBox = document.getElementById('wsPs86TD_message');
+    var msgBox = document.getElementById('enpJXjak_message');
     
-    quizquestions_scorecard["wsPs86TD"]["attempts"] += 1;
+    quizquestions_scorecard["enpJXjak"]["attempts"] += 1;
 
   if(correct) {
-    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_wsPs86TD")
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_enpJXjak")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["wsPs86TD"]["correct"] = true;
+      quizquestions_scorecard["enpJXjak"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
 
 
   } else {
-    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_wsPs86TD")
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_enpJXjak")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["wsPs86TD"]["correct"] = false;
+      quizquestions_scorecard["enpJXjak"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1141,34 +1144,34 @@ rb.addEventListener("change", function() {
 </div>
 <div id="exr-sucesiones-propuesto-5" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 2.9 </strong></span>A la vista de la gráfica de los 20 primeros términos de la sucesión dada por <span class="math inline">\(x_1=1\)</span> y <span class="math inline">\(x_{n+1}=\sqrt{x_n+2}\)</span> <span class="math inline">\(\forall n\in \mathbb{N}\)</span>, ¿crees que la sucesión converge?</p>
-<div class="cell" data-execution_count="25">
-<div class="cell-output cell-output-display" data-execution_count="82">
+<div class="cell" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "c74hHGHK"
+var ID = "JftLzBiE"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="c74hHGHK" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="JftLzBiE" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_c74hHGHK">
+      <div class="form" id="controls_JftLzBiE">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_c74hHGHK_1">
-      <input class="form-check-input" type="radio" name="radio_c74hHGHK" id="radio_c74hHGHK_1" value="1">
+    <label class="form-check-label" for="radio_JftLzBiE_1">
+      <input class="form-check-input" type="radio" name="radio_JftLzBiE" id="radio_JftLzBiE_1" value="1">
       
       <span class="label-body px-1">
-        Yes
+        Si
       </span>
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_c74hHGHK_2">
-      <input class="form-check-input" type="radio" name="radio_c74hHGHK" id="radio_c74hHGHK_2" value="2">
+    <label class="form-check-label" for="radio_JftLzBiE_2">
+      <input class="form-check-input" type="radio" name="radio_JftLzBiE" id="radio_JftLzBiE_2" value="2">
       
       <span class="label-body px-1">
         No
@@ -1179,38 +1182,38 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="c74hHGHK_message" style="padding-bottom: 15px"></div>
+      <div id="JftLzBiE_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_c74hHGHK"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_JftLzBiE"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
     var correct = rb.value == 1;
-    var msgBox = document.getElementById('c74hHGHK_message');
+    var msgBox = document.getElementById('JftLzBiE_message');
     
-    quizquestions_scorecard["c74hHGHK"]["attempts"] += 1;
+    quizquestions_scorecard["JftLzBiE"]["attempts"] += 1;
 
   if(correct) {
-    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_c74hHGHK")
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_JftLzBiE")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["c74hHGHK"]["correct"] = true;
+      quizquestions_scorecard["JftLzBiE"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
 
 
   } else {
-    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_c74hHGHK")
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_JftLzBiE")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["c74hHGHK"]["correct"] = false;
+      quizquestions_scorecard["JftLzBiE"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1225,62 +1228,62 @@ rb.addEventListener("change", function() {
 </div>
 <div id="exr-sucesiones-propuesto-6" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 2.10 </strong></span>¿Cuál es el límite de la sucesión <span class="math inline">\(\left(\left(1+\frac{2}{n}\right)^n\right)_{n=1}^\infty\)</span></p>
-<div class="cell" data-execution_count="26">
-<div class="cell-output cell-output-display" data-execution_count="83">
+<div class="cell" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "8D4KroqJ"
+var ID = "T1XCB5xU"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="8D4KroqJ" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="T1XCB5xU" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_8D4KroqJ">
+      <div class="form" id="controls_T1XCB5xU">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="8D4KroqJ" type="number" class="form-control" placeholder="Numeric answer">
+    <input id="T1XCB5xU" type="number" class="form-control" placeholder="Numeric answer">
     <span class="input-group-append" href="#" title="Introducir hasta 5 decimales">&nbsp;🎁</span>
 </div>
 
     
         </div>
       </div>
-      <div id="8D4KroqJ_message" style="padding-bottom: 15px"></div>
+      <div id="T1XCB5xU_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("8D4KroqJ").addEventListener("change", function() {
+document.getElementById("T1XCB5xU").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 7.38905609893065) <= 1.0e-5);
-  var msgBox = document.getElementById('8D4KroqJ_message');
+  var msgBox = document.getElementById('T1XCB5xU_message');
   
-    quizquestions_scorecard["8D4KroqJ"]["attempts"] += 1;
+    quizquestions_scorecard["T1XCB5xU"]["attempts"] += 1;
 
   if(correct) {
-    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_8D4KroqJ")
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_T1XCB5xU")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["8D4KroqJ"]["correct"] = true;
+      quizquestions_scorecard["T1XCB5xU"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
 
 
   } else {
-    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_8D4KroqJ")
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_T1XCB5xU")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["8D4KroqJ"]["correct"] = false;
+      quizquestions_scorecard["T1XCB5xU"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }

@@ -9,7 +9,7 @@ La gran potencia de cálculo alcanzada por los ordenadores en las últimas déca
 
 [Julia](https://julialang.org/) es un lenguaje de programación especialmente orientado al cálculo numérico y el análisis de datos. Julia permite además realizar cálculos simbólicos y dispone de una gran [biblioteca de paquetes](https://julialang.org/packages/) con aplicaciones en muy diversas áreas de las Matemáticas como Cálculo, Álgebra, Geometría, Matemática Discreta o Estadística. 
 
-![](img/logos/logo-julia.svg)
+![](img/logos/logo-julia.png)
 
 La ventaja de Julia frente a otros programas habituales de cálculo como Mathematica, MATLAB o Sage radica en su potencia de cálculo y su velocidad (equiparable al lenguaje C), lo que lo hace ideal para manejar grandes volúmenes de datos o realizar tareas que requieran largos y complejos cálculos. Además, es software libre por lo que resulta ideal para introducirlo en el aula como soporte computacional para los modelos matemáticos sin coste alguno.
 

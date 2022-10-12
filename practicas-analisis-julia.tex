@@ -248,7 +248,7 @@
 
 \vspace{1.5cm}
 
-\includegraphics[width=0.4\textwidth]{img/logos/infinito.png}
+\includegraphics[width=0.4\textwidth]{img/logos/infinito-julia.png}
 \end{center}
 
 \vfill
@@ -260,7 +260,7 @@ Sánchez
 Alberca}\\ \textsf{asalber@ceu.es} \\ \textsf{https://aprendeconalf.es}}
 \end{tabular}
 \end{flushleft}
-\end{titlepage}\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, frame hidden, enhanced, breakable, borderline west={3pt}{0pt}{shadecolor}, sharp corners]}{\end{tcolorbox}}\fi
+\end{titlepage}\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, sharp corners, boxrule=0pt, frame hidden, breakable, interior hidden, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Indice de contenidos}
 {
@@ -274,11 +274,12 @@ Alberca}\\ \textsf{asalber@ceu.es} \\ \textsf{https://aprendeconalf.es}}
 \chapter*{Prefacio}\label{prefacio}}
 \addcontentsline{toc}{chapter}{Prefacio}
 
-¡Bienvenido a Prácticas de Cálculo con Julia!
+¡Bienvenido a Prácticas de Análisis Matemático con Julia!
 
-Este libro presenta una recopilación de prácticas de Cálculo en una y
-varias variables con el lenguaje de programación
-\href{https://julialang.org/}{Julia}.
+Este libro presenta una recopilación de prácticas de Análisis Matemático
+en una y varias variables reales con el lenguaje de programación
+\href{https://julialang.org/}{Julia}, con problemas aplicados a las
+Ciencias y las Ingenierías.
 
 No es un libro para aprender a programar con Julia, ya que solo enseña
 el uso del lenguaje y de algunos de sus paquetes para resolver problemas
@@ -348,7 +349,7 @@ Julia permite además realizar cálculos simbólicos y dispone de una gran
 aplicaciones en muy diversas áreas de las Matemáticas como Cálculo,
 Álgebra, Geometría, Matemática Discreta o Estadística.
 
-\includegraphics{./img/logos/logo-julia.svg}
+\includegraphics{./img/logos/logo-julia.png}
 
 La ventaja de Julia frente a otros programas habituales de cálculo como
 Mathematica, MATLAB o Sage radica en su potencia de cálculo y su
@@ -433,7 +434,7 @@ Los comandos más habituales son:
   de Julia.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 Para instalar el paquete \texttt{SymPy} para cálculo simbólico basta con
 teclear \texttt{add\ Sympy}.
@@ -536,7 +537,7 @@ Descripción
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -601,7 +602,7 @@ cumple \texttt{x\ ==\ div(x,y)*y\ +\ rem(x,y)} \\
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -654,7 +655,7 @@ negativo y 0 si es 0. \\
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -702,7 +703,7 @@ Descripción
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -768,7 +769,7 @@ Descripción
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -836,7 +837,7 @@ en radianes \\
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -899,7 +900,7 @@ Derecha \\
 Cuando se quiera evaluar un operador con menor prioridad antes que otro
 con mayor prioridad, hay que utilizar paréntesis.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -948,8 +949,8 @@ paquetes:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ImportTok{using} \BuiltInTok{SymPy  }\CommentTok{\# Para el cálculo simbólico de límites y derivadas}
-\ImportTok{using} \BuiltInTok{Plots  }\CommentTok{\# Para el dibujo de gráficas}
+\ImportTok{using} \BuiltInTok{SymPy  }\CommentTok{\# Para el cálculo simbólico de límites.}
+\ImportTok{using} \BuiltInTok{Plots  }\CommentTok{\# Para el dibujo de gráficas.}
 \ImportTok{using} \BuiltInTok{LaTeXStrings  }\CommentTok{\# Para usar código LaTeX en los gráficos.}
 \end{Highlighting}
 \end{Shaded}
@@ -966,12 +967,14 @@ Dar los 10 primeros términos de las siguientes sucesiones:
   \((2n+1)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Pista}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Pista}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 Definir una función para el término general y aplicar la función a los
-naturales de 1 a 10 usando compresiones de arrays.
+naturales de 1 a 10 usando
+\href{https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html\#comprensi\%C3\%B3n-de-arrays}{compresiones
+de arrays}.
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -994,7 +997,7 @@ naturales de 1 a 10 usando compresiones de arrays.
   \(\left(\frac{1}{n}\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1021,7 +1024,7 @@ naturales de 1 a 10 usando compresiones de arrays.
   \(\left((-1)^n\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1044,7 +1047,7 @@ naturales de 1 a 10 usando compresiones de arrays.
   \(\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1067,7 +1070,7 @@ naturales de 1 a 10 usando compresiones de arrays.
   \(x_1=1\) y \(x_{n+1}=\sqrt{1+x_n}\) \(\forall n\in\mathbb{N}\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1091,11 +1094,12 @@ Dibujar en una gráfica los 50 primeros términos de las siguientes
 sucesiones y deducir si son convergentes o no. En el caso de que sean
 convergentes, dar un valor aproximado de su límite.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Pista}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Pista}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 Definir una función para el término general y aplicar la función a los
 naturales de 1 a 50 usando compresiones de arrays como en el ejercicio
-anterior. Después usar la función \texttt{scatter} del paquete
-\texttt{Plots} para dibujar el array de términos.
+anterior. Después usar la función
+\href{https://docs.juliaplots.org/latest/api/\#Plots.scatter-Tuple}{\texttt{scatter}}
+del paquete \texttt{Plots} para dibujar el array de términos.
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -1105,7 +1109,7 @@ anterior. Después usar la función \texttt{scatter} del paquete
   \(\left(\frac{n}{4n+2}\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1117,7 +1121,7 @@ anterior. Después usar la función \texttt{scatter} del paquete
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-9-output-1.pdf}
+{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-8-output-1.pdf}
 
 }
 
@@ -1134,7 +1138,7 @@ La sucesión converge al número \(0.25\).
   \(\left(\frac{2^n}{n^2}\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1146,7 +1150,7 @@ La sucesión converge al número \(0.25\).
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-10-output-1.pdf}
+{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-9-output-1.pdf}
 
 }
 
@@ -1163,7 +1167,7 @@ La sucesión diverge.
   \(\left(\frac{(-1)^n}{n}\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1175,7 +1179,7 @@ La sucesión diverge.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-11-output-1.pdf}
+{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-10-output-1.pdf}
 
 }
 
@@ -1192,7 +1196,7 @@ La sucesión converge al \(0\).
   \(\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1204,7 +1208,7 @@ La sucesión converge al \(0\).
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-12-output-1.pdf}
+{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-11-output-1.pdf}
 
 }
 
@@ -1221,7 +1225,7 @@ La sucesión converge aproximadamente a \(2.7\).
   \(x_1 = 2\) y \(x_{n+1}=1+\frac{1}{x_n}\) \(\forall n\in\mathbb{N}\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1233,7 +1237,7 @@ La sucesión converge aproximadamente a \(2.7\).
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-13-output-1.pdf}
+{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-12-output-1.pdf}
 
 }
 
@@ -1257,18 +1261,18 @@ Calcular el límite, si existe, de las siguiente sucesiones.
   \(\left(\frac{1}{n}\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Pista}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Pista}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 Definir una función para el término general usar la función
-\texttt{limit} del paquete \texttt{SymPy} para calcular el límite de la
-sucesión.
+\href{https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/\#Limits-1}{\texttt{limit}}
+del paquete \texttt{SymPy} para calcular el límite de la sucesión.
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \ImportTok{using} \BuiltInTok{SymPy}
-\PreprocessorTok{@syms}\NormalTok{ n}\OperatorTok{::}\DataTypeTok{(integer}\NormalTok{, positive)}
+\PreprocessorTok{@syms}\NormalTok{ n}\OperatorTok{::}\DataTypeTok{(integer}\NormalTok{, positive)  }\CommentTok{\# Declaración de la variable simbólica n.}
 \FunctionTok{x}\NormalTok{(n) }\OperatorTok{=} \FloatTok{1}\OperatorTok{/}\NormalTok{n}
 \FunctionTok{limit}\NormalTok{(}\FunctionTok{x}\NormalTok{(n), n}\OperatorTok{=\textgreater{}}\NormalTok{oo)}
 \end{Highlighting}
@@ -1286,7 +1290,7 @@ $0$
   \(\left((-1)^n\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1308,7 +1312,7 @@ $\text{NaN}$
   \(\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1379,7 +1383,7 @@ a_n = \frac{1}{2}nr^2\operatorname{sen}\left(\frac{360}{n}\right)
   \(i=1,\ldots, 6\) tomando \(r=1\).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1403,7 +1407,7 @@ a_n = \frac{1}{2}nr^2\operatorname{sen}\left(\frac{360}{n}\right)
   los polígonos tomando \(r=1\).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1415,7 +1419,7 @@ a_n = \frac{1}{2}nr^2\operatorname{sen}\left(\frac{360}{n}\right)
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-18-output-1.pdf}
+{\centering \includegraphics{./sucesiones_files/figure-pdf/cell-17-output-1.pdf}
 
 }
 
@@ -1432,7 +1436,7 @@ a_n = \frac{1}{2}nr^2\operatorname{sen}\left(\frac{360}{n}\right)
   tomando \(r=1\).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1456,7 +1460,7 @@ $3.14159265358979$
   \(r\).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomrule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, left=2mm, bottomtitle=1mm, breakable, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, leftrule=.75mm, toprule=.15mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colframe=quarto-callout-tip-color-frame, toptitle=1mm, leftrule=.75mm, colback=white, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, coltitle=black, rightrule=.15mm, breakable, left=2mm, opacityback=0]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1482,9 +1486,9 @@ $3.14159265358979 r^{2}$
 Calcular el décimo término de la sucesión
 \(\left(\frac{3n^2+n}{6n^2-1}\right)_{n=1}^\infty\).
 
-\begin{verbatim}
-QuizQuestions.Numericq(0.5175292153589316, 1.0e-5, "", "", "Introducir hasta 5 decimales", "", nothing)
-\end{verbatim}
+\vspace{18pt}*Hint: *
+
+Introducir hasta 5 decimales
 
 \end{exercise}
 
@@ -1495,9 +1499,15 @@ Calcular los 10 primeros términos de la sucesión
 \(\left(\frac{3n^2+n}{6n^2-1}\right)_{n=1}^\infty\) y averiguar hacia
 dónde converge.
 
-\begin{verbatim}
-QuizQuestions.Radioq(("1", "1.5", "0", "No converge", "0.5"), 5, [1, 2, 3, 4, 5], ("1", "1.5", "0", "No converge", "0.5"), "", "", "", false)
-\end{verbatim}
+${\quad\Box}$ No converge
+
+${\quad\Box}$ 1.5
+
+${\quad\Box}$ 1
+
+${\quad\Box}$ 0
+
+${\quad\Box}$ 0.5
 
 \end{exercise}
 
@@ -1508,9 +1518,9 @@ A la vista de la gráfica de los 20 primeros términos de la sucesión
 \(\left(\frac{2^n}{n!}\right)_{n=1}^\infty\), ¿crees que la sucesión
 converge?
 
-\begin{verbatim}
-QuizQuestions.Radioq(["Yes", "No"], 1, [1, 2], ["Yes", "No"], "", "", "", false)
-\end{verbatim}
+${\quad\Box}$ Si
+
+${\quad\Box}$ No
 
 \end{exercise}
 
@@ -1521,9 +1531,9 @@ A la vista de la gráfica de los 10 primeros términos de la sucesión
 \(\left(\frac{n^n}{n!}\right)_{n=1}^\infty\), ¿crees que la sucesión
 converge?
 
-\begin{verbatim}
-QuizQuestions.Radioq(["Yes", "No"], 2, [1, 2], ["Yes", "No"], "", "", "", false)
-\end{verbatim}
+${\quad\Box}$ Si
+
+${\quad\Box}$ No
 
 \end{exercise}
 
@@ -1534,9 +1544,9 @@ A la vista de la gráfica de los 20 primeros términos de la sucesión dada
 por \(x_1=1\) y \(x_{n+1}=\sqrt{x_n+2}\) \(\forall n\in \mathbb{N}\),
 ¿crees que la sucesión converge?
 
-\begin{verbatim}
-QuizQuestions.Radioq(["Yes", "No"], 1, [1, 2], ["Yes", "No"], "", "", "", false)
-\end{verbatim}
+${\quad\Box}$ Si
+
+${\quad\Box}$ No
 
 \end{exercise}
 
@@ -1546,9 +1556,9 @@ QuizQuestions.Radioq(["Yes", "No"], 1, [1, 2], ["Yes", "No"], "", "", "", false)
 ¿Cuál es el límite de la sucesión
 \(\left(\left(1+\frac{2}{n}\right)^n\right)_{n=1}^\infty\)
 
-\begin{verbatim}
-QuizQuestions.Numericq(7.38905609893065, 1.0e-5, "", "", "Introducir hasta 5 decimales", "", nothing)
-\end{verbatim}
+\vspace{18pt}*Hint: *
+
+Introducir hasta 5 decimales
 
 \end{exercise}
 

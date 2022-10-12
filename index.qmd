@@ -5,9 +5,9 @@ lang: es
 
 # Prefacio {.unnumbered}
 
-¡Bienvenido a Prácticas de Cálculo con Julia!
+¡Bienvenido a Prácticas de Análisis Matemático con Julia!
 
-Este libro presenta una recopilación de prácticas de Cálculo en una y varias variables con el lenguaje de programación [Julia](https://julialang.org/).
+Este libro presenta una recopilación de prácticas de Análisis Matemático en una y varias variables reales con el lenguaje de programación [Julia](https://julialang.org/), con problemas aplicados a las Ciencias y las Ingenierías.
 
 No es un libro para aprender a programar con Julia, ya que solo enseña el uso del lenguaje y de algunos de sus paquetes para resolver problemas de Cálculo tanto numérico como simbólico. Para quienes estén interesados en aprender a programar en este Julia, os recomiendo leer este [manual de Julia](https://aprendeconalf.es/manual-julia/).
 
