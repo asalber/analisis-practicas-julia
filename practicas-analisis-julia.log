@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.20)  12 OCT 2022 11:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.20)  12 OCT 2022 21:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1013,327 +1013,327 @@ LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on in
  (/usr/local/texlive/2022/texmf-dist/tex/latex/fontawesome5/ufontawesomefree1.fd) [6]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 1.1 on input line 481.
+(longtable)                in table 1.1 on input line 478.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:492: LaTeX Error: Unicode character ≠ (U+2260)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:489: LaTeX Error: Unicode character ≠ (U+2260)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.492 \texttt{!=}, \texttt{≠}
+l.489 \texttt{!=}, \texttt{≠}
                                 & Desigualdad \\
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:494: LaTeX Error: Unicode character ≤ (U+2264)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:491: LaTeX Error: Unicode character ≤ (U+2264)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.494 \texttt{\textless{}=}, \texttt{≤}
+l.491 \texttt{\textless{}=}, \texttt{≤}
                                           & Menor o igual que \\
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:496: LaTeX Error: Unicode character ≥ (U+2265)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:493: LaTeX Error: Unicode character ≥ (U+2265)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.496 \texttt{\textgreater{}=}, \texttt{≥}
+l.493 \texttt{\textgreater{}=}, \texttt{≥}
                                              & Mayor o igual que \\
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 1.2 on input line 498.
+(longtable)                in table 1.2 on input line 495.
 
 [7]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 1.3 on input line 512.
+(longtable)                in table 1.3 on input line 509.
 
 [8] [9] [10]
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:696: LaTeX Error: Unicode character √ (U+221A)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:693: LaTeX Error: Unicode character √ (U+221A)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.696 \texttt{sqrt(x)}, \texttt{√x}
+l.693 \texttt{sqrt(x)}, \texttt{√x}
                                       & Raíz cuadrada de \texttt{x} \\
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:697: LaTeX Error: Unicode character ∛ (U+221B)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:694: LaTeX Error: Unicode character ∛ (U+221B)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.697 \texttt{cbrt(x)}, \texttt{∛x}
+l.694 \texttt{cbrt(x)}, \texttt{∛x}
                                       & Raíz cúbica de \texttt{x} \\
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 [11] [12]
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:776: LaTeX Error: Unicode character π (U+03C0)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:772: LaTeX Error: Unicode character π (U+03C0)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.776 ...}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
+l.772 ...}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
                                                   
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:779: LaTeX Error: Unicode character π (U+03C0)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:775: LaTeX Error: Unicode character π (U+03C0)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.779 ...}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
+l.775 ...}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
                                                   
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:785: LaTeX Error: Unicode character π (U+03C0)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:781: LaTeX Error: Unicode character π (U+03C0)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.785 ...}\OperatorTok{/}\FloatTok{4}\NormalTok{)}
+l.781 ...}\OperatorTok{/}\FloatTok{4}\NormalTok{)}
                                                   
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:791: LaTeX Error: Unicode character π (U+03C0)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:787: LaTeX Error: Unicode character π (U+03C0)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.791 ...}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
+l.787 ...}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
                                                   
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:797: LaTeX Error: Unicode character π (U+03C0)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:793: LaTeX Error: Unicode character π (U+03C0)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.797 ...ormalTok{)}\OperatorTok{\^{}}\FloatTok{2}
+l.793 ...ormalTok{)}\OperatorTok{\^{}}\FloatTok{2}
                                                   
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:797: LaTeX Error: Unicode character π (U+03C0)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:793: LaTeX Error: Unicode character π (U+03C0)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.797 ...ormalTok{)}\OperatorTok{\^{}}\FloatTok{2}
+l.793 ...ormalTok{)}\OperatorTok{\^{}}\FloatTok{2}
                                                   
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 [13]
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:856: LaTeX Error: Unicode character π (U+03C0)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:852: LaTeX Error: Unicode character π (U+03C0)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.856 ...\OperatorTok{/}\FloatTok{4}\NormalTok{))}
+l.852 ...\OperatorTok{/}\FloatTok{4}\NormalTok{))}
                                                   
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-Overfull \hbox (3.11302pt too wide) in paragraph at lines 876--877
+Overfull \hbox (3.11302pt too wide) in paragraph at lines 872--873
 []\T1/lmr/m/n/10.95 (-20) Categor�a  
  []
 
 
-Overfull \hbox (3.87006pt too wide) in paragraph at lines 884--884
+Overfull \hbox (3.87006pt too wide) in paragraph at lines 880--880
 []|\T1/lmr/m/n/10.95 (-20) Funciones|  
  []
 
 
-Overfull \hbox (31.25829pt too wide) in paragraph at lines 885--885
+Overfull \hbox (31.25829pt too wide) in paragraph at lines 881--881
 []|\T1/lmr/m/n/10.95 (-20) Exponenciaci�n|  
  []
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:886: LaTeX Error: Unicode character √ (U+221A)
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:882: LaTeX Error: Unicode character √ (U+221A)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.886 Unarios & \texttt{+\ -\ √}
+l.882 Unarios & \texttt{+\ -\ √}
                                    & Derecha \\
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
 
-Overfull \hbox (6.28473pt too wide) in paragraph at lines 887--887
+Overfull \hbox (6.28473pt too wide) in paragraph at lines 883--883
 []|\T1/lmr/m/n/10.95 (-20) Fracciones|  
  []
 
 
-Overfull \hbox (24.84363pt too wide) in paragraph at lines 888--888
+Overfull \hbox (24.84363pt too wide) in paragraph at lines 884--884
 []|\T1/lmr/m/n/10.95 (-20) Multiplicaci�n|  
  []
 
 
-Overfull \hbox (28.80728pt too wide) in paragraph at lines 891--891
+Overfull \hbox (28.80728pt too wide) in paragraph at lines 887--887
 []|\T1/lmr/m/n/10.95 (-20) Comparaciones|  
  []
 
 
-Overfull \hbox (17.80865pt too wide) in paragraph at lines 894--894
+Overfull \hbox (17.80865pt too wide) in paragraph at lines 890--890
 []|\T1/lmr/m/n/10.95 (-20) Asignaciones|  
  []
 
 [14] [15]
 chapter 2.
-LaTeX Font Info:    Trying to load font information for U+fontawesomefree2 on input line 977.
+LaTeX Font Info:    Trying to load font information for U+fontawesomefree2 on input line 973.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/fontawesome5/ufontawesomefree2.fd)
-Overfull \hbox (705.07541pt too wide) in paragraph at lines 1014--1014
+Overfull \hbox (705.07541pt too wide) in paragraph at lines 1010--1010
 []\T1/lmtt/m/n/10.95 [1.0, 0.5, 0.3333333333333333, 0.25, 0.2, 0.16666666666666666, 0.14285714285714285, 0.125, 0.1111111111111111, 0.1]Rational{Int64}[1//1, 1//2, 1//3, 1//4, 1//5, 1//6, 1//7, 1//8, 1//9, 1//10][] 
  []
 
 [16
 
 ]
-Overfull \hbox (526.86467pt too wide) in paragraph at lines 1060--1060
+Overfull \hbox (526.86467pt too wide) in paragraph at lines 1056--1056
 []\T1/lmtt/m/n/10.95 [2.0, 2.25, 2.3703703703703702, 2.44140625, 2.4883199999999994, 2.5216263717421135, 2.546499697040712, 2.565784513950348, 2.581174791713198, 2.5937424601000023][] 
  []
 
 
-Overfull \hbox (670.58301pt too wide) in paragraph at lines 1083--1083
+Overfull \hbox (670.58301pt too wide) in paragraph at lines 1079--1079
 []\T1/lmtt/m/n/10.95 Real[1, 1.4142135623730951, 1.5537739740300374, 1.5980531824786175, 1.6118477541252516, 1.616121206508117, 1.6174427985273905, 1.617851290609675, 1.6179775309347393, 1.6180165422314876][] 
  []
 
 [17]
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-8-output-1.pdf' not found on input line 1124.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-8-output-1.pdf' not found on input line 1120.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1124: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-8-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1120: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-8-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1124 ...es_files/figure-pdf/cell-8-output-1.pdf}
+l.1120 ...es_files/figure-pdf/cell-8-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-9-output-1.pdf' not found on input line 1153.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-9-output-1.pdf' not found on input line 1149.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1153: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-9-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1149: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-9-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1153 ...es_files/figure-pdf/cell-9-output-1.pdf}
+l.1149 ...es_files/figure-pdf/cell-9-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 [18]
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-10-output-1.pdf' not found on input line 1182.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-10-output-1.pdf' not found on input line 1178.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1182: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-10-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1178: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-10-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1182 ...s_files/figure-pdf/cell-10-output-1.pdf}
+l.1178 ...s_files/figure-pdf/cell-10-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-11-output-1.pdf' not found on input line 1211.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-11-output-1.pdf' not found on input line 1207.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1211: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-11-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1207: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-11-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1211 ...s_files/figure-pdf/cell-11-output-1.pdf}
+l.1207 ...s_files/figure-pdf/cell-11-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 [19]
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-12-output-1.pdf' not found on input line 1240.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-12-output-1.pdf' not found on input line 1236.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1240: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-12-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1236: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-12-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1240 ...s_files/figure-pdf/cell-12-output-1.pdf}
+l.1236 ...s_files/figure-pdf/cell-12-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 [20]
-<./img/sucesiones/poligonos-circunferencia.png, id=207, 1927.2pt x 642.4pt>
+<./img/sucesiones/poligonos-circunferencia.png, id=205, 1927.2pt x 642.4pt>
 File: ./img/sucesiones/poligonos-circunferencia.png Graphic file (type png)
 <use ./img/sucesiones/poligonos-circunferencia.png>
-Package pdftex.def Info: ./img/sucesiones/poligonos-circunferencia.png  used on input line 1345.
+Package pdftex.def Info: ./img/sucesiones/poligonos-circunferencia.png  used on input line 1341.
 (pdftex.def)             Requested size: 418.25102pt x 139.41699pt.
  (././img/sucesiones/area-poligono-regular-inscrito.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -1345,21 +1345,21 @@ File: tikzlibraryangles.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 16.
 ) [21 <./img/sucesiones/poligonos-circunferencia.png>]
-Overfull \hbox (279.66913pt too wide) in paragraph at lines 1396--1396
+Overfull \hbox (279.66913pt too wide) in paragraph at lines 1392--1392
 []\T1/lmtt/m/n/10.95 [2.938926261462366, 3.1395259764656687, 3.1415719827794755, 3.141592446881286, 3.141592651522708, 3.1415926535691225][] 
  []
 
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-17-output-1.pdf' not found on input line 1422.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-17-output-1.pdf' not found on input line 1418.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1422: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-17-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1418: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-17-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1422 ...s_files/figure-pdf/cell-17-output-1.pdf}
+l.1418 ...s_files/figure-pdf/cell-17-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1374,18 +1374,18 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 39001 strings out of 476932
- 803027 string characters out of 5824858
+ 38980 strings out of 476932
+ 802430 string characters out of 5824858
  1297127 words of memory out of 5000000
- 59242 multiletter control sequences out of 15000+600000
- 547336 words of font info for 144 fonts, out of 8000000 for 9000
+ 59227 multiletter control sequences out of 15000+600000
+ 544366 words of font info for 141 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
- 122i,10n,120p,10700b,1459s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 122i,10n,120p,10700b,1461s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/home/alf/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/home/alf/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/home/alf/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/home/alf/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/home/alf/texmf/fonts/enc/dvips/fontawesome5/fa5free2.enc}{/home/alf/texmf/fonts/enc/dvips/fontawesome5/fa5free1.enc}{/home/alf/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/home/alf/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</home/alf/texmf/fonts/type1/public/fontawesome5/FontAwesome5Free-Solid.pfb></home/alf/texmf/fonts/type1/public/lm/lmbx10.pfb></home/alf/texmf/fonts/type1/public/lm/lmex10.pfb></home/alf/texmf/fonts/type1/public/lm/lmmi10.pfb></home/alf/texmf/fonts/type1/public/lm/lmmi6.pfb></home/alf/texmf/fonts/type1/public/lm/lmmi8.pfb></home/alf/texmf/fonts/type1/public/lm/lmr10.pfb></home/alf/texmf/fonts/type1/public/lm/lmr6.pfb></home/alf/texmf/fonts/type1/public/lm/lmr8.pfb></home/alf/texmf/fonts/type1/public/lm/lmri10.pfb></home/alf/texmf/fonts/type1/public/lm/lmss12.pfb></home/alf/texmf/fonts/type1/public/lm/lmssbx10.pfb></home/alf/texmf/fonts/type1/public/lm/lmsy10.pfb></home/alf/texmf/fonts/type1/public/lm/lmsy8.pfb></home/alf/texmf/fonts/type1/public/lm/lmtt10.pfb></home/alf/texmf/fonts/type1/public/amsfonts/symbols/msam10.pfb></home/alf/texmf/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on practicas-analisis-julia.pdf (25 pages, 450778 bytes).
+Output written on practicas-analisis-julia.pdf (25 pages, 451341 bytes).
 PDF statistics:
- 434 PDF objects out of 1000 (max. 8388607)
- 357 compressed objects within 4 object streams
- 124 named destinations out of 1000 (max. 500000)
- 47297 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 429 PDF objects out of 1000 (max. 8388607)
+ 352 compressed objects within 4 object streams
+ 122 named destinations out of 1000 (max. 500000)
+ 45241 words of extra memory for PDF output out of 51595 (max. 10000000)
 

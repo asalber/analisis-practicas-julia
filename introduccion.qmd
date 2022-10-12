@@ -9,7 +9,9 @@ La gran potencia de cálculo alcanzada por los ordenadores en las últimas déca
 
 [Julia](https://julialang.org/) es un lenguaje de programación especialmente orientado al cálculo numérico y el análisis de datos. Julia permite además realizar cálculos simbólicos y dispone de una gran [biblioteca de paquetes](https://julialang.org/packages/) con aplicaciones en muy diversas áreas de las Matemáticas como Cálculo, Álgebra, Geometría, Matemática Discreta o Estadística. 
 
+::: {style="text-align:center;"}
 ![](img/logos/logo-julia.png)
+:::
 
 La ventaja de Julia frente a otros programas habituales de cálculo como Mathematica, MATLAB o Sage radica en su potencia de cálculo y su velocidad (equiparable al lenguaje C), lo que lo hace ideal para manejar grandes volúmenes de datos o realizar tareas que requieran largos y complejos cálculos. Además, es software libre por lo que resulta ideal para introducirlo en el aula como soporte computacional para los modelos matemáticos sin coste alguno.
 
@@ -70,11 +72,9 @@ Para instalar el paquete `SymPy` para cálculo simbólico basta con teclear `add
 ```
 :::
 
-## Aritmética
+## Operadores aritméticos.
 
 El uso más simple de Julia es la realización de operaciones aritméticas como en una calculadora. En Julia se utilizan los siguientes operadores.
-
-### Operadores aritméticos.
 
 | Operador | Descripción           |
 |:---------- |:-------------- |
@@ -107,7 +107,7 @@ El uso más simple de Julia es la realización de operaciones aritméticas como 
 
 Existen también un montón de funciones predefinidas habituales en Cálculo.
 
-### Funciones de redondeo
+## Funciones de redondeo
 
 | Función         | Descripción                        |
 |:--------------------- |:-----------------------------|
@@ -149,7 +149,7 @@ julia> round(2.786, digits = 2)
 ```
 :::
 
-### Funciones de división
+## Funciones de división
 
 | Función                  | Descripción                                                                                               |
 |:------------------------- |:--------------------------------------------------------------------------------------------------------- |
@@ -191,7 +191,7 @@ julia> lcm(12,18)
 ```
 :::
 
-### Funciones para el signo y el valor absoluto
+## Funciones para el signo y el valor absoluto
 
 | Función                | Descripción                                                |
 |:----------------------- |:---------------------------------------------------------- |
@@ -218,7 +218,7 @@ julia> sign(2.5)
 ```
 :::
 
-### Raíces, exponenciales y logaritmos
+## Raíces, exponenciales y logaritmos
 
 | Función                | Descripción                                                                |
 |:------------------------ |:-------------------------------------------------------------------------- |
@@ -265,7 +265,7 @@ julia> log2(2^3)
 ```
 :::
 
-### Funciones trigonométricas
+## Funciones trigonométricas
 
 | Función                | Descripción                                                                |
 |:------------------------ |:-------------------------------------------------------------------------- |
@@ -310,7 +310,7 @@ julia> sin(π/4)^2 + cos(π/4)^2
 ```
 :::
 
-### Funciones trigonométricas inversas
+## Funciones trigonométricas inversas
 
 | Función                | Descripción                                                                |
 |:------------------------ |:-------------------------------------------------------------------------- |
@@ -345,7 +345,7 @@ julia> atand(tan(π/4))
 ```
 :::
 
-### Precedencia de operadores
+## Precedencia de operadores
 
 A la hora de evaluar una expresión aritmética, Julia evalúa los operadores según el siguiente orden de prioridad (de mayor a menor prioridad).
 
