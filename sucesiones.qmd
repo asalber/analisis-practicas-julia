@@ -68,7 +68,7 @@ print([x(n) for n = 1:10])
 ```
 :::
 
-d. $x_1=1$ y $x_{n+1}=\sqrt{1+x_n}$ $\forall n\in\mathbb{N}$
+e. $x_1=1$ y $x_{n+1}=\sqrt{1+x_n}$ $\forall n\in\mathbb{N}$
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -100,7 +100,7 @@ scatter([x(n) for n = 1:50], legend=false)
 La sucesión converge al número $0.25$.
 :::
 
-a. $\left(\frac{2^n}{n^2}\right)_{n=1}^\infty$
+b. $\left(\frac{2^n}{n^2}\right)_{n=1}^\infty$
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -113,7 +113,7 @@ scatter([x(n) for n = 1:50], legend=false)
 La sucesión diverge.
 :::
 
-a. $\left(\frac{(-1)^n}{n}\right)_{n=1}^\infty$
+c. $\left(\frac{(-1)^n}{n}\right)_{n=1}^\infty$
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -126,7 +126,7 @@ scatter([x(n) for n = 1:50], legend=false)
 La sucesión converge al $0$.
 :::
 
-a. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
+d. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -139,7 +139,7 @@ scatter([x(n) for n = 1:50], legend=false)
 La sucesión converge aproximadamente a $2.7$.
 :::
 
-a. $x_1 = 2$ y $x_{n+1}=1+\frac{1}{x_n}$ $\forall n\in\mathbb{N}$
+e. $x_1 = 2$ y $x_{n+1}=1+\frac{1}{x_n}$ $\forall n\in\mathbb{N}$
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -173,7 +173,7 @@ limit(x(n), n=>oo)
 ```
 :::
 
-c. $\left((-1)^n\right)_{n=1}^\infty$
+b. $\left((-1)^n\right)_{n=1}^\infty$
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -184,7 +184,7 @@ limit(x(n), n=>oo)
 ```
 :::
 
-d. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
+c. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
 
 :::{.callout-tip collapse="true"}
 ## Solución
