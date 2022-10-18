@@ -23,7 +23,7 @@ Calcular la tasa de variación media de las siguientes funciones en los interval
 a. $f(x) = 3x$.
 
 :::{.callout-note collapse="true"}
-## Pista
+## Ayuda
 La tasa de variación media de una función $y = f(x)$ en un intervalo $[a,b]$ se define como
 
 $$\mbox{TVM}f(a,b) = \frac{\Delta y}{\Delta x} = \frac{f(b)-f(a)}{b-a}$$
@@ -68,7 +68,7 @@ Dibujar las gráficas de las siguientes funciones y las rectas secantes a ellas 
 a. $f(x) = 3x$.
 
 :::{.callout-note collapse="true"}
-## Pista
+## Ayuda
 La pendiente de la recta secante a una función $f(x)$ en el intervalo $[a, b]$ es la tasa de variación media de $f$ en ese intervalo. Así pues, la ecuación de la recta secante a una función $f(x)$ en el intervalo $[a, b]$ es 
 
 $$y = f(a) + \mbox{TVM}f(a,b) (x-a) = f(a) + \frac{f(b)-f(a)}{b-a}(x-a)$$
@@ -124,7 +124,7 @@ Calcular la tasa de variación instantánea en los puntos $x=1$, $x=2$ y $x=3$ d
 a. $f(x) = 3x$.
 
 :::{.callout-note collapse="true"}
-## Pista
+## Ayuda
 La tasa de variación instantánea de una función $y = f(x)$ en el punto $x=a$ se define como
 
 $$ \mbox{TVI}f(a) = \lim_{\Delta x\rightarrow 0}\mbox{TVM}f(a,a+\Delta x) = \lim_{\Delta x\rightarrow 0}\frac{f(a+\Delta h)-f(a)}{\Delta x}.$$
@@ -173,7 +173,7 @@ Utilizando la definición de derivada, estudiar la derivabilidad de las siguient
 a. $f(r) = \pi r^2$  en $r=1$.
 
 :::{.callout-note collapse="true"}
-## Pista
+## Ayuda
 La derivada de una función $f(x)$ en un punto $x=a$ se define como 
 
 $$f'(a) = lim_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h}.$$
@@ -214,7 +214,7 @@ Calcular la derivada de las siguientes y dar una interpretación en términos f�
 a. Área del círculo: $a(r) = \pi r^2$.
 
 :::{.callout-note collapse="true"}
-## Pista
+## Ayuda
 
 Usar la función `diff(f)` para calcular la derivada de la función `f`.
 
@@ -250,7 +250,7 @@ Como la derivada $e'(t) = -g_0t$ es negativa, en cada instante $t$ el espacio de
 Calcular y dibujar las rectas tangente y normal a la gráfica de la función $f(x) = \ln(\sqrt{x + 1}) en $x=1$.
 
 :::{.callout-note collapse="true"}
-## Pista
+## Ayuda
 
 La ecuación de la recta tangente a la función $y = f(x)$ en $x=a$ es
 
@@ -289,7 +289,7 @@ Calcular las derivadas de las siguientes funciones hasta el orden 4 y deducir la
 a. $f(x) = a^x$.
 
 :::{.callout-note collapse="true"}
-## Pista
+## Ayuda
 
 Usar la función `diff(f, n)` para calcular la derivada de orden `n` de la función `f`.
 :::

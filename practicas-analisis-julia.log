@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.20)  12 OCT 2022 21:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.20)  19 OCT 2022 00:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1233,98 +1233,103 @@ Overfull \hbox (17.80865pt too wide) in paragraph at lines 890--890
 
 [14] [15]
 chapter 2.
-LaTeX Font Info:    Trying to load font information for U+fontawesomefree2 on input line 973.
+LaTeX Font Info:    Trying to load font information for U+fontawesomefree2 on input line 974.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/fontawesome5/ufontawesomefree2.fd)
-Overfull \hbox (705.07541pt too wide) in paragraph at lines 1010--1010
-[]\T1/lmtt/m/n/10.95 [1.0, 0.5, 0.3333333333333333, 0.25, 0.2, 0.16666666666666666, 0.14285714285714285, 0.125, 0.1111111111111111, 0.1]Rational{Int64}[1//1, 1//2, 1//3, 1//4, 1//5, 1//6, 1//7, 1//8, 1//9, 1//10][] 
+Overfull \hbox (268.17166pt too wide) in paragraph at lines 1011--1011
+[]\T1/lmtt/m/n/10.95 [1.0, 0.5, 0.3333333333333333, 0.25, 0.2, 0.16666666666666666, 0.14285714285714285, 0.125, 0.1111111111111111, 0.1][] 
+ []
+
+
+Overfull \hbox (43.97105pt too wide) in paragraph at lines 1015--1015
+[]\T1/lmtt/m/n/10.95 Rational{Int64}[1//1, 1//2, 1//3, 1//4, 1//5, 1//6, 1//7, 1//8, 1//9, 1//10][] 
  []
 
 [16
 
 ]
-Overfull \hbox (526.86467pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (526.86467pt too wide) in paragraph at lines 1061--1061
 []\T1/lmtt/m/n/10.95 [2.0, 2.25, 2.3703703703703702, 2.44140625, 2.4883199999999994, 2.5216263717421135, 2.546499697040712, 2.565784513950348, 2.581174791713198, 2.5937424601000023][] 
  []
 
 
-Overfull \hbox (670.58301pt too wide) in paragraph at lines 1079--1079
+Overfull \hbox (670.58301pt too wide) in paragraph at lines 1084--1084
 []\T1/lmtt/m/n/10.95 Real[1, 1.4142135623730951, 1.5537739740300374, 1.5980531824786175, 1.6118477541252516, 1.616121206508117, 1.6174427985273905, 1.617851290609675, 1.6179775309347393, 1.6180165422314876][] 
  []
 
 [17]
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-8-output-1.pdf' not found on input line 1120.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-8-output-1.pdf' not found on input line 1125.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1120: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-8-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1125: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-8-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1120 ...es_files/figure-pdf/cell-8-output-1.pdf}
+l.1125 ...es_files/figure-pdf/cell-8-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-9-output-1.pdf' not found on input line 1149.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-9-output-1.pdf' not found on input line 1155.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1149: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-9-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1155: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-9-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1149 ...es_files/figure-pdf/cell-9-output-1.pdf}
+l.1155 ...es_files/figure-pdf/cell-9-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 [18]
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-10-output-1.pdf' not found on input line 1178.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-10-output-1.pdf' not found on input line 1185.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1178: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-10-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1185: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-10-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1178 ...s_files/figure-pdf/cell-10-output-1.pdf}
+l.1185 ...s_files/figure-pdf/cell-10-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-11-output-1.pdf' not found on input line 1207.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-11-output-1.pdf' not found on input line 1215.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1207: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-11-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1215: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-11-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1207 ...s_files/figure-pdf/cell-11-output-1.pdf}
+l.1215 ...s_files/figure-pdf/cell-11-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 [19]
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-12-output-1.pdf' not found on input line 1236.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-12-output-1.pdf' not found on input line 1245.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1236: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-12-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1245: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-12-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1236 ...s_files/figure-pdf/cell-12-output-1.pdf}
+l.1245 ...s_files/figure-pdf/cell-12-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1333,7 +1338,7 @@ If that doesn't work, type  X <return>  to quit.
 <./img/sucesiones/poligonos-circunferencia.png, id=205, 1927.2pt x 642.4pt>
 File: ./img/sucesiones/poligonos-circunferencia.png Graphic file (type png)
 <use ./img/sucesiones/poligonos-circunferencia.png>
-Package pdftex.def Info: ./img/sucesiones/poligonos-circunferencia.png  used on input line 1341.
+Package pdftex.def Info: ./img/sucesiones/poligonos-circunferencia.png  used on input line 1350.
 (pdftex.def)             Requested size: 418.25102pt x 139.41699pt.
  (././img/sucesiones/area-poligono-regular-inscrito.tex (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -1345,26 +1350,276 @@ File: tikzlibraryangles.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 16.
 ) [21 <./img/sucesiones/poligonos-circunferencia.png>]
-Overfull \hbox (279.66913pt too wide) in paragraph at lines 1392--1392
+Overfull \hbox (279.66913pt too wide) in paragraph at lines 1401--1401
 []\T1/lmtt/m/n/10.95 [2.938926261462366, 3.1395259764656687, 3.1415719827794755, 3.141592446881286, 3.141592651522708, 3.1415926535691225][] 
  []
 
 
-LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-17-output-1.pdf' not found on input line 1418.
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-17-output-1.pdf' not found on input line 1427.
 
 
-/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1418: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-17-output-1.pdf' not found: using draft setting.
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1427: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-17-output-1.pdf' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1418 ...s_files/figure-pdf/cell-17-output-1.pdf}
+l.1427 ...s_files/figure-pdf/cell-17-output-1.pdf}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[22] [23] [24] [25]
+[22]
+
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-20-output-1.pdf' not found on input line 1511.
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1511: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-20-output-1.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1511 ...s_files/figure-pdf/cell-20-output-1.pdf}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[23]
+
+LaTeX Warning: File `./sucesiones_files/figure-pdf/cell-21-output-1.pdf' not found on input line 1545.
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1545: Package pdftex.def Error: File `./sucesiones_files/figure-pdf/cell-21-output-1.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1545 ...s_files/figure-pdf/cell-21-output-1.pdf}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[24] [25] [26]
+chapter 3.
+
+LaTeX Warning: File `./funciones-elementales_files/figure-pdf/cell-3-output-1.pdf' not found on input line 1704.
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1704: Package pdftex.def Error: File `./funciones-elementales_files/figure-pdf/cell-3-output-1.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1704 ...es_files/figure-pdf/cell-3-output-1.pdf}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[27
+
+]
+Overfull \hbox (78.46346pt too wide) in paragraph at lines 1763--1763
+[]  \T1/lmtt/m/n/10.95 0.313859338365492835037347132945267670444933885504301908075030632358524819635648[] 
+ []
+
+
+Overfull \hbox (78.46346pt too wide) in paragraph at lines 1764--1764
+[]  \T1/lmtt/m/n/10.95 3.186140661634507164962652867054732329555066114495698091924969367641475180364343[] 
+ []
+
+[28]
+Underfull \hbox (badness 3407) in paragraph at lines 1850--1853
+[]\T1/lmr/m/n/10.95 (+20) Usar la fun-ci�n \T1/lmtt/m/n/10.95 plot \T1/lmr/m/n/10.95 (+20) co-mo en el ejer-ci-cio an-te-rior con el pa-r�-me-tro
+ []
+
+
+LaTeX Warning: File `./funciones-elementales_files/figure-pdf/cell-5-output-1.pdf' not found on input line 1869.
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1869: Package pdftex.def Error: File `./funciones-elementales_files/figure-pdf/cell-5-output-1.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1869 ...es_files/figure-pdf/cell-5-output-1.pdf}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[29]
+
+LaTeX Warning: File `./funciones-elementales_files/figure-pdf/cell-7-output-1.pdf' not found on input line 1944.
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:1944: Package pdftex.def Error: File `./funciones-elementales_files/figure-pdf/cell-7-output-1.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1944 ...es_files/figure-pdf/cell-7-output-1.pdf}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[30] [31]
+
+LaTeX Warning: File `./funciones-elementales_files/figure-pdf/cell-8-output-1.pdf' not found on input line 2057.
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:2057: Package pdftex.def Error: File `./funciones-elementales_files/figure-pdf/cell-8-output-1.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2057 ...es_files/figure-pdf/cell-8-output-1.pdf}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[32]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 3.1 on input line 2146.
+
+
+LaTeX Warning: File `./funciones-elementales_files/figure-pdf/cell-9-output-1.pdf' not found on input line 2171.
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:2171: Package pdftex.def Error: File `./funciones-elementales_files/figure-pdf/cell-9-output-1.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2171 ...es_files/figure-pdf/cell-9-output-1.pdf}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 3.2 on input line 2188.
+
+[33]
+
+LaTeX Warning: File `./funciones-elementales_files/figure-pdf/cell-10-output-1.pdf' not found on input line 2231.
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:2231: Package pdftex.def Error: File `./funciones-elementales_files/figure-pdf/cell-10-output-1.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2231 ...s_files/figure-pdf/cell-10-output-1.pdf}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[34]
+
+LaTeX Warning: File `./funciones-elementales_files/figure-pdf/cell-11-output-1.pdf' not found on input line 2265.
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:2265: Package pdftex.def Error: File `./funciones-elementales_files/figure-pdf/cell-11-output-1.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2265 ...s_files/figure-pdf/cell-11-output-1.pdf}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{exr-funciones-trigonomuxe9tricas}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2276 ...rget{exr-funciones-trigonomuxe9tricas}{}
+                                                  }% [35]
+pdfTeX warning (ext4): destination with the same identifier (name{exr-funciones-trigonomuxe9tricas}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2349 ...rget{exr-funciones-trigonomuxe9tricas}{}
+                                                  }% [36]
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:2354: LaTeX Error: Unicode character π (U+03C0)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2354 ${\quad\Box}$ π
+                        y 2
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:2356: LaTeX Error: Unicode character π (U+03C0)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2356 ${\quad\Box}$ 4π
+                         y 2
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:2358: LaTeX Error: Unicode character π (U+03C0)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2358 ${\quad\Box}$ 2π
+                         y 2
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:2360: LaTeX Error: Unicode character π (U+03C0)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2360 ${\quad\Box}$ 4π
+                         y 1
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+/run/media/alf/datos/misrepositorios/docencia/practicas-analisis-julia/practicas-analisis-julia.tex:2362: LaTeX Error: Unicode character π (U+03C0)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2362 ${\quad\Box}$ 2π
+                         y 1
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{exr-sucesiones-propuesto-3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2366 ...ypertarget{exr-sucesiones-propuesto-3}{}
+                                                  }% [37]
 
 Package longtable Warning: Table widths have changed. Rerun LaTeX.
 
@@ -1374,18 +1629,18 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 38980 strings out of 476932
- 802430 string characters out of 5824858
- 1297127 words of memory out of 5000000
- 59227 multiletter control sequences out of 15000+600000
- 544366 words of font info for 141 fonts, out of 8000000 for 9000
+ 39403 strings out of 476932
+ 822980 string characters out of 5824858
+ 1297125 words of memory out of 5000000
+ 59559 multiletter control sequences out of 15000+600000
+ 544709 words of font info for 145 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
  122i,10n,120p,10700b,1461s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/home/alf/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/home/alf/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/home/alf/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/home/alf/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/home/alf/texmf/fonts/enc/dvips/fontawesome5/fa5free2.enc}{/home/alf/texmf/fonts/enc/dvips/fontawesome5/fa5free1.enc}{/home/alf/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/home/alf/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</home/alf/texmf/fonts/type1/public/fontawesome5/FontAwesome5Free-Solid.pfb></home/alf/texmf/fonts/type1/public/lm/lmbx10.pfb></home/alf/texmf/fonts/type1/public/lm/lmex10.pfb></home/alf/texmf/fonts/type1/public/lm/lmmi10.pfb></home/alf/texmf/fonts/type1/public/lm/lmmi6.pfb></home/alf/texmf/fonts/type1/public/lm/lmmi8.pfb></home/alf/texmf/fonts/type1/public/lm/lmr10.pfb></home/alf/texmf/fonts/type1/public/lm/lmr6.pfb></home/alf/texmf/fonts/type1/public/lm/lmr8.pfb></home/alf/texmf/fonts/type1/public/lm/lmri10.pfb></home/alf/texmf/fonts/type1/public/lm/lmss12.pfb></home/alf/texmf/fonts/type1/public/lm/lmssbx10.pfb></home/alf/texmf/fonts/type1/public/lm/lmsy10.pfb></home/alf/texmf/fonts/type1/public/lm/lmsy8.pfb></home/alf/texmf/fonts/type1/public/lm/lmtt10.pfb></home/alf/texmf/fonts/type1/public/amsfonts/symbols/msam10.pfb></home/alf/texmf/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on practicas-analisis-julia.pdf (25 pages, 451341 bytes).
+Output written on practicas-analisis-julia.pdf (37 pages, 490525 bytes).
 PDF statistics:
- 429 PDF objects out of 1000 (max. 8388607)
- 352 compressed objects within 4 object streams
- 122 named destinations out of 1000 (max. 500000)
- 45241 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 569 PDF objects out of 1000 (max. 8388607)
+ 479 compressed objects within 5 object streams
+ 194 named destinations out of 1000 (max. 500000)
+ 45265 words of extra memory for PDF output out of 51595 (max. 10000000)
 

@@ -1,5 +1,6 @@
 ---
 lang: es
+jupyter: julia-1.8
 ---
 <!-- LTeX: language = es-ES -->
 
@@ -12,6 +13,7 @@ Para la realización de esta práctica se requieren los siguientes paquetes:
 ```{julia}
 using SymPy  # Para el cálculo simbólico de límites.
 using Plots  # Para el dibujo de gráficas.
+#plotlyjs() # Para obtener gráficos interactivos.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 ```
 
@@ -21,7 +23,7 @@ Dar los 10 primeros términos de las siguientes sucesiones:
 a. $(2n+1)_{n=1}^\infty$
 
 :::{.callout-note collapse="true"}
-## Pista
+## Ayuda
 Definir una función para el término general y aplicar la función a los naturales de 1 a 10 usando [compresiones de arrays](https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html#comprensi%C3%B3n-de-arrays).
 :::
 
@@ -83,7 +85,7 @@ print([x(n) for n = 1:10])
 Dibujar en una gráfica los 50 primeros términos de las siguientes sucesiones y deducir si son convergentes o no. En el caso de que sean convergentes, dar un valor aproximado de su límite.
 
 :::{.callout-note collapse="true"}
-## Pista
+## Ayuda
 Definir una función para el término general y aplicar la función a los naturales de 1 a 50 usando compresiones de arrays como en el ejercicio anterior. Después usar la función [`scatter`](https://docs.juliaplots.org/latest/api/#Plots.scatter-Tuple) del paquete `Plots` para dibujar el array de términos.
 :::
 
@@ -139,17 +141,17 @@ scatter([x(n) for n = 1:50], legend=false)
 La sucesión converge aproximadamente a $2.7$.
 :::
 
-e. $x_1 = 2$ y $x_{n+1}=1+\frac{1}{x_n}$ $\forall n\in\mathbb{N}$
+e. $x_1 = 0.5$ y $x_{n+1}=\frac{3}{2+x_n}$ $\forall n\in\mathbb{N}$
 
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
 using Plots
-x(n) =  n == 1 ? 2 : 1 + 1 / x(n-1)
+x(n) =  n == 1 ? 0.5 : 3/(2+x(n-1))
 scatter([x(n) for n = 1:50], legend=false)
 ```
 
-La sucesión converge aproximadamente a $1.62$.
+La sucesión converge aproximadamente a $1$.
 :::
 :::
 
@@ -159,7 +161,7 @@ Calcular el límite, si existe, de las siguiente sucesiones.
 a. $\left(\frac{1}{n}\right)_{n=1}^\infty$
 
 :::{.callout-note collapse="true"}
-## Pista
+## Ayuda
 Definir una función para el término general usar la función [`limit`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Limits-1) del paquete `SymPy` para calcular el límite de la sucesión.
 :::
 
@@ -263,6 +265,40 @@ limit(a(n), n=>oo)
 :::
 :::
 
+:::{#exr-subsucesiones}
+Dada la sucesión $x_1=1$ y $x_{n+1}=1+\frac{1}{n}$ $\forall n\in\mathbb{N}$, se pide:
+
+a. Dibujar la gráfica de los 10 primeros términos de la sucesión. ¿Es una sucesión monótona?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots
+x(n) =  n == 1 ? 1 : 1 + 1 / x(n-1)
+scatter([x(n) for n = 1:10], legend=false)
+```
+
+La sucesión no es monótona.
+:::
+
+b. Dibujar la gráfica de los 5 primeros términos de las subsucesiones con los términos pares e impares. ¿Son monótonas?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, LaTeXStrings
+x(n) =  n == 1 ? 1 : 1 + 1 / x(n-1)
+n1 = 1:2:10
+n2 = 2:2:10
+scatter(n1, x.(n1), label=L"$x_{2n-1}$")
+scatter!(n2, x.(n2), label=L"$x_{2n}$")
+```
+
+La sucesión de los términos impares es creciente y la de los pares es decreciente.
+:::
+
+:::
+
 ## Ejercicios propuestos
 
 ```{julia}
@@ -289,7 +325,6 @@ Calcular los 10 primeros términos de la sucesión  $\left(\frac{3n^2+n}{6n^2-1}
 ```{julia}
 #| hold: true
 #| echo: false
-x(n)=(3n^2+n)/(6n^2-1)
 choices = ("0", "0.5", "1", "1.5", "No converge")
 answer = 2
 radioq(choices, answer)

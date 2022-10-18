@@ -1,0 +1,476 @@
+---
+lang: es
+jupyter: julia-1.8
+---
+<!-- LTeX: language = es-ES -->
+
+# Funciones elementales
+
+## Ejercicios Resueltos
+
+Para la realización de esta práctica se requieren los siguientes paquetes:
+
+```{julia}
+using Plots  # Para el dibujo de gráficas.
+#plotlyjs()  # Para obtener gráficos interactivos.
+using SymPy # Para el cálculo simbólico.
+using MTH229 # Para restringir la gráfica de una función a su dominio.
+using LaTeXStrings  # Para usar código LaTeX en los gráficos.
+```
+
+:::{#exr-grafica-funcion-polinomica}
+Dibujar la gráfica de la función 
+
+$$
+f(x) = 2x^3-3x^2-12x+4
+$$
+
+en el intervalo $[-3,4]$ y determinar, observando la gráfica, lo siguiente:
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Definir la función y usar la función [`plot`](https://docs.juliaplots.org/latest/tutorial/#Basic-Plotting:-Line-Plots) del paquete `Plots`.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, LaTeXStrings
+f(x) = 2x^3-3x^2-12x+4
+plot(f, -3, 4, label=L"$f(x) = 2x^3-3x^2-12x+4$")
+```
+:::
+
+a. Dominio
+
+:::{.callout-tip collapse="true"}
+## Solución
+$Dom(f)=\mathbb{R}$
+:::
+
+b. Imagen
+
+:::{.callout-tip collapse="true"}
+## Solución
+$Im(f)=\mathbb{R}$
+:::
+
+c. Raíces
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+```{julia}
+using SymPy
+@syms x
+f(x) = 2x^3-3x^2-12x+4
+raices = solve(f(x))  # Solución exacta
+print(raices)
+N(raices)  # Solución aproximada con decimales
+```
+Hay tres raíces en $x=-2$, $x=0.31$ y $x=3.19$ aproximadamente.
+:::
+
+d. Signo
+
+:::{.callout-tip collapse="true"}
+## Solución
+Intervalos con $f(x)$ negativa: $(-\infty, -2)\cup (0.31,3.19)$.  
+Intervalos con $f(x)$ positiva: $(-2,0.31)\cup (3.19,\infty)$.
+:::
+
+e. Crecimiento
+
+:::{.callout-tip collapse="true"}
+## Solución
+Intervalos con $f(x)$ creciente: $(-\infty, -1)\cup (2,\infty)$.  
+Intervalos con $f(x)$ decreciente: $(-1,2)$.
+:::
+
+f. Extremos
+
+:::{.callout-tip collapse="true"}
+## Solución
+Máximo relativo en $x=-1$ y el valor máximo es $f(-1)=11$.  
+Mínimo relativo en $x=2$ y el valor del mínimo es $f(2)=-16$.
+:::
+
+g. Concavidad
+
+:::{.callout-tip collapse="true"}
+## Solución
+Intervalos de concavidad hacia arriba: $(0.5,\infty)$.  
+Intervalos de concavidad hacia abajo: $(-\infty, 0.5)$.
+:::
+
+h. Puntos de inflexión
+
+:::{.callout-tip collapse="true"}
+## Solución
+Punto de inflexión en $x=0.5$.
+:::
+
+:::
+
+
+:::{#exr-grafica-funcion-racional}
+Dibujar la gráfica de la función 
+
+$$
+g(t) = \frac{t^4+19t^2-5}{t^4+9t^2-10}
+$$
+
+en el intervalo $[-8,8]$ y determinar, observando la gráfica, lo siguiente:
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Usar la función `plot` como en el ejercicio anterior con el parámetro `aspect_ratio=1.0` para que los ejes tengan la misma escala. 
+
+Para respetar las discontinuidades utilizar aplicar la función `rangeclamp` del paquete `MTH229`.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+g(t) = (t^4+19t^2-5) / (t^4+9t^2-10)
+plot(rangeclamp(g), -8, 8, aspect_ratio=1.0, ylims=(-5,5) , xticks =Vector(-10:10), yticks = Vector(-5:5), label=L"$g(t) = \frac{t^4+19t^2-5}{t^4+9t^2-10}$")
+```
+:::
+
+a. Dominio. ¿Qué pasa si aplicamos la función a algún valor fuera de su dominio?
+
+:::{.callout-tip collapse="true"}
+## Solución
+$Dom(f)=\mathbb{R}\setminus\{-1,1\}$
+
+```{julia}
+g(-1), g(1)
+```
+
+Como se observa, al aplicar la función a $-1$ y $1$ se obtiene $\infty$.
+:::
+
+b. Imagen
+
+:::{.callout-tip collapse="true"}
+## Solución
+$Im(f)=\mathbb{R}\setminus (0.5,1]$
+:::
+
+c. Asíntotas. Dibujarlas.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Buscar las asíntotas verticales en los puntos fuera del dominio de la función.
+
+Para dibujar asíntotas verticales usar la función [`vline`](https://docs.juliaplots.org/latest/api/#Plots.vline-Tuple) del paquete `Plots`, y para dibujar las asíntotas horizontales usar la función [`hline`](https://docs.juliaplots.org/latest/api/#Plots.hline-Tuple).
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+vline!([-1,1], label="Asíntotas verticales")
+hline!([1], label="Asíntotas horizontales", legend=:bottomright)
+```
+Asíntotas verticales en $x=-1$ y $x=1$.  
+Asíntotas horizontales en $y=1$.  
+No hay asíntotas oblicuas.
+:::
+
+d. Raíces
+
+:::{.callout-tip collapse="true"}
+## Solución
+Hay dos raíces en $x=-0.5$ y $x=0.5$ aproximadamente.
+:::
+
+e. Signo
+
+:::{.callout-tip collapse="true"}
+## Solución
+Intervalos con $f(x)$ positiva: $(-\infty,-1)\cup (-0.5,0.5)\cup (1,\infty)$.  
+Intervalos con $f(x)$ negativa: $(-1,-0.5)\cup (0.5,1)$.
+:::
+
+e. Crecimiento
+
+:::{.callout-tip collapse="true"}
+## Solución
+Intervalos con $f(x)$ creciente: $(-\infty, -1)\cup (-1,0)$.  
+Intervalos con $f(x)$ decreciente: $(0,1)\cup (1,\infty)$.
+:::
+
+f. Extremos
+
+:::{.callout-tip collapse="true"}
+## Solución
+Máximo relativo en $x=0$ y el valor máximo es $g(0)=0.5$.  
+No hay mínimos relativos.
+:::
+
+g. Concavidad
+
+:::{.callout-tip collapse="true"}
+## Solución
+Intervalos de concavidad hacia arriba: $(-\infty,-1)\cup (1,\infty)$.  
+Intervalos de concavidad hacia abajo: $(-1,1)$.
+:::
+
+h. Puntos de inflexión
+
+:::{.callout-tip collapse="true"}
+## Solución
+No hay puntos de inflexión.
+:::
+
+:::
+
+:::{#exr-funciones-exponenciales}
+Dibujar la gráficas de las siguientes funciones exponenciales $2^x$, $e^x$, $0.5^x$, $0.7^x$ y responder a las siguientes preguntas comparando las gráficas.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, LaTeXStrings
+plot(2^x, -2, 2, label=L"$2^x$")
+plot!(exp(x), label=L"$e^x$")
+plot!(0.5^x, label=L"$2^x$")
+plot!(0.7^x, label=L"$2^x$")
+```
+:::
+
+a. ¿Cuál es el dominio de una función exponencial?
+
+:::{.callout-tip collapse="true"}
+## Solución
+$\mathbb{R}$.
+:::
+
+b. ¿Cuál es la imagen de una función exponencial?
+
+:::{.callout-tip collapse="true"}
+## Solución
+$\mathbb{R}^+$.
+:::
+
+c. ¿Cómo es el crecimiento de una función exponencial?
+
+:::{.callout-tip collapse="true"}
+## Solución
+$a^x$ es creciente si $a>1$ y decreciente si $0<a<1$.
+:::
+
+d. ¿Tienen extremos una función exponencial?
+
+:::{.callout-tip collapse="true"}
+## Solución
+No
+:::
+
+e. ¿Cómo es la curvatura de una función exponencial?
+
+:::{.callout-tip collapse="true"}
+## Solución
+Es cóncava hacia arriba.
+:::
+
+:::
+
+:::{#exr-funciones-trigonométricas}
+Dibujar la gráficas de las funciones trigonométricas $\operatorname{sen}(x)$, $\operatorname{sen}(x+2)$, $\operatorname{sen}(x)+2$, $\operatorname{sen}(2x)$ y $2\operatorname{sen}(x)$, y completar la siguiente tabla estudiando su periodo y amplitud. 
+
+| Función | Periodo | Amplitud |
+|-|-|-| 
+| $\operatorname{sen}(x)$ | | | 
+| $\operatorname{sen}(x+2)$ | | | 
+| $\operatorname{sen}(x)+2$ | | | 
+| $\operatorname{sen}(2x)$ | | | 
+| $2\operatorname{sen}(x)$ | | | 
+
+¿Qué conclusiones sacas?
+
+:::{.callout-note collapse="true"}
+## Ayuda
+El periodo es el mínimo intervalo en el que la gráfica de la función se repite, y la amplitud es la mitad de la diferencia entre el máximo y el mínimo de la función.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, LaTeXStrings
+plot(sin(x), -2*pi, 2*pi, label=L"$\operatorname{sen}(x)$")
+plot!(sin(x+2), label=L"$\operatorname{sen}(x+2)$")
+plot!(sin(x)+2, label=L"$\operatorname{sen}(x)+2$")
+plot!(sin(2x), label=L"$\operatorname{sen}(2x)$")
+plot!(2sin(x), label=L"$2\operatorname{sen}(x)$")
+```
+
+| Función | Periodo | Amplitud |
+|-|-|-| 
+| $\operatorname{sen}(x)$ | $2\pi$ | 1 | 
+| $\operatorname{sen}(x+2)$ | $2\pi$ | 1 | 
+| $\operatorname{sen}(x)+2$ | $2\pi$ | 1 | 
+| $\operatorname{sen}(2x)$ | $\pi$ | 1 | 
+| $2\operatorname{sen}(x)$ | $2\pi$ | 2 | 
+:::
+
+Se observa que al sumar una constante a la función seno o a su argumento, el periodo y la amplitud no cambian. Sin embargo, si se multiplica por una constante el seno, cambia la amplitud, y si se multiplica su argumento, cambia el periodo.
+
+:::
+
+:::{#exr-funciones-a-trozos}
+Dibujar la gráfica de la función a trozos
+
+$$
+h(x)=
+\begin{cases}
+-2x & \mbox{si } x\leq 0;\\
+x^2 & \mbox{si } 0< x \leq 2;\\ 
+4 & \mbox{si } 2< x
+\end{cases}
+$$
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Usar el [operador condicional](https://aprendeconalf.es/manual-julia/estructuras-control.html#operador-condicional) anidado.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots
+h(x) = x<=0 ? -2x : x<=2 ? x^2 : 4
+plot(h, legend = false)
+```
+:::
+
+:::
+
+
+:::{#exr-funciones-parametricas}
+Dibujar la gráfica de la función paramétrica
+
+$$
+j(t)=
+\begin{cases}
+\operatorname{sen}(t) \\
+\cos(t)
+\end{cases}
+$$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots
+u(t)=sin(t)
+v(t)=sin(2t)
+plot(u, v, 0, 4pi, aspect_ratio=1.0, legend = false)
+```
+:::
+
+
+## Ejercicios propuestos
+```{julia}
+#| echo: false
+#| results: "hidden"
+using QuizQuestions
+nothing
+```
+
+:::{#exr-funciones-trigonométricas}
+Dibujar las gráficas de las funciones logarítmicas $\ln(x)$, $\log_2(x)$ y $\log_{0.5}(x)$ y contestar a las siguientes preguntas.
+
+a. ¿Cuál es el dominio de una función logarítmica?
+
+```{julia}
+#| hold: true
+#| echo: false
+using LaTeXStrings
+choices = (L"$\mathbb{R}$", L"$\mathbb{R}\setminus\{0\}$", L"$\mathbb{R}^+\cup \{0\}$", L"$\mathbb{R}^+$", "Las otras opciones son falsas." )
+answer = 4
+radioq(choices, answer)
+```
+
+b. ¿Cuál es la imagen de una función logarítmica?
+
+```{julia}
+#| hold: true
+#| echo: false
+using LaTeXStrings
+choices = (L"$\mathbb{R}$", L"$\mathbb{R}\setminus\{0\}$", L"$\mathbb{R}^+$", L"$\mathbb{R}^-$", "Las otras opciones son falsas." )
+answer = 1
+radioq(choices, answer)
+```
+
+c. ¿Cómo es el crecimiento la función logarítmica $\log_a(x)$?
+
+```{julia}
+#| hold: true
+#| echo: false
+using LaTeXStrings
+choices = (L"Creciente si $a>1$", L"Creciente si $a<1$", L"Decreciente si $0 < a <1$", L"Creciente si $0 < a < 1$")
+answers = [1,3]
+multiq(choices, answers)
+```
+
+d. ¿Cómo es la concavidad la función logarítmica $\log_a(x)$?
+
+```{julia}
+#| hold: true
+#| echo: false
+using LaTeXStrings
+choices = (L"Cóncava hacia arriba si $a>1$", L"Cóncava hacia abajo si $a<1$", L"Cóncava hacia arriba si $0 < a < 1$", L"Cóncava hacia abajo si $0 < a < 1$")
+answers = [2,3]
+multiq(choices, answers)
+```
+
+:::
+
+:::{#exr-funciones-trigonométricas}
+¿Cuál es el periodo y la amplitud de la función $2\cos(x/2)$? 
+
+```{julia}
+#| hold: true
+#| echo: false
+choices = ("2π y 1", "π y 2", "2π y 2", "4π y 1", "4π y 2")
+answer = 5
+radioq(choices, answer)
+```
+:::
+
+
+:::{#exr-sucesiones-propuesto-3}
+¿Cuál de las gráficas corresponde a la siguiente función paramétrica?
+
+$$
+f(t)=
+\begin{cases}
+\operatorname{sen}(2t)-\cos(t) \\
+\operatorname{sen}(t)+\cos(t)
+\end{cases}
+$$
+
+```{julia}
+#| echo: false
+using Plots
+u(t)=sin(t)
+v(t)=cos(t)
+v1(t) = 2cos(t)
+v2(t) = sin(t)+cos(t)
+u1(t) = sin(2t)-cos(t)
+u2(t) = cos(2t)
+p1 = plot(u, v, 0, 2pi, aspect_ratio=1.0, legend=false)
+p2 = plot(u1, v2, 0, 2pi, aspect_ratio=1.0, legend=false)
+p3 = plot(u, v2, 0, 2pi, aspect_ratio=1.0, legend=false)
+p4 = plot(u2, v2, 0, 2pi, aspect_ratio=1.0, legend=false)
+l = @layout [a b; c d]
+p = plot(p1, p2, p3, p4, layout=l)
+imgfile = "img/funciones-elementales/graficas-funciones-parametricas.png"
+savefig(p, imgfile)
+hotspotq(imgfile, (1/2,1), (1/2,1))
+```
+:::
+
+
+
+

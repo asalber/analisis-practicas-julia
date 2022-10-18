@@ -32,6 +32,7 @@ book:
     - index.qmd
     - introduccion.qmd
     - sucesiones.qmd
+    - funciones-elementales.qmd
     #- limites.qmd
     
 #bibliography: references.bib
@@ -39,9 +40,10 @@ book:
 
 format:
   html:
-    theme: cosmo
-    dark: darkly
-    light: flatly
+    highlight-style: a11y
+    theme:
+      dark: darkly
+      light: flatly
     html-math-method: mathjax
   pdf:
     documentclass: scrreport
