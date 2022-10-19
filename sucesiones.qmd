@@ -332,7 +332,7 @@ radioq(choices, answer)
 :::
 
 :::{#exr-sucesiones-propuesto-3}
-¿Cuál de las siguientes gráficas corresponde a la sucesión $x_1=3$ y $x_{n+1}=\sqrt{2x_n}$ $\forall n=2,3,\ldots$.
+¿Cuál de las siguientes gráficas corresponde a la sucesión $x_1=3$ y $x_{n+1}=\sqrt{2x_n}$ $\forall n\in\mathbb{N}$.
 ```{julia}
 #| echo: false
 using Plots

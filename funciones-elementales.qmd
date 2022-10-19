@@ -368,6 +368,8 @@ plot(u, v, 0, 4pi, aspect_ratio=1.0, legend = false)
 ```
 :::
 
+:::
+
 
 ## Ejercicios propuestos
 ```{julia}
