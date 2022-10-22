@@ -45,6 +45,7 @@ format:
       dark: darkly
       light: flatly
     html-math-method: mathjax
+    code-overflow: wrap
   pdf:
     documentclass: scrreport
     papersize: a4
