@@ -31,9 +31,9 @@ book:
   chapters:
     - index.qmd
     - introduccion.qmd
-    - sucesiones.qmd
+    - sucesiones.qmdhttps://aprendeconalf.es/analisis-manual/limites.html#thm-bolzano
     - funciones-elementales.qmd
-    #- limites.qmd
+    - limites.qmd
     
 #bibliography: references.bib
 

@@ -152,9 +152,9 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
 \ifdefined\contentsname
-  \renewcommand*\contentsname{Indice de contenidos}
+  \renewcommand*\contentsname{Tabla de contenidos}
 \else
-  \newcommand\contentsname{Indice de contenidos}
+  \newcommand\contentsname{Tabla de contenidos}
 \fi
 \ifdefined\listfigurename
   \renewcommand*\listfigurename{Listado de Figuras}
@@ -181,7 +181,7 @@
 \floatstyle{ruled}
 \@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
 \floatname{codelisting}{Listado}
-\newcommand*\listoflistings{\listof{codelisting}{Listado de Listatdos}}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
 \usepackage{amsthm}
 \theoremstyle{definition}
 \newtheorem{exercise}{Ejercicio}[chapter]
@@ -230,7 +230,7 @@
 
 \title{Pácticas de Análisis Matemático con Julia}
 \author{Alfredo Sánchez Alberca}
-\date{1/6/2022}
+\date{6/1/22}
 
 \begin{document}
 \begin{titlepage}
@@ -260,9 +260,9 @@ Sánchez
 Alberca}\\ \textsf{asalber@ceu.es} \\ \textsf{https://aprendeconalf.es}}
 \end{tabular}
 \end{flushleft}
-\end{titlepage}\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, frame hidden, interior hidden, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, sharp corners, enhanced]}{\end{tcolorbox}}\fi
+\end{titlepage}\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, sharp corners, enhanced, frame hidden, boxrule=0pt, breakable, interior hidden]}{\end{tcolorbox}}\fi
 
-\renewcommand*\contentsname{Indice de contenidos}
+\renewcommand*\contentsname{Tabla de contenidos}
 {
 \hypersetup{linkcolor=}
 \setcounter{tocdepth}{2}
@@ -273,6 +273,8 @@ Alberca}\\ \textsf{asalber@ceu.es} \\ \textsf{https://aprendeconalf.es}}
 \hypertarget{prefacio}{%
 \chapter*{Prefacio}\label{prefacio}}
 \addcontentsline{toc}{chapter}{Prefacio}
+
+\markboth{Prefacio}{Prefacio}
 
 ¡Bienvenido a Prácticas de Análisis Matemático con Julia!
 
@@ -290,6 +292,8 @@ en aprender a programar en este Julia, os recomiendo leer este
 \hypertarget{licencia}{%
 \section*{Licencia}\label{licencia}}
 \addcontentsline{toc}{section}{Licencia}
+
+\markright{Licencia}
 
 Esta obra está bajo una licencia Reconocimiento -- No comercial --
 Compartir bajo la misma licencia 3.0 España de Creative Commons. Para
@@ -434,7 +438,7 @@ Los comandos más habituales son:
   de Julia.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
 
 Para instalar el paquete \texttt{SymPy} para cálculo simbólico basta con
 teclear \texttt{add\ Sympy}.
@@ -534,7 +538,7 @@ Descripción
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -599,7 +603,7 @@ cumple \texttt{x\ ==\ div(x,y)*y\ +\ rem(x,y)} \\
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -652,7 +656,7 @@ negativo y 0 si es 0. \\
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -700,7 +704,7 @@ Descripción
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -765,7 +769,7 @@ Descripción
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -833,7 +837,7 @@ en radianes \\
 \bottomrule()
 \end{longtable}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -896,7 +900,7 @@ Derecha \\
 Cuando se quiera evaluar un operador con menor prioridad antes que otro
 con mayor prioridad, hay que utilizar paréntesis.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ejemplo}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -964,14 +968,16 @@ Dar los 10 primeros términos de las siguientes sucesiones:
   \((2n+1)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Definir una función para el término general y aplicar la función a los
 naturales de 1 a 10 usando
 \href{https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html\#comprensi\%C3\%B3n-de-arrays}{compresiones
 de arrays}.
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -994,7 +1000,7 @@ de arrays}.
   \(\left(\frac{1}{n}\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1025,7 +1031,7 @@ Rational{Int64}[1//1, 1//2, 1//3, 1//4, 1//5, 1//6, 1//7, 1//8, 1//9, 1//10]
   \(\left((-1)^n\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1048,7 +1054,7 @@ Rational{Int64}[1//1, 1//2, 1//3, 1//4, 1//5, 1//6, 1//7, 1//8, 1//9, 1//10]
   \(\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1071,7 +1077,7 @@ Rational{Int64}[1//1, 1//2, 1//3, 1//4, 1//5, 1//6, 1//7, 1//8, 1//9, 1//10]
   \(x_1=1\) y \(x_{n+1}=\sqrt{1+x_n}\) \(\forall n\in\mathbb{N}\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1095,12 +1101,14 @@ Dibujar en una gráfica los 50 primeros términos de las siguientes
 sucesiones y deducir si son convergentes o no. En el caso de que sean
 convergentes, dar un valor aproximado de su límite.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Definir una función para el término general y aplicar la función a los
 naturales de 1 a 50 usando compresiones de arrays como en el ejercicio
 anterior. Después usar la función
 \href{https://docs.juliaplots.org/latest/api/\#Plots.scatter-Tuple}{\texttt{scatter}}
 del paquete \texttt{Plots} para dibujar el array de términos.
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -1110,7 +1118,7 @@ del paquete \texttt{Plots} para dibujar el array de términos.
   \(\left(\frac{n}{4n+2}\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1140,7 +1148,7 @@ La sucesión converge al número \(0.25\).
   \(\left(\frac{2^n}{n^2}\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1170,7 +1178,7 @@ La sucesión diverge.
   \(\left(\frac{(-1)^n}{n}\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1200,7 +1208,7 @@ La sucesión converge al \(0\).
   \(\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1230,7 +1238,7 @@ La sucesión converge aproximadamente a \(2.7\).
   \(x_1 = 0.5\) y \(x_{n+1}=\frac{3}{2+x_n}\) \(\forall n\in\mathbb{N}\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1266,13 +1274,15 @@ Calcular el límite, si existe, de las siguiente sucesiones.
   \(\left(\frac{1}{n}\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Definir una función para el término general usar la función
 \href{https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/\#Limits-1}{\texttt{limit}}
 del paquete \texttt{SymPy} para calcular el límite de la sucesión.
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1295,7 +1305,7 @@ $0$
   \(\left((-1)^n\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1317,7 +1327,7 @@ $\text{NaN}$
   \(\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty\)
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1388,7 +1398,7 @@ a_n = \frac{1}{2}nr^2\operatorname{sen}\left(\frac{360}{n}\right)
   \(i=1,\ldots, 6\) tomando \(r=1\).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1412,7 +1422,7 @@ a_n = \frac{1}{2}nr^2\operatorname{sen}\left(\frac{360}{n}\right)
   los polígonos tomando \(r=1\).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1441,7 +1451,7 @@ a_n = \frac{1}{2}nr^2\operatorname{sen}\left(\frac{360}{n}\right)
   tomando \(r=1\).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1465,7 +1475,7 @@ $3.14159265358979$
   \(r\).
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1496,7 +1506,7 @@ Dada la sucesión \(x_1=1\) y \(x_{n+1}=1+\frac{1}{n}\)
   sucesión monótona?
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1527,7 +1537,7 @@ La sucesión no es monótona.
   los términos pares e impares. ¿Son monótonas?
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1577,15 +1587,15 @@ Calcular los 10 primeros términos de la sucesión
 \(\left(\frac{3n^2+n}{6n^2-1}\right)_{n=1}^\infty\) y averiguar hacia
 dónde converge.
 
-${\quad\Box}$ 0
-
-${\quad\Box}$ 1
-
 ${\quad\Box}$ No converge
 
 ${\quad\Box}$ 0.5
 
+${\quad\Box}$ 1
+
 ${\quad\Box}$ 1.5
+
+${\quad\Box}$ 0
 
 \end{exercise}
 
@@ -1695,14 +1705,16 @@ Horas & Bacterias \\
 
 Dibujar una gráfica con la evolución del la población de bacterias.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Definir los valores de las horas en un vector \texttt{x} y el número de
 bacterias en otro \texttt{y} y luego utilizar la función
 \href{https://aprendeconalf.es/manual-julia/graficos.html\#a\%C3\%B1adir-puntos-a-una-gr\%C3\%A1fica}{\texttt{scatter(x,y)}}
 del paquete \texttt{Plots} para dibujar una gráfica de puntos.
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1725,16 +1737,19 @@ del paquete \texttt{Plots} para dibujar una gráfica de puntos.
 
 ¿Los pares dados en la tabla forman una función?
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Si, porque para cada hora hay a lo sumo un número de bacterias con el
 que se relaciona.
+
 \end{tcolorbox}
 
 ¿Qué fórmula crees que explica la evolución del número de bacterias en
 función de las horas que pasan? Dibuja en la gráfica anterior la función
 con esa fórmula.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Para añadir una nueva gráfica a una anterior se añade un signo de
 exclamación \texttt{!} a la función de graficación. Para una gráfica de
 líneas, utilizar la función
@@ -1743,9 +1758,10 @@ del paquete \texttt{Plots}, pasándole el nombre de la función si se ha
 definido previamente o la
 \href{https://aprendeconalf.es/manual-julia/funciones.html\#funciones-an\%C3\%B3nimas}{definición
 anónima de la función}
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1783,7 +1799,8 @@ altura, con una velocidad inicial de \(10\) m/s. Dibujar la gráfica de
 la posición de la pelota en función del tiempo, tomando una aceleración
 de la gravedad \(g=-9.8\) m/s².
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Declarar \(t\) como una variable simbólica usando el paquete
 \href{https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/\#Symbols-1}{\texttt{SymPy}},
 definir después las constantes \(y_0\), \(v_0\) y \(g\), y luego definir
@@ -1797,9 +1814,10 @@ parámetros
 \href{https://aprendeconalf.es/manual-julia/graficos.html\#ventana-de-graficaci\%C3\%B3n}{\texttt{xlim}}
 e
 \href{https://aprendeconalf.es/manual-julia/graficos.html\#ventana-de-graficaci\%C3\%B3n}{\texttt{ylim}}.
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1828,13 +1846,15 @@ fachada del mismo edificio desde una altura de \(8\) m con una velocidad
 constante de \(5\) m/s. Dibujar la gráfica de la posición del ascensor
 junto a la gráfica de la pelota.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 La función que define la posición del ascensor que baja desde una altura
 \(y_1\) con una velocidad constante \(v_1\) en cada instante \(t\) es
 \(y(t) = y_1-v_1t\).
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1859,7 +1879,7 @@ La función que define la posición del ascensor que baja desde una altura
 Dibujar los puntos correspondientes a esos instantes en la gráfica
 anterior.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1892,7 +1912,8 @@ El volumen de un globo esférico depende del radio según la función
 \(v(r)= \frac{4}{3}\pi r^3\). Calcular la función que expresa el radio
 en función del volumen y dibujar su gráfica.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Declarar las variables simbólicas \texttt{r} y \texttt{v} usando el
 paquete \texttt{SymPy} y definir la función \texttt{vol(r)} que expresa
 el volumen del globo en función del radio.
@@ -1901,9 +1922,10 @@ Después utilizar la función
 \href{https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/\#The-solve-function-1}{\texttt{solve}}
 del paquete \texttt{SymPy} para despejar \texttt{r} de la ecuación
 \texttt{v-vol(r)=0}.
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1929,16 +1951,18 @@ Si empezamos a introducir helio en el globo de manera que su volumen a
 los \(t\) minutos viene dado por la función \(v(t)=t^2+2t\), dibujar la
 gráfica de la función que da el radio en cada instante.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Declarar las variables simbólicas \texttt{t} usando el paquete
 \texttt{SymPy} y definir la función \texttt{vol(t)} que expresa el
 volumen del globo en función del tiempo.
 
 Después utilizar a el operador de composición \(\circ\) para componer la
 función del volumen con la función del radio.
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1961,7 +1985,7 @@ función del volumen con la función del radio.
 Si el globo explota cuando el radio alcanza los 3 m, ¿cuándo explotará
 el globo?
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1989,13 +2013,15 @@ f(x) = 2x^3-3x^2-12x+4
 en el intervalo \([-3,4]\) y determinar, observando la gráfica, lo
 siguiente:
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Definir la función y usar la función
 \href{https://docs.juliaplots.org/latest/tutorial/\#Basic-Plotting:-Line-Plots}{\texttt{plot}}
 del paquete \texttt{Plots}.
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2022,8 +2048,10 @@ del paquete \texttt{Plots}.
   Dominio
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 \(Dom(f)=\mathbb{R}\)
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2034,8 +2062,10 @@ del paquete \texttt{Plots}.
   Imagen
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 \(Im(f)=\mathbb{R}\)
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2046,7 +2076,7 @@ del paquete \texttt{Plots}.
   Raíces
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2082,9 +2112,11 @@ Hay tres raíces en \(x=-2\), \(x=0.31\) y \(x=3.19\) aproximadamente.
   Signo
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Intervalos con \(f(x)\) negativa: \((-\infty, -2)\cup (0.31,3.19)\).\\
 Intervalos con \(f(x)\) positiva: \((-2,0.31)\cup (3.19,\infty)\).
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2095,9 +2127,11 @@ Intervalos con \(f(x)\) positiva: \((-2,0.31)\cup (3.19,\infty)\).
   Crecimiento
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Intervalos con \(f(x)\) creciente: \((-\infty, -1)\cup (2,\infty)\).\\
 Intervalos con \(f(x)\) decreciente: \((-1,2)\).
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2108,9 +2142,11 @@ Intervalos con \(f(x)\) decreciente: \((-1,2)\).
   Extremos
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Máximo relativo en \(x=-1\) y el valor máximo es \(f(-1)=11\).\\
 Mínimo relativo en \(x=2\) y el valor del mínimo es \(f(2)=-16\).
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2121,9 +2157,11 @@ Mínimo relativo en \(x=2\) y el valor del mínimo es \(f(2)=-16\).
   Concavidad
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Intervalos de concavidad hacia arriba: \((0.5,\infty)\).\\
 Intervalos de concavidad hacia abajo: \((-\infty, 0.5)\).
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2134,8 +2172,10 @@ Intervalos de concavidad hacia abajo: \((-\infty, 0.5)\).
   Puntos de inflexión
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Punto de inflexión en \(x=0.5\).
+
 \end{tcolorbox}
 
 \end{exercise}
@@ -2152,16 +2192,18 @@ g(t) = \frac{t^4+19t^2-5}{t^4+9t^2-10}
 en el intervalo \([-8,8]\) y determinar, observando la gráfica, lo
 siguiente:
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Usar la función \texttt{plot} como en el ejercicio anterior con el
 parámetro \texttt{aspect\_ratio=1.0} para que los ejes tengan la misma
 escala.
 
-Para respetar las discontinuidades utilizar aplicar la función
-\texttt{rangeclamp} del paquete \texttt{MTH229}.
+Para respetar las discontinuidades autilizar la función
+\texttt{rangeclamp()} del paquete \texttt{MTH229}.
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2188,7 +2230,8 @@ Para respetar las discontinuidades utilizar aplicar la función
   dominio?
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 \(Dom(f)=\mathbb{R}\setminus\{-1,1\}\)
 
 \begin{Shaded}
@@ -2203,6 +2246,7 @@ Para respetar las discontinuidades utilizar aplicar la función
 
 Como se observa, al aplicar la función a \(-1\) y \(1\) se obtiene
 \(\infty\).
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2213,8 +2257,10 @@ Como se observa, al aplicar la función a \(-1\) y \(1\) se obtiene
   Imagen
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 \(Im(f)=\mathbb{R}\setminus (0.5,1]\)
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2225,7 +2271,8 @@ Como se observa, al aplicar la función a \(-1\) y \(1\) se obtiene
   Asíntotas. Dibujarlas.
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Buscar las asíntotas verticales en los puntos fuera del dominio de la
 función.
 
@@ -2234,9 +2281,10 @@ Para dibujar asíntotas verticales usar la función
 del paquete \texttt{Plots}, y para dibujar las asíntotas horizontales
 usar la función
 \href{https://docs.juliaplots.org/latest/api/\#Plots.hline-Tuple}{\texttt{hline}}.
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2267,8 +2315,10 @@ No hay asíntotas oblicuas.
   Raíces
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Hay dos raíces en \(x=-0.5\) y \(x=0.5\) aproximadamente.
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2279,10 +2329,12 @@ Hay dos raíces en \(x=-0.5\) y \(x=0.5\) aproximadamente.
   Signo
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Intervalos con \(f(x)\) positiva:
 \((-\infty,-1)\cup (-0.5,0.5)\cup (1,\infty)\).\\
 Intervalos con \(f(x)\) negativa: \((-1,-0.5)\cup (0.5,1)\).
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2293,9 +2345,11 @@ Intervalos con \(f(x)\) negativa: \((-1,-0.5)\cup (0.5,1)\).
   Crecimiento
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Intervalos con \(f(x)\) creciente: \((-\infty, -1)\cup (-1,0)\).\\
 Intervalos con \(f(x)\) decreciente: \((0,1)\cup (1,\infty)\).
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2306,9 +2360,11 @@ Intervalos con \(f(x)\) decreciente: \((0,1)\cup (1,\infty)\).
   Extremos
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Máximo relativo en \(x=0\) y el valor máximo es \(g(0)=0.5\).\\
 No hay mínimos relativos.
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2319,10 +2375,12 @@ No hay mínimos relativos.
   Concavidad
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Intervalos de concavidad hacia arriba:
 \((-\infty,-1)\cup (1,\infty)\).\\
 Intervalos de concavidad hacia abajo: \((-1,1)\).
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2333,8 +2391,10 @@ Intervalos de concavidad hacia abajo: \((-1,1)\).
   Puntos de inflexión
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 No hay puntos de inflexión.
+
 \end{tcolorbox}
 
 \end{exercise}
@@ -2346,7 +2406,7 @@ Dibujar la gráficas de las siguientes funciones exponenciales \(2^x\),
 \(e^x\), \(0.5^x\), \(0.7^x\) y responder a las siguientes preguntas
 comparando las gráficas.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2375,8 +2435,10 @@ comparando las gráficas.
   ¿Cuál es el dominio de una función exponencial?
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 \(\mathbb{R}\).
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2387,8 +2449,10 @@ comparando las gráficas.
   ¿Cuál es la imagen de una función exponencial?
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 \(\mathbb{R}^+\).
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2399,8 +2463,10 @@ comparando las gráficas.
   ¿Cómo es el crecimiento de una función exponencial?
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 \(a^x\) es creciente si \(a>1\) y decreciente si \(0<a<1\).
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2411,8 +2477,10 @@ comparando las gráficas.
   ¿Tienen extremos una función exponencial?
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 No
+
 \end{tcolorbox}
 
 \begin{enumerate}
@@ -2423,8 +2491,10 @@ No
   ¿Cómo es la curvatura de una función exponencial?
 \end{enumerate}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
 Es cóncava hacia arriba.
+
 \end{tcolorbox}
 
 \end{exercise}
@@ -2453,13 +2523,15 @@ Función & Periodo & Amplitud \\
 
 ¿Qué conclusiones sacas?
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 El periodo es el mínimo intervalo en el que la gráfica de la función se
 repite, y la amplitud es la mitad de la diferencia entre el máximo y el
 mínimo de la función.
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2516,13 +2588,15 @@ x^2 & \mbox{si } 0< x \leq 2;\\
 \end{cases}
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
 Usar el
 \href{https://aprendeconalf.es/manual-julia/estructuras-control.html\#operador-condicional}{operador
 condicional} anidado.
+
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2559,7 +2633,7 @@ y=\operatorname{sen}(2t)
 
 Dibujar la gráfica de la trayectoria de la hormiga.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, coltitle=black, opacitybacktitle=0.6, breakable, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, toptitle=1mm, opacityback=0, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, arc=.35mm, rightrule=.15mm, colback=white, left=2mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2591,11 +2665,11 @@ Dibujar la gráfica de la trayectoria de la hormiga.
 ¿Cuáles de las siguientes funciones tienen dominio \(\mathbb{R}\) e
 imagen \(\mathbb{R}^+\cup\{0\}\)?
 
-${\quad\Box}$ $$1/x^2$$
-${\quad\Box}$ $$x^4-2x^3+4x$$
-${\quad\Box}$ $$2^x$$
 ${\quad\Box}$ $$|x|$$
 ${\quad\Box}$ $$\sqrt(x)$$
+${\quad\Box}$ $$2^x$$
+${\quad\Box}$ $$x^4-2x^3+4x$$
+${\quad\Box}$ $$1/x^2$$
 (\emph{Select one or more})
 
 \end{exercise}
@@ -2614,12 +2688,11 @@ preguntas.
   ¿Cuál es el dominio de una función logarítmica?
 \end{enumerate}
 
-${\quad\Box}$ Las otras opciones son falsas.
-
 ${\quad\Box}$ $$\mathbb{R}^+\cup \{0\}$$
+${\quad\Box}$ $$\mathbb{R}$$
 ${\quad\Box}$ $$\mathbb{R}\setminus\{0\}$$
 ${\quad\Box}$ $$\mathbb{R}^+$$
-${\quad\Box}$ $$\mathbb{R}$$
+${\quad\Box}$ Las otras opciones son falsas.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -2629,12 +2702,12 @@ ${\quad\Box}$ $$\mathbb{R}$$
   ¿Cuál es la imagen de una función logarítmica?
 \end{enumerate}
 
+${\quad\Box}$ $$\mathbb{R}\setminus\{0\}$$
+${\quad\Box}$ $$\mathbb{R}$$
 ${\quad\Box}$ Las otras opciones son falsas.
 
-${\quad\Box}$ $$\mathbb{R}$$
-${\quad\Box}$ $$\mathbb{R}\setminus\{0\}$$
-${\quad\Box}$ $$\mathbb{R}^+$$
 ${\quad\Box}$ $$\mathbb{R}^-$$
+${\quad\Box}$ $$\mathbb{R}^+$$
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi}.}
@@ -2644,13 +2717,13 @@ ${\quad\Box}$ $$\mathbb{R}^-$$
   ¿Cómo es el crecimiento la función logarítmica \(\log_a(x)\)?
 \end{enumerate}
 
-${\quad\Box}$ Creciente si $a>1$
-
 ${\quad\Box}$ Creciente si $0 < a < 1$
 
 ${\quad\Box}$ Creciente si $a<1$
 
 ${\quad\Box}$ Decreciente si $0 < a <1$
+
+${\quad\Box}$ Creciente si $a>1$
 
 (\emph{Select one or more})
 
@@ -2662,9 +2735,9 @@ ${\quad\Box}$ Decreciente si $0 < a <1$
   ¿Cómo es la concavidad la función logarítmica \(\log_a(x)\)?
 \end{enumerate}
 
-${\quad\Box}$ Cóncava hacia arriba si $0 < a < 1$
-
 ${\quad\Box}$ Cóncava hacia abajo si $a<1$
+
+${\quad\Box}$ Cóncava hacia arriba si $0 < a < 1$
 
 ${\quad\Box}$ Cóncava hacia abajo si $0 < a < 1$
 
@@ -2681,13 +2754,13 @@ ${\quad\Box}$ Cóncava hacia arriba si $a>1$
 
 ${\quad\Box}$ 2π y 1
 
+${\quad\Box}$ π y 2
+
 ${\quad\Box}$ 2π y 2
 
 ${\quad\Box}$ 4π y 2
 
 ${\quad\Box}$ 4π y 1
-
-${\quad\Box}$ π y 2
 
 \end{exercise}
 
@@ -2705,6 +2778,1246 @@ f(t)=
 \]
 
 insert image here
+
+\end{exercise}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{luxedmites-de-funciones-reales}{%
+\chapter{Límites de funciones
+reales}\label{luxedmites-de-funciones-reales}}
+
+\hypertarget{ejercicios-resueltos-2}{%
+\section{Ejercicios Resueltos}\label{ejercicios-resueltos-2}}
+
+Para la realización de esta práctica se requieren los siguientes
+paquetes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{using} \BuiltInTok{SymPy  }\CommentTok{\# Para el cálculo simbólico de límites.}
+\ImportTok{using} \BuiltInTok{Plots  }\CommentTok{\# Para el dibujo de gráficas.}
+\CommentTok{\#plotlyjs() \# Para obtener gráficos interactivos.}
+\ImportTok{using} \BuiltInTok{MTH229 }\CommentTok{\# Para restringir la gráfica de una función a su dominio.}
+\ImportTok{using} \BuiltInTok{LaTeXStrings  }\CommentTok{\# Para usar código LaTeX en los gráficos.}
+\end{Highlighting}
+\end{Shaded}
+
+\leavevmode\vadjust pre{\hypertarget{exr-tendencia-1}{}}%
+\begin{exercise}[]\label{exr-tendencia-1}
+
+Sea la función \(f(x)=x^2\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Estudiar la tendencia de \(f\) cuando \(x\) se aproxima a \(3\) por la
+  derecha, evaluando la función en \(x=3+\frac{1}{10i}\) para
+  \(i=1,\ldots,10\).
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
+Definir la función y aplicar la función a los valores de x indicados
+usando
+\href{https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html\#comprensi\%C3\%B3n-de-arrays}{compresiones
+de arrays}.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{f}\NormalTok{(x) }\OperatorTok{=}\NormalTok{ x}\OperatorTok{\^{}}\FloatTok{2}
+\NormalTok{a }\OperatorTok{=} \FloatTok{3}
+\FunctionTok{print}\NormalTok{([}\FunctionTok{f}\NormalTok{(a}\OperatorTok{+}\FloatTok{1}\OperatorTok{/}\FloatTok{10}\NormalTok{i) for i }\OperatorTok{=} \FloatTok{1}\OperatorTok{:}\FloatTok{10}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[9.610000000000001, 9.302499999999998, 9.20111111111111, 9.150625, 9.1204, 9.100277777777777, 9.085918367346938, 9.075156250000001, 9.06679012345679, 9.060099999999998]
+\end{verbatim}
+
+La función tiende a \(9\).
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Estudiar la tendencia de \(f\) cuando \(x\) se aproxima a \(3\) por la
+  izquierda, evaluando la función en \(x=3-\frac{1}{10i}\) para
+  \(i=1,\ldots, 10\).
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{([}\FunctionTok{f}\NormalTok{(a}\OperatorTok{{-}}\FloatTok{1}\OperatorTok{/}\FloatTok{10}\NormalTok{i) for i }\OperatorTok{=} \FloatTok{1}\OperatorTok{:}\FloatTok{10}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[8.41, 8.7025, 8.801111111111112, 8.850625, 8.8804, 8.900277777777777, 8.914489795918367, 8.925156249999999, 8.933456790123458, 8.940100000000001]
+\end{verbatim}
+
+La función también tiende a 9.
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Dibujar la gráfica de los valores de \(f\) evaluados en los apartados
+  anteriores diferenciando la tendencia por la izquierda de la tendencia
+  por la derecha.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
+Definir un vector con los valores de \(x\) y otro con los valores
+correspondientes de \(f(x)\) y usar la función
+\href{https://docs.juliaplots.org/latest/api/\#Plots.scatter-Tuple}{\texttt{scatter}}
+del paquete \texttt{Plots}, pasandole los dos vectores.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{xd }\OperatorTok{=}\NormalTok{ [a}\OperatorTok{+}\FloatTok{1}\OperatorTok{/}\FloatTok{10}\NormalTok{i for i}\OperatorTok{=}\FloatTok{1}\OperatorTok{:}\FloatTok{10}\NormalTok{]}
+\FunctionTok{scatter}\NormalTok{(xd, }\FunctionTok{f}\NormalTok{.(xd), label}\OperatorTok{=}\StringTok{"Aproximación por la derecha"}\NormalTok{)}
+\NormalTok{xi }\OperatorTok{=}\NormalTok{ [a}\OperatorTok{{-}}\FloatTok{1}\OperatorTok{/}\FloatTok{10}\NormalTok{i for i}\OperatorTok{=}\FloatTok{1}\OperatorTok{:}\FloatTok{10}\NormalTok{]}
+\FunctionTok{scatter!}\NormalTok{(xi, }\FunctionTok{f}\NormalTok{.(xi), label}\OperatorTok{=}\StringTok{"Aproximación por la izquierda"}\NormalTok{, legend}\OperatorTok{=:}\NormalTok{topleft)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./limites_files/figure-pdf/cell-5-output-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Calcular el límite por la izquierda y por la derecha de \(f\) en
+  \(x=3\).
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
+Declarar la variable simbólica \texttt{x} con \texttt{@vars} imponiento
+la restricción \texttt{real=true}, definir la función y usar la función
+\href{https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/\#Limits-1}{\texttt{limit}}
+del paquete \texttt{SymPy} para calcular los límites laterales de la
+función. Para el límite por la izquierda indicar el parámetro
+\texttt{dir="-"} y para el límite por la derecha \texttt{dir="+"}.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{@vars}\NormalTok{ x real}\OperatorTok{=}\ConstantTok{true}
+\NormalTok{li }\OperatorTok{=} \FunctionTok{limit}\NormalTok{(}\FunctionTok{f}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{3}\NormalTok{, dir}\OperatorTok{=}\StringTok{"{-}"}\NormalTok{)}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite por la izquierda: "}\NormalTok{, li)}
+\NormalTok{ld }\OperatorTok{=} \FunctionTok{limit}\NormalTok{(}\FunctionTok{f}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{3}\NormalTok{, dir}\OperatorTok{=}\StringTok{"+"}\NormalTok{)}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite por la derecha: "}\NormalTok{, ld)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Límite por la izquierda: 9
+Límite por la derecha: 9
+\end{verbatim}
+
+\end{tcolorbox}
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-tendencia-2}{}}%
+\begin{exercise}[]\label{exr-tendencia-2}
+
+Sea la función \(g(x)=(1+x)^{1/x}\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Estudiar la tendencia de \(g\) cuando \(x\) se aproxima a \(0\) por la
+  derecha, evaluando la función en \(x=\frac{1}{10^i}\) para
+  \(i=1,\ldots,10\).
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{g}\NormalTok{(x) }\OperatorTok{=}\NormalTok{ (}\FloatTok{1}\OperatorTok{+}\NormalTok{x)}\OperatorTok{\^{}}\NormalTok{(}\FloatTok{1}\OperatorTok{/}\NormalTok{x)}
+\NormalTok{a }\OperatorTok{=} \FloatTok{0}
+\FunctionTok{print}\NormalTok{([}\FunctionTok{g}\NormalTok{(a}\OperatorTok{+}\FloatTok{1}\OperatorTok{/}\FloatTok{10}\OperatorTok{\^{}}\NormalTok{i) for i }\OperatorTok{=} \FloatTok{1}\OperatorTok{:}\FloatTok{10}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[2.5937424601000023, 2.7048138294215285, 2.7169239322355936, 2.7181459268249255, 2.718268237192297, 2.7182804690957534, 2.7182816941320813, 2.7182817983473577, 2.71828205201156, 2.7182820532347876]
+\end{verbatim}
+
+La función tiende a \(e\).
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Estudiar la tendencia de \(g\) cuando \(x\) se aproxima a \(0\) por la
+  izquierda, evaluando la función en \(x=-\frac{1}{10^i}\) para
+  \(i=1,\ldots, 10\).
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{([}\FunctionTok{g}\NormalTok{(a}\OperatorTok{{-}}\FloatTok{1}\OperatorTok{/}\FloatTok{10}\OperatorTok{\^{}}\NormalTok{i) for i }\OperatorTok{=} \FloatTok{1}\OperatorTok{:}\FloatTok{10}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[2.867971990792441, 2.7319990264290284, 2.7196422164428524, 2.71841775501015, 2.718295419980405, 2.7182831876793716, 2.7182819629423656, 2.7182818557091664, 2.7182817529399266, 2.718282053506616]
+\end{verbatim}
+
+La función también tiende a e.
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Calcular el límite por la izquierda y por la derecha de \(g\) en
+  \(x=0\).
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{@vars}\NormalTok{ x real}\OperatorTok{=}\ConstantTok{true}
+\NormalTok{li }\OperatorTok{=} \FunctionTok{limit}\NormalTok{(}\FunctionTok{g}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{0}\NormalTok{, dir}\OperatorTok{=}\StringTok{"{-}"}\NormalTok{)}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite por la izquierda: "}\NormalTok{, li)}
+\NormalTok{ld }\OperatorTok{=} \FunctionTok{limit}\NormalTok{(}\FunctionTok{g}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{0}\NormalTok{, dir}\OperatorTok{=}\StringTok{"+"}\NormalTok{)}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite por la derecha: "}\NormalTok{, ld)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Límite por la izquierda: E
+Límite por la derecha: E
+\end{verbatim}
+
+\end{tcolorbox}
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-limites-laterales}{}}%
+\begin{exercise}[]\label{exr-limites-laterales}
+
+Considérese la función \[
+f(x)=\left( 1+\frac{2}{x}\right) ^{x/2}.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  Dibujar su gráfica, y a la vista de misma conjeturar el resultado de
+  los siguientes límites:
+\item
+  \(\lim_{x\rightarrow -2^-} f(x)\)
+\item
+  \(\lim_{x\rightarrow -2^+} f(x)\)
+\item
+  \(\lim_{x\rightarrow -\infty} f(x)\)
+\item
+  \(\lim_{x\rightarrow +\infty} f(x)\)
+\item
+  \(\lim_{x\rightarrow 2} f(x)\)
+\item
+  \(\lim_{x\rightarrow 0} f(x)\)
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
+Utilizar la función
+\href{https://aprendeconalf.es/manual-julia/graficos.html\#gr\%C3\%A1fica-de-una-funci\%C3\%B3n-de-una-variable}{\texttt{plot!}}
+del paquete \texttt{Plots}. Usar los parámetros \texttt{xlims=(a,b)}
+para restringir la región de dibujo al intervalo \((a,b)\) del eje
+\(x\), y \texttt{ylims=(c,d)} para restringir la región de dibujo al
+intervalo \((c,d)\) del eje \(y\).
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{using} \BuiltInTok{Plots}
+\FunctionTok{f}\NormalTok{(x) }\OperatorTok{=}\NormalTok{ (}\FloatTok{1}\OperatorTok{+}\FloatTok{2}\OperatorTok{/}\NormalTok{x)}\OperatorTok{\^{}}\NormalTok{(x}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(f, xlims}\OperatorTok{=}\NormalTok{(}\OperatorTok{{-}}\FloatTok{10}\NormalTok{,}\FloatTok{10}\NormalTok{), ylims}\OperatorTok{=}\NormalTok{(}\FloatTok{0}\NormalTok{,}\FloatTok{6}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./limites_files/figure-pdf/cell-10-output-1.pdf}
+
+}
+
+\end{figure}
+
+A la vista de la gráfica, se puede concluir que
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\tightlist
+\item
+  \(\lim_{x\rightarrow -2^-} f(x) = -\infty.\)
+\item
+  \(\lim_{x\rightarrow -2^+} f(x)\) no existe.
+\item
+  \(\lim_{x\rightarrow -\infty} f(x)\approx 2.7.\)
+\item
+  \(\lim_{x\rightarrow +\infty} f(x) \approx 2.7.\)
+\item
+  \(\lim_{x\rightarrow 2} f(x) = 2.\)
+\item
+  \(\lim_{x\rightarrow 0} f(x)\) no existe.
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Calcular los límites anteriores. ¿Coinciden los resultados con los
+  conjeturados?
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{using} \BuiltInTok{SymPy}
+\PreprocessorTok{@vars}\NormalTok{ x real}\OperatorTok{=}\ConstantTok{true}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite por la izquieda en {-}2: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f}\NormalTok{(x), x}\OperatorTok{=\textgreater{}{-}}\FloatTok{2}\NormalTok{, dir}\OperatorTok{=}\StringTok{"{-}"}\NormalTok{))}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite por la izquieda en {-}2: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f}\NormalTok{(x), x}\OperatorTok{=\textgreater{}{-}}\FloatTok{2}\NormalTok{, dir}\OperatorTok{=}\StringTok{"+"}\NormalTok{))}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en {-}∞: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f}\NormalTok{(x), x}\OperatorTok{=\textgreater{}{-}}\NormalTok{oo))}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en ∞: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\NormalTok{oo))}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en 2: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{2}\NormalTok{))}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en 0: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Límite por la izquieda en -2: oo
+Límite por la izquieda en -2: 
+\end{verbatim}
+
+\begin{verbatim}
+-oo
+Límite en -∞: E
+Límite en ∞: E
+Límite en 2: 2
+Límite en 0: 
+\end{verbatim}
+
+\begin{verbatim}
+1
+\end{verbatim}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-caution-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-caution-color}{\faFire}\hspace{0.5em}{Precaución}, colframe=quarto-callout-caution-color-frame, toprule=.15mm]
+
+Aunque Julia calcula el límite en \(-2\) por la derecha y el límite en
+\(0\), a la vista de la gráfica, estos límites en realidad no existen,
+ya que la función no está definida en el intervalo de \([-2,0]\).
+
+\end{tcolorbox}
+
+\end{tcolorbox}
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-limites-raros}{}}%
+\begin{exercise}[]\label{exr-limites-raros}
+
+Calcular los siguientes límites
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \(\lim_{x\to 0} \operatorname{sen}\left(\frac{1}{x}\right)\)
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{using} \BuiltInTok{SymPy}
+\PreprocessorTok{@vars}\NormalTok{ x real}\OperatorTok{=}\ConstantTok{true}
+\FunctionTok{limit}\NormalTok{(}\FunctionTok{sin}\NormalTok{(}\FloatTok{1}\OperatorTok{/}\NormalTok{x), x}\OperatorTok{=\textgreater{}}\FloatTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+$\left\langle -1, 1\right\rangle$
+
+Como no se obtiene un valor concreto, sino un rango de valores, el
+límite no existe.
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \(\lim_{x\to 0} x\operatorname{sen}\left(\frac{1}{x}\right)\)
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{limit}\NormalTok{(}\FunctionTok{x*sin}\NormalTok{(}\FloatTok{1}\OperatorTok{/}\NormalTok{x), x}\OperatorTok{=\textgreater{}}\FloatTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+$0$
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \(\lim_{x\to \infty} e^{-x}\operatorname{sen}(x)\)
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{limit}\NormalTok{(}\ConstantTok{ℯ}\OperatorTok{\^{}}\NormalTok{(}\OperatorTok{{-}}\NormalTok{x)}\FunctionTok{*sin}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\NormalTok{oo)}
+\end{Highlighting}
+\end{Shaded}
+
+$0$
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \(\lim_{x\to a} \frac{\operatorname{sen}(x)-\operatorname{sen}(a)}{x-a}\)
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{@vars}\NormalTok{ a real}\OperatorTok{=}\ConstantTok{true}
+\FunctionTok{limit}\NormalTok{((}\FunctionTok{sin}\NormalTok{(x)}\FunctionTok{{-}sin}\NormalTok{(a))}\OperatorTok{/}\NormalTok{(x}\OperatorTok{{-}}\NormalTok{a), x}\OperatorTok{=\textgreater{}}\NormalTok{a)}
+\end{Highlighting}
+\end{Shaded}
+
+$\cos{\left(a \right)}$
+
+\end{tcolorbox}
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-indeterminaciones}{}}%
+\begin{exercise}[]\label{exr-indeterminaciones}
+
+Calcular el valor de las siguientes funciones en los puntos dados y su
+límite. Corroborar los límites obtenidos gráficamente.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \(f(x)=\frac{\operatorname{sen}(x)}{x}\) en \(x=0\).
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+La función \(f\) no está definida en \(x=0\) de manera que al evaluarla
+en \(0\) obtenemos un valor indeterminado.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{f}\NormalTok{(x)}\OperatorTok{=}\FunctionTok{sin}\NormalTok{(x)}\OperatorTok{/}\NormalTok{x}
+\FunctionTok{f}\NormalTok{(}\FloatTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+NaN
+\end{verbatim}
+
+Ahora calculamos el límite de \(f\) en \(0\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{@vars}\NormalTok{ x real}\OperatorTok{=}\ConstantTok{true}
+\FunctionTok{f}\NormalTok{(x)}\OperatorTok{=}\FunctionTok{sin}\NormalTok{(x)}\OperatorTok{/}\NormalTok{x}
+\FunctionTok{limit}\NormalTok{(}\FunctionTok{f}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+$1$
+
+Para corroborar el límite dibujamos la gráfica de \(f\) en un entorno de
+\(0\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{using} \BuiltInTok{Plots}
+\FunctionTok{plot}\NormalTok{(f)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./limites_files/figure-pdf/cell-18-output-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \(g(x)=\frac{\cos(x)}{x-\pi/2}\) en \(x=\pi/2\).
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+La función \(f\) no está definida en \(x=0\) de manera que al evaluarla
+en \(0\) obtenemos un valor indeterminado.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{g}\NormalTok{(x)}\OperatorTok{=}\FunctionTok{cos}\NormalTok{(x)}\OperatorTok{/}\NormalTok{(x}\OperatorTok{{-}}\ConstantTok{pi}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
+\FunctionTok{g}\NormalTok{(}\ConstantTok{pi}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Inf
+\end{verbatim}
+
+Como se puede observar, se obtiene \(\infty\) en lugar de indeterminado.
+La razón está en la representación de los números reales mediante
+números con coma flotante, de manera que \(\pi/2\) se redondea al número
+de coma flotante más próximo, y al aplicar el coseno se obtiene un
+número muy próximo a \(0\) pero distinto de \(0\).
+
+Ahora calculamos el límite de \(g\) en \(\pi/2\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{limit}\NormalTok{(}\FunctionTok{g}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\ConstantTok{pi}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+$\infty$
+
+Para corroborar el límite dibujamos la gráfica de \(g\) en un entorno de
+\(\pi/2\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{using} \BuiltInTok{Plots}
+\FunctionTok{plot}\NormalTok{(g)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./limites_files/figure-pdf/cell-21-output-1.pdf}
+
+}
+
+\end{figure}
+
+Como se puede apreciar gráficamente el la tendencia de \(g\) en
+\(\pi/2\) es \(-1\) y no el valor obtenido con el cálculo del límite. De
+nuevo el problema está en la aproximación de \(pi\) como un real en coma
+flotante. Afortunadamente el paquete \texttt{SymPy} permite definir una
+constante como simbólica para evitar su conversión a número en coma
+flotante, usando la función \texttt{Sym()}. Repetimos la definición de
+la función y el cálculo de nuevo convirtiendo \(\pi\) en una constante
+simbólica.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{g}\NormalTok{(x)}\OperatorTok{=}\FunctionTok{cos}\NormalTok{(x)}\OperatorTok{/}\NormalTok{(}\FunctionTok{x{-}Sym}\NormalTok{(}\ConstantTok{pi}\NormalTok{)}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
+\FunctionTok{limit}\NormalTok{(}\FunctionTok{g}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FunctionTok{Sym}\NormalTok{(}\ConstantTok{pi}\NormalTok{)}\OperatorTok{/}\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+$-1$
+
+\end{tcolorbox}
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-asintotas}{}}%
+\begin{exercise}[]\label{exr-asintotas}
+
+Considérese la función \[
+g(x)=
+\begin{cases}
+\dfrac{x}{x-2}    & \mbox{si $x\leq 0$;} \\
+\dfrac{x^2}{2x-6} & \mbox{si $x>0$;}
+\end{cases}
+\]
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Dibujar la gráfica de \(g\) y determinar gráficamente si existen
+  asíntotas.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
+Para respetar las discontinuidades utilizar la función
+\texttt{rangeclamp()} del paquete \texttt{MTH229}.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{using} \BuiltInTok{Plots}\NormalTok{, }\BuiltInTok{MTH229}\NormalTok{, }\BuiltInTok{LaTeXStrings}
+\PreprocessorTok{@vars}\NormalTok{ x real}\OperatorTok{=}\ConstantTok{true}
+\FunctionTok{g1}\NormalTok{(x) }\OperatorTok{=}\NormalTok{ x}\OperatorTok{/}\NormalTok{(x}\OperatorTok{{-}}\FloatTok{2}\NormalTok{)}
+\FunctionTok{g2}\NormalTok{(x) }\OperatorTok{=}\NormalTok{ x}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{/}\NormalTok{(}\FloatTok{2}\NormalTok{x}\OperatorTok{{-}}\FloatTok{6}\NormalTok{)}
+\FunctionTok{g}\NormalTok{(x) }\OperatorTok{=}\NormalTok{ x}\OperatorTok{\textless{}=}\FloatTok{0}\NormalTok{ ? }\FunctionTok{g1}\NormalTok{(x) }\OperatorTok{:} \FunctionTok{g2}\NormalTok{(x)}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{rangeclamp}\NormalTok{(g), xlims}\OperatorTok{=}\NormalTok{(}\OperatorTok{{-}}\FloatTok{5}\NormalTok{,}\FloatTok{10}\NormalTok{), ylims}\OperatorTok{=}\NormalTok{(}\OperatorTok{{-}}\FloatTok{5}\NormalTok{,}\FloatTok{10}\NormalTok{), xticks}\OperatorTok{={-}}\FloatTok{5}\OperatorTok{:}\FloatTok{10}\NormalTok{, label }\OperatorTok{=}\NormalTok{ L}\StringTok{"g(x)"}\NormalTok{, legend}\OperatorTok{=:}\NormalTok{topleft)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./limites_files/figure-pdf/cell-23-output-1.pdf}
+
+}
+
+\end{figure}
+
+A la vista de la gráfica, se observa que \(g\) tiene una asíntota
+vertical en \(x=3\), una asíntota horizontal \(y=1\) en \(-\infty\) y
+parece que también hay una asíntota oblicua en \(\infty\).
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Calcular las asíntotas verticales de \(g\) y dibujarlas.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+Estudiamos primero el dominio para ver dónde no está definida la
+función. Como tanto la rama negativa como la positiva son funciones
+racionales, hay que ver los puntos que anulan el denominador.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{println}\NormalTok{(}\StringTok{"Puntos fuera del dominio de la rama negativa: "}\NormalTok{, }\FunctionTok{solve}\NormalTok{(x}\OperatorTok{{-}}\FloatTok{2}\NormalTok{))}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Puntos fuera del dominio de la rama positiva: "}\NormalTok{, }\FunctionTok{solve}\NormalTok{(}\FloatTok{2}\NormalTok{x}\OperatorTok{{-}}\FloatTok{6}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Puntos fuera del dominio de la rama negativa: Sym[2]
+Puntos fuera del dominio de la rama positiva: Sym[3]
+\end{verbatim}
+
+Así pues la rama negativa está definida en todos \(\mathbb{R}^-\) y la
+rama positiva en \(\mathbb{R}^+\setminus\{3\}\). Es en este último punto
+donde \(g\) puede tener asíntota vertical, así que estudiamos los
+límites laterales.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límte en 3 por la izquierda: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{g}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{3}\NormalTok{, dir}\OperatorTok{=}\StringTok{"{-}"}\NormalTok{))}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límte en 3 por la derecha: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{g}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{3}\NormalTok{, dir}\OperatorTok{=}\StringTok{"+"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Límte en 3 por la izquierda: -oo
+Límte en 3 por la derecha: oo
+\end{verbatim}
+
+Por tanto, \(g\) tiene una asíntota vertical en \(x=3\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vline!}\NormalTok{([}\FloatTok{3}\NormalTok{], label }\OperatorTok{=}\NormalTok{ L}\StringTok{"Asíntota vertical }\SpecialCharTok{$}\NormalTok{x}\StringTok{=3}\SpecialCharTok{$}\StringTok{")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./limites_files/figure-pdf/cell-26-output-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Calcular las asíntotas horizontales de \(g\).
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+Estudiamos los límites en el infinito.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en {-}∞: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{g1}\NormalTok{(x), x}\OperatorTok{=\textgreater{}{-}}\NormalTok{oo))}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en ∞: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{g2}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\NormalTok{oo))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Límite en -∞: 1
+Límite en ∞: oo
+\end{verbatim}
+
+Por tanto, \(g\) tiene una asíntota horizontal \(y=1\) en \(-\infty\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hline!}\NormalTok{([}\FloatTok{1}\NormalTok{], label }\OperatorTok{=}\NormalTok{ L}\StringTok{"Asíntota horizontal }\SpecialCharTok{$}\NormalTok{y}\StringTok{=1}\SpecialCharTok{$}\StringTok{")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./limites_files/figure-pdf/cell-28-output-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Calcular las asíntotas oblicuas de \(g\).
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+Estudiamos el límite en \(\infty\) de \(\frac{f(x)}{x}\) (en \(-\infty\)
+no puede haber asíntota oblicua al haber asíntota horizontal).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{limit}\NormalTok{(}\FunctionTok{g2}\NormalTok{(x)}\OperatorTok{/}\NormalTok{x, x}\OperatorTok{=\textgreater{}}\NormalTok{oo)}
+\end{Highlighting}
+\end{Shaded}
+
+$\frac{1}{2}$
+
+Por tanto, \(g\) tiene una asíntota oblicua con pendiente \(b=1/2\) en
+\(\infty\). Para obtener el término independiente de la asíntota
+calculamos el límite en \(\infty\) de \(f(x)-\frac{1}{2}x\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{limit}\NormalTok{(}\FunctionTok{g2}\NormalTok{(x)}\OperatorTok{{-}}\NormalTok{x}\OperatorTok{/}\FloatTok{2}\NormalTok{, x}\OperatorTok{=\textgreater{}}\NormalTok{oo)}
+\end{Highlighting}
+\end{Shaded}
+
+$\frac{3}{2}$
+
+Por tanto, \(g\) tiene una asíntota oblicua
+\(y=\frac{3}{2}+\frac{1}{2}x\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot!}\NormalTok{(}\FloatTok{3}\OperatorTok{/}\FloatTok{2}\OperatorTok{+}\NormalTok{x}\OperatorTok{/}\FloatTok{2}\NormalTok{, label }\OperatorTok{=}\NormalTok{ L}\StringTok{"Asíntota oblicua }\SpecialCharTok{$}\NormalTok{y}\StringTok{=}\SpecialCharTok{\textbackslash{}f}\StringTok{rac\{3\}\{2\}+}\SpecialCharTok{\textbackslash{}f}\StringTok{rac\{1\}\{2\}x}\SpecialCharTok{$}\StringTok{")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./limites_files/figure-pdf/cell-31-output-1.pdf}
+
+}
+
+\end{figure}
+
+\end{tcolorbox}
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-continuidad}{}}%
+\begin{exercise}[]\label{exr-continuidad}
+
+Dada la función
+
+\[
+h(x)=
+\begin{cases}
+\frac{2x^2-2x}{3x^2+x} & \mbox{si } x\leq 0,\\
+\frac{\operatorname{tg}(x)+a}{x} & \mbox{si } x>0
+\end{cases}
+\]
+
+¿Qué valor debe tomar \(a\) para que la función sea continua en todo su
+dominio?
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Ayuda}, colframe=quarto-callout-note-color-frame, toprule=.15mm]
+
+Calcular el límite en \(0\) por la izquierda de la función de la rama
+negativa, y el límite en \(0\) por la derecha de la función de la rama
+positiva. Después resolver la ecuación simbólica que resulta de igualar
+los dos límites. Para crear la ecuación simbólica debe utilizarse la
+función \texttt{Eq()} del paquete \texttt{SymPy} y después resolverla
+con la función \texttt{solve()}.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{@vars}\NormalTok{ x a real}\OperatorTok{=}\ConstantTok{true}
+\FunctionTok{h1}\NormalTok{(x) }\OperatorTok{=}\NormalTok{ (}\FloatTok{2}\NormalTok{x}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{{-}}\FloatTok{2}\NormalTok{x)}\OperatorTok{/}\NormalTok{(}\FloatTok{3}\NormalTok{x}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{+}\NormalTok{x)}
+\FunctionTok{h2}\NormalTok{(x) }\OperatorTok{=}\NormalTok{ (}\FunctionTok{tan}\NormalTok{(x)}\OperatorTok{{-}}\NormalTok{a}\OperatorTok{*}\NormalTok{x)}\OperatorTok{/}\NormalTok{x }
+\NormalTok{l1 }\OperatorTok{=} \FunctionTok{limit}\NormalTok{(}\FunctionTok{h1}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{0}\NormalTok{, dir}\OperatorTok{=}\StringTok{"{-}"}\NormalTok{)}
+\NormalTok{l2 }\OperatorTok{=} \FunctionTok{limit}\NormalTok{(}\FunctionTok{h2}\NormalTok{(x),x}\OperatorTok{=\textgreater{}}\FloatTok{0}\NormalTok{, dir}\OperatorTok{=}\StringTok{"+"}\NormalTok{)}
+\FunctionTok{solve}\NormalTok{(}\FunctionTok{Eq}\NormalTok{(l1,l2))}
+\end{Highlighting}
+\end{Shaded}
+
+$\left[ \begin{array}{r}3\end{array} \right]$
+
+\end{tcolorbox}
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-discontinuidad}{}}%
+\begin{exercise}[]\label{exr-discontinuidad}
+
+Representar gráficamente y clasificar las discontinuidades de la función
+
+\[
+f(x)=
+\begin{cases}
+\frac{x+1}{x^2-1},       & \mbox{si } x<0,     \\
+\frac{1}{e^{1/(x^2-1)}}, & \mbox{si } x\geq 0. 
+\end{cases}
+\]
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+Para estudiar las discontinuidades de una función tenemos que estudiar
+los puntos que no están en el dominio y los puntos donde cambia la
+definición de la función en el caso de una función definida a trozos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{using} \BuiltInTok{Plots}\NormalTok{, }\BuiltInTok{MTH229}\NormalTok{, }\BuiltInTok{LaTeXStrings}
+\PreprocessorTok{@syms}\NormalTok{ x}\OperatorTok{::}\DataTypeTok{real}
+\FunctionTok{f1}\NormalTok{(x) }\OperatorTok{=}\NormalTok{ (x}\OperatorTok{+}\FloatTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{(x}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{{-}}\FloatTok{1}\NormalTok{)}
+\FunctionTok{f2}\NormalTok{(x) }\OperatorTok{=} \FloatTok{1}\OperatorTok{/}\FunctionTok{exp}\NormalTok{(}\FloatTok{1}\OperatorTok{/}\NormalTok{(x}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{{-}}\FloatTok{1}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(f1, }\OperatorTok{{-}}\FloatTok{4}\NormalTok{, }\FloatTok{0}\NormalTok{, ylim}\OperatorTok{=}\NormalTok{(}\OperatorTok{{-}}\FloatTok{2}\NormalTok{,}\FloatTok{8}\NormalTok{), legend}\OperatorTok{=}\ConstantTok{false}\NormalTok{)}
+\FunctionTok{plot!}\NormalTok{(}\FunctionTok{rangeclamp}\NormalTok{(f2), }\FloatTok{0}\NormalTok{, }\FloatTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{./limites_files/figure-pdf/cell-33-output-1.pdf}
+
+}
+
+\end{figure}
+
+Para determinar el dominio de la rama negativa, al ser una función
+racional, tenemos que ver los puntos que anulan el denominador.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{solve}\NormalTok{(x}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{{-}}\FloatTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+$\left[ \begin{array}{r}-1\\1\end{array} \right]$
+
+Así pues, la función no está definida en \(x=-1\) (la otra raíz queda
+fuera de la rama negativa). Para ver el tipo de discontinuidad
+estudiamos los límites laterales en \(x=-1\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en {-}1 por la izquierda: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f1}\NormalTok{(x), x}\OperatorTok{=\textgreater{}} \OperatorTok{{-}}\FloatTok{1}\NormalTok{, dir}\OperatorTok{=}\StringTok{"{-}"}\NormalTok{))}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en {-}1 por la derecha: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f1}\NormalTok{(x), x}\OperatorTok{=\textgreater{}} \OperatorTok{{-}}\FloatTok{1}\NormalTok{, dir}\OperatorTok{=}\StringTok{"+"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Límite en -1 por la izquierda: -1/2
+Límite en -1 por la derecha: 
+\end{verbatim}
+
+\begin{verbatim}
+-1/2
+\end{verbatim}
+
+Como el límite existe, \(f\) tiene una discontinuidad evitable en
+\(x=-1\).
+
+Del mismo modo la rama positiva no está definida en \(x=1\) ya que se
+anula el denominador del exponente de la función exponencial. Para ver
+el tipo de discontinuidad estudiamos los límites laterales en \(x=1\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en 1 por la izquierda: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f2}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{1}\NormalTok{, dir}\OperatorTok{=}\StringTok{"{-}"}\NormalTok{))}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en 1 por la derecha: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f2}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{1}\NormalTok{, dir}\OperatorTok{=}\StringTok{"+"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Límite en 1 por la izquierda: oo
+Límite en 1 por la derecha: 
+\end{verbatim}
+
+\begin{verbatim}
+0
+\end{verbatim}
+
+Como los límites laterales son distintos, \(f\) tiene una discontinuidad
+de salto infinito en \(x=1\).
+
+Finalmente, estudiamos los límites laterales en \(x=0\), que es donde
+cambia la definición de la función.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en 1 por la izquierda: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f1}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{0}\NormalTok{, dir}\OperatorTok{=}\StringTok{"{-}"}\NormalTok{))}
+\FunctionTok{println}\NormalTok{(}\StringTok{"Límite en 1 por la derecha: "}\NormalTok{, }\FunctionTok{limit}\NormalTok{(}\FunctionTok{f2}\NormalTok{(x), x}\OperatorTok{=\textgreater{}}\FloatTok{0}\NormalTok{, dir}\OperatorTok{=}\StringTok{"+"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Límite en 1 por la izquierda: -1
+Límite en 1 por la derecha: E
+\end{verbatim}
+
+Como los límites laterales son distintos, \(f\) tiene una discontinuidad
+de salto finito en \(x=0\).
+
+\end{tcolorbox}
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-algoritmo-biseccion}{}}%
+\begin{exercise}[]\label{exr-algoritmo-biseccion}
+
+El
+\href{https://aprendeconalf.es/analisis-manual/limites.html\#thm-bolzano}{teorema
+de Bolzano} permite construir un algoritmo para encontrar raíces de una
+función continua en un intervalo \([a,b]\) cuando \(f(a)f(b)<0\). Este
+algoritmo se conoce como el \emph{algoritmo de bisección} y básicamente
+consiste en repetir los siguientes pasos:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Calcular el centro del intervalo \(c=\frac{a+b}{2}\).
+\item
+  Si \(f(c)=0\), \(c\) es una raíz y se termina la búsqueda.
+\item
+  En caso contrario, si \(f(a)f(c)<0\) hacer \(b=c\), y si no, hacer
+  \(a=c\).
+\item
+  Repetir la búsqueda.
+\end{enumerate}
+
+Construir una función que implemente este algoritmo y utilizarlo para
+calcular una raíz de la función \(f(x)=x^5+3x^4-2x^3+6x-2\) en el
+intervalo \([0,1]\).
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, colback=white, breakable, left=2mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, opacityback=0, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, colframe=quarto-callout-tip-color-frame, toprule=.15mm]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{function} \FunctionTok{raices\_biseccion}\NormalTok{(f, a, b, error}\OperatorTok{=}\FloatTok{1e{-}10}\NormalTok{)}
+  \ControlFlowTok{if} \FunctionTok{f}\NormalTok{(a) }\OperatorTok{==} \FloatTok{0} \ControlFlowTok{return}\NormalTok{(a) }\ControlFlowTok{end}
+  \ControlFlowTok{if} \FunctionTok{f}\NormalTok{(b) }\OperatorTok{==} \FloatTok{0} \ControlFlowTok{return}\NormalTok{(b) }\ControlFlowTok{end}
+  \ControlFlowTok{if} \FunctionTok{f}\NormalTok{(a) }\OperatorTok{*} \FunctionTok{f}\NormalTok{(b) }\OperatorTok{\textgreater{}} \FloatTok{0} \FunctionTok{error}\NormalTok{(}\StringTok{"Las imágenes de los extremos del intervalo no tienen signo distinto."}\NormalTok{) }\ControlFlowTok{end}
+\NormalTok{  c }\OperatorTok{=}\NormalTok{ (a}\OperatorTok{+}\NormalTok{b)}\OperatorTok{/}\FloatTok{2}
+  \ControlFlowTok{while} \FunctionTok{abs}\NormalTok{(b}\OperatorTok{{-}}\NormalTok{a) }\OperatorTok{\textgreater{}}\NormalTok{ error}
+    \ControlFlowTok{if} \FunctionTok{f}\NormalTok{(c) }\OperatorTok{==} \FloatTok{0} \ControlFlowTok{return}\NormalTok{(c) }\ControlFlowTok{end}
+    \ControlFlowTok{if} \FunctionTok{f}\NormalTok{(a) }\OperatorTok{*} \FunctionTok{f}\NormalTok{(c) }\OperatorTok{\textless{}} \FloatTok{0}
+\NormalTok{       b }\OperatorTok{=}\NormalTok{ c}
+    \ControlFlowTok{else}
+\NormalTok{       a }\OperatorTok{=}\NormalTok{ c}
+    \ControlFlowTok{end}
+\NormalTok{    c }\OperatorTok{=}\NormalTok{ (a}\OperatorTok{+}\NormalTok{b)}\OperatorTok{/}\FloatTok{2}
+  \ControlFlowTok{end}
+\NormalTok{  c}
+\KeywordTok{end}
+
+\FunctionTok{f}\NormalTok{(x)}\OperatorTok{=}\NormalTok{x}\OperatorTok{\^{}}\FloatTok{5}\OperatorTok{+}\FloatTok{3}\NormalTok{x}\OperatorTok{\^{}}\FloatTok{4}\OperatorTok{{-}}\FloatTok{2}\NormalTok{x}\OperatorTok{\^{}}\FloatTok{3}\OperatorTok{+}\FloatTok{6}\NormalTok{x}\OperatorTok{{-}}\FloatTok{4}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{raices\_biseccion}\NormalTok{(f, }\FloatTok{0}\NormalTok{, }\FloatTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+0.6496996753558051
+\end{verbatim}
+
+\end{tcolorbox}
+
+\end{exercise}
+
+\hypertarget{ejercicios-propuestos-2}{%
+\section{Ejercicios propuestos}\label{ejercicios-propuestos-2}}
+
+\leavevmode\vadjust pre{\hypertarget{exr-interes-compuesto}{}}%
+\begin{exercise}[]\label{exr-interes-compuesto}
+
+En 1683 Jacob Bernouilli estudió la evolución del interés compuesto
+cuando el periodo de actualización se hacía cada vez más pequeño.
+
+Si disponemos de \(1\)€ en una cuenta corriente que ofrece un 100\% de
+interés anual, al cabo de un año tendremos \(2\)€ en la cuenta. Si la
+cuenta ofrece un interés del \(50\)\% cada 6 meses, al final del año
+tendremos
+
+\[
+1\cdot\left(1+\frac{1}{2}\right)\left(1+\frac{1}{2}\right)= \left(1+\frac{1}{2}\right)^2 = 2.25\mbox{€}.
+\]
+
+Si la cuenta ofrece un interés del \(25\)\% cada trimestre, al final del
+año tendremos
+
+\[
+1\cdot\left(1+\frac{1}{4}\right)\left(1+\frac{1}{4}\right)\left(1+\frac{1}{4}\right)\left(1+\frac{1}{4}\right)= \left(1+\frac{1}{4}\right)^4 = 2.44140625\mbox{€}.
+\]
+
+¿Qué cantidad habrá en la cuenta al cabo de un año si la cuenta ofrece
+un interés del \(1/12\)\% mensual?
+
+\vspace{18pt}*Hint: *
+
+Introducir hasta 10 decimales
+
+¿Qué cantidad habrá en la cuenta al cabo de un año si la cuenta ofrece
+un interés del \(1/365\)\% diario?
+
+\vspace{18pt}*Hint: *
+
+Introducir hasta 10 decimales
+
+¿Qué cantidad habrá en la cuenta al cabo de un año si la cuenta se
+actualiza de manera continua con un interés \(1/x\)\% cuando
+\(x\to\infty\)?
+
+${\quad\Box}$ 3
+
+${\quad\Box}$ $$e^2$$
+${\quad\Box}$ 2.7182818284590
+
+${\quad\Box}$ $$e^{-1}$$
+${\quad\Box}$ e
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-limites-2}{}}%
+\begin{exercise}[]\label{exr-limites-2}
+
+Calcular los siguientes límites.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \(\displaystyle \lim_{x\rightarrow \pi/4}\frac{\operatorname{sen}(x)-\cos(x)}{1-\operatorname{tg}(x)}\).
+\end{enumerate}
+
+\vspace{18pt}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \(\displaystyle \lim_{x\rightarrow \infty}\sqrt{x^2+x+1}-\sqrt{x^2-2x-1}\).
+\end{enumerate}
+
+\vspace{18pt}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \(\displaystyle \lim_{x\to 0^+} \frac{x^x-1}{x}\)
+\end{enumerate}
+
+${\quad\Box}$ $$\infty$$
+${\quad\Box}$ $$-\infty$$
+${\quad\Box}$ $$1$$
+${\quad\Box}$ 0
+
+${\quad\Box}$ NaN
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \(\displaystyle \lim_{x\to 1}\frac{a^{1-x}-1}{1-x}\).
+\end{enumerate}
+
+${\quad\Box}$ $$1/a$$
+${\quad\Box}$ $$\ln(a)$$
+${\quad\Box}$ $$e^a$$
+${\quad\Box}$ $$\sqrt{a}$$
+${\quad\Box}$ Las otras opciones son falsas.
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-asintotas}{}}%
+\begin{exercise}[]\label{exr-asintotas}
+
+¿Cuáles de las siguientes rectas son asíntotas de la función
+\(f(x)=\frac{x^2+1}{3x+3}\)?
+
+${\quad\Box}$ $$y=\frac{1}{3}+\frac{1}{3}x$$
+${\quad\Box}$ $$y=3x+1$$
+${\quad\Box}$ $$y=\frac{x-1}{3}$$
+${\quad\Box}$ $$y=1$$
+${\quad\Box}$ $$x=-1$$
+(\emph{Select one or more})
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-discontinuidad-evitable}{}}%
+\begin{exercise}[]\label{exr-discontinuidad-evitable}
+
+¿Cuándo debería valer la función \(h(x)=\dfrac{e^x-e^{-x}}{x}\) para que
+fuese continua en \(x=0\).
+
+\vspace{18pt}
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-continuidad-2}{}}%
+\begin{exercise}[]\label{exr-continuidad-2}
+
+Dada la función
+
+\[
+h(x)=
+\begin{cases}
+x^3-x-2 & \mbox{si } x\leq 0,\\
+\cos(x-\pi/2)+a & \mbox{si } x>0
+\end{cases}
+\]
+
+¿Qué valor debe tomar \(a\) para que la función sea continua en todo su
+dominio?
+
+${\quad\Box}$ $$-2 - \frac{\sqrt{2}}{2}$$
+${\quad\Box}$ $$-2+\frac{\sqrt{2}}{2}$$
+${\quad\Box}$ $$2-\sqrt{2}$$
+${\quad\Box}$ $$-2$$
+${\quad\Box}$ No hay ningún valor de de $a$ que haga la función continua
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-clasificacion-discontinuidad}{}}%
+\begin{exercise}[]\label{exr-clasificacion-discontinuidad}
+
+¿Qué tipo de discontinuidad presenta la función
+\(g(x)=\dfrac{1}{e^{1/(x^2-1)}}\) en \(x=-1\)?
+
+${\quad\Box}$ Salto infinito
+
+${\quad\Box}$ Salto finito
+
+${\quad\Box}$ Es continua
+
+${\quad\Box}$ Evitable
+
+${\quad\Box}$ Segunda especie
+
+\end{exercise}
+
+\leavevmode\vadjust pre{\hypertarget{exr-raices}{}}%
+\begin{exercise}[]\label{exr-raices}
+
+Calcular de forma aproximada con el algoritmo de bisección una solución
+de la ecuación \(e^{-x}=\cos(x)\) en el intervalo \([1,2]\) con un error
+menor de \(10^{-15}\).
+
+\vspace{18pt}
 
 \end{exercise}
 

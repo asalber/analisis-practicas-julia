@@ -295,7 +295,7 @@ en el intervalo $[-8,8]$ y determinar, observando la gráfica, lo siguiente:
 ## Ayuda
 Usar la función `plot` como en el ejercicio anterior con el parámetro `aspect_ratio=1.0` para que los ejes tengan la misma escala. 
 
-Para respetar las discontinuidades utilizar aplicar la función `rangeclamp` del paquete `MTH229`.
+Para respetar las discontinuidades autilizar la función `rangeclamp()` del paquete `MTH229`.
 :::
 
 :::{.callout-tip collapse="true"}

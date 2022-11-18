@@ -2,7 +2,6 @@
 lang: es
 jupyter: julia-1.8
 ---
-<!-- LTeX: language = es-ES -->
 
 # Sucesiones de números reales
 

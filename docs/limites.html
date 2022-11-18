@@ -1,0 +1,2568 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Pácticas de Análisis Matemático con Julia - 4&nbsp; Límites de funciones reales</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./funciones-elementales.html" rel="prev">
+<link href="./img/logos/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta property="og:title" content="Pácticas de Análisis Matemático con Julia - 4&nbsp; Límites de funciones reales">
+<meta property="og:description" content="Para la realización de esta práctica se requieren los siguientes paquetes:">
+<meta property="og:site-name" content="Pácticas de Análisis Matemático con Julia">
+<meta name="twitter:title" content="Pácticas de Análisis Matemático con Julia - 4&nbsp; Límites de funciones reales">
+<meta name="twitter:description" content="Para la realización de esta práctica se requieren los siguientes paquetes:">
+<meta name="twitter:site" content="@aprendeconalf">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Límites de funciones reales</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/logos/aprendeconalf.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Pácticas de Análisis Matemático con Julia</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" title="" class="sidebar-tool px-1"><i class="bi bi-house-fill"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./practicas-analisis-julia.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./practicas-analisis-julia.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+    <a href="" title="Share" id="sidebar-tool-dropdown-1" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-1">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+            <i class="bi bi-bi-twitter pe-1"></i>
+          Twitter
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+            <i class="bi bi-bi-linkedin pe-1"></i>
+          LinkedIn
+          </a>
+        </li>
+    </ul>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefacio</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sucesiones.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Sucesiones de números reales</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./funciones-elementales.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Funciones elementales</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./limites.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Límites de funciones reales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#ejercicios-resueltos" id="toc-ejercicios-resueltos" class="nav-link active" data-scroll-target="#ejercicios-resueltos"><span class="toc-section-number">4.1</span>  Ejercicios Resueltos</a></li>
+  <li><a href="#ejercicios-propuestos" id="toc-ejercicios-propuestos" class="nav-link" data-scroll-target="#ejercicios-propuestos"><span class="toc-section-number">4.2</span>  Ejercicios propuestos</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Límites de funciones reales</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="ejercicios-resueltos" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="ejercicios-resueltos"><span class="header-section-number">4.1</span> Ejercicios Resueltos</h2>
+<p>Para la realización de esta práctica se requieren los siguientes paquetes:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy  </span><span class="co"># Para el cálculo simbólico de límites.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots  </span><span class="co"># Para el dibujo de gráficas.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plotlyjs() # Para obtener gráficos interactivos.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">MTH229 </span><span class="co"># Para restringir la gráfica de una función a su dominio.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LaTeXStrings  </span><span class="co"># Para usar código LaTeX en los gráficos.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="exr-tendencia-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.1 </strong></span>Sea la función <span class="math inline">\(f(x)=x^2\)</span>.</p>
+<ol type="a">
+<li>Estudiar la tendencia de <span class="math inline">\(f\)</span> cuando <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(3\)</span> por la derecha, evaluando la función en <span class="math inline">\(x=3+\frac{1}{10i}\)</span> para <span class="math inline">\(i=1,\ldots,10\)</span>.</li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ayuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Definir la función y aplicar la función a los valores de x indicados usando <a href="https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html#comprensi%C3%B3n-de-arrays">compresiones de arrays</a>.</p>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">3</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">f</span>(a<span class="op">+</span><span class="fl">1</span><span class="op">/</span><span class="fl">10</span>i) for i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[9.610000000000001, 9.302499999999998, 9.20111111111111, 9.150625, 9.1204, 9.100277777777777, 9.085918367346938, 9.075156250000001, 9.06679012345679, 9.060099999999998]</code></pre>
+</div>
+</div>
+<p>La función tiende a <span class="math inline">\(9\)</span>.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Estudiar la tendencia de <span class="math inline">\(f\)</span> cuando <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(3\)</span> por la izquierda, evaluando la función en <span class="math inline">\(x=3-\frac{1}{10i}\)</span> para <span class="math inline">\(i=1,\ldots, 10\)</span>.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">f</span>(a<span class="op">-</span><span class="fl">1</span><span class="op">/</span><span class="fl">10</span>i) for i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[8.41, 8.7025, 8.801111111111112, 8.850625, 8.8804, 8.900277777777777, 8.914489795918367, 8.925156249999999, 8.933456790123458, 8.940100000000001]</code></pre>
+</div>
+</div>
+<p>La función también tiende a 9.</p>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li>Dibujar la gráfica de los valores de <span class="math inline">\(f\)</span> evaluados en los apartados anteriores diferenciando la tendencia por la izquierda de la tendencia por la derecha.</li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ayuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Definir un vector con los valores de <span class="math inline">\(x\)</span> y otro con los valores correspondientes de <span class="math inline">\(f(x)\)</span> y usar la función <a href="https://docs.juliaplots.org/latest/api/#Plots.scatter-Tuple"><code>scatter</code></a> del paquete <code>Plots</code>, pasandole los dos vectores.</p>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>xd <span class="op">=</span> [a<span class="op">+</span><span class="fl">1</span><span class="op">/</span><span class="fl">10</span>i for i<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(xd, <span class="fu">f</span>.(xd), label<span class="op">=</span><span class="st">"Aproximación por la derecha"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>xi <span class="op">=</span> [a<span class="op">-</span><span class="fl">1</span><span class="op">/</span><span class="fl">10</span>i for i<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter!</span>(xi, <span class="fu">f</span>.(xi), label<span class="op">=</span><span class="st">"Aproximación por la izquierda"</span>, legend<span class="op">=:</span>topleft)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<p><img src="limites_files/figure-html/cell-5-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="4" type="a">
+<li>Calcular el límite por la izquierda y por la derecha de <span class="math inline">\(f\)</span> en <span class="math inline">\(x=3\)</span>.</li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ayuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Declarar la variable simbólica <code>x</code> con <code>@vars</code> imponiento la restricción <code>real=true</code>, definir la función y usar la función <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Limits-1"><code>limit</code></a> del paquete <code>SymPy</code> para calcular los límites laterales de la función. Para el límite por la izquierda indicar el parámetro <code>dir="-"</code> y para el límite por la derecha <code>dir="+"</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>li <span class="op">=</span> <span class="fu">limit</span>(<span class="fu">f</span>(x), x<span class="op">=&gt;</span><span class="fl">3</span>, dir<span class="op">=</span><span class="st">"-"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite por la izquierda: "</span>, li)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ld <span class="op">=</span> <span class="fu">limit</span>(<span class="fu">f</span>(x), x<span class="op">=&gt;</span><span class="fl">3</span>, dir<span class="op">=</span><span class="st">"+"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite por la derecha: "</span>, ld)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Límite por la izquierda: 9
+Límite por la derecha: 9</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-tendencia-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.2 </strong></span>Sea la función <span class="math inline">\(g(x)=(1+x)^{1/x}\)</span>.</p>
+<ol type="a">
+<li>Estudiar la tendencia de <span class="math inline">\(g\)</span> cuando <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(0\)</span> por la derecha, evaluando la función en <span class="math inline">\(x=\frac{1}{10^i}\)</span> para <span class="math inline">\(i=1,\ldots,10\)</span>.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> (<span class="fl">1</span><span class="op">+</span>x)<span class="op">^</span>(<span class="fl">1</span><span class="op">/</span>x)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">g</span>(a<span class="op">+</span><span class="fl">1</span><span class="op">/</span><span class="fl">10</span><span class="op">^</span>i) for i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[2.5937424601000023, 2.7048138294215285, 2.7169239322355936, 2.7181459268249255, 2.718268237192297, 2.7182804690957534, 2.7182816941320813, 2.7182817983473577, 2.71828205201156, 2.7182820532347876]</code></pre>
+</div>
+</div>
+<p>La función tiende a <span class="math inline">\(e\)</span>.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Estudiar la tendencia de <span class="math inline">\(g\)</span> cuando <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(0\)</span> por la izquierda, evaluando la función en <span class="math inline">\(x=-\frac{1}{10^i}\)</span> para <span class="math inline">\(i=1,\ldots, 10\)</span>.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>([<span class="fu">g</span>(a<span class="op">-</span><span class="fl">1</span><span class="op">/</span><span class="fl">10</span><span class="op">^</span>i) for i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[2.867971990792441, 2.7319990264290284, 2.7196422164428524, 2.71841775501015, 2.718295419980405, 2.7182831876793716, 2.7182819629423656, 2.7182818557091664, 2.7182817529399266, 2.718282053506616]</code></pre>
+</div>
+</div>
+<p>La función también tiende a e.</p>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li>Calcular el límite por la izquierda y por la derecha de <span class="math inline">\(g\)</span> en <span class="math inline">\(x=0\)</span>.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>li <span class="op">=</span> <span class="fu">limit</span>(<span class="fu">g</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"-"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite por la izquierda: "</span>, li)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ld <span class="op">=</span> <span class="fu">limit</span>(<span class="fu">g</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"+"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite por la derecha: "</span>, ld)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Límite por la izquierda: E
+Límite por la derecha: E</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-limites-laterales" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.3 </strong></span>Considérese la función <span class="math display">\[
+f(x)=\left( 1+\frac{2}{x}\right) ^{x/2}.
+\]</span></p>
+<ol type="a">
+<li><p>Dibujar su gráfica, y a la vista de misma conjeturar el resultado de los siguientes límites:</p></li>
+<li><p><span class="math inline">\(\lim_{x\rightarrow -2^-} f(x)\)</span></p></li>
+<li><p><span class="math inline">\(\lim_{x\rightarrow -2^+} f(x)\)</span></p></li>
+<li><p><span class="math inline">\(\lim_{x\rightarrow -\infty} f(x)\)</span></p></li>
+<li><p><span class="math inline">\(\lim_{x\rightarrow +\infty} f(x)\)</span></p></li>
+<li><p><span class="math inline">\(\lim_{x\rightarrow 2} f(x)\)</span></p></li>
+<li><p><span class="math inline">\(\lim_{x\rightarrow 0} f(x)\)</span></p></li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ayuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Utilizar la función <a href="https://aprendeconalf.es/manual-julia/graficos.html#gr%C3%A1fica-de-una-funci%C3%B3n-de-una-variable"><code>plot!</code></a> del paquete <code>Plots</code>. Usar los parámetros <code>xlims=(a,b)</code> para restringir la región de dibujo al intervalo <span class="math inline">\((a,b)\)</span> del eje <span class="math inline">\(x\)</span>, y <code>ylims=(c,d)</code> para restringir la región de dibujo al intervalo <span class="math inline">\((c,d)\)</span> del eje <span class="math inline">\(y\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> (<span class="fl">1</span><span class="op">+</span><span class="fl">2</span><span class="op">/</span>x)<span class="op">^</span>(x<span class="op">/</span><span class="fl">2</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f, xlims<span class="op">=</span>(<span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>), ylims<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">6</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<p><img src="limites_files/figure-html/cell-10-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<p>A la vista de la gráfica, se puede concluir que</p>
+<ol type="i">
+<li><span class="math inline">\(\lim_{x\rightarrow -2^-} f(x) = -\infty.\)</span></li>
+<li><span class="math inline">\(\lim_{x\rightarrow -2^+} f(x)\)</span> no existe.</li>
+<li><span class="math inline">\(\lim_{x\rightarrow -\infty} f(x)\approx 2.7.\)</span></li>
+<li><span class="math inline">\(\lim_{x\rightarrow +\infty} f(x) \approx 2.7.\)</span></li>
+<li><span class="math inline">\(\lim_{x\rightarrow 2} f(x) = 2.\)</span></li>
+<li><span class="math inline">\(\lim_{x\rightarrow 0} f(x)\)</span> no existe.</li>
+</ol>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Calcular los límites anteriores. ¿Coinciden los resultados con los conjeturados?</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite por la izquieda en -2: "</span>, <span class="fu">limit</span>(<span class="fu">f</span>(x), x<span class="op">=&gt;-</span><span class="fl">2</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite por la izquieda en -2: "</span>, <span class="fu">limit</span>(<span class="fu">f</span>(x), x<span class="op">=&gt;-</span><span class="fl">2</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en -∞: "</span>, <span class="fu">limit</span>(<span class="fu">f</span>(x), x<span class="op">=&gt;-</span>oo))</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en ∞: "</span>, <span class="fu">limit</span>(<span class="fu">f</span>(x), x<span class="op">=&gt;</span>oo))</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 2: "</span>, <span class="fu">limit</span>(<span class="fu">f</span>(x), x<span class="op">=&gt;</span><span class="fl">2</span>))</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 0: "</span>, <span class="fu">limit</span>(<span class="fu">f</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Límite por la izquieda en -2: oo
+Límite por la izquieda en -2: </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-oo
+Límite en -∞: E
+Límite en ∞: E
+Límite en 2: 2
+Límite en 0: </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1</code></pre>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Precaución
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aunque Julia calcula el límite en <span class="math inline">\(-2\)</span> por la derecha y el límite en <span class="math inline">\(0\)</span>, a la vista de la gráfica, estos límites en realidad no existen, ya que la función no está definida en el intervalo de <span class="math inline">\([-2,0]\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-limites-raros" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.4 </strong></span>Calcular los siguientes límites</p>
+<ol type="a">
+<li><span class="math inline">\(\lim_{x\to 0} \operatorname{sen}\left(\frac{1}{x}\right)\)</span></li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">sin</span>(<span class="fl">1</span><span class="op">/</span>x), x<span class="op">=&gt;</span><span class="fl">0</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<p><span class="math inline">\(\left\langle -1, 1\right\rangle\)</span></p>
+</div>
+</div>
+<p>Como no se obtiene un valor concreto, sino un rango de valores, el límite no existe.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(\lim_{x\to 0} x\operatorname{sen}\left(\frac{1}{x}\right)\)</span></li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">x*sin</span>(<span class="fl">1</span><span class="op">/</span>x), x<span class="op">=&gt;</span><span class="fl">0</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<p><span class="math inline">\(0\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li><span class="math inline">\(\lim_{x\to \infty} e^{-x}\operatorname{sen}(x)\)</span></li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="cn">ℯ</span><span class="op">^</span>(<span class="op">-</span>x)<span class="fu">*sin</span>(x), x<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<p><span class="math inline">\(0\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li><span class="math inline">\(\lim_{x\to a} \frac{\operatorname{sen}(x)-\operatorname{sen}(a)}{x-a}\)</span></li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> a real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>((<span class="fu">sin</span>(x)<span class="fu">-sin</span>(a))<span class="op">/</span>(x<span class="op">-</span>a), x<span class="op">=&gt;</span>a)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<p><span class="math inline">\(\cos{\left(a \right)}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-indeterminaciones" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.5 </strong></span>Calcular el valor de las siguientes funciones en los puntos dados y su límite. Corroborar los límites obtenidos gráficamente.</p>
+<ol type="a">
+<li><span class="math inline">\(f(x)=\frac{\operatorname{sen}(x)}{x}\)</span> en <span class="math inline">\(x=0\)</span>.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La función <span class="math inline">\(f\)</span> no está definida en <span class="math inline">\(x=0\)</span> de manera que al evaluarla en <span class="math inline">\(0\)</span> obtenemos un valor indeterminado.</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x)<span class="op">=</span><span class="fu">sin</span>(x)<span class="op">/</span>x</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="fl">0</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>NaN</code></pre>
+</div>
+</div>
+<p>Ahora calculamos el límite de <span class="math inline">\(f\)</span> en <span class="math inline">\(0\)</span>.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x)<span class="op">=</span><span class="fu">sin</span>(x)<span class="op">/</span>x</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">f</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<p><span class="math inline">\(1\)</span></p>
+</div>
+</div>
+<p>Para corroborar el límite dibujamos la gráfica de <span class="math inline">\(f\)</span> en un entorno de <span class="math inline">\(0\)</span>.</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<p><img src="limites_files/figure-html/cell-18-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(g(x)=\frac{\cos(x)}{x-\pi/2}\)</span> en <span class="math inline">\(x=\pi/2\)</span>.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La función <span class="math inline">\(f\)</span> no está definida en <span class="math inline">\(x=0\)</span> de manera que al evaluarla en <span class="math inline">\(0\)</span> obtenemos un valor indeterminado.</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x)<span class="op">=</span><span class="fu">cos</span>(x)<span class="op">/</span>(x<span class="op">-</span><span class="cn">pi</span><span class="op">/</span><span class="fl">2</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(<span class="cn">pi</span><span class="op">/</span><span class="fl">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>Inf</code></pre>
+</div>
+</div>
+<p>Como se puede observar, se obtiene <span class="math inline">\(\infty\)</span> en lugar de indeterminado. La razón está en la representación de los números reales mediante números con coma flotante, de manera que <span class="math inline">\(\pi/2\)</span> se redondea al número de coma flotante más próximo, y al aplicar el coseno se obtiene un número muy próximo a <span class="math inline">\(0\)</span> pero distinto de <span class="math inline">\(0\)</span>.</p>
+<p>Ahora calculamos el límite de <span class="math inline">\(g\)</span> en <span class="math inline">\(\pi/2\)</span>.</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">g</span>(x), x<span class="op">=&gt;</span><span class="cn">pi</span><span class="op">/</span><span class="fl">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<p><span class="math inline">\(\infty\)</span></p>
+</div>
+</div>
+<p>Para corroborar el límite dibujamos la gráfica de <span class="math inline">\(g\)</span> en un entorno de <span class="math inline">\(\pi/2\)</span>.</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<p><img src="limites_files/figure-html/cell-21-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<p>Como se puede apreciar gráficamente el la tendencia de <span class="math inline">\(g\)</span> en <span class="math inline">\(\pi/2\)</span> es <span class="math inline">\(-1\)</span> y no el valor obtenido con el cálculo del límite. De nuevo el problema está en la aproximación de <span class="math inline">\(pi\)</span> como un real en coma flotante. Afortunadamente el paquete <code>SymPy</code> permite definir una constante como simbólica para evitar su conversión a número en coma flotante, usando la función <code>Sym()</code>. Repetimos la definición de la función y el cálculo de nuevo convirtiendo <span class="math inline">\(\pi\)</span> en una constante simbólica.</p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x)<span class="op">=</span><span class="fu">cos</span>(x)<span class="op">/</span>(<span class="fu">x-Sym</span>(<span class="cn">pi</span>)<span class="op">/</span><span class="fl">2</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">g</span>(x), x<span class="op">=&gt;</span><span class="fu">Sym</span>(<span class="cn">pi</span>)<span class="op">/</span><span class="fl">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<p><span class="math inline">\(-1\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-asintotas" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.6 </strong></span>Considérese la función <span class="math display">\[
+g(x)=
+\begin{cases}
+\dfrac{x}{x-2}    &amp; \mbox{si $x\leq 0$;} \\
+\dfrac{x^2}{2x-6} &amp; \mbox{si $x&gt;0$;}
+\end{cases}
+\]</span></p>
+<ol type="a">
+<li>Dibujar la gráfica de <span class="math inline">\(g\)</span> y determinar gráficamente si existen asíntotas.</li>
+</ol>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ayuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para respetar las discontinuidades utilizar la función <code>rangeclamp()</code> del paquete <code>MTH229</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">MTH229</span>, <span class="bu">LaTeXStrings</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">g1</span>(x) <span class="op">=</span> x<span class="op">/</span>(x<span class="op">-</span><span class="fl">2</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g2</span>(x) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">/</span>(<span class="fl">2</span>x<span class="op">-</span><span class="fl">6</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> x<span class="op">&lt;=</span><span class="fl">0</span> ? <span class="fu">g1</span>(x) <span class="op">:</span> <span class="fu">g2</span>(x)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">rangeclamp</span>(g), xlims<span class="op">=</span>(<span class="op">-</span><span class="fl">5</span>,<span class="fl">10</span>), ylims<span class="op">=</span>(<span class="op">-</span><span class="fl">5</span>,<span class="fl">10</span>), xticks<span class="op">=-</span><span class="fl">5</span><span class="op">:</span><span class="fl">10</span>, label <span class="op">=</span> L<span class="st">"g(x)"</span>, legend<span class="op">=:</span>topleft)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<p><img src="limites_files/figure-html/cell-23-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<p>A la vista de la gráfica, se observa que <span class="math inline">\(g\)</span> tiene una asíntota vertical en <span class="math inline">\(x=3\)</span>, una asíntota horizontal <span class="math inline">\(y=1\)</span> en <span class="math inline">\(-\infty\)</span> y parece que también hay una asíntota oblicua en <span class="math inline">\(\infty\)</span>.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Calcular las asíntotas verticales de <span class="math inline">\(g\)</span> y dibujarlas.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Estudiamos primero el dominio para ver dónde no está definida la función. Como tanto la rama negativa como la positiva son funciones racionales, hay que ver los puntos que anulan el denominador.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Puntos fuera del dominio de la rama negativa: "</span>, <span class="fu">solve</span>(x<span class="op">-</span><span class="fl">2</span>))</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Puntos fuera del dominio de la rama positiva: "</span>, <span class="fu">solve</span>(<span class="fl">2</span>x<span class="op">-</span><span class="fl">6</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Puntos fuera del dominio de la rama negativa: Sym[2]
+Puntos fuera del dominio de la rama positiva: Sym[3]</code></pre>
+</div>
+</div>
+<p>Así pues la rama negativa está definida en todos <span class="math inline">\(\mathbb{R}^-\)</span> y la rama positiva en <span class="math inline">\(\mathbb{R}^+\setminus\{3\}\)</span>. Es en este último punto donde <span class="math inline">\(g\)</span> puede tener asíntota vertical, así que estudiamos los límites laterales.</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límte en 3 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">g</span>(x), x<span class="op">=&gt;</span><span class="fl">3</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límte en 3 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">g</span>(x), x<span class="op">=&gt;</span><span class="fl">3</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Límte en 3 por la izquierda: -oo
+Límte en 3 por la derecha: oo</code></pre>
+</div>
+</div>
+<p>Por tanto, <span class="math inline">\(g\)</span> tiene una asíntota vertical en <span class="math inline">\(x=3\)</span>.</p>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vline!</span>([<span class="fl">3</span>], label <span class="op">=</span> L<span class="st">"Asíntota vertical </span><span class="sc">$</span>x<span class="st">=3</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<p><img src="limites_files/figure-html/cell-26-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li>Calcular las asíntotas horizontales de <span class="math inline">\(g\)</span>.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Estudiamos los límites en el infinito.</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en -∞: "</span>, <span class="fu">limit</span>(<span class="fu">g1</span>(x), x<span class="op">=&gt;-</span>oo))</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en ∞: "</span>, <span class="fu">limit</span>(<span class="fu">g2</span>(x), x<span class="op">=&gt;</span>oo))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Límite en -∞: 1
+Límite en ∞: oo</code></pre>
+</div>
+</div>
+<p>Por tanto, <span class="math inline">\(g\)</span> tiene una asíntota horizontal <span class="math inline">\(y=1\)</span> en <span class="math inline">\(-\infty\)</span>.</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hline!</span>([<span class="fl">1</span>], label <span class="op">=</span> L<span class="st">"Asíntota horizontal </span><span class="sc">$</span>y<span class="st">=1</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<p><img src="limites_files/figure-html/cell-28-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="4" type="a">
+<li>Calcular las asíntotas oblicuas de <span class="math inline">\(g\)</span>.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Estudiamos el límite en <span class="math inline">\(\infty\)</span> de <span class="math inline">\(\frac{f(x)}{x}\)</span> (en <span class="math inline">\(-\infty\)</span> no puede haber asíntota oblicua al haber asíntota horizontal).</p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">g2</span>(x)<span class="op">/</span>x, x<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<p><span class="math inline">\(\frac{1}{2}\)</span></p>
+</div>
+</div>
+<p>Por tanto, <span class="math inline">\(g\)</span> tiene una asíntota oblicua con pendiente <span class="math inline">\(b=1/2\)</span> en <span class="math inline">\(\infty\)</span>. Para obtener el término independiente de la asíntota calculamos el límite en <span class="math inline">\(\infty\)</span> de <span class="math inline">\(f(x)-\frac{1}{2}x\)</span>.</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">g2</span>(x)<span class="op">-</span>x<span class="op">/</span><span class="fl">2</span>, x<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<p><span class="math inline">\(\frac{3}{2}\)</span></p>
+</div>
+</div>
+<p>Por tanto, <span class="math inline">\(g\)</span> tiene una asíntota oblicua <span class="math inline">\(y=\frac{3}{2}+\frac{1}{2}x\)</span>.</p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="fl">3</span><span class="op">/</span><span class="fl">2</span><span class="op">+</span>x<span class="op">/</span><span class="fl">2</span>, label <span class="op">=</span> L<span class="st">"Asíntota oblicua </span><span class="sc">$</span>y<span class="st">=</span><span class="sc">\f</span><span class="st">rac{3}{2}+</span><span class="sc">\f</span><span class="st">rac{1}{2}x</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<p><img src="limites_files/figure-html/cell-31-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-continuidad" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.7 </strong></span>Dada la función</p>
+<p><span class="math display">\[
+h(x)=
+\begin{cases}
+\frac{2x^2-2x}{3x^2+x} &amp; \mbox{si } x\leq 0,\\
+\frac{\operatorname{tg}(x)+a}{x} &amp; \mbox{si } x&gt;0
+\end{cases}
+\]</span></p>
+<p>¿Qué valor debe tomar <span class="math inline">\(a\)</span> para que la función sea continua en todo su dominio?</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ayuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Calcular el límite en <span class="math inline">\(0\)</span> por la izquierda de la función de la rama negativa, y el límite en <span class="math inline">\(0\)</span> por la derecha de la función de la rama positiva. Después resolver la ecuación simbólica que resulta de igualar los dos límites. Para crear la ecuación simbólica debe utilizarse la función <code>Eq()</code> del paquete <code>SymPy</code> y después resolverla con la función <code>solve()</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x a real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">h1</span>(x) <span class="op">=</span> (<span class="fl">2</span>x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">2</span>x)<span class="op">/</span>(<span class="fl">3</span>x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>x)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">h2</span>(x) <span class="op">=</span> (<span class="fu">tan</span>(x)<span class="op">-</span>a<span class="op">*</span>x)<span class="op">/</span>x </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>l1 <span class="op">=</span> <span class="fu">limit</span>(<span class="fu">h1</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"-"</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>l2 <span class="op">=</span> <span class="fu">limit</span>(<span class="fu">h2</span>(x),x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"+"</span>)</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="fu">Eq</span>(l1,l2))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>1-element Vector{Sym}:
+ 3</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-discontinuidad" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.8 </strong></span>Representar gráficamente y clasificar las discontinuidades de la función</p>
+<p><span class="math display">\[
+f(x)=
+\begin{cases}
+\frac{x+1}{x^2-1},       &amp; \mbox{si } x&lt;0,     \\
+\frac{1}{e^{1/(x^2-1)}}, &amp; \mbox{si } x\geq 0.
+\end{cases}
+\]</span></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para estudiar las discontinuidades de una función tenemos que estudiar los puntos que no están en el dominio y los puntos donde cambia la definición de la función en el caso de una función definida a trozos.</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">MTH229</span>, <span class="bu">LaTeXStrings</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f1</span>(x) <span class="op">=</span> (x<span class="op">+</span><span class="fl">1</span>)<span class="op">/</span>(x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">f2</span>(x) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fu">exp</span>(<span class="fl">1</span><span class="op">/</span>(x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span>))</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f1, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0</span>, ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">2</span>,<span class="fl">8</span>), legend<span class="op">=</span><span class="cn">false</span>)</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="fu">rangeclamp</span>(f2), <span class="fl">0</span>, <span class="fl">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<p><img src="limites_files/figure-html/cell-33-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<p>Para determinar el dominio de la rama negativa, al ser una función racional, tenemos que ver los puntos que anulan el denominador.</p>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>2-element Vector{Sym}:
+ -1
+  1</code></pre>
+</div>
+</div>
+<p>Así pues, la función no está definida en <span class="math inline">\(x=-1\)</span> (la otra raíz queda fuera de la rama negativa). Para ver el tipo de discontinuidad estudiamos los límites laterales en <span class="math inline">\(x=-1\)</span>.</p>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en -1 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">f1</span>(x), x<span class="op">=&gt;</span> <span class="op">-</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en -1 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">f1</span>(x), x<span class="op">=&gt;</span> <span class="op">-</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Límite en -1 por la izquierda: -1/2
+Límite en -1 por la derecha: -1/2</code></pre>
+</div>
+</div>
+<p>Como el límite existe, <span class="math inline">\(f\)</span> tiene una discontinuidad evitable en <span class="math inline">\(x=-1\)</span>.</p>
+<p>Del mismo modo la rama positiva no está definida en <span class="math inline">\(x=1\)</span> ya que se anula el denominador del exponente de la función exponencial. Para ver el tipo de discontinuidad estudiamos los límites laterales en <span class="math inline">\(x=1\)</span>.</p>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">f2</span>(x), x<span class="op">=&gt;</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">f2</span>(x), x<span class="op">=&gt;</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Límite en 1 por la izquierda: oo
+Límite en 1 por la derecha: </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0</code></pre>
+</div>
+</div>
+<p>Como los límites laterales son distintos, <span class="math inline">\(f\)</span> tiene una discontinuidad de salto infinito en <span class="math inline">\(x=1\)</span>.</p>
+<p>Finalmente, estudiamos los límites laterales en <span class="math inline">\(x=0\)</span>, que es donde cambia la definición de la función.</p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">f1</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">f2</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Límite en 1 por la izquierda: -1
+Límite en 1 por la derecha: E</code></pre>
+</div>
+</div>
+<p>Como los límites laterales son distintos, <span class="math inline">\(f\)</span> tiene una discontinuidad de salto finito en <span class="math inline">\(x=0\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-algoritmo-biseccion" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.9 </strong></span>El <a href="https://aprendeconalf.es/analisis-manual/limites.html#thm-bolzano">teorema de Bolzano</a> permite construir un algoritmo para encontrar raíces de una función continua en un intervalo <span class="math inline">\([a,b]\)</span> cuando <span class="math inline">\(f(a)f(b)&lt;0\)</span>. Este algoritmo se conoce como el <em>algoritmo de bisección</em> y básicamente consiste en repetir los siguientes pasos:</p>
+<ol type="1">
+<li>Calcular el centro del intervalo <span class="math inline">\(c=\frac{a+b}{2}\)</span>.</li>
+<li>Si <span class="math inline">\(f(c)=0\)</span>, <span class="math inline">\(c\)</span> es una raíz y se termina la búsqueda.</li>
+<li>En caso contrario, si <span class="math inline">\(f(a)f(c)&lt;0\)</span> hacer <span class="math inline">\(b=c\)</span>, y si no, hacer <span class="math inline">\(a=c\)</span>.</li>
+<li>Repetir la búsqueda.</li>
+</ol>
+<p>Construir una función que implemente este algoritmo y utilizarlo para calcular una raíz de la función <span class="math inline">\(f(x)=x^5+3x^4-2x^3+6x-2\)</span> en el intervalo <span class="math inline">\([0,1]\)</span>.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">raices_biseccion</span>(f, a, b, error<span class="op">=</span><span class="fl">1e-10</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="fu">f</span>(a) <span class="op">==</span> <span class="fl">0</span> <span class="cf">return</span>(a) <span class="cf">end</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="fu">f</span>(b) <span class="op">==</span> <span class="fl">0</span> <span class="cf">return</span>(b) <span class="cf">end</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="fu">f</span>(a) <span class="op">*</span> <span class="fu">f</span>(b) <span class="op">&gt;</span> <span class="fl">0</span> <span class="fu">error</span>(<span class="st">"Las imágenes de los extremos del intervalo no tienen signo distinto."</span>) <span class="cf">end</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  c <span class="op">=</span> (a<span class="op">+</span>b)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="fu">abs</span>(b<span class="op">-</span>a) <span class="op">&gt;</span> error</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">f</span>(c) <span class="op">==</span> <span class="fl">0</span> <span class="cf">return</span>(c) <span class="cf">end</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">f</span>(a) <span class="op">*</span> <span class="fu">f</span>(c) <span class="op">&lt;</span> <span class="fl">0</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>       b <span class="op">=</span> c</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>       a <span class="op">=</span> c</span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> (a<span class="op">+</span>b)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>  c</span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x)<span class="op">=</span>x<span class="op">^</span><span class="fl">5</span><span class="op">+</span><span class="fl">3</span>x<span class="op">^</span><span class="fl">4</span><span class="op">-</span><span class="fl">2</span>x<span class="op">^</span><span class="fl">3</span><span class="op">+</span><span class="fl">6</span>x<span class="op">-</span><span class="fl">4</span></span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">raices_biseccion</span>(f, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6496996753558051</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicios-propuestos" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">4.2</span> Ejercicios propuestos</h2>
+<div id="exr-interes-compuesto" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.10 </strong></span>En 1683 Jacob Bernouilli estudió la evolución del interés compuesto cuando el periodo de actualización se hacía cada vez más pequeño.</p>
+<p>Si disponemos de <span class="math inline">\(1\)</span>€ en una cuenta corriente que ofrece un 100% de interés anual, al cabo de un año tendremos <span class="math inline">\(2\)</span>€ en la cuenta. Si la cuenta ofrece un interés del <span class="math inline">\(50\)</span>% cada 6 meses, al final del año tendremos</p>
+<p><span class="math display">\[
+1\cdot\left(1+\frac{1}{2}\right)\left(1+\frac{1}{2}\right)= \left(1+\frac{1}{2}\right)^2 = 2.25\mbox{€}.
+\]</span></p>
+<p>Si la cuenta ofrece un interés del <span class="math inline">\(25\)</span>% cada trimestre, al final del año tendremos</p>
+<p><span class="math display">\[
+1\cdot\left(1+\frac{1}{4}\right)\left(1+\frac{1}{4}\right)\left(1+\frac{1}{4}\right)\left(1+\frac{1}{4}\right)= \left(1+\frac{1}{4}\right)^4 = 2.44140625\mbox{€}.
+\]</span></p>
+<p>¿Qué cantidad habrá en la cuenta al cabo de un año si la cuenta ofrece un interés del <span class="math inline">\(1/12\)</span>% mensual?</p>
+<div class="cell" data-hold="true" data-execution_count="39">
+<div class="cell-output cell-output-display" data-execution_count="40">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "YgQbV7ZR"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="YgQbV7ZR" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_YgQbV7ZR">
+        <div style="padding-top: 5px">
+    <br>
+<div class="input-group">
+    <input id="YgQbV7ZR" type="number" class="form-control" placeholder="Respuesta numérica">
+    <span class="input-group-append" href="#" title="Introducir hasta 10 decimales">&nbsp;🎁</span>
+</div>
+
+    
+        </div>
+      </div>
+      <div id="YgQbV7ZR_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.getElementById("YgQbV7ZR").addEventListener("change", function() {
+  var correct = (Math.abs(this.value - 2.6130352902246763) <= 1.0e-10);
+  var msgBox = document.getElementById('YgQbV7ZR_message');
+  
+    quizquestions_scorecard["YgQbV7ZR"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_YgQbV7ZR")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["YgQbV7ZR"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_YgQbV7ZR")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["YgQbV7ZR"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+});
+
+</script>
+</div>
+</div>
+<p>¿Qué cantidad habrá en la cuenta al cabo de un año si la cuenta ofrece un interés del <span class="math inline">\(1/365\)</span>% diario?</p>
+<div class="cell" data-hold="true" data-execution_count="40">
+<div class="cell-output cell-output-display" data-execution_count="41">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "O419Xvit"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="O419Xvit" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_O419Xvit">
+        <div style="padding-top: 5px">
+    <br>
+<div class="input-group">
+    <input id="O419Xvit" type="number" class="form-control" placeholder="Respuesta numérica">
+    <span class="input-group-append" href="#" title="Introducir hasta 10 decimales">&nbsp;🎁</span>
+</div>
+
+    
+        </div>
+      </div>
+      <div id="O419Xvit_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.getElementById("O419Xvit").addEventListener("change", function() {
+  var correct = (Math.abs(this.value - 2.7145674820219727) <= 1.0e-10);
+  var msgBox = document.getElementById('O419Xvit_message');
+  
+    quizquestions_scorecard["O419Xvit"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_O419Xvit")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["O419Xvit"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_O419Xvit")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["O419Xvit"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+});
+
+</script>
+</div>
+</div>
+<p>¿Qué cantidad habrá en la cuenta al cabo de un año si la cuenta se actualiza de manera continua con un interés <span class="math inline">\(1/x\)</span>% cuando <span class="math inline">\(x\to\infty\)</span>?</p>
+<div class="cell" data-execution_count="41">
+<div class="cell-output cell-output-display" data-execution_count="42">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "c2AnDlWu"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="c2AnDlWu" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_c2AnDlWu">
+        <div style="padding-top: 5px">
+    <div class="form-check">
+    <label class="form-check-label" for="radio_c2AnDlWu_1">
+      <input class="form-check-input" type="radio" name="radio_c2AnDlWu" id="radio_c2AnDlWu_1" value="1">
+      
+      <span class="label-body px-1">
+        \(e^{-1}\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_c2AnDlWu_2">
+      <input class="form-check-input" type="radio" name="radio_c2AnDlWu" id="radio_c2AnDlWu_2" value="2">
+      
+      <span class="label-body px-1">
+        \(e^2\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_c2AnDlWu_3">
+      <input class="form-check-input" type="radio" name="radio_c2AnDlWu" id="radio_c2AnDlWu_3" value="3">
+      
+      <span class="label-body px-1">
+        e
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_c2AnDlWu_4">
+      <input class="form-check-input" type="radio" name="radio_c2AnDlWu" id="radio_c2AnDlWu_4" value="4">
+      
+      <span class="label-body px-1">
+        2.7182818284590
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_c2AnDlWu_5">
+      <input class="form-check-input" type="radio" name="radio_c2AnDlWu" id="radio_c2AnDlWu_5" value="5">
+      
+      <span class="label-body px-1">
+        3
+      </span>
+    </label>
+</div>
+
+    
+        </div>
+      </div>
+      <div id="c2AnDlWu_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.querySelectorAll('input[name="radio_c2AnDlWu"]').forEach(function(rb) {
+rb.addEventListener("change", function() {
+    var correct = rb.value == 3;
+    var msgBox = document.getElementById('c2AnDlWu_message');
+    
+    quizquestions_scorecard["c2AnDlWu"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_c2AnDlWu")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["c2AnDlWu"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_c2AnDlWu")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["c2AnDlWu"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+})});
+
+</script>
+</div>
+</div>
+</div>
+<div id="exr-limites-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.11 </strong></span>Calcular los siguientes límites.</p>
+<ol type="a">
+<li><span class="math inline">\(\displaystyle \lim_{x\rightarrow \pi/4}\frac{\operatorname{sen}(x)-\cos(x)}{1-\operatorname{tg}(x)}\)</span>.</li>
+</ol>
+<div class="cell" data-execution_count="42">
+<div class="cell-output cell-output-display" data-execution_count="43">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "VOotm7YD"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="VOotm7YD" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_VOotm7YD">
+        <div style="padding-top: 5px">
+    <br>
+<div class="input-group">
+    <input id="VOotm7YD" type="number" class="form-control" placeholder="Respuesta numérica">
+</div>
+
+    
+        </div>
+      </div>
+      <div id="VOotm7YD_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.getElementById("VOotm7YD").addEventListener("change", function() {
+  var correct = (Math.abs(this.value - 0) <= 1.0e-5);
+  var msgBox = document.getElementById('VOotm7YD_message');
+  
+    quizquestions_scorecard["VOotm7YD"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_VOotm7YD")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["VOotm7YD"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_VOotm7YD")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["VOotm7YD"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+});
+
+</script>
+</div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(\displaystyle \lim_{x\rightarrow \infty}\sqrt{x^2+x+1}-\sqrt{x^2-2x-1}\)</span>.</li>
+</ol>
+<div class="cell" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="44">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "0eer9YII"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="0eer9YII" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_0eer9YII">
+        <div style="padding-top: 5px">
+    <br>
+<div class="input-group">
+    <input id="0eer9YII" type="number" class="form-control" placeholder="Respuesta numérica">
+</div>
+
+    
+        </div>
+      </div>
+      <div id="0eer9YII_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.getElementById("0eer9YII").addEventListener("change", function() {
+  var correct = (Math.abs(this.value - -3/2) <= 0.001);
+  var msgBox = document.getElementById('0eer9YII_message');
+  
+    quizquestions_scorecard["0eer9YII"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_0eer9YII")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["0eer9YII"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_0eer9YII")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["0eer9YII"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+});
+
+</script>
+</div>
+</div>
+<ol start="3" type="a">
+<li><span class="math inline">\(\displaystyle \lim_{x\to 0^+} \frac{x^x-1}{x}\)</span></li>
+</ol>
+<div class="cell" data-execution_count="44">
+<div class="cell-output cell-output-display" data-execution_count="45">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "bvXazR16"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="bvXazR16" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_bvXazR16">
+        <div style="padding-top: 5px">
+    <div class="form-check">
+    <label class="form-check-label" for="radio_bvXazR16_1">
+      <input class="form-check-input" type="radio" name="radio_bvXazR16" id="radio_bvXazR16_1" value="1">
+      
+      <span class="label-body px-1">
+        \(1\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_bvXazR16_2">
+      <input class="form-check-input" type="radio" name="radio_bvXazR16" id="radio_bvXazR16_2" value="2">
+      
+      <span class="label-body px-1">
+        \(-\infty\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_bvXazR16_3">
+      <input class="form-check-input" type="radio" name="radio_bvXazR16" id="radio_bvXazR16_3" value="3">
+      
+      <span class="label-body px-1">
+        \(\infty\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_bvXazR16_4">
+      <input class="form-check-input" type="radio" name="radio_bvXazR16" id="radio_bvXazR16_4" value="4">
+      
+      <span class="label-body px-1">
+        0
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_bvXazR16_5">
+      <input class="form-check-input" type="radio" name="radio_bvXazR16" id="radio_bvXazR16_5" value="5">
+      
+      <span class="label-body px-1">
+        NaN
+      </span>
+    </label>
+</div>
+
+    
+        </div>
+      </div>
+      <div id="bvXazR16_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.querySelectorAll('input[name="radio_bvXazR16"]').forEach(function(rb) {
+rb.addEventListener("change", function() {
+    var correct = rb.value == 2;
+    var msgBox = document.getElementById('bvXazR16_message');
+    
+    quizquestions_scorecard["bvXazR16"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_bvXazR16")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["bvXazR16"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_bvXazR16")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["bvXazR16"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+})});
+
+</script>
+</div>
+</div>
+<ol type="a">
+<li><span class="math inline">\(\displaystyle \lim_{x\to 1}\frac{a^{1-x}-1}{1-x}\)</span>.</li>
+</ol>
+<div class="cell" data-execution_count="45">
+<div class="cell-output cell-output-display" data-execution_count="46">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "nWMnkeYt"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="nWMnkeYt" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_nWMnkeYt">
+        <div style="padding-top: 5px">
+    <div class="form-check">
+    <label class="form-check-label" for="radio_nWMnkeYt_1">
+      <input class="form-check-input" type="radio" name="radio_nWMnkeYt" id="radio_nWMnkeYt_1" value="1">
+      
+      <span class="label-body px-1">
+        \(e^a\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_nWMnkeYt_2">
+      <input class="form-check-input" type="radio" name="radio_nWMnkeYt" id="radio_nWMnkeYt_2" value="2">
+      
+      <span class="label-body px-1">
+        \(\sqrt{a}\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_nWMnkeYt_3">
+      <input class="form-check-input" type="radio" name="radio_nWMnkeYt" id="radio_nWMnkeYt_3" value="3">
+      
+      <span class="label-body px-1">
+        \(1/a\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_nWMnkeYt_4">
+      <input class="form-check-input" type="radio" name="radio_nWMnkeYt" id="radio_nWMnkeYt_4" value="4">
+      
+      <span class="label-body px-1">
+        Las otras opciones son falsas.
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_nWMnkeYt_5">
+      <input class="form-check-input" type="radio" name="radio_nWMnkeYt" id="radio_nWMnkeYt_5" value="5">
+      
+      <span class="label-body px-1">
+        \(\ln(a)\)
+      </span>
+    </label>
+</div>
+
+    
+        </div>
+      </div>
+      <div id="nWMnkeYt_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.querySelectorAll('input[name="radio_nWMnkeYt"]').forEach(function(rb) {
+rb.addEventListener("change", function() {
+    var correct = rb.value == 5;
+    var msgBox = document.getElementById('nWMnkeYt_message');
+    
+    quizquestions_scorecard["nWMnkeYt"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_nWMnkeYt")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["nWMnkeYt"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_nWMnkeYt")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["nWMnkeYt"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+})});
+
+</script>
+</div>
+</div>
+</div>
+<div id="exr-asintotas" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.12 </strong></span>¿Cuáles de las siguientes rectas son asíntotas de la función <span class="math inline">\(f(x)=\frac{x^2+1}{3x+3}\)</span>?</p>
+<div class="cell" data-execution_count="46">
+<div class="cell-output cell-output-display" data-execution_count="47">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "MbLDQHLv"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="MbLDQHLv" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_MbLDQHLv">
+        <div style="padding-top: 5px">
+    <div class="form-check">
+  <label>
+    <input class="form-check-input" type="checkbox" name="check_MbLDQHLv" id="check_MbLDQHLv_1" value="1">
+      <span class="label-body">
+        \(y=1\)
+      </span>
+    
+  </label>
+</div>
+<div class="form-check">
+  <label>
+    <input class="form-check-input" type="checkbox" name="check_MbLDQHLv" id="check_MbLDQHLv_2" value="2">
+      <span class="label-body">
+        \(y=\frac{1}{3}+\frac{1}{3}x\)
+      </span>
+    
+  </label>
+</div>
+<div class="form-check">
+  <label>
+    <input class="form-check-input" type="checkbox" name="check_MbLDQHLv" id="check_MbLDQHLv_3" value="3">
+      <span class="label-body">
+        \(x=-1\)
+      </span>
+    
+  </label>
+</div>
+<div class="form-check">
+  <label>
+    <input class="form-check-input" type="checkbox" name="check_MbLDQHLv" id="check_MbLDQHLv_4" value="4">
+      <span class="label-body">
+        \(y=\frac{x-1}{3}\)
+      </span>
+    
+  </label>
+</div>
+<div class="form-check">
+  <label>
+    <input class="form-check-input" type="checkbox" name="check_MbLDQHLv" id="check_MbLDQHLv_5" value="5">
+      <span class="label-body">
+        \(y=3x+1\)
+      </span>
+    
+  </label>
+</div>
+
+    
+        </div>
+      </div>
+      <div id="MbLDQHLv_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.querySelectorAll('input[name="check_MbLDQHLv"]').forEach(function(rb) {
+rb.addEventListener("change", function() {
+    var choice_buttons = document.getElementsByName("check_MbLDQHLv");
+    var selected = [];
+    for (var i=0; i < choice_buttons.length; i++) {
+        if (choice_buttons[i].checked) {
+           selected.push(i+1)
+        }
+    }
+    var a = selected;
+    var b = [3, 4];
+    // https://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript
+    var  correct =  (a.length === b.length && a.find((v,i) => v !== b[i]) === undefined)
+    var msgBox = document.getElementById('MbLDQHLv_message');
+    
+    quizquestions_scorecard["MbLDQHLv"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_MbLDQHLv")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["MbLDQHLv"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Todavía no es correcto </span></div>";
+    var explanation = document.getElementById("explanation_MbLDQHLv")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["MbLDQHLv"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+})});
+
+</script>
+</div>
+</div>
+</div>
+<div id="exr-discontinuidad-evitable" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.13 </strong></span>¿Cuándo debería valer la función <span class="math inline">\(h(x)=\dfrac{e^x-e^{-x}}{x}\)</span> para que fuese continua en <span class="math inline">\(x=0\)</span>.</p>
+<div class="cell" data-execution_count="47">
+<div class="cell-output cell-output-display" data-execution_count="48">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "kG8aoF3B"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="kG8aoF3B" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_kG8aoF3B">
+        <div style="padding-top: 5px">
+    <br>
+<div class="input-group">
+    <input id="kG8aoF3B" type="number" class="form-control" placeholder="Respuesta numérica">
+</div>
+
+    
+        </div>
+      </div>
+      <div id="kG8aoF3B_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.getElementById("kG8aoF3B").addEventListener("change", function() {
+  var correct = (Math.abs(this.value - 2) <= 0.001);
+  var msgBox = document.getElementById('kG8aoF3B_message');
+  
+    quizquestions_scorecard["kG8aoF3B"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_kG8aoF3B")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["kG8aoF3B"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_kG8aoF3B")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["kG8aoF3B"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+});
+
+</script>
+</div>
+</div>
+</div>
+<div id="exr-continuidad-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.14 </strong></span>Dada la función</p>
+<p><span class="math display">\[
+h(x)=
+\begin{cases}
+x^3-x-2 &amp; \mbox{si } x\leq 0,\\
+\cos(x-\pi/2)+a &amp; \mbox{si } x&gt;0
+\end{cases}
+\]</span></p>
+<p>¿Qué valor debe tomar <span class="math inline">\(a\)</span> para que la función sea continua en todo su dominio?</p>
+<div class="cell" data-execution_count="48">
+<div class="cell-output cell-output-display" data-execution_count="49">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "nve6Nrfx"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="nve6Nrfx" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_nve6Nrfx">
+        <div style="padding-top: 5px">
+    <div class="form-check">
+    <label class="form-check-label" for="radio_nve6Nrfx_1">
+      <input class="form-check-input" type="radio" name="radio_nve6Nrfx" id="radio_nve6Nrfx_1" value="1">
+      
+      <span class="label-body px-1">
+        \(-2+\frac{\sqrt{2}}{2}\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_nve6Nrfx_2">
+      <input class="form-check-input" type="radio" name="radio_nve6Nrfx" id="radio_nve6Nrfx_2" value="2">
+      
+      <span class="label-body px-1">
+        \(2-\sqrt{2}\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_nve6Nrfx_3">
+      <input class="form-check-input" type="radio" name="radio_nve6Nrfx" id="radio_nve6Nrfx_3" value="3">
+      
+      <span class="label-body px-1">
+        \(-2 - \frac{\sqrt{2}}{2}\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_nve6Nrfx_4">
+      <input class="form-check-input" type="radio" name="radio_nve6Nrfx" id="radio_nve6Nrfx_4" value="4">
+      
+      <span class="label-body px-1">
+        \(-2\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_nve6Nrfx_5">
+      <input class="form-check-input" type="radio" name="radio_nve6Nrfx" id="radio_nve6Nrfx_5" value="5">
+      
+      <span class="label-body px-1">
+        No hay ningún valor de de \(a\) que haga la función continua
+      </span>
+    </label>
+</div>
+
+    
+        </div>
+      </div>
+      <div id="nve6Nrfx_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.querySelectorAll('input[name="radio_nve6Nrfx"]').forEach(function(rb) {
+rb.addEventListener("change", function() {
+    var correct = rb.value == 3;
+    var msgBox = document.getElementById('nve6Nrfx_message');
+    
+    quizquestions_scorecard["nve6Nrfx"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_nve6Nrfx")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["nve6Nrfx"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_nve6Nrfx")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["nve6Nrfx"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+})});
+
+</script>
+</div>
+</div>
+</div>
+<div id="exr-clasificacion-discontinuidad" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.15 </strong></span>¿Qué tipo de discontinuidad presenta la función <span class="math inline">\(g(x)=\dfrac{1}{e^{1/(x^2-1)}}\)</span> en <span class="math inline">\(x=-1\)</span>?</p>
+<div class="cell" data-execution_count="49">
+<div class="cell-output cell-output-display" data-execution_count="50">
+
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "vjLCo1Xz"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="vjLCo1Xz" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_vjLCo1Xz">
+        <div style="padding-top: 5px">
+    <div class="form-check">
+    <label class="form-check-label" for="radio_vjLCo1Xz_1">
+      <input class="form-check-input" type="radio" name="radio_vjLCo1Xz" id="radio_vjLCo1Xz_1" value="1">
+      
+      <span class="label-body px-1">
+        Es continua
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_vjLCo1Xz_2">
+      <input class="form-check-input" type="radio" name="radio_vjLCo1Xz" id="radio_vjLCo1Xz_2" value="2">
+      
+      <span class="label-body px-1">
+        Salto infinito
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_vjLCo1Xz_3">
+      <input class="form-check-input" type="radio" name="radio_vjLCo1Xz" id="radio_vjLCo1Xz_3" value="3">
+      
+      <span class="label-body px-1">
+        Evitable
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_vjLCo1Xz_4">
+      <input class="form-check-input" type="radio" name="radio_vjLCo1Xz" id="radio_vjLCo1Xz_4" value="4">
+      
+      <span class="label-body px-1">
+        Segunda especie
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_vjLCo1Xz_5">
+      <input class="form-check-input" type="radio" name="radio_vjLCo1Xz" id="radio_vjLCo1Xz_5" value="5">
+      
+      <span class="label-body px-1">
+        Salto finito
+      </span>
+    </label>
+</div>
+
+    
+        </div>
+      </div>
+      <div id="vjLCo1Xz_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.querySelectorAll('input[name="radio_vjLCo1Xz"]').forEach(function(rb) {
+rb.addEventListener("change", function() {
+    var correct = rb.value == 2;
+    var msgBox = document.getElementById('vjLCo1Xz_message');
+    
+    quizquestions_scorecard["vjLCo1Xz"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_vjLCo1Xz")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["vjLCo1Xz"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_vjLCo1Xz")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["vjLCo1Xz"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+})});
+
+</script>
+</div>
+</div>
+</div>
+<div id="exr-raices" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4.16 </strong></span>Calcular de forma aproximada con el algoritmo de bisección una solución de la ecuación <span class="math inline">\(e^{-x}=\cos(x)\)</span> en el intervalo <span class="math inline">\([1,2]\)</span> con un error menor de <span class="math inline">\(10^{-15}\)</span>.</p>
+<div class="cell" data-execution_count="50">
+<div class="cell-output cell-output-display" data-execution_count="51">
+<script>
+if (typeof quizquestions_scorecard === 'undefined') {
+   quizquestions_scorecard = {};
+}
+var ID = "47vvW9ro"
+if (typeof quizquestions_scorecard[ID] === 'undefined') {
+      quizquestions_scorecard[ID] = {attempts: 0, correct: false};
+}
+</script>
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="47vvW9ro" data-controltype="">
+  <div class="form-group ">
+    <div class="controls">
+      <div class="form" id="controls_47vvW9ro">
+        <div style="padding-top: 5px">
+    <br>
+<div class="input-group">
+    <input id="47vvW9ro" type="number" class="form-control" placeholder="Respuesta numérica">
+</div>
+
+    
+        </div>
+      </div>
+      <div id="47vvW9ro_message" style="padding-bottom: 15px"></div>
+    </div>
+  </div>
+</form>
+
+<script text="text/javascript">
+document.getElementById("47vvW9ro").addEventListener("change", function() {
+  var correct = (Math.abs(this.value - 1.2926957193733988) <= 1.0e-15);
+  var msgBox = document.getElementById('47vvW9ro_message');
+  
+    quizquestions_scorecard["47vvW9ro"]["attempts"] += 1;
+
+  if(correct) {
+    msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
+    var explanation = document.getElementById("explanation_47vvW9ro")
+    if (explanation != null) {
+       explanation.style.display = "none";
+    }
+      quizquestions_scorecard["47vvW9ro"]["correct"] = true;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+
+  } else {
+    msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
+    var explanation = document.getElementById("explanation_47vvW9ro")
+    if (explanation != null) {
+       explanation.style.display = "block";
+    }
+      quizquestions_scorecard["47vvW9ro"]["correct"] = false;
+  if (typeof score_summary !== 'undefined') {
+     score_summary()
+  }
+
+  }
+
+});
+
+</script>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./funciones-elementales.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Funciones elementales</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

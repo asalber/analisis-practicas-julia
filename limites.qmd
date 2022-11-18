@@ -1,0 +1,670 @@
+---
+lang: es
+jupyter: julia-1.8
+---
+
+# Límites de funciones reales
+
+## Ejercicios Resueltos
+
+Para la realización de esta práctica se requieren los siguientes paquetes:
+
+```{julia}
+using SymPy  # Para el cálculo simbólico de límites.
+using Plots  # Para el dibujo de gráficas.
+#plotlyjs() # Para obtener gráficos interactivos.
+using MTH229 # Para restringir la gráfica de una función a su dominio.
+using LaTeXStrings  # Para usar código LaTeX en los gráficos.
+```
+
+:::{#exr-tendencia-1}
+Sea la función $f(x)=x^2$.
+
+a. Estudiar la tendencia de $f$ cuando $x$ se aproxima a $3$ por la derecha, evaluando la función en $x=3+\frac{1}{10i}$ para $i=1,\ldots,10$. 
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Definir la función y aplicar la función a los valores de x indicados usando [compresiones de arrays](https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html#comprensi%C3%B3n-de-arrays).
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+f(x) = x^2
+a = 3
+print([f(a+1/10i) for i = 1:10])
+```
+La función tiende a $9$.
+:::
+
+b. Estudiar la tendencia de $f$ cuando $x$ se aproxima a $3$ por la izquierda, evaluando la función en $x=3-\frac{1}{10i}$ para $i=1,\ldots, 10$. 
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+print([f(a-1/10i) for i = 1:10])
+```
+La función también tiende a 9.
+:::
+
+c. Dibujar la gráfica de los valores de $f$ evaluados en los apartados anteriores diferenciando la tendencia por la izquierda de la tendencia por la derecha.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Definir un vector con los valores de $x$ y otro con los valores correspondientes de $f(x)$ y usar la función [`scatter`](https://docs.juliaplots.org/latest/api/#Plots.scatter-Tuple) del paquete `Plots`, pasandole los dos vectores.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+xd = [a+1/10i for i=1:10]
+scatter(xd, f.(xd), label="Aproximación por la derecha")
+xi = [a-1/10i for i=1:10]
+scatter!(xi, f.(xi), label="Aproximación por la izquierda", legend=:topleft)
+```
+:::
+
+d. Calcular el límite por la izquierda y por la derecha de $f$ en $x=3$.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Declarar la variable simbólica `x` con `@vars` imponiento la restricción `real=true`, definir la función y usar la función [`limit`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Limits-1) del paquete `SymPy` para calcular los límites laterales de la función. Para el límite por la izquierda indicar el parámetro `dir="-"` y para el límite por la derecha `dir="+"`.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+@vars x real=true
+li = limit(f(x), x=>3, dir="-")
+println("Límite por la izquierda: ", li)
+ld = limit(f(x), x=>3, dir="+")
+println("Límite por la derecha: ", ld)
+```
+:::
+:::
+
+:::{#exr-tendencia-2}
+Sea la función $g(x)=(1+x)^{1/x}$.
+
+a. Estudiar la tendencia de $g$ cuando $x$ se aproxima a $0$ por la derecha, evaluando la función en $x=\frac{1}{10^i}$ para $i=1,\ldots,10$. 
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+g(x) = (1+x)^(1/x)
+a = 0
+print([g(a+1/10^i) for i = 1:10])
+```
+La función tiende a $e$.
+:::
+
+b. Estudiar la tendencia de $g$ cuando $x$ se aproxima a $0$ por la izquierda, evaluando la función en $x=-\frac{1}{10^i}$ para $i=1,\ldots, 10$. 
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+print([g(a-1/10^i) for i = 1:10])
+```
+La función también tiende a e.
+:::
+
+c. Calcular el límite por la izquierda y por la derecha de $g$ en $x=0$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+@vars x real=true
+li = limit(g(x), x=>0, dir="-")
+println("Límite por la izquierda: ", li)
+ld = limit(g(x), x=>0, dir="+")
+println("Límite por la derecha: ", ld)
+```
+:::
+:::
+
+:::{#exr-limites-laterales}
+Considérese la función
+$$
+f(x)=\left( 1+\frac{2}{x}\right) ^{x/2}.
+$$
+
+a. Dibujar su gráfica, y a la vista de misma conjeturar el resultado de los siguientes límites:
+
+i. $\lim_{x\rightarrow -2^-} f(x)$
+i. $\lim_{x\rightarrow -2^+} f(x)$
+i. $\lim_{x\rightarrow -\infty} f(x)$
+i. $\lim_{x\rightarrow +\infty} f(x)$
+i. $\lim_{x\rightarrow 2} f(x)$
+i. $\lim_{x\rightarrow 0} f(x)$
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Utilizar la función  [`plot!`](https://aprendeconalf.es/manual-julia/graficos.html#gr%C3%A1fica-de-una-funci%C3%B3n-de-una-variable) del paquete `Plots`. Usar los parámetros `xlims=(a,b)` para restringir la región de dibujo al intervalo $(a,b)$ del eje $x$, y `ylims=(c,d)` para restringir la región de dibujo al intervalo $(c,d)$ del eje $y$.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots
+f(x) = (1+2/x)^(x/2)
+plot(f, xlims=(-10,10), ylims=(0,6))
+```
+
+A la vista de la gráfica, se puede concluir que 
+
+i. $\lim_{x\rightarrow -2^-} f(x) = -\infty.$
+i. $\lim_{x\rightarrow -2^+} f(x)$ no existe.
+i. $\lim_{x\rightarrow -\infty} f(x)\approx 2.7.$ 
+i. $\lim_{x\rightarrow +\infty} f(x) \approx 2.7.$
+i. $\lim_{x\rightarrow 2} f(x) = 2.$
+i. $\lim_{x\rightarrow 0} f(x)$ no existe.
+:::
+
+b. Calcular los límites anteriores. ¿Coinciden los resultados con los conjeturados?
+            
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@vars x real=true
+println("Límite por la izquieda en -2: ", limit(f(x), x=>-2, dir="-"))
+println("Límite por la izquieda en -2: ", limit(f(x), x=>-2, dir="+"))
+println("Límite en -∞: ", limit(f(x), x=>-oo))
+println("Límite en ∞: ", limit(f(x), x=>oo))
+println("Límite en 2: ", limit(f(x), x=>2))
+println("Límite en 0: ", limit(f(x), x=>0))
+```
+
+:::{.callout-caution}
+Aunque Julia calcula el límite en $-2$ por la derecha y el límite en $0$, a la vista de la gráfica, estos límites en realidad no existen, ya que la función no está definida en el intervalo de $[-2,0]$.
+:::
+:::
+:::
+
+:::{#exr-limites-raros}
+Calcular los siguientes límites
+
+a. $\lim_{x\to 0} \operatorname{sen}\left(\frac{1}{x}\right)$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@vars x real=true
+limit(sin(1/x), x=>0)
+```
+Como no se obtiene un valor concreto, sino un rango de valores, el límite no existe.
+:::
+
+b. $\lim_{x\to 0} x\operatorname{sen}\left(\frac{1}{x}\right)$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+limit(x*sin(1/x), x=>0)
+```
+:::
+
+c. $\lim_{x\to \infty} e^{-x}\operatorname{sen}(x)$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+limit(ℯ^(-x)*sin(x), x=>oo)
+```
+:::
+
+c. $\lim_{x\to a} \frac{\operatorname{sen}(x)-\operatorname{sen}(a)}{x-a}$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+@vars a real=true
+limit((sin(x)-sin(a))/(x-a), x=>a)
+```
+:::
+:::
+
+:::{#exr-indeterminaciones}
+Calcular el valor de las siguientes funciones en los puntos dados y su límite. Corroborar los límites obtenidos gráficamente.
+
+a. $f(x)=\frac{\operatorname{sen}(x)}{x}$ en $x=0$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+La función $f$ no está definida en $x=0$ de manera que al evaluarla en $0$ obtenemos un valor indeterminado.
+
+```{julia}
+f(x)=sin(x)/x
+f(0)
+```
+Ahora calculamos el límite de $f$ en $0$.
+
+```{julia}
+@vars x real=true
+f(x)=sin(x)/x
+limit(f(x), x=>0)
+```
+
+Para corroborar el límite dibujamos la gráfica de $f$ en un entorno de $0$.
+
+```{julia}
+using Plots
+plot(f)
+```
+:::
+
+b. $g(x)=\frac{\cos(x)}{x-\pi/2}$ en $x=\pi/2$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+La función $f$ no está definida en $x=0$ de manera que al evaluarla en $0$ obtenemos un valor indeterminado.
+
+```{julia}
+g(x)=cos(x)/(x-pi/2)
+g(pi/2)
+```
+Como se puede observar, se obtiene $\infty$ en lugar de indeterminado. La razón está en la representación de los números reales mediante números con coma flotante, de manera que $\pi/2$ se redondea al número de coma flotante más próximo, y al aplicar el coseno se obtiene un número muy próximo a $0$ pero distinto de $0$.
+
+Ahora calculamos el límite de $g$ en $\pi/2$.
+
+```{julia}
+limit(g(x), x=>pi/2)
+```
+
+Para corroborar el límite dibujamos la gráfica de $g$ en un entorno de $\pi/2$.
+```{julia}
+using Plots
+plot(g)
+```
+Como se puede apreciar gráficamente el la tendencia de $g$ en $\pi/2$ es $-1$ y no el valor obtenido con el cálculo del límite. De nuevo el problema está en la aproximación de $pi$ como un real en coma flotante. Afortunadamente el paquete `SymPy` permite definir una constante como simbólica para evitar su conversión a número en coma flotante, usando la función `Sym()`. Repetimos la definición de la función y el cálculo de nuevo convirtiendo $\pi$ en una constante simbólica.
+
+```{julia}
+g(x)=cos(x)/(x-Sym(pi)/2)
+limit(g(x), x=>Sym(pi)/2)
+```
+:::
+:::
+
+:::{#exr-asintotas}
+Considérese la función
+$$
+g(x)=
+\begin{cases}
+\dfrac{x}{x-2}    & \mbox{si $x\leq 0$;} \\
+\dfrac{x^2}{2x-6} & \mbox{si $x>0$;}
+\end{cases}
+$$
+
+a. Dibujar la gráfica de $g$ y determinar gráficamente si existen asíntotas.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para respetar las discontinuidades utilizar la función `rangeclamp()` del paquete `MTH229`.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, MTH229, LaTeXStrings
+@vars x real=true
+g1(x) = x/(x-2)
+g2(x) = x^2/(2x-6)
+g(x) = x<=0 ? g1(x) : g2(x)
+plot(rangeclamp(g), xlims=(-5,10), ylims=(-5,10), xticks=-5:10, label = L"g(x)", legend=:topleft)
+```
+A la vista de la gráfica, se observa que $g$ tiene una asíntota vertical en $x=3$, una asíntota horizontal $y=1$ en $-\infty$ y parece que también hay una asíntota oblicua en $\infty$.
+:::
+
+b. Calcular las asíntotas verticales de $g$ y dibujarlas.
+
+:::{.callout-tip collapse="true"}
+## Solución
+Estudiamos primero el dominio para ver dónde no está definida la función. Como tanto la rama negativa como la positiva son funciones racionales, hay que ver los puntos que anulan el denominador.
+```{julia}
+println("Puntos fuera del dominio de la rama negativa: ", solve(x-2))
+println("Puntos fuera del dominio de la rama positiva: ", solve(2x-6))
+```
+Así pues la rama negativa está definida en todos $\mathbb{R}^-$ y la rama positiva en $\mathbb{R}^+\setminus\{3\}$. Es en este último punto donde $g$ puede tener asíntota vertical, así que estudiamos los límites laterales.
+```{julia}
+println("Límte en 3 por la izquierda: ", limit(g(x), x=>3, dir="-"))
+println("Límte en 3 por la derecha: ", limit(g(x), x=>3, dir="+"))
+```
+Por tanto, $g$ tiene una asíntota vertical en $x=3$.
+
+```{julia}
+vline!([3], label = L"Asíntota vertical $x=3$")
+```
+:::
+
+c. Calcular las asíntotas horizontales de $g$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+Estudiamos los límites en el infinito.
+```{julia}
+println("Límite en -∞: ", limit(g1(x), x=>-oo))
+println("Límite en ∞: ", limit(g2(x), x=>oo))
+```
+Por tanto, $g$ tiene una asíntota horizontal $y=1$ en $-\infty$.
+
+```{julia}
+hline!([1], label = L"Asíntota horizontal $y=1$")
+```
+:::
+
+d. Calcular las asíntotas oblicuas de $g$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+Estudiamos el límite en $\infty$ de $\frac{f(x)}{x}$ (en $-\infty$ no puede haber asíntota oblicua al haber asíntota horizontal).
+```{julia}
+limit(g2(x)/x, x=>oo)
+```
+Por tanto, $g$ tiene una asíntota oblicua con pendiente $b=1/2$ en $\infty$. Para obtener el término independiente de la asíntota calculamos el límite en $\infty$ de $f(x)-\frac{1}{2}x$.
+```{julia}
+limit(g2(x)-x/2, x=>oo)
+```
+Por tanto, $g$ tiene una asíntota oblicua $y=\frac{3}{2}+\frac{1}{2}x$.
+
+```{julia}
+plot!(3/2+x/2, label = L"Asíntota oblicua $y=\frac{3}{2}+\frac{1}{2}x$")
+```
+:::
+:::
+
+:::{#exr-continuidad}
+Dada la función
+
+$$
+h(x)=
+\begin{cases}
+\frac{2x^2-2x}{3x^2+x} & \mbox{si } x\leq 0,\\
+\frac{\operatorname{tg}(x)+a}{x} & \mbox{si } x>0
+\end{cases}
+$$
+
+¿Qué valor debe tomar $a$ para que la función sea continua en todo su dominio?
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Calcular el límite en $0$ por la izquierda de la función de la rama negativa, y el límite en $0$ por la derecha de la función de la rama positiva. Después resolver la ecuación simbólica que resulta de igualar los dos límites. Para crear la ecuación simbólica debe utilizarse la función `Eq()` del paquete `SymPy` y después resolverla con la función `solve()`.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+@vars x a real=true
+h1(x) = (2x^2-2x)/(3x^2+x)
+h2(x) = (tan(x)-a*x)/x 
+l1 = limit(h1(x), x=>0, dir="-")
+l2 = limit(h2(x),x=>0, dir="+")
+solve(Eq(l1,l2))
+```
+:::
+:::
+
+:::{#exr-discontinuidad}
+
+Representar gráficamente y clasificar las discontinuidades de la función
+
+$$
+f(x)=
+\begin{cases}
+\frac{x+1}{x^2-1},       & \mbox{si } x<0,     \\
+\frac{1}{e^{1/(x^2-1)}}, & \mbox{si } x\geq 0. 
+\end{cases}
+$$
+
+:::{.callout-tip collapse="true"}
+## Solución
+Para estudiar las discontinuidades de una función tenemos que estudiar los puntos que no están en el dominio y los puntos donde cambia la definición de la función en el caso de una función definida a trozos.
+
+```{julia}
+using Plots, MTH229, LaTeXStrings
+@syms x::real
+f1(x) = (x+1)/(x^2-1)
+f2(x) = 1/exp(1/(x^2-1))
+plot(f1, -4, 0, ylim=(-2,8), legend=false)
+plot!(rangeclamp(f2), 0, 4)
+```
+
+Para determinar el dominio de la rama negativa, al ser una función racional, tenemos que ver los puntos que anulan el denominador.
+
+```{julia}
+solve(x^2-1)
+```
+
+Así pues, la función no está definida en $x=-1$ (la otra raíz queda fuera de la rama negativa). Para ver el tipo de discontinuidad estudiamos los límites laterales en $x=-1$.
+
+```{julia}
+println("Límite en -1 por la izquierda: ", limit(f1(x), x=> -1, dir="-"))
+println("Límite en -1 por la derecha: ", limit(f1(x), x=> -1, dir="+"))
+```
+
+Como el límite existe, $f$ tiene una discontinuidad evitable en $x=-1$.
+
+Del mismo modo la rama positiva no está definida en $x=1$ ya que se anula el denominador del exponente de la función exponencial. Para ver el tipo de discontinuidad estudiamos los límites laterales en $x=1$.
+
+```{julia}
+println("Límite en 1 por la izquierda: ", limit(f2(x), x=>1, dir="-"))
+println("Límite en 1 por la derecha: ", limit(f2(x), x=>1, dir="+"))
+```
+
+Como los límites laterales son distintos, $f$ tiene una discontinuidad de salto infinito en $x=1$.
+
+Finalmente, estudiamos los límites laterales en $x=0$, que es donde cambia la definición de la función.
+
+```{julia}
+println("Límite en 1 por la izquierda: ", limit(f1(x), x=>0, dir="-"))
+println("Límite en 1 por la derecha: ", limit(f2(x), x=>0, dir="+"))
+```
+
+Como los límites laterales son distintos, $f$ tiene una discontinuidad de salto finito en $x=0$.
+:::
+:::
+
+:::{#exr-algoritmo-biseccion}
+El [teorema de Bolzano](https://aprendeconalf.es/analisis-manual/limites.html#thm-bolzano) permite construir un algoritmo para encontrar raíces de una función continua en un intervalo $[a,b]$ cuando $f(a)f(b)<0$. Este algoritmo se conoce como el _algoritmo de bisección_ y básicamente consiste en repetir los siguientes pasos:
+
+1. Calcular el centro del intervalo $c=\frac{a+b}{2}$.
+2. Si $f(c)=0$, $c$ es una raíz y se termina la búsqueda.
+3. En caso contrario, si $f(a)f(c)<0$ hacer $b=c$, y si no, hacer $a=c$.
+4. Repetir la búsqueda.
+
+Construir una función que implemente este algoritmo y utilizarlo para calcular una raíz de la función $f(x)=x^5+3x^4-2x^3+6x-2$ en el intervalo $[0,1]$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+function raices_biseccion(f, a, b, error=1e-10)
+  if f(a) == 0 return(a) end
+  if f(b) == 0 return(b) end
+  if f(a) * f(b) > 0 error("Las imágenes de los extremos del intervalo no tienen signo distinto.") end
+  c = (a+b)/2
+  while abs(b-a) > error
+    if f(c) == 0 return(c) end
+    if f(a) * f(c) < 0
+       b = c
+    else
+       a = c
+    end
+    c = (a+b)/2
+  end
+  c
+end
+
+f(x)=x^5+3x^4-2x^3+6x-4
+print(raices_biseccion(f, 0, 1))
+```
+:::
+:::
+
+## Ejercicios propuestos
+
+```{julia}
+#| echo: false
+#| results: "hidden"
+using QuizQuestions
+nothing
+```
+
+:::{#exr-interes-compuesto}
+En 1683 Jacob Bernouilli estudió la evolución del interés compuesto cuando el periodo de actualización se hacía cada vez más pequeño. 
+
+Si disponemos de $1$€ en una cuenta corriente que ofrece un 100% de interés anual, al cabo de un año tendremos $2$€ en la cuenta. Si la cuenta ofrece un interés del $50$% cada 6 meses, al final del año tendremos 
+
+$$
+1\cdot\left(1+\frac{1}{2}\right)\left(1+\frac{1}{2}\right)= \left(1+\frac{1}{2}\right)^2 = 2.25\mbox{€}.
+$$
+
+Si la cuenta ofrece un interés del $25$% cada trimestre, al final del año tendremos 
+
+$$
+1\cdot\left(1+\frac{1}{4}\right)\left(1+\frac{1}{4}\right)\left(1+\frac{1}{4}\right)\left(1+\frac{1}{4}\right)= \left(1+\frac{1}{4}\right)^4 = 2.44140625\mbox{€}.
+$$
+
+¿Qué cantidad habrá en la cuenta al cabo de un año si la cuenta ofrece un interés del $1/12$% mensual?
+
+```{julia}
+#| hold: true
+#| echo: false
+f(x) = (1+1/x)^x
+numericq(f(12), 1e-10, hint="Introducir hasta 10 decimales")
+```
+
+¿Qué cantidad habrá en la cuenta al cabo de un año si la cuenta ofrece un interés del $1/365$% diario?
+
+```{julia}
+#| hold: true
+#| echo: false
+f(x) = (1+1/x)^x
+numericq(f(365), 1e-10, hint="Introducir hasta 10 decimales")
+```
+
+¿Qué cantidad habrá en la cuenta al cabo de un año si la cuenta se actualiza de manera continua con un interés $1/x$% cuando $x\to\infty$?
+
+```{julia}
+#| echo: false
+choices = ("3", "2.7182818284590", "e", L"e^2", L"e^{-1}")
+answer = 3
+radioq(choices, answer)
+```
+:::
+
+:::{#exr-limites-2}
+Calcular los siguientes límites.
+
+a. $\displaystyle \lim_{x\rightarrow \pi/4}\frac{\operatorname{sen}(x)-\cos(x)}{1-\operatorname{tg}(x)}$.
+
+```{julia}
+#| echo: false
+@syms x::real
+f(x) = (sin(x)-cos(x))/(tan(x))
+l = limit(f(x), x=>Sym(pi)/4)
+numericq(l, 1e-5)
+```
+
+b. $\displaystyle \lim_{x\rightarrow \infty}\sqrt{x^2+x+1}-\sqrt{x^2-2x-1}$.
+
+```{julia}
+#| echo: false
+@syms x::real
+f(x) = sqrt(x^2+x+1)-sqrt(x^2-2x-1)
+l = limit(f(x), x=>-oo)
+numericq(l)
+```  
+
+c. $\displaystyle \lim_{x\to 0^+} \frac{x^x-1}{x}$
+
+```{julia}
+#| echo: false
+choices = (L"$\infty$", L"$-\infty$", L"1", "0", "NaN")
+answer = 2
+radioq(choices, answer)
+```
+
+a. $\displaystyle \lim_{x\to 1}\frac{a^{1-x}-1}{1-x}$.
+
+```{julia}
+#| echo: false
+choices = (L"1/a", L"e^a", L"$\sqrt{a}$", L"\ln(a)", "Las otras opciones son falsas.")
+answer = 4
+radioq(choices, answer)
+```
+:::
+
+:::{#exr-asintotas}
+¿Cuáles de las siguientes rectas son asíntotas de la función $f(x)=\frac{x^2+1}{3x+3}$?
+```{julia}
+#| echo: false
+choices = (L"$x=-1$", L"$y=1$", L"$y=3x+1$", L"$y=\frac{1}{3}+\frac{1}{3}x$", L"$y=\frac{x-1}{3}$")
+answers = [1,5]
+multiq(choices, answers)
+```
+:::
+
+:::{#exr-discontinuidad-evitable}
+¿Cuándo debería valer la función $h(x)=\dfrac{e^x-e^{-x}}{x}$ para que fuese continua en $x=0$.
+
+```{julia}
+#| echo: false
+@syms x::real
+f(x) = (exp(x)-exp(-x))/x
+l = limit(f(x), x=>0)
+numericq(l)
+```
+:::
+
+:::{#exr-continuidad-2}
+Dada la función
+
+$$
+h(x)=
+\begin{cases}
+x^3-x-2 & \mbox{si } x\leq 0,\\
+\cos(x-\pi/2)+a & \mbox{si } x>0
+\end{cases}
+$$
+
+¿Qué valor debe tomar $a$ para que la función sea continua en todo su dominio?
+
+```{julia}
+#| echo: false
+using Latexify
+@vars a real=true
+h1(x) = x^3-x-2
+h2(x) = cos(x-Sym(pi)/4)+a 
+l1 = limit(h1(x), x=>0, dir="-")
+l2 = limit(h2(x),x=>0, dir="+")
+sol=solve(Eq(l1,l2))
+choices = (latexify(sol[1]), L"$2-\sqrt{2}$", L"$-2$", L"$-2+\frac{\sqrt{2}}{2}$", L"No hay ningún valor de de $a$ que haga la función continua")
+answer = 1
+radioq(choices, answer)
+```
+:::
+
+:::{#exr-clasificacion-discontinuidad}
+¿Qué tipo de discontinuidad presenta la función $g(x)=\dfrac{1}{e^{1/(x^2-1)}}$ en $x=-1$?
+
+```{julia}
+#| echo: false
+choices = ("Evitable", "Salto finito", "Salto infinito", "Segunda especie", "Es continua")
+answer = 3
+radioq(choices, answer)
+```
+:::
+
+:::{#exr-raices}
+Calcular de forma aproximada con el algoritmo de bisección una solución de la ecuación $e^{-x}=\cos(x)$ en el intervalo $[1,2]$ con un error menor de $10^{-15}$.
+
+```{julia}
+#| echo: false
+f(x) = exp(-x)-cos(x)
+sol = raices_biseccion(f, 1, 2, 1e-15)
+numericq(sol, 1e-15)
+```
+:::
+
+
+
