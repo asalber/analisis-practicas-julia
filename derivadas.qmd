@@ -136,14 +136,14 @@ display(plot(f(x), label=L"f(x)=|x-1|"))
 println("Derivada por la izquierda: ", limit((f(x)-f(1))/(x-1), x=>1, dir="-"))
 println("Derivada por la derecha: ", limit((f(x)-f(1))/(x-1), x=>1, dir="+"))
 ```
-:::
 Como la derivada por la izquierda y por la derecha no son iguales, la función no es derivable en $x=1$.
+:::
 :::
 
 :::{#exr-secantes-tangente}
 Sea $f(x)=\sqrt{x}$.
 
-a. Dibujar la gráfica de $f$ y dibujar las rectas secantes a $f$ en los intervalos $[\frac{i}{10}, 1]$ para $i=0,\ldots, 9$. ¿Hacia dónde tienen las pendientes de las rectas secantes?
+a. Dibujar la gráfica de $f$ y dibujar las rectas secantes a $f$ en los intervalos $[\frac{i}{10}, 1]$ para $i=0,\ldots, 9$. ¿Hacia dónde tienden las pendientes de las rectas secantes?
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -164,6 +164,13 @@ Se deduce que las pendientes de las rectas secantes tienen a $0.5$.
 
 b. Dibujar la recta tangente a la gráfica de $f$ en $x=1$. 
 
+:::{.callout-note collapse="true"}
+## Ayuda
+La ecuación de la recta tangente a la función $f(x)$ en el punto $a$ es $y=f(a)+f'(a)(x-a)$.
+
+Usar la función [`diff(f)`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Derivatives-1) del paquete `SymPy` para calcular simbólicamente la derivada de la función `f`.
+:::
+
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
@@ -181,7 +188,7 @@ a. $f(x)=\ln(x+1)$
 
 :::{.callout-note collapse="true"}
 ## Ayuda
-Usar la función [`diff`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Derivatives-1) del paquete `SymPy` para calcular simbólicamente la derivada.
+Usar la función [`diff(f,n)`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Derivatives-1) del paquete `SymPy` para calcular simbólicamente la derivada de grado `n` de la función `f`.
 :::
 
 :::{.callout-tip collapse="true"}
@@ -316,6 +323,11 @@ Existen dos puntos críticos en $x=-0.55$ y $x=0.55$ aproximadamente.
 
 d. A la vista de los puntos críticos y de la gráfica de la función derivada, determinar los intervalos de crecimiento y los extremos relativos de la función.
 
+:::{.callout-note collapse="true"}
+## Ayuda
+Una función $f$ derivable en el punto $a$ es creciente si y solo si $f'(a)>0$ y decrecientes si y solo si $f'(a)<0$.
+:::
+
 :::{.callout-tip collapse="true"}
 ## Solución
 La derivada es positiva en los intervalos $(-\infty,-0.55)$ y $(0.55,\infty)$, por lo que la función $g$ es creciente en estos intervalos, y la derivada es negativa en el intervalo $(-0.55, 0.55)$, por lo que la función $g$ es decreciente en este intervalo.
@@ -346,6 +358,11 @@ Existen tres puntos donde se anula $g''(x)$, en $x=-1.73$, $x=0$ y $x=1.73$ apro
 :::
 
 g. A la vista de las raíces de la gráfica de la segunda derivada, determinar los intervalos de concavidad y los puntos de inflexión de la función $g$.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Una función $f$ dos veces derivable en el punto $a$ es cóncava hacia arriba si y solo si $f''(a)>0$ y cóncava hacia abajo si y solo si $f''(a)<0$. Los puntos de inflexión de una función son los puntos donde cambia la concavidad. 
+:::
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -417,6 +434,15 @@ scatter!([1],[1], label="")
 :::{#exr-taylor-1}
 Crear una función para calcular el polinomio de Taylor de grado $n$ una función $f$ en un punto $a$ y utilizarla para dibujar los polinomios de Taylor de la función $f(x)=\operatorname{sen}(x)$ en $a=0$ hasta el grado $5$.
 
+:::{.callout-note collapse="true"}
+## Ayuda
+La fórmula del polinomio de Taylor de gardo $n$ de la función $f$ en el punto $a$ es 
+
+$$
+P^n_{f,a}(x) = f(a)+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2+ \cdots + \frac{f^{(n}(a)}{n!}(x-a)^n.
+$$
+:::
+
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
@@ -479,6 +505,15 @@ series(h(x), x, 0, 10)
 
 :::{#exr-taylor-3}
 Aproximar el número $\ln(1.2)$ mediante un polinomio de Taylor de grado 8 y dar una cota del error cometido. ¿Hasta qué grado habría que llegar para obtener un error menor de $10^{-10}$?
+
+:::{.callout-note collapse="true"}
+## Ayuda
+El error en la aproximación de una función $f(b)$ mediante un polinomio de Taylor de grado $n$ en el punto $a$ viene dado por el resto de Taylor, que en la forma de Lagrange es 
+
+$$
+R^n_{f,a}(x) = \frac{f^{(n+1}(x)}{(n+1)!}(x-a)^{n+1}\mbox{ con } x\in[a,b].
+$$
+:::
 
 :::{.callout-tip collapse="true"}
 ## Solución
