@@ -665,6 +665,3 @@ sol = raices_biseccion(f, 1, 2, 1e-15)
 numericq(sol, 1e-15)
 ```
 :::
-
-
-

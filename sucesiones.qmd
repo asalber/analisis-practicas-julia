@@ -85,7 +85,7 @@ Dibujar en una gráfica los 50 primeros términos de las siguientes sucesiones y
 
 :::{.callout-note collapse="true"}
 ## Ayuda
-Definir una función para el término general y aplicar la función a los naturales de 1 a 50 usando compresiones de arrays como en el ejercicio anterior. Después usar la función [`scatter`](https://docs.juliaplots.org/latest/api/#Plots.scatter-Tuple) del paquete `Plots` para dibujar el array de términos.
+Definir una función para el término general y aplicar la función a los naturales de 1 a 50 usando compresiones de arrays como en el ejercicio anterior. Después usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` para dibujar el array de términos.
 :::
 
 a. $\left(\frac{n}{4n+2}\right)_{n=1}^\infty$

@@ -1,6 +1,9 @@
 project:
   type: book
   output-dir: "docs"
+  preview:
+    port: 1313
+    browser: false
 
 website:
   favicon: "img/logos/favicon.ico"
@@ -31,9 +34,10 @@ book:
   chapters:
     - index.qmd
     - introduccion.qmd
-    - sucesiones.qmdhttps://aprendeconalf.es/analisis-manual/limites.html#thm-bolzano
+    - sucesiones.qmd
     - funciones-elementales.qmd
     - limites.qmd
+    - derivadas.qmd
     
 #bibliography: references.bib
 
