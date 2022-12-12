@@ -48,13 +48,28 @@ using Plots
 t = [0, 1, 2, 3, 4, 5, 6]
 d = [0, 1, 4, 9, 16, 25, 36]
 scatter(t, d, legend=false)
-plt = plot!(t, d, linecolor="blue")
+plt = plot!(t, d, linecolor="blue", xlab="Tiempo (s)", ylab="Distancia recorrida (cm)")
 ```
 
 Se aprecia que una forma parabólica.
 :::
 
 b. Calcular la velocidad media (tasa de variación media) desde los instantes $t=0, 1, 2$ hasta el instante $t=3$ y dibujar la rectas secantes a la gráfica anterior en esos instantes. ¿Cómo es la tendencia de las velocidades medias?
+
+:::{.callout-note collapse="true"}
+## Ayuda
+La tasa de variación media de una función $f$ en un intervalo $[a,b]$ viene dada por la fórmula
+
+$$
+TVM(f,[a,b]) = \frac{f(b)-f(a)}{b-a},
+$$
+
+y la recta secante a la función $f$ en el intervalo $[a,b]$ tiene ecuación
+
+$$
+y = f(a) + TVM(f,[a,b]) (x-a).
+$$
+:::
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -77,7 +92,7 @@ plt
 Las velocidades medias crecen a medida que pasa el tiempo.
 :::
 
-c. Calcular la velocidad media (tasa de variación media) desde el instante $t=3$ hasta los instantes $t=6, 5, 4$ y dibujar la rectas secantes a la gráfica anterior en esos instantes. ¿Cómo es la tendencia de las velocidades medias? ¿Hacia dónde tiende la velocidad media cuando los aproximamos al instante $t=3$ con instantes menores y mayores?
+c. Calcular la velocidad media desde el instante $t=3$ hasta los instantes $t=6, 5, 4$ y dibujar la rectas secantes a la gráfica anterior en esos instantes. ¿Cómo es la tendencia de las velocidades medias? ¿Hacia dónde tiende la velocidad media cuando los aproximamos al instante $t=3$ con instantes menores y mayores?
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -120,6 +135,8 @@ for i in 2:length(v)
     println("Aceleración media desde el instante $(t[i-1]) al instante $(t[i]): $(v[i]-v[i-1]) cm/s")
 end
 ```
+
+Se observa que la aceleración es la misma. Galileo concluyó que la aceleración de un cuerpo en caída libre era uniforme.
 :::
 :::
 
@@ -197,12 +214,12 @@ Usar la función [`diff(f,n)`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tuto
 using SymPy
 @vars x real=true
 f(x) = log(x+1)
-println("Primera derivada: ", diff(f(x)))
-println("Segunda derivada: ", diff(f(x),x,2))
-println("Tercera derivada: ", diff(f(x),x,3))
-println("Cuarta derivada: ", diff(f(x),x,4))
+println("Primera derivada: ", diff(f))
+println("Segunda derivada: ", diff(f,2))
+println("Tercera derivada: ", diff(f,3))
+println("Cuarta derivada: ", diff(f,4))
 ```
-La derivada de orden $n$ es $f^{(n)}=\frac{(-1)^{n-1}(n-1)!}{(x+1)^n}$.
+La derivada de orden $n$ es $f^{(n}=\frac{(-1)^{n-1}(n-1)!}{(x+1)^n}$.
 :::
 
 b. $f(x)=a^x$
@@ -218,7 +235,7 @@ println("Segunda derivada: ", diff(g(x),x,2))
 println("Tercera derivada: ", diff(g(x),x,3))
 println("Cuarta derivada: ", diff(g(x),x,4))
 ```
-La derivada de orden $n$ es $g^{(n)}=a^x\ln(a)^n$.
+La derivada de orden $n$ es $g^{(n}=a^x\ln(a)^n$.
 :::
 
 c. $h(x)=\operatorname{sen}(x)+\cos(x)$
@@ -229,10 +246,10 @@ c. $h(x)=\operatorname{sen}(x)+\cos(x)$
 using SymPy
 @vars x real=true
 h(x) = sin(x)+cos(x)
-println("Primera derivada: ", diff(h(x),x))
-println("Segunda derivada: ", diff(h(x),x,2))
-println("Tercera derivada: ", diff(h(x),x,3))
-println("Cuarta derivada: ", diff(h(x),x,4))
+println("Primera derivada: ", diff(h))
+println("Segunda derivada: ", diff(h,2))
+println("Tercera derivada: ", diff(h,3))
+println("Cuarta derivada: ", diff(h,4))
 ```
 La derivada de orden $n$ es 
 
@@ -316,7 +333,7 @@ Los puntos críticos de una función son los puntos donde se anula la derivada.
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-N.(solve(diff(g(x)),x))
+N.(solve(diff(g)))
 ```
 Existen dos puntos críticos en $x=-0.55$ y $x=0.55$ aproximadamente.
 :::
@@ -342,7 +359,7 @@ e. Calcular segunda la derivada de $g$ y dibujar su gráfica en la misma gráfic
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-plot!(diff(g(x),x,2), label=L"g''(x)="*latexify(simplify(diff(g(x),x,2))))
+plot!(diff(g,2), label=L"g''(x)="*latexify(simplify(diff(g(x),x,2))))
 ```
 :::
 
@@ -352,7 +369,7 @@ f. Calcular los puntos que anulan la segunda derivada de $g$.
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-N.(solve(diff(g(x),x,2)))
+N.(solve(diff(g,2)))
 ```
 Existen tres puntos donde se anula $g''(x)$, en $x=-1.73$, $x=0$ y $x=1.73$ aproximadamente.
 :::
@@ -385,7 +402,7 @@ Para dibujar curvas implícitas utilizar la función `implicit_plot` del paquete
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-using ImplicitPlots, Plots, SymPy, LaTeXStrings
+using ImplicitPlots, Plots, SymPy, LaTeXStrings, Latexify
 @vars x y real=true
 f(x,y)=x^4-3x^2+2y^2
 implicit_plot(f; xlims=(-3,3), ylims=(-1.5,1.5), label=L"x^4-3x^2+2y^2=0", legend=:topleft)
@@ -412,9 +429,9 @@ ex1 = f(x,y)(y=>u(x))
 du_dx = solve(diff(ex1,x), diff(u(x),x))[1]
 # Deshacemos el cambio y=u(x).
 dy_dx = du_dx(u(x)=>y)
+println("y'=", dy_dx)
 ```
 :::
-
 
 c. Dibujar la recta tangente a la curva anterior en el punto $(1,1)$.
 
@@ -522,7 +539,7 @@ Utilizaremos un polinomio de MacLaurin de grado 5 para la función $f(x)=\ln(1+x
 using SymPy
 @vars x real=true
 pol = series(log(1+x), x, 0, 6).removeO()
-println("Aproximación de ln(1.2): ", float(pol(0.2)))
+println("Aproximación de ln(1.2): ", N(pol(0.2)))
 ```
 
 Para dar una cota del error cometido calculamos el resto de Taylor en la forma de Lagrange.
@@ -535,7 +552,7 @@ println("Derivada del resto : ", diff(resto))
 Como la derivada no se anula en el intervalo $[1,2]$, no hay extremos relativos, y al ser una función continua en un intervalo cerrado, alcanza el máximo y mínimos absolutos en los extremos.
 
 ```{julia}
-println("Cota del error: " , maximum(float.(abs.([resto(0), resto(0.2)])))) 
+println("Cota del error: " , maximum(N(abs.([resto(0), resto(0.2)])))) 
 println("Error: ", abs(log(1.2)-pol(0.2)))
 ```
 Así pues, el error en la aproximación de $\ln(1.2)$ es menor que $1.06\cdot 10^{-5}$.
@@ -565,12 +582,12 @@ Finalmente calculamos el primer número natural $n$ tal que $|R^n_{f,1}(x)|<10^{
 
 ```{julia}
 n=6
-while 0.2^n/(n*(n+1)) > 10^-10
+while 0.2^(n+1)/(n*(n+1)) > 10^-10
     n += 1
 end
 print(n)
 ```
-Así pues, habría que llegar al grado 12.
+Así pues, habría que llegar al grado 11.
 :::
 :::
 

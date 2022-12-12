@@ -360,7 +360,7 @@ Solución
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [<span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> [<span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">9</span>, <span class="fl">16</span>, <span class="fl">25</span>, <span class="fl">36</span>]</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(t, d, legend<span class="op">=</span><span class="cn">false</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt <span class="op">=</span> <span class="fu">plot!</span>(t, d, linecolor<span class="op">=</span><span class="st">"blue"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt <span class="op">=</span> <span class="fu">plot!</span>(t, d, linecolor<span class="op">=</span><span class="st">"blue"</span>, xlab<span class="op">=</span><span class="st">"Tiempo (s)"</span>, ylab<span class="op">=</span><span class="st">"Distancia recorrida (cm)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <p><img src="derivadas_files/figure-html/cell-3-output-1.svg" class="img-fluid"></p>
 </div>
@@ -372,8 +372,31 @@ Solución
 <ol start="2" type="a">
 <li>Calcular la velocidad media (tasa de variación media) desde los instantes <span class="math inline">\(t=0, 1, 2\)</span> hasta el instante <span class="math inline">\(t=3\)</span> y dibujar la rectas secantes a la gráfica anterior en esos instantes. ¿Cómo es la tendencia de las velocidades medias?</li>
 </ol>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ayuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La tasa de variación media de una función <span class="math inline">\(f\)</span> en un intervalo <span class="math inline">\([a,b]\)</span> viene dada por la fórmula</p>
+<p><span class="math display">\[
+TVM(f,[a,b]) = \frac{f(b)-f(a)}{b-a},
+\]</span></p>
+<p>y la recta secante a la función <span class="math inline">\(f\)</span> en el intervalo <span class="math inline">\([a,b]\)</span> tiene ecuación</p>
+<p><span class="math display">\[
+y = f(a) + TVM(f,[a,b]) (x-a).
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -382,7 +405,7 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para el cálculo de la velocidad media en del instante i al instante j.</span></span>
@@ -400,14 +423,12 @@ Solución
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Velocidad media desde el instante 0 al instante 3: 3.0 cm/s</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Velocidad media desde el instante 1 al instante 3: 4.0 cm/s
+<pre><code>Velocidad media desde el instante 0 al instante 3: 3.0 cm/s
+Velocidad media desde el instante 1 al instante 3: 4.0 cm/s
 Velocidad media desde el instante 2 al instante 3: 5.0 cm/s</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<p><img src="derivadas_files/figure-html/cell-4-output-3.svg" class="img-fluid"></p>
+<p><img src="derivadas_files/figure-html/cell-4-output-2.svg" class="img-fluid"></p>
 </div>
 </div>
 <p>Las velocidades medias crecen a medida que pasa el tiempo.</p>
@@ -415,10 +436,10 @@ Velocidad media desde el instante 2 al instante 3: 5.0 cm/s</code></pre>
 </div>
 </div>
 <ol start="3" type="a">
-<li>Calcular la velocidad media (tasa de variación media) desde el instante <span class="math inline">\(t=3\)</span> hasta los instantes <span class="math inline">\(t=6, 5, 4\)</span> y dibujar la rectas secantes a la gráfica anterior en esos instantes. ¿Cómo es la tendencia de las velocidades medias? ¿Hacia dónde tiende la velocidad media cuando los aproximamos al instante <span class="math inline">\(t=3\)</span> con instantes menores y mayores?</li>
+<li>Calcular la velocidad media desde el instante <span class="math inline">\(t=3\)</span> hasta los instantes <span class="math inline">\(t=6, 5, 4\)</span> y dibujar la rectas secantes a la gráfica anterior en esos instantes. ¿Cómo es la tendencia de las velocidades medias? ¿Hacia dónde tiende la velocidad media cuando los aproximamos al instante <span class="math inline">\(t=3\)</span> con instantes menores y mayores?</li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -427,19 +448,19 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="fl">4</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de las velocidades medias.</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="fl">7</span><span class="op">:-</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"Velocidad media desde el instante </span><span class="sc">$</span>(t[i])<span class="st"> al instante </span><span class="sc">$</span>(t[j])<span class="st">: </span><span class="sc">$</span>(<span class="fu">tvm</span>(i, j))<span class="st"> cm/s"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Dibujo de las rectas secantes.</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="fl">7</span><span class="op">:-</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>     plt <span class="op">=</span> <span class="fu">plot!</span>(x <span class="op">-&gt;</span> <span class="fu">secante</span>(x,i,j))</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="fl">4</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de las velocidades medias.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="fl">7</span><span class="op">:-</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"Velocidad media desde el instante </span><span class="sc">$</span>(t[i])<span class="st"> al instante </span><span class="sc">$</span>(t[j])<span class="st">: </span><span class="sc">$</span>(<span class="fu">tvm</span>(i, j))<span class="st"> cm/s"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Dibujo de las rectas secantes.</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="fl">7</span><span class="op">:-</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>     plt <span class="op">=</span> <span class="fu">plot!</span>(x <span class="op">-&gt;</span> <span class="fu">secante</span>(x,i,j))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Velocidad media desde el instante 3 al instante 6: 9.0 cm/s
 Velocidad media desde el instante 3 al instante 5: 8.0 cm/s
@@ -458,7 +479,7 @@ Velocidad media desde el instante 3 al instante 4: 7.0 cm/s</code></pre>
 <li>Calcular la variación en la distancia recorrida cada segundo que pasa. ¿Cómo evoluciona la velocidad de la bola?</li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -467,14 +488,14 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> []</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fu">length</span>(d)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">push!</span>(v, d[i]<span class="op">-</span>d[i<span class="op">-</span><span class="fl">1</span>])</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"Velocidad media desde el instante </span><span class="sc">$</span>(t[i<span class="op">-</span><span class="fl">1</span>])<span class="st"> al instante </span><span class="sc">$</span>(t[i])<span class="st">: </span><span class="sc">$</span>(v[i<span class="op">-</span><span class="fl">1</span>])<span class="st"> cm/s"</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> []</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fu">length</span>(d)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">push!</span>(v, d[i]<span class="op">-</span>d[i<span class="op">-</span><span class="fl">1</span>])</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"Velocidad media desde el instante </span><span class="sc">$</span>(t[i<span class="op">-</span><span class="fl">1</span>])<span class="st"> al instante </span><span class="sc">$</span>(t[i])<span class="st">: </span><span class="sc">$</span>(v[i<span class="op">-</span><span class="fl">1</span>])<span class="st"> cm/s"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Velocidad media desde el instante 0 al instante 1: 1 cm/s
 Velocidad media desde el instante 1 al instante 2: 3 cm/s
@@ -491,36 +512,6 @@ Velocidad media desde el instante 5 al instante 6: 11 cm/s</code></pre>
 <li>Calcular la variación en la velocidad cada segundo que pasa. ¿Cómo evoluciona la aceleración de la bola? ¿Qué conclusiones sacó Galileo sobre la aceleración de la bola?</li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fu">length</span>(v)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"Aceleración media desde el instante </span><span class="sc">$</span>(t[i<span class="op">-</span><span class="fl">1</span>])<span class="st"> al instante </span><span class="sc">$</span>(t[i])<span class="st">: </span><span class="sc">$</span>(v[i]<span class="op">-</span>v[i<span class="op">-</span><span class="fl">1</span>])<span class="st"> cm/s"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Aceleración media desde el instante 0 al instante 1: 2 cm/s
-Aceleración media desde el instante 1 al instante 2: 2 cm/s
-Aceleración media desde el instante 2 al instante 3: 2 cm/s
-Aceleración media desde el instante 3 al instante 4: 2 cm/s
-Aceleración media desde el instante 4 al instante 5: 2 cm/s</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="exr-derivabilidad" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 5.2 </strong></span>Representar gráficamente la función <span class="math inline">\(f(x)=|x-1|\)</span> y estudiar su derivabilidad en el punto <span class="math inline">\(x=1\)</span> haciendo uso de la definición de derivada.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -532,13 +523,44 @@ Solución
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fu">length</span>(v)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"Aceleración media desde el instante </span><span class="sc">$</span>(t[i<span class="op">-</span><span class="fl">1</span>])<span class="st"> al instante </span><span class="sc">$</span>(t[i])<span class="st">: </span><span class="sc">$</span>(v[i]<span class="op">-</span>v[i<span class="op">-</span><span class="fl">1</span>])<span class="st"> cm/s"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Aceleración media desde el instante 0 al instante 1: 2 cm/s
+Aceleración media desde el instante 1 al instante 2: 2 cm/s
+Aceleración media desde el instante 2 al instante 3: 2 cm/s
+Aceleración media desde el instante 3 al instante 4: 2 cm/s
+Aceleración media desde el instante 4 al instante 5: 2 cm/s</code></pre>
+</div>
+</div>
+<p>Se observa que la aceleración es la misma. Galileo concluyó que la aceleración de un cuerpo en caída libre era uniforme.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-derivabilidad" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 5.2 </strong></span>Representar gráficamente la función <span class="math inline">\(f(x)=|x-1|\)</span> y estudiar su derivabilidad en el punto <span class="math inline">\(x=1\)</span> haciendo uso de la definición de derivada.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">abs</span>(x<span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">display</span>(<span class="fu">plot</span>(<span class="fu">f</span>(x), label<span class="op">=</span>L<span class="st">"f(x)=|x-1|"</span>))</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Derivada por la izquierda: "</span>, <span class="fu">limit</span>((<span class="fu">f</span>(x)<span class="fu">-f</span>(<span class="fl">1</span>))<span class="op">/</span>(x<span class="op">-</span><span class="fl">1</span>), x<span class="op">=&gt;</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Derivada por la derecha: "</span>, <span class="fu">limit</span>((<span class="fu">f</span>(x)<span class="fu">-f</span>(<span class="fl">1</span>))<span class="op">/</span>(x<span class="op">-</span><span class="fl">1</span>), x<span class="op">=&gt;</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">abs</span>(x<span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">display</span>(<span class="fu">plot</span>(<span class="fu">f</span>(x), label<span class="op">=</span>L<span class="st">"f(x)=|x-1|"</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Derivada por la izquierda: "</span>, <span class="fu">limit</span>((<span class="fu">f</span>(x)<span class="fu">-f</span>(<span class="fl">1</span>))<span class="op">/</span>(x<span class="op">-</span><span class="fl">1</span>), x<span class="op">=&gt;</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Derivada por la derecha: "</span>, <span class="fu">limit</span>((<span class="fu">f</span>(x)<span class="fu">-f</span>(<span class="fl">1</span>))<span class="op">/</span>(x<span class="op">-</span><span class="fl">1</span>), x<span class="op">=&gt;</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="derivadas_files/figure-html/cell-8-output-1.svg" class="img-fluid"></p>
 </div>
@@ -558,7 +580,7 @@ Derivada por la derecha: 1</code></pre>
 <li>Dibujar la gráfica de <span class="math inline">\(f\)</span> y dibujar las rectas secantes a <span class="math inline">\(f\)</span> en los intervalos <span class="math inline">\([\frac{i}{10}, 1]\)</span> para <span class="math inline">\(i=0,\ldots, 9\)</span>. ¿Hacia dónde tienden las pendientes de las rectas secantes?</li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -567,19 +589,19 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span>, <span class="bu">Latexify</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">sqrt</span>(x)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt <span class="op">=</span> <span class="fu">plot</span>(f, <span class="fl">0</span>, <span class="fl">2</span>, ylims<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">2.5</span>), linewidth <span class="op">=</span> <span class="fl">3</span>, label<span class="op">=</span>L<span class="st">"f(x)=\sqrt{x}"</span>, legend<span class="op">=:</span>topleft)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">secante</span>(x, i, j) <span class="op">=</span> <span class="fu">f</span>(i) <span class="op">+</span> (<span class="fu">f</span>(j)<span class="fu">-f</span>(i))<span class="op">/</span>(j<span class="op">-</span>i) <span class="op">*</span> (x <span class="op">-</span> i)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">9</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    sec <span class="op">=</span> <span class="fu">secante</span>(x, i<span class="op">/</span><span class="fl">10</span>, <span class="fl">1</span>)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    plt <span class="op">=</span> <span class="fu">plot!</span>(sec, label <span class="op">=</span>L<span class="st">"y="</span> <span class="op">*</span> <span class="fu">latexify</span>(sec))</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>plt</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span>, <span class="bu">Latexify</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">sqrt</span>(x)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt <span class="op">=</span> <span class="fu">plot</span>(f, <span class="fl">0</span>, <span class="fl">2</span>, ylims<span class="op">=</span>(<span class="fl">0</span>,<span class="fl">2.5</span>), linewidth <span class="op">=</span> <span class="fl">3</span>, label<span class="op">=</span>L<span class="st">"f(x)=\sqrt{x}"</span>, legend<span class="op">=:</span>topleft)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">secante</span>(x, i, j) <span class="op">=</span> <span class="fu">f</span>(i) <span class="op">+</span> (<span class="fu">f</span>(j)<span class="fu">-f</span>(i))<span class="op">/</span>(j<span class="op">-</span>i) <span class="op">*</span> (x <span class="op">-</span> i)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">9</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    sec <span class="op">=</span> <span class="fu">secante</span>(x, i<span class="op">/</span><span class="fl">10</span>, <span class="fl">1</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    plt <span class="op">=</span> <span class="fu">plot!</span>(sec, label <span class="op">=</span>L<span class="st">"y="</span> <span class="op">*</span> <span class="fu">latexify</span>(sec))</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>plt</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <p><img src="derivadas_files/figure-html/cell-9-output-1.svg" class="img-fluid"></p>
 </div>
@@ -592,7 +614,7 @@ Solución
 <li>Dibujar la recta tangente a la gráfica de <span class="math inline">\(f\)</span> en <span class="math inline">\(x=1\)</span>.</li>
 </ol>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -601,7 +623,7 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La ecuación de la recta tangente a la función <span class="math inline">\(f(x)\)</span> en el punto <span class="math inline">\(a\)</span> es <span class="math inline">\(y=f(a)+f'(a)(x-a)\)</span>.</p>
 <p>Usar la función <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Derivatives-1"><code>diff(f)</code></a> del paquete <code>SymPy</code> para calcular simbólicamente la derivada de la función <code>f</code>.</p>
@@ -609,7 +631,7 @@ Ayuda
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -618,11 +640,11 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tg <span class="op">=</span> <span class="fu">f</span>(<span class="fl">1</span>) <span class="op">+</span> <span class="fu">diff</span>(f)(<span class="fl">1</span>) <span class="op">*</span> (x<span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(tg, linewidth <span class="op">=</span> <span class="fl">2</span>, color <span class="op">=</span> <span class="st">"red"</span>, label<span class="op">=</span><span class="st">"Tangente "</span> <span class="op">*</span> L<span class="st">"y="</span> <span class="op">*</span> <span class="fu">latexify</span>(tg))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tg <span class="op">=</span> <span class="fu">f</span>(<span class="fl">1</span>) <span class="op">+</span> <span class="fu">diff</span>(f)(<span class="fl">1</span>) <span class="op">*</span> (x<span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(tg, linewidth <span class="op">=</span> <span class="fl">2</span>, color <span class="op">=</span> <span class="st">"red"</span>, label<span class="op">=</span><span class="st">"Tangente "</span> <span class="op">*</span> L<span class="st">"y="</span> <span class="op">*</span> <span class="fu">latexify</span>(tg))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <p><img src="derivadas_files/figure-html/cell-10-output-1.svg" class="img-fluid"></p>
 </div>
@@ -637,7 +659,7 @@ Solución
 <li><span class="math inline">\(f(x)=\ln(x+1)\)</span></li>
 </ol>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -646,46 +668,12 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Usar la función <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Derivatives-1"><code>diff(f,n)</code></a> del paquete <code>SymPy</code> para calcular simbólicamente la derivada de grado <code>n</code> de la función <code>f</code>.</p>
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">log</span>(x<span class="op">+</span><span class="fl">1</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Primera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">f</span>(x)))</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Segunda derivada: "</span>, <span class="fu">diff</span>(<span class="fu">f</span>(x),x,<span class="fl">2</span>))</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Tercera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">f</span>(x),x,<span class="fl">3</span>))</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Cuarta derivada: "</span>, <span class="fu">diff</span>(<span class="fu">f</span>(x),x,<span class="fl">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Primera derivada: 1/(x + 1)
-Segunda derivada: -1/(x + 1)^2
-Tercera derivada: 2/(x + 1)^3
-Cuarta derivada: -6/(x + 1)^4</code></pre>
-</div>
-</div>
-<p>La derivada de orden <span class="math inline">\(n\)</span> es <span class="math inline">\(f^{(n)}=\frac{(-1)^{n-1}(n-1)!}{(x+1)^n}\)</span>.</p>
-</div>
-</div>
-</div>
-<ol start="2" type="a">
-<li><span class="math inline">\(f(x)=a^x\)</span></li>
-</ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -697,6 +685,43 @@ Solución
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">log</span>(x<span class="op">+</span><span class="fl">1</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Primera derivada: "</span>, <span class="fu">diff</span>(f))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Segunda derivada: "</span>, <span class="fu">diff</span>(f,<span class="fl">2</span>))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Tercera derivada: "</span>, <span class="fu">diff</span>(f,<span class="fl">3</span>))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Cuarta derivada: "</span>, <span class="fu">diff</span>(f,<span class="fl">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Primera derivada: 1/(x + 1)
+Segunda derivada: -1/(x + 1)^2
+Tercera derivada: 2/(x + 1)^3
+Cuarta derivada: </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-6/(x + 1)^4</code></pre>
+</div>
+</div>
+<p>La derivada de orden <span class="math inline">\(n\)</span> es <span class="math inline">\(f^{(n}=\frac{(-1)^{n-1}(n-1)!}{(x+1)^n}\)</span>.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(f(x)=a^x\)</span></li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
@@ -713,7 +738,7 @@ Tercera derivada: a^x*log(a)^3
 Cuarta derivada: a^x*log(a)^4</code></pre>
 </div>
 </div>
-<p>La derivada de orden <span class="math inline">\(n\)</span> es <span class="math inline">\(g^{(n)}=a^x\ln(a)^n\)</span>.</p>
+<p>La derivada de orden <span class="math inline">\(n\)</span> es <span class="math inline">\(g^{(n}=a^x\ln(a)^n\)</span>.</p>
 </div>
 </div>
 </div>
@@ -721,7 +746,7 @@ Cuarta derivada: a^x*log(a)^4</code></pre>
 <li><span class="math inline">\(h(x)=\operatorname{sen}(x)+\cos(x)\)</span></li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -730,16 +755,16 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(x) <span class="op">=</span> <span class="fu">sin</span>(x)<span class="fu">+cos</span>(x)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Primera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">h</span>(x),x))</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Segunda derivada: "</span>, <span class="fu">diff</span>(<span class="fu">h</span>(x),x,<span class="fl">2</span>))</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Tercera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">h</span>(x),x,<span class="fl">3</span>))</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Cuarta derivada: "</span>, <span class="fu">diff</span>(<span class="fu">h</span>(x),x,<span class="fl">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Primera derivada: "</span>, <span class="fu">diff</span>(h))</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Segunda derivada: "</span>, <span class="fu">diff</span>(h,<span class="fl">2</span>))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Tercera derivada: "</span>, <span class="fu">diff</span>(h,<span class="fl">3</span>))</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Cuarta derivada: "</span>, <span class="fu">diff</span>(h,<span class="fl">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Primera derivada: -sin(x) + cos(x)
 Segunda derivada: -(sin(x) + cos(x))
@@ -765,7 +790,7 @@ h^{(n}=
 <div id="exr-tangente-normal" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 5.5 </strong></span>Calcular y dibujar las rectas tangente y normal a la gráfica de la función <span class="math inline">\(f(x)=\ln(\sqrt{x+1})\)</span> en <span class="math inline">\(x=1\)</span>.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -774,7 +799,7 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La ecuación de la recta tangente a una función <span class="math inline">\(f\)</span> en el punto <span class="math inline">\(a\)</span> es</p>
 <p><span class="math display">\[
@@ -788,7 +813,7 @@ y = f(a)-\frac{1}{f'(a)}(x-a).
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -797,7 +822,7 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span>, <span class="bu">Latexify</span></span>
@@ -822,7 +847,7 @@ Solución
 <li>Dibujar la gráfica de <span class="math inline">\(g\)</span>.</li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -831,7 +856,7 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span>, <span class="bu">Latexify</span></span>
@@ -849,7 +874,7 @@ Solución
 <li>Calcular la derivada de <span class="math inline">\(g\)</span> y dibujar su gráfica en la misma gráfica que la de <span class="math inline">\(g\)</span>.</li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -858,7 +883,7 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="fu">diff</span>(g), label<span class="op">=</span>L<span class="st">"g'(x)="</span><span class="fu">*latexify</span>(<span class="fu">simplify</span>(<span class="fu">diff</span>(g))))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -873,7 +898,7 @@ Solución
 <li>Calcular los puntos críticos de <span class="math inline">\(g\)</span>.</li>
 </ol>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -882,14 +907,14 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Los puntos críticos de una función son los puntos donde se anula la derivada.</p>
 </div>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -898,14 +923,16 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">N</span>.(<span class="fu">solve</span>(<span class="fu">diff</span>(<span class="fu">g</span>(x)),x))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">N</span>.(<span class="fu">solve</span>(<span class="fu">diff</span>(g)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>2-element Vector{BigFloat}:
- -0.5583347485961263326654828454569561179259924185641573901331644861659481412422448
-  0.5583347485961263326654828454569561179259924185641573901331644861659481412422448</code></pre>
+<pre><code>4-element Vector{Number}:
+    -0.5583347485961263326654828454569561179259924185641573901331644861659481412422448
+     0.5583347485961263326654828454569561179259924185641573901331644861659481412422448
+ 0.0 - 2.193567343732555569019661050002362205421503627733216097530210072083854926923076im
+ 0.0 + 2.193567343732555569019661050002362205421503627733216097530210072083854926923076im</code></pre>
 </div>
 </div>
 <p>Existen dos puntos críticos en <span class="math inline">\(x=-0.55\)</span> y <span class="math inline">\(x=0.55\)</span> aproximadamente.</p>
@@ -916,7 +943,7 @@ Solución
 <li>A la vista de los puntos críticos y de la gráfica de la función derivada, determinar los intervalos de crecimiento y los extremos relativos de la función.</li>
 </ol>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -925,33 +952,12 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Una función <span class="math inline">\(f\)</span> derivable en el punto <span class="math inline">\(a\)</span> es creciente si y solo si <span class="math inline">\(f'(a)&gt;0\)</span> y decrecientes si y solo si <span class="math inline">\(f'(a)&lt;0\)</span>.</p>
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>La derivada es positiva en los intervalos <span class="math inline">\((-\infty,-0.55)\)</span> y <span class="math inline">\((0.55,\infty)\)</span>, por lo que la función <span class="math inline">\(g\)</span> es creciente en estos intervalos, y la derivada es negativa en el intervalo <span class="math inline">\((-0.55, 0.55)\)</span>, por lo que la función <span class="math inline">\(g\)</span> es decreciente en este intervalo.</p>
-<p>En el punto crítico <span class="math inline">\(x=-0.55\)</span> la derivada es positiva a la izquierda y negativa a la derecha, por lo que, según el criterio de la primera derivada, la función <span class="math inline">\(g\)</span> tiene un máximo relativo.</p>
-<p>En el punto crítico <span class="math inline">\(x=0.55\)</span> la derivada es negativa a la izquierda y positiva a la derecha, por lo que, según el criterio de la primera derivada, la función <span class="math inline">\(g\)</span> tiene un mínimo relativo.</p>
-</div>
-</div>
-</div>
-<ol start="5" type="a">
-<li>Calcular segunda la derivada de <span class="math inline">\(g\)</span> y dibujar su gráfica en la misma gráfica que la de <span class="math inline">\(g\)</span>.</li>
-</ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -964,17 +970,14 @@ Solución
 </div>
 <div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="fu">diff</span>(<span class="fu">g</span>(x),x,<span class="fl">2</span>), label<span class="op">=</span>L<span class="st">"g''(x)="</span><span class="fu">*latexify</span>(<span class="fu">simplify</span>(<span class="fu">diff</span>(<span class="fu">g</span>(x),x,<span class="fl">2</span>))))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<p><img src="derivadas_files/figure-html/cell-18-output-1.svg" class="img-fluid"></p>
+<p>La derivada es positiva en los intervalos <span class="math inline">\((-\infty,-0.55)\)</span> y <span class="math inline">\((0.55,\infty)\)</span>, por lo que la función <span class="math inline">\(g\)</span> es creciente en estos intervalos, y la derivada es negativa en el intervalo <span class="math inline">\((-0.55, 0.55)\)</span>, por lo que la función <span class="math inline">\(g\)</span> es decreciente en este intervalo.</p>
+<p>En el punto crítico <span class="math inline">\(x=-0.55\)</span> la derivada es positiva a la izquierda y negativa a la derecha, por lo que, según el criterio de la primera derivada, la función <span class="math inline">\(g\)</span> tiene un máximo relativo.</p>
+<p>En el punto crítico <span class="math inline">\(x=0.55\)</span> la derivada es negativa a la izquierda y positiva a la derecha, por lo que, según el criterio de la primera derivada, la función <span class="math inline">\(g\)</span> tiene un mínimo relativo.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<ol start="6" type="a">
-<li>Calcular los puntos que anulan la segunda derivada de <span class="math inline">\(g\)</span>.</li>
+<ol start="5" type="a">
+<li>Calcular segunda la derivada de <span class="math inline">\(g\)</span> y dibujar su gráfica en la misma gráfica que la de <span class="math inline">\(g\)</span>.</li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
@@ -988,8 +991,32 @@ Solución
 </div>
 <div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="fu">diff</span>(g,<span class="fl">2</span>), label<span class="op">=</span>L<span class="st">"g''(x)="</span><span class="fu">*latexify</span>(<span class="fu">simplify</span>(<span class="fu">diff</span>(<span class="fu">g</span>(x),x,<span class="fl">2</span>))))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<p><img src="derivadas_files/figure-html/cell-18-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="6" type="a">
+<li>Calcular los puntos que anulan la segunda derivada de <span class="math inline">\(g\)</span>.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">N</span>.(<span class="fu">solve</span>(<span class="fu">diff</span>(<span class="fu">g</span>(x),x,<span class="fl">2</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">N</span>.(<span class="fu">solve</span>(<span class="fu">diff</span>(g,<span class="fl">2</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>3-element Vector{Real}:
   0
@@ -1005,7 +1032,7 @@ Solución
 <li>A la vista de las raíces de la gráfica de la segunda derivada, determinar los intervalos de concavidad y los puntos de inflexión de la función <span class="math inline">\(g\)</span>.</li>
 </ol>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1014,14 +1041,14 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Una función <span class="math inline">\(f\)</span> dos veces derivable en el punto <span class="math inline">\(a\)</span> es cóncava hacia arriba si y solo si <span class="math inline">\(f''(a)&gt;0\)</span> y cóncava hacia abajo si y solo si <span class="math inline">\(f''(a)&lt;0\)</span>. Los puntos de inflexión de una función son los puntos donde cambia la concavidad.</p>
 </div>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1030,7 +1057,7 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La segunda derivada es positiva en los intervalos <span class="math inline">\((-\infty,-1,73)\)</span> y <span class="math inline">\((0,1.73)\)</span>, por lo que la función <span class="math inline">\(g\)</span> es cóncava hacia arriba en esos intervalos, y la segunda derivada es negativa en los intervalos <span class="math inline">\((-1.73,0)\)</span> y <span class="math inline">\((1.73,\infty)\)</span>, por lo que la función <span class="math inline">\(g\)</span> es cóncava hacia abajo en esos intervalos.</p>
 <p><span class="math inline">\(g\)</span> tiene tres puntos de inflexión en <span class="math inline">\(x=1.73\)</span>, <span class="math inline">\(x=0\)</span> y <span class="math inline">\(x=1.73\)</span>, donde cambia la concavidad de la función.</p>
@@ -1044,7 +1071,7 @@ Solución
 <li>Dibujar la gráfica de la curva.</li>
 </ol>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1053,14 +1080,14 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Para dibujar curvas implícitas utilizar la función <code>implicit_plot</code> del paquete <a href="https://juliapackages.com/p/implicitplots"><code>ImplicitPlots</code></a>.</p>
 </div>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1069,10 +1096,10 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">ImplicitPlots</span>, <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span></span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">ImplicitPlots</span>, <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span>, <span class="bu">Latexify</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x y real<span class="op">=</span><span class="cn">true</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x,y)<span class="op">=</span>x<span class="op">^</span><span class="fl">4</span><span class="op">-</span><span class="fl">3</span>x<span class="op">^</span><span class="fl">2</span><span class="op">+</span><span class="fl">2</span>y<span class="op">^</span><span class="fl">2</span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">implicit_plot</span>(f; xlims<span class="op">=</span>(<span class="op">-</span><span class="fl">3</span>,<span class="fl">3</span>), ylims<span class="op">=</span>(<span class="op">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>), label<span class="op">=</span>L<span class="st">"x^4-3x^2+2y^2=0"</span>, legend<span class="op">=:</span>topleft)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1087,7 +1114,7 @@ Solución
 <li>Calcular la tasa de variación de <span class="math inline">\(y\)</span> con respecto a <span class="math inline">\(x\)</span> en el punto <span class="math inline">\((1,1)\)</span>.</li>
 </ol>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1096,44 +1123,13 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Para realizar derivadas implícitas simbólicamente hay que definir una función simbólica con el comando <code>@syms u()</code> del paquete <code>SymPy</code> y reemplazar <code>y</code> por <code>u(x)</code> en la ecuación de la curva implícita.</p>
 <p>Después hay que hacer la derivada de ambos lados de la ecuación y finalmente hay que resolver la ecuación despejando la derivada de <code>u(x)</code>.</p>
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-30" class="callout-30-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Declaramos una función simbólica</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> <span class="fu">u</span>()</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Reemplazamos y por una función simbólica u(x).</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>ex1 <span class="op">=</span> <span class="fu">f</span>(x,y)(y<span class="op">=&gt;</span><span class="fu">u</span>(x))</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos la derivada de ambos lados de la ecuación y la resolvemos para la derivada de u'(x).</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>du_dx <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">diff</span>(ex1,x), <span class="fu">diff</span>(<span class="fu">u</span>(x),x))[<span class="fl">1</span>]</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Deshacemos el cambio y=u(x).</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>dy_dx <span class="op">=</span> <span class="fu">du_dx</span>(<span class="fu">u</span>(x)<span class="op">=&gt;</span>y)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
-<p><span class="math inline">\(\frac{x \left(3 - 2 x^{2}\right)}{2 y}\)</span></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<ol start="3" type="a">
-<li>Dibujar la recta tangente a la curva anterior en el punto <span class="math inline">\((1,1)\)</span>.</li>
-</ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1146,13 +1142,45 @@ Solución
 </div>
 <div id="callout-31" class="callout-31-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Declaramos una función simbólica</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> <span class="fu">u</span>()</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Reemplazamos y por una función simbólica u(x).</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>ex1 <span class="op">=</span> <span class="fu">f</span>(x,y)(y<span class="op">=&gt;</span><span class="fu">u</span>(x))</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos la derivada de ambos lados de la ecuación y la resolvemos para la derivada de u'(x).</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>du_dx <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">diff</span>(ex1,x), <span class="fu">diff</span>(<span class="fu">u</span>(x),x))[<span class="fl">1</span>]</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Deshacemos el cambio y=u(x).</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>dy_dx <span class="op">=</span> <span class="fu">du_dx</span>(<span class="fu">u</span>(x)<span class="op">=&gt;</span>y)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"y'="</span>, dy_dx)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>y'=x*(3 - 2*x^2)/(2*y)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li>Dibujar la recta tangente a la curva anterior en el punto <span class="math inline">\((1,1)\)</span>.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Latexify</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Definimos la funciónd de la recta tangente</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>tg <span class="op">=</span> <span class="fl">1</span> <span class="op">+</span> <span class="fu">dy_dx</span>(x<span class="op">=&gt;</span><span class="fl">1</span>, y<span class="op">=&gt;</span><span class="fl">1</span>) <span class="op">*</span> (x<span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(tg, label<span class="op">=</span><span class="st">"Tangente "</span><span class="op">*</span>L<span class="st">"y="</span><span class="fu">*latexify</span>(tg))</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Dibujamos el punto (1,1)</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter!</span>([<span class="fl">1</span>],[<span class="fl">1</span>], label<span class="op">=</span><span class="st">""</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Latexify</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Definimos la funciónd de la recta tangente</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>tg <span class="op">=</span> <span class="fl">1</span> <span class="op">+</span> <span class="fu">dy_dx</span>(x<span class="op">=&gt;</span><span class="fl">1</span>, y<span class="op">=&gt;</span><span class="fl">1</span>) <span class="op">*</span> (x<span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(tg, label<span class="op">=</span><span class="st">"Tangente "</span><span class="op">*</span>L<span class="st">"y="</span><span class="fu">*latexify</span>(tg))</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Dibujamos el punto (1,1)</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter!</span>([<span class="fl">1</span>],[<span class="fl">1</span>], label<span class="op">=</span><span class="st">""</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <p><img src="derivadas_files/figure-html/cell-22-output-1.svg" class="img-fluid"></p>
 </div>
@@ -1164,7 +1192,7 @@ Solución
 <div id="exr-taylor-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 5.8 </strong></span>Crear una función para calcular el polinomio de Taylor de grado <span class="math inline">\(n\)</span> una función <span class="math inline">\(f\)</span> en un punto <span class="math inline">\(a\)</span> y utilizarla para dibujar los polinomios de Taylor de la función <span class="math inline">\(f(x)=\operatorname{sen}(x)\)</span> en <span class="math inline">\(a=0\)</span> hasta el grado <span class="math inline">\(5\)</span>.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1173,7 +1201,7 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La fórmula del polinomio de Taylor de gardo <span class="math inline">\(n\)</span> de la función <span class="math inline">\(f\)</span> en el punto <span class="math inline">\(a\)</span> es</p>
 <p><span class="math display">\[
@@ -1183,7 +1211,7 @@ P^n_{f,a}(x) = f(a)+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2+ \cdots + \frac{f^{(n}(a
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1192,21 +1220,21 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span>, <span class="bu">Latexify</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">taylor</span>(f, a<span class="op">=</span><span class="fl">0</span>, n<span class="op">=</span><span class="fl">2</span>)</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">diff</span>(f, x, i)(a)<span class="op">/</span><span class="fu">factorial</span>(i)<span class="fu">*</span>(x<span class="op">-</span>a)<span class="op">^</span>i <span class="cf">for</span> i<span class="op">=</span><span class="fl">0</span><span class="op">:</span>n)</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x)<span class="op">=</span><span class="fu">sin</span>(x)</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>plt <span class="op">=</span> <span class="fu">plot</span>(f, ylims<span class="op">=</span>(<span class="op">-</span><span class="fl">2</span>,<span class="fl">2</span>), linewidth<span class="op">=</span><span class="fl">3</span>, label<span class="op">=</span>L<span class="st">"f(x)=\operatorname{sen}(x)"</span>)</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    pol <span class="op">=</span> <span class="fu">taylor</span>(<span class="fu">f</span>(x), <span class="fl">0</span>, i)</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    plt <span class="op">=</span> <span class="fu">plot!</span>(pol, label<span class="op">=</span><span class="fu">latexstring</span>(<span class="st">"P^{</span><span class="sc">$</span>(i)<span class="st">}(x)=</span><span class="sc">$</span>(pol)<span class="st">"</span>))</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span> </span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>plt</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span>, <span class="bu">Latexify</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">taylor</span>(f, a<span class="op">=</span><span class="fl">0</span>, n<span class="op">=</span><span class="fl">2</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">diff</span>(f, x, i)(a)<span class="op">/</span><span class="fu">factorial</span>(i)<span class="fu">*</span>(x<span class="op">-</span>a)<span class="op">^</span>i <span class="cf">for</span> i<span class="op">=</span><span class="fl">0</span><span class="op">:</span>n)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x)<span class="op">=</span><span class="fu">sin</span>(x)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>plt <span class="op">=</span> <span class="fu">plot</span>(f, ylims<span class="op">=</span>(<span class="op">-</span><span class="fl">2</span>,<span class="fl">2</span>), linewidth<span class="op">=</span><span class="fl">3</span>, label<span class="op">=</span>L<span class="st">"f(x)=\operatorname{sen}(x)"</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    pol <span class="op">=</span> <span class="fu">taylor</span>(<span class="fu">f</span>(x), <span class="fl">0</span>, i)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    plt <span class="op">=</span> <span class="fu">plot!</span>(pol, label<span class="op">=</span><span class="fu">latexstring</span>(<span class="st">"P^{</span><span class="sc">$</span>(i)<span class="st">}(x)=</span><span class="sc">$</span>(pol)<span class="st">"</span>))</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span> </span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>plt</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <p><img src="derivadas_files/figure-html/cell-23-output-1.svg" class="img-fluid"></p>
 </div>
@@ -1221,7 +1249,7 @@ Solución
 <li><span class="math inline">\(f(x)=\cos(x)\)</span> en <span class="math inline">\(x=\pi/2\)</span>.</li>
 </ol>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1230,39 +1258,12 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Para calcular polinomios de Taylor utilizar la función <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#Taylor-series-1"><code>series</code></a> del paquete <code>SymPy</code>.</p>
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-35" class="callout-35-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">cos</span>(x)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">series</span>(<span class="fu">f</span>(x), x, <span class="fu">Sym</span>(<span class="cn">pi</span>)<span class="op">/</span><span class="fl">2</span>, <span class="fl">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
-<p><span class="math inline">\(\frac{\pi}{2} + \frac{\left(x - \frac{\pi}{2}\right)^{3}}{6} - \frac{\left(x - \frac{\pi}{2}\right)^{5}}{120} + \frac{\left(x - \frac{\pi}{2}\right)^{7}}{5040} - \frac{\left(x - \frac{\pi}{2}\right)^{9}}{362880} - x + O\left(\left(x - \frac{\pi}{2}\right)^{10}; x\rightarrow \frac{\pi}{2}\right)\)</span></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<ol start="2" type="a">
-<li><span class="math inline">\(g(x)=\ln(x)\)</span> en <span class="math inline">\(x=1\)</span></li>
-</ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1275,18 +1276,20 @@ Solución
 </div>
 <div id="callout-36" class="callout-36-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> <span class="fu">log</span>(x)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">series</span>(<span class="fu">g</span>(x), x, <span class="fl">1</span>, <span class="fl">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
-<p><span class="math inline">\(-1 - \frac{\left(x - 1\right)^{2}}{2} + \frac{\left(x - 1\right)^{3}}{3} - \frac{\left(x - 1\right)^{4}}{4} + \frac{\left(x - 1\right)^{5}}{5} - \frac{\left(x - 1\right)^{6}}{6} + \frac{\left(x - 1\right)^{7}}{7} - \frac{\left(x - 1\right)^{8}}{8} + \frac{\left(x - 1\right)^{9}}{9} + x + O\left(\left(x - 1\right)^{10}; x\rightarrow 1\right)\)</span></p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">cos</span>(x)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">series</span>(<span class="fu">f</span>(x), x, <span class="fu">Sym</span>(<span class="cn">pi</span>)<span class="op">/</span><span class="fl">2</span>, <span class="fl">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<p><span class="math inline">\(\frac{\pi}{2} + \frac{\left(x - \frac{\pi}{2}\right)^{3}}{6} - \frac{\left(x - \frac{\pi}{2}\right)^{5}}{120} + \frac{\left(x - \frac{\pi}{2}\right)^{7}}{5040} - \frac{\left(x - \frac{\pi}{2}\right)^{9}}{362880} - x + O\left(\left(x - \frac{\pi}{2}\right)^{10}; x\rightarrow \frac{\pi}{2}\right)\)</span></p>
 </div>
 </div>
 </div>
 </div>
 </div>
-<ol start="3" type="a">
-<li><span class="math inline">\(h(x)=e^{\operatorname{sen}(x)}\)</span> en <span class="math inline">\(x=0\)</span></li>
+<ol start="2" type="a">
+<li><span class="math inline">\(g(x)=\ln(x)\)</span> en <span class="math inline">\(x=1\)</span></li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
@@ -1300,9 +1303,34 @@ Solución
 </div>
 <div id="callout-37" class="callout-37-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> <span class="fu">log</span>(x)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">series</span>(<span class="fu">g</span>(x), x, <span class="fl">1</span>, <span class="fl">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<p><span class="math inline">\(-1 - \frac{\left(x - 1\right)^{2}}{2} + \frac{\left(x - 1\right)^{3}}{3} - \frac{\left(x - 1\right)^{4}}{4} + \frac{\left(x - 1\right)^{5}}{5} - \frac{\left(x - 1\right)^{6}}{6} + \frac{\left(x - 1\right)^{7}}{7} - \frac{\left(x - 1\right)^{8}}{8} + \frac{\left(x - 1\right)^{9}}{9} + x + O\left(\left(x - 1\right)^{10}; x\rightarrow 1\right)\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li><span class="math inline">\(h(x)=e^{\operatorname{sen}(x)}\)</span> en <span class="math inline">\(x=0\)</span></li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(x) <span class="op">=</span> <span class="fu">exp</span>(<span class="fu">sin</span>(x))</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">series</span>(<span class="fu">h</span>(x), x, <span class="fl">0</span>, <span class="fl">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(x) <span class="op">=</span> <span class="fu">exp</span>(<span class="fu">sin</span>(x))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">series</span>(<span class="fu">h</span>(x), x, <span class="fl">0</span>, <span class="fl">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <p><span class="math inline">\(1 + x + \frac{x^{2}}{2} - \frac{x^{4}}{8} - \frac{x^{5}}{15} - \frac{x^{6}}{240} + \frac{x^{7}}{90} + \frac{31 x^{8}}{5760} + \frac{x^{9}}{5670} + O\left(x^{10}\right)\)</span></p>
 </div>
@@ -1314,7 +1342,7 @@ Solución
 <div id="exr-taylor-3" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 5.10 </strong></span>Aproximar el número <span class="math inline">\(\ln(1.2)\)</span> mediante un polinomio de Taylor de grado 8 y dar una cota del error cometido. ¿Hasta qué grado habría que llegar para obtener un error menor de <span class="math inline">\(10^{-10}\)</span>?</p>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1323,7 +1351,7 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>El error en la aproximación de una función <span class="math inline">\(f(b)\)</span> mediante un polinomio de Taylor de grado <span class="math inline">\(n\)</span> en el punto <span class="math inline">\(a\)</span> viene dado por el resto de Taylor, que en la forma de Lagrange es</p>
 <p><span class="math display">\[
@@ -1333,7 +1361,7 @@ R^n_{f,a}(x) = \frac{f^{(n+1}(x)}{(n+1)!}(x-a)^{n+1}\mbox{ con } x\in[a,b].
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1342,23 +1370,23 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Utilizaremos un polinomio de MacLaurin de grado 5 para la función <span class="math inline">\(f(x)=\ln(1+x)\)</span>.</p>
 <div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>pol <span class="op">=</span> <span class="fu">series</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x), x, <span class="fl">0</span>, <span class="fl">6</span>).<span class="fu">removeO</span>()</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Aproximación de ln(1.2): "</span>, <span class="fu">float</span>(<span class="fu">pol</span>(<span class="fl">0.2</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>pol <span class="op">=</span> <span class="fu">series</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x), x, <span class="fl">0</span>, <span class="fl">6</span>).<span class="fu">removeO</span>()</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Aproximación de ln(1.2): "</span>, <span class="fu">N</span>(<span class="fu">pol</span>(<span class="fl">0.2</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Aproximación de ln(1.2): 0.18233066666666667</code></pre>
 </div>
 </div>
 <p>Para dar una cota del error cometido calculamos el resto de Taylor en la forma de Lagrange.</p>
 <div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>resto <span class="op">=</span> <span class="fu">diff</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x), x, <span class="fl">6</span>)<span class="op">/</span><span class="fu">factorial</span>(<span class="fl">6</span>)<span class="op">*</span><span class="fl">0.2</span><span class="op">^</span><span class="fl">6</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Resto de Taylor de orden 6: "</span>, resto)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Derivada del resto : "</span>, <span class="fu">diff</span>(resto))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>resto <span class="op">=</span> <span class="fu">diff</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x), x, <span class="fl">6</span>)<span class="op">/</span><span class="fu">factorial</span>(<span class="fl">6</span>)<span class="op">*</span><span class="fl">0.2</span><span class="op">^</span><span class="fl">6</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Resto de Taylor de orden 6: "</span>, resto)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Derivada del resto : "</span>, <span class="fu">diff</span>(resto))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Resto de Taylor de orden 6: -1.06666666666667e-5/(x + 1)^6
 Derivada del resto : 6.4e-5/(x + 1)^7</code></pre>
@@ -1366,8 +1394,8 @@ Derivada del resto : 6.4e-5/(x + 1)^7</code></pre>
 </div>
 <p>Como la derivada no se anula en el intervalo <span class="math inline">\([1,2]\)</span>, no hay extremos relativos, y al ser una función continua en un intervalo cerrado, alcanza el máximo y mínimos absolutos en los extremos.</p>
 <div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Cota del error: "</span> , <span class="fu">maximum</span>(<span class="fu">float</span>.(<span class="fu">abs</span>.([<span class="fu">resto</span>(<span class="fl">0</span>), <span class="fu">resto</span>(<span class="fl">0.2</span>)])))) </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Error: "</span>, <span class="fu">abs</span>(<span class="fu">log</span>(<span class="fl">1.2</span>)<span class="fu">-pol</span>(<span class="fl">0.2</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Cota del error: "</span> , <span class="fu">maximum</span>(<span class="fu">N</span>(<span class="fu">abs</span>.([<span class="fu">resto</span>(<span class="fl">0</span>), <span class="fu">resto</span>(<span class="fl">0.2</span>)])))) </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Error: "</span>, <span class="fu">abs</span>(<span class="fu">log</span>(<span class="fl">1.2</span>)<span class="fu">-pol</span>(<span class="fl">0.2</span>)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cota del error: 1.066666666666667e-5
 Error: 9.10987271207642e-6</code></pre>
@@ -1376,10 +1404,10 @@ Error: 9.10987271207642e-6</code></pre>
 <p>Así pues, el error en la aproximación de <span class="math inline">\(\ln(1.2)\)</span> es menor que <span class="math inline">\(1.06\cdot 10^{-5}\)</span>.</p>
 <p>Para ver la fórmula general del resto de Taylor en la forma de Lagrange para un polinomio de Taylor de orden <span class="math inline">\(n\)</span>, calculamos las primeras derivadas sucesivas.</p>
 <div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Primera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x)))</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Segunda derivada: "</span>, <span class="fu">diff</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x), x, <span class="fl">2</span>))</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Tercera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x), x, <span class="fl">3</span>))</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Cuarta derivada: "</span>, <span class="fu">diff</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x), x, <span class="fl">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Primera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x)))</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Segunda derivada: "</span>, <span class="fu">diff</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x), x, <span class="fl">2</span>))</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Tercera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x), x, <span class="fl">3</span>))</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Cuarta derivada: "</span>, <span class="fu">diff</span>(<span class="fu">log</span>(<span class="fl">1</span><span class="op">+</span>x), x, <span class="fl">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Primera derivada: 1/(x + 1)
 Segunda derivada: -1/(x + 1)^2
@@ -1397,16 +1425,16 @@ Cuarta derivada: -6/(x + 1)^4</code></pre>
 \]</span></p>
 <p>Finalmente calculamos el primer número natural <span class="math inline">\(n\)</span> tal que <span class="math inline">\(|R^n_{f,1}(x)|&lt;10^{-10}\)</span>.</p>
 <div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>n<span class="op">=</span><span class="fl">6</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="fl">0.2</span><span class="op">^</span>n<span class="op">/</span>(<span class="fu">n*</span>(n<span class="op">+</span><span class="fl">1</span>)) <span class="op">&gt;</span> <span class="fl">10</span><span class="op">^-</span><span class="fl">10</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">+=</span> <span class="fl">1</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(n)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>n<span class="op">=</span><span class="fl">6</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="fl">0.2</span><span class="op">^</span>(n<span class="op">+</span><span class="fl">1</span>)<span class="op">/</span>(<span class="fu">n*</span>(n<span class="op">+</span><span class="fl">1</span>)) <span class="op">&gt;</span> <span class="fl">10</span><span class="op">^-</span><span class="fl">10</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">+=</span> <span class="fl">1</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(n)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>12</code></pre>
+<pre><code>11</code></pre>
 </div>
 </div>
-<p>Así pues, habría que llegar al grado 12.</p>
+<p>Así pues, habría que llegar al grado 11.</p>
 </div>
 </div>
 </div>
@@ -1431,28 +1459,19 @@ ax^2+b &amp;  \mbox{si $0&lt;x\leq c$},  \\
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "VaLvHAj8"
+var ID = "YzeQwMRU"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="VaLvHAj8" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="YzeQwMRU" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_VaLvHAj8">
+      <div class="form" id="controls_YzeQwMRU">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_VaLvHAj8_1">
-      <input class="form-check-input" type="radio" name="radio_VaLvHAj8" id="radio_VaLvHAj8_1" value="1">
-      
-      <span class="label-body px-1">
-        Para ningún valor.
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_VaLvHAj8_2">
-      <input class="form-check-input" type="radio" name="radio_VaLvHAj8" id="radio_VaLvHAj8_2" value="2">
+    <label class="form-check-label" for="radio_YzeQwMRU_1">
+      <input class="form-check-input" type="radio" name="radio_YzeQwMRU" id="radio_YzeQwMRU_1" value="1">
       
       <span class="label-body px-1">
         \(a=\sqrt{e}, b=0, c=\frac{1}{e}.\)
@@ -1460,8 +1479,17 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_VaLvHAj8_3">
-      <input class="form-check-input" type="radio" name="radio_VaLvHAj8" id="radio_VaLvHAj8_3" value="3">
+    <label class="form-check-label" for="radio_YzeQwMRU_2">
+      <input class="form-check-input" type="radio" name="radio_YzeQwMRU" id="radio_YzeQwMRU_2" value="2">
+      
+      <span class="label-body px-1">
+        Para ningún valor.
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_YzeQwMRU_3">
+      <input class="form-check-input" type="radio" name="radio_YzeQwMRU" id="radio_YzeQwMRU_3" value="3">
       
       <span class="label-body px-1">
         \(a=1, b=0, c=e.\)
@@ -1469,20 +1497,20 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_VaLvHAj8_4">
-      <input class="form-check-input" type="radio" name="radio_VaLvHAj8" id="radio_VaLvHAj8_4" value="4">
+    <label class="form-check-label" for="radio_YzeQwMRU_4">
+      <input class="form-check-input" type="radio" name="radio_YzeQwMRU" id="radio_YzeQwMRU_4" value="4">
       
       <span class="label-body px-1">
-        \(a=1, b=1, c=1.\)
+        \(a=\frac{1}{2e}, b=0, c=e^{1/2}.\)
       </span>
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_VaLvHAj8_5">
-      <input class="form-check-input" type="radio" name="radio_VaLvHAj8" id="radio_VaLvHAj8_5" value="5">
+    <label class="form-check-label" for="radio_YzeQwMRU_5">
+      <input class="form-check-input" type="radio" name="radio_YzeQwMRU" id="radio_YzeQwMRU_5" value="5">
       
       <span class="label-body px-1">
-        \(a=\frac{1}{2e}, b=0, c=e^{1/2}.\)
+        \(a=1, b=1, c=1.\)
       </span>
     </label>
 </div>
@@ -1490,26 +1518,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="VaLvHAj8_message" style="padding-bottom: 15px"></div>
+      <div id="YzeQwMRU_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_VaLvHAj8"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_YzeQwMRU"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 5;
-    var msgBox = document.getElementById('VaLvHAj8_message');
+    var correct = rb.value == 4;
+    var msgBox = document.getElementById('YzeQwMRU_message');
     
-    quizquestions_scorecard["VaLvHAj8"]["attempts"] += 1;
+    quizquestions_scorecard["YzeQwMRU"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_VaLvHAj8")
+    var explanation = document.getElementById("explanation_YzeQwMRU")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["VaLvHAj8"]["correct"] = true;
+      quizquestions_scorecard["YzeQwMRU"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1517,11 +1545,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_VaLvHAj8")
+    var explanation = document.getElementById("explanation_YzeQwMRU")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["VaLvHAj8"]["correct"] = false;
+      quizquestions_scorecard["YzeQwMRU"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1542,46 +1570,19 @@ rb.addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "1nQudUyu"
+var ID = "3mjulngp"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="1nQudUyu" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="3mjulngp" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_1nQudUyu">
+      <div class="form" id="controls_3mjulngp">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_1nQudUyu_1">
-      <input class="form-check-input" type="radio" name="radio_1nQudUyu" id="radio_1nQudUyu_1" value="1">
-      
-      <span class="label-body px-1">
-        \(\frac{(-1)^n \prod_{i=1}^n 2i-1}{2^n}(x+1)^{-(2n+1)/2}.\)
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_1nQudUyu_2">
-      <input class="form-check-input" type="radio" name="radio_1nQudUyu" id="radio_1nQudUyu_2" value="2">
-      
-      <span class="label-body px-1">
-        \(\frac{(-1)^n \prod_{i=1}^n 2i+1}{2^n}(x+1)^{-(2n+1)/2}.\)
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_1nQudUyu_3">
-      <input class="form-check-input" type="radio" name="radio_1nQudUyu" id="radio_1nQudUyu_3" value="3">
-      
-      <span class="label-body px-1">
-        \(\frac{(-1)^n n!}{2^n}(x+1)^{-n/2}.\)
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_1nQudUyu_4">
-      <input class="form-check-input" type="radio" name="radio_1nQudUyu" id="radio_1nQudUyu_4" value="4">
+    <label class="form-check-label" for="radio_3mjulngp_1">
+      <input class="form-check-input" type="radio" name="radio_3mjulngp" id="radio_3mjulngp_1" value="1">
       
       <span class="label-body px-1">
         \(\frac{(-1)^n (2n-1)!}{2^n}(x+1)^{-(2n-1)/2}.\)
@@ -1589,8 +1590,35 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_1nQudUyu_5">
-      <input class="form-check-input" type="radio" name="radio_1nQudUyu" id="radio_1nQudUyu_5" value="5">
+    <label class="form-check-label" for="radio_3mjulngp_2">
+      <input class="form-check-input" type="radio" name="radio_3mjulngp" id="radio_3mjulngp_2" value="2">
+      
+      <span class="label-body px-1">
+        \(\frac{(-1)^n \prod_{i=1}^n 2i+1}{2^n}(x+1)^{-(2n+1)/2}.\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_3mjulngp_3">
+      <input class="form-check-input" type="radio" name="radio_3mjulngp" id="radio_3mjulngp_3" value="3">
+      
+      <span class="label-body px-1">
+        \(\frac{(-1)^n \prod_{i=1}^n 2i-1}{2^n}(x+1)^{-(2n+1)/2}.\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_3mjulngp_4">
+      <input class="form-check-input" type="radio" name="radio_3mjulngp" id="radio_3mjulngp_4" value="4">
+      
+      <span class="label-body px-1">
+        \(\frac{(-1)^n n!}{2^n}(x+1)^{-n/2}.\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_3mjulngp_5">
+      <input class="form-check-input" type="radio" name="radio_3mjulngp" id="radio_3mjulngp_5" value="5">
       
       <span class="label-body px-1">
         \(\frac{(-1)^n \prod_{i=1}^n 2i}{2^n}(x+1)^{-(2n+1)/2}.\)
@@ -1601,26 +1629,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="1nQudUyu_message" style="padding-bottom: 15px"></div>
+      <div id="3mjulngp_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_1nQudUyu"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_3mjulngp"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 1;
-    var msgBox = document.getElementById('1nQudUyu_message');
+    var correct = rb.value == 3;
+    var msgBox = document.getElementById('3mjulngp_message');
     
-    quizquestions_scorecard["1nQudUyu"]["attempts"] += 1;
+    quizquestions_scorecard["3mjulngp"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_1nQudUyu")
+    var explanation = document.getElementById("explanation_3mjulngp")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["1nQudUyu"]["correct"] = true;
+      quizquestions_scorecard["3mjulngp"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1628,11 +1656,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_1nQudUyu")
+    var explanation = document.getElementById("explanation_3mjulngp")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["1nQudUyu"]["correct"] = false;
+      quizquestions_scorecard["3mjulngp"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1653,43 +1681,43 @@ rb.addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "0WEa4vNB"
+var ID = "9HzkyqCO"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="0WEa4vNB" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="9HzkyqCO" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_0WEa4vNB">
+      <div class="form" id="controls_9HzkyqCO">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="0WEa4vNB" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="9HzkyqCO" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="0WEa4vNB_message" style="padding-bottom: 15px"></div>
+      <div id="9HzkyqCO_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("0WEa4vNB").addEventListener("change", function() {
+document.getElementById("9HzkyqCO").addEventListener("change", function() {
   var correct = (Math.abs(this.value - -1) <= 1.0e-15);
-  var msgBox = document.getElementById('0WEa4vNB_message');
+  var msgBox = document.getElementById('9HzkyqCO_message');
   
-    quizquestions_scorecard["0WEa4vNB"]["attempts"] += 1;
+    quizquestions_scorecard["9HzkyqCO"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_0WEa4vNB")
+    var explanation = document.getElementById("explanation_9HzkyqCO")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["0WEa4vNB"]["correct"] = true;
+      quizquestions_scorecard["9HzkyqCO"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1697,11 +1725,11 @@ document.getElementById("0WEa4vNB").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_0WEa4vNB")
+    var explanation = document.getElementById("explanation_9HzkyqCO")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["0WEa4vNB"]["correct"] = false;
+      quizquestions_scorecard["9HzkyqCO"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1725,43 +1753,43 @@ document.getElementById("0WEa4vNB").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "itveXGiu"
+var ID = "Kdc5952s"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="itveXGiu" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="Kdc5952s" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_itveXGiu">
+      <div class="form" id="controls_Kdc5952s">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="itveXGiu" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="Kdc5952s" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="itveXGiu_message" style="padding-bottom: 15px"></div>
+      <div id="Kdc5952s_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("itveXGiu").addEventListener("change", function() {
+document.getElementById("Kdc5952s").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0) <= 1.0e-5);
-  var msgBox = document.getElementById('itveXGiu_message');
+  var msgBox = document.getElementById('Kdc5952s_message');
   
-    quizquestions_scorecard["itveXGiu"]["attempts"] += 1;
+    quizquestions_scorecard["Kdc5952s"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_itveXGiu")
+    var explanation = document.getElementById("explanation_Kdc5952s")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["itveXGiu"]["correct"] = true;
+      quizquestions_scorecard["Kdc5952s"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1769,11 +1797,11 @@ document.getElementById("itveXGiu").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_itveXGiu")
+    var explanation = document.getElementById("explanation_Kdc5952s")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["itveXGiu"]["correct"] = false;
+      quizquestions_scorecard["Kdc5952s"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1794,43 +1822,43 @@ document.getElementById("itveXGiu").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "b8yZI89X"
+var ID = "mIESxQVx"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="b8yZI89X" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="mIESxQVx" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_b8yZI89X">
+      <div class="form" id="controls_mIESxQVx">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="b8yZI89X" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="mIESxQVx" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="b8yZI89X_message" style="padding-bottom: 15px"></div>
+      <div id="mIESxQVx_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("b8yZI89X").addEventListener("change", function() {
+document.getElementById("mIESxQVx").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 1.0307764064044151) <= 1.0e-5);
-  var msgBox = document.getElementById('b8yZI89X_message');
+  var msgBox = document.getElementById('mIESxQVx_message');
   
-    quizquestions_scorecard["b8yZI89X"]["attempts"] += 1;
+    quizquestions_scorecard["mIESxQVx"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_b8yZI89X")
+    var explanation = document.getElementById("explanation_mIESxQVx")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["b8yZI89X"]["correct"] = true;
+      quizquestions_scorecard["mIESxQVx"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1838,11 +1866,11 @@ document.getElementById("b8yZI89X").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_b8yZI89X")
+    var explanation = document.getElementById("explanation_mIESxQVx")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["b8yZI89X"]["correct"] = false;
+      quizquestions_scorecard["mIESxQVx"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1863,19 +1891,28 @@ document.getElementById("b8yZI89X").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "Nf1ivWNA"
+var ID = "fkeERuey"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="Nf1ivWNA" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="fkeERuey" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_Nf1ivWNA">
+      <div class="form" id="controls_fkeERuey">
         <div style="padding-top: 5px">
     <div class="form-check">
   <label>
-    <input class="form-check-input" type="checkbox" name="check_Nf1ivWNA" id="check_Nf1ivWNA_1" value="1">
+    <input class="form-check-input" type="checkbox" name="check_fkeERuey" id="check_fkeERuey_1" value="1">
+      <span class="label-body">
+        Es decreciente en todo \(\mathbb{R}\).
+      </span>
+    
+  </label>
+</div>
+<div class="form-check">
+  <label>
+    <input class="form-check-input" type="checkbox" name="check_fkeERuey" id="check_fkeERuey_2" value="2">
       <span class="label-body">
         Tiene un punto de inflexión en \(x=3\).
       </span>
@@ -1884,25 +1921,7 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
 </div>
 <div class="form-check">
   <label>
-    <input class="form-check-input" type="checkbox" name="check_Nf1ivWNA" id="check_Nf1ivWNA_2" value="2">
-      <span class="label-body">
-        Es cóncava hacia abajo en \((1,3)\).
-      </span>
-    
-  </label>
-</div>
-<div class="form-check">
-  <label>
-    <input class="form-check-input" type="checkbox" name="check_Nf1ivWNA" id="check_Nf1ivWNA_3" value="3">
-      <span class="label-body">
-        Tiene un máximo en \(x=1\).
-      </span>
-    
-  </label>
-</div>
-<div class="form-check">
-  <label>
-    <input class="form-check-input" type="checkbox" name="check_Nf1ivWNA" id="check_Nf1ivWNA_4" value="4">
+    <input class="form-check-input" type="checkbox" name="check_fkeERuey" id="check_fkeERuey_3" value="3">
       <span class="label-body">
         Tiene un mínimo en \(x=1\).
       </span>
@@ -1911,9 +1930,18 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
 </div>
 <div class="form-check">
   <label>
-    <input class="form-check-input" type="checkbox" name="check_Nf1ivWNA" id="check_Nf1ivWNA_5" value="5">
+    <input class="form-check-input" type="checkbox" name="check_fkeERuey" id="check_fkeERuey_4" value="4">
       <span class="label-body">
-        Es decreciente en todo \(\mathbb{R}\).
+        Tiene un máximo en \(x=1\).
+      </span>
+    
+  </label>
+</div>
+<div class="form-check">
+  <label>
+    <input class="form-check-input" type="checkbox" name="check_fkeERuey" id="check_fkeERuey_5" value="5">
+      <span class="label-body">
+        Es cóncava hacia abajo en \((1,3)\).
       </span>
     
   </label>
@@ -1922,15 +1950,15 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="Nf1ivWNA_message" style="padding-bottom: 15px"></div>
+      <div id="fkeERuey_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="check_Nf1ivWNA"]').forEach(function(rb) {
+document.querySelectorAll('input[name="check_fkeERuey"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var choice_buttons = document.getElementsByName("check_Nf1ivWNA");
+    var choice_buttons = document.getElementsByName("check_fkeERuey");
     var selected = [];
     for (var i=0; i < choice_buttons.length; i++) {
         if (choice_buttons[i].checked) {
@@ -1938,20 +1966,20 @@ rb.addEventListener("change", function() {
         }
     }
     var a = selected;
-    var b = [1, 2];
+    var b = [2, 5];
     // https://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript
     var  correct =  (a.length === b.length && a.find((v,i) => v !== b[i]) === undefined)
-    var msgBox = document.getElementById('Nf1ivWNA_message');
+    var msgBox = document.getElementById('fkeERuey_message');
     
-    quizquestions_scorecard["Nf1ivWNA"]["attempts"] += 1;
+    quizquestions_scorecard["fkeERuey"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_Nf1ivWNA")
+    var explanation = document.getElementById("explanation_fkeERuey")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["Nf1ivWNA"]["correct"] = true;
+      quizquestions_scorecard["fkeERuey"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1959,11 +1987,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Todavía no es correcto </span></div>";
-    var explanation = document.getElementById("explanation_Nf1ivWNA")
+    var explanation = document.getElementById("explanation_fkeERuey")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["Nf1ivWNA"]["correct"] = false;
+      quizquestions_scorecard["fkeERuey"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1979,7 +2007,7 @@ rb.addEventListener("change", function() {
 <div id="exr-optimizacion-cuerda-anillo" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 5.16 </strong></span>Una cuerda de longitud <span class="math inline">\(l\)</span> está sujeta en sus extremos en los puntos <span class="math inline">\((0,0)\)</span> y <span class="math inline">\((a,b)\)</span>. De la cuerda cuelga un anillo. ¿En qué posición estará el anillo debido a la fuerza de gravedad suponiendo que <span class="math inline">\(l=10\)</span>, <span class="math inline">\(a=3\)</span> y <span class="math inline">\(b=2\)</span>?</p>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1988,7 +2016,7 @@ Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Puesto que la longitud de la cuerda es fija, del siguiente diagrama se deduce que las las posiciones <span class="math inline">\((x,y)\)</span> que puede ocupar el anillo vienen dadas por la ecuación</p>
 <p><span class="math display">\[
@@ -2012,43 +2040,43 @@ l = \sqrt{x^2 + y^2} + \sqrt{(a-x)^2 + (b-y)^2}
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "0387e9ZX"
+var ID = "8BAGABRl"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="0387e9ZX" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="8BAGABRl" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_0387e9ZX">
+      <div class="form" id="controls_8BAGABRl">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="0387e9ZX" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="8BAGABRl" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="0387e9ZX_message" style="padding-bottom: 15px"></div>
+      <div id="8BAGABRl_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("0387e9ZX").addEventListener("change", function() {
+document.getElementById("8BAGABRl").addEventListener("change", function() {
   var correct = (Math.abs(this.value - -3.398979485566356196394568149411782783931894961313340256865385134501920754915012) <= 1.0e-5);
-  var msgBox = document.getElementById('0387e9ZX_message');
+  var msgBox = document.getElementById('8BAGABRl_message');
   
-    quizquestions_scorecard["0387e9ZX"]["attempts"] += 1;
+    quizquestions_scorecard["8BAGABRl"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_0387e9ZX")
+    var explanation = document.getElementById("explanation_8BAGABRl")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["0387e9ZX"]["correct"] = true;
+      quizquestions_scorecard["8BAGABRl"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2056,11 +2084,11 @@ document.getElementById("0387e9ZX").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_0387e9ZX")
+    var explanation = document.getElementById("explanation_8BAGABRl")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["0387e9ZX"]["correct"] = false;
+      quizquestions_scorecard["8BAGABRl"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2080,43 +2108,43 @@ document.getElementById("0387e9ZX").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "TQKYUw2k"
+var ID = "lO13ziSn"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="TQKYUw2k" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="lO13ziSn" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_TQKYUw2k">
+      <div class="form" id="controls_lO13ziSn">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="TQKYUw2k" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="lO13ziSn" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="TQKYUw2k_message" style="padding-bottom: 15px"></div>
+      <div id="lO13ziSn_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("TQKYUw2k").addEventListener("change", function() {
+document.getElementById("lO13ziSn").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0.6938137821521027377253394906617635760042565649179162339459134290936299528178376) <= 1.0e-5);
-  var msgBox = document.getElementById('TQKYUw2k_message');
+  var msgBox = document.getElementById('lO13ziSn_message');
   
-    quizquestions_scorecard["TQKYUw2k"]["attempts"] += 1;
+    quizquestions_scorecard["lO13ziSn"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_TQKYUw2k")
+    var explanation = document.getElementById("explanation_lO13ziSn")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["TQKYUw2k"]["correct"] = true;
+      quizquestions_scorecard["lO13ziSn"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2124,11 +2152,11 @@ document.getElementById("TQKYUw2k").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_TQKYUw2k")
+    var explanation = document.getElementById("explanation_lO13ziSn")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["TQKYUw2k"]["correct"] = false;
+      quizquestions_scorecard["lO13ziSn"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2154,43 +2182,43 @@ document.getElementById("TQKYUw2k").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "eIabQYKc"
+var ID = "ourF0dEJ"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="eIabQYKc" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="ourF0dEJ" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_eIabQYKc">
+      <div class="form" id="controls_ourF0dEJ">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="eIabQYKc" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="ourF0dEJ" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="eIabQYKc_message" style="padding-bottom: 15px"></div>
+      <div id="ourF0dEJ_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("eIabQYKc").addEventListener("change", function() {
+document.getElementById("ourF0dEJ").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0.4794255386042030002732879352155713880818033679406000866321398766357564842729006) <= 1.0e-20);
-  var msgBox = document.getElementById('eIabQYKc_message');
+  var msgBox = document.getElementById('ourF0dEJ_message');
   
-    quizquestions_scorecard["eIabQYKc"]["attempts"] += 1;
+    quizquestions_scorecard["ourF0dEJ"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_eIabQYKc")
+    var explanation = document.getElementById("explanation_ourF0dEJ")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["eIabQYKc"]["correct"] = true;
+      quizquestions_scorecard["ourF0dEJ"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2198,11 +2226,11 @@ document.getElementById("eIabQYKc").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_eIabQYKc")
+    var explanation = document.getElementById("explanation_ourF0dEJ")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["eIabQYKc"]["correct"] = false;
+      quizquestions_scorecard["ourF0dEJ"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2223,43 +2251,43 @@ document.getElementById("eIabQYKc").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "wSvfMQF1"
+var ID = "TiIZPYyr"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="wSvfMQF1" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="TiIZPYyr" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_wSvfMQF1">
+      <div class="form" id="controls_TiIZPYyr">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="wSvfMQF1" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="TiIZPYyr" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="wSvfMQF1_message" style="padding-bottom: 15px"></div>
+      <div id="TiIZPYyr_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("wSvfMQF1").addEventListener("change", function() {
+document.getElementById("TiIZPYyr").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0.54630248984379026211399832391180098056793212890625) <= 1.0e-20);
-  var msgBox = document.getElementById('wSvfMQF1_message');
+  var msgBox = document.getElementById('TiIZPYyr_message');
   
-    quizquestions_scorecard["wSvfMQF1"]["attempts"] += 1;
+    quizquestions_scorecard["TiIZPYyr"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_wSvfMQF1")
+    var explanation = document.getElementById("explanation_TiIZPYyr")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["wSvfMQF1"]["correct"] = true;
+      quizquestions_scorecard["TiIZPYyr"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2267,11 +2295,11 @@ document.getElementById("wSvfMQF1").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_wSvfMQF1")
+    var explanation = document.getElementById("explanation_TiIZPYyr")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["wSvfMQF1"]["correct"] = false;
+      quizquestions_scorecard["TiIZPYyr"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2293,31 +2321,31 @@ document.getElementById("wSvfMQF1").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "LdWdcEUf"
+var ID = "0AWQ8Nm2"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="LdWdcEUf" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="0AWQ8Nm2" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_LdWdcEUf">
+      <div class="form" id="controls_0AWQ8Nm2">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_LdWdcEUf_1">
-      <input class="form-check-input" type="radio" name="radio_LdWdcEUf" id="radio_LdWdcEUf_1" value="1">
+    <label class="form-check-label" for="radio_0AWQ8Nm2_1">
+      <input class="form-check-input" type="radio" name="radio_0AWQ8Nm2" id="radio_0AWQ8Nm2_1" value="1">
       
       <span class="label-body px-1">
-        El polinomio de MacLaurin de grado 100.
+        El polinomio de Taylor de grado 20 en \(\pi/6\).
       </span>
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_LdWdcEUf_2">
-      <input class="form-check-input" type="radio" name="radio_LdWdcEUf" id="radio_LdWdcEUf_2" value="2">
+    <label class="form-check-label" for="radio_0AWQ8Nm2_2">
+      <input class="form-check-input" type="radio" name="radio_0AWQ8Nm2" id="radio_0AWQ8Nm2_2" value="2">
       
       <span class="label-body px-1">
-        El polinomio de Taylor de grado 20 en \(\pi/6\).
+        El polinomio de MacLaurin de grado 100.
       </span>
     </label>
 </div>
@@ -2325,26 +2353,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="LdWdcEUf_message" style="padding-bottom: 15px"></div>
+      <div id="0AWQ8Nm2_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_LdWdcEUf"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_0AWQ8Nm2"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 2;
-    var msgBox = document.getElementById('LdWdcEUf_message');
+    var correct = rb.value == 1;
+    var msgBox = document.getElementById('0AWQ8Nm2_message');
     
-    quizquestions_scorecard["LdWdcEUf"]["attempts"] += 1;
+    quizquestions_scorecard["0AWQ8Nm2"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_LdWdcEUf")
+    var explanation = document.getElementById("explanation_0AWQ8Nm2")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["LdWdcEUf"]["correct"] = true;
+      quizquestions_scorecard["0AWQ8Nm2"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2352,11 +2380,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_LdWdcEUf")
+    var explanation = document.getElementById("explanation_0AWQ8Nm2")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["LdWdcEUf"]["correct"] = false;
+      quizquestions_scorecard["0AWQ8Nm2"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
