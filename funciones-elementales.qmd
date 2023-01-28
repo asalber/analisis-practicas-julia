@@ -481,10 +481,9 @@ plot!(2sin(x), label=L"$2\operatorname{sen}(x)$")
 | $\operatorname{sen}(x)+2$ | $2\pi$ | 1 | 
 | $\operatorname{sen}(2x)$ | $\pi$ | 1 | 
 | $2\operatorname{sen}(x)$ | $2\pi$ | 2 | 
-:::
 
 Se observa que al sumar una constante a la función seno o a su argumento, el periodo y la amplitud no cambian. Sin embargo, si se multiplica por una constante el seno, cambia la amplitud, y si se multiplica su argumento, cambia el periodo.
-
+:::
 :::
 
 :::{#exr-funciones-a-trozos}

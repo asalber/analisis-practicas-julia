@@ -1,0 +1,585 @@
+---
+lang: es
+---
+
+# Examen 14/12/2022
+
+:::{#exr-suc-01-a}
+Calcular la suma de los 100 primeros términos de la sucesión recurrente $x_1=1$ y $x_{n+1}=\frac{1}{1+x(n)}$ $\forall n\in\mathbb{N}$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = n == 1 ? 1 : 1/(1+x(n-1))
+sum(x(n) for n = 1:100)
+```
+:::
+:::
+
+:::{#exr-suc-01-b}
+Calcular la suma de los 50 primeros términos de la sucesión recurrente $x_1=2$ y $x_{n+1}=\sqrt{\frac{x(n)}{2}}$ $\forall n\in\mathbb{N}$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = n == 1 ? 2 : sqrt(x(n-1)/2)
+sum(x(n) for n = 1:50)
+```
+:::
+:::
+
+:::{#exr-suc-01-c}
+Calcular la suma de los 1000 primeros términos de la sucesión $\left(\frac{(-1)^n}{n}\right)_{n=1}^\infty$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = ((-1)^n/n)
+sum(x(n) for n = 1:700)
+```
+:::
+:::
+
+:::{#exr-suc-01-d}
+Calcular el producto de los 60 primeros términos de la sucesión recurrente $x_1=0.5$ y $x_{n+1}=\frac{5}{3+x(n)}$ $\forall n\in\mathbb{N}$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = n == 1 ? 0.5 : 5/(3+x(n-1))
+prod(x(n) for n = 1:60)
+```
+:::
+:::
+
+:::{#exr-suc-02-a}
+Usar el método de agotamiento para calcular el valor de $\pi$ a partir de una circunferencia de radio 1 como la de la figura, encerrada en polígonos regulares.
+Construir la sucesión de las áreas de los polígonos regulares de $n$ lados para $n\in\mathbb{N}$, y calcular el valor del término 1000.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+x(n) = n * tan(pi/n)
+[x(n) for n in 1:1000]
+```
+:::
+:::
+
+:::{#exr-suc-02-a}
+Calcular $\lim_{n\to\infty}\left(1+\frac{1}{2n}\right)^\sqrt{n}$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@syms n::(interger, positive)
+x(n) = (1+1/2n)^sqrt(n)
+limit(x(n), n=>oo)
+```
+:::
+:::
+
+:::{#exr-suc-02-b}
+Calcular $\lim_{n\to\infty}\left(\frac{n+3}{n}\right)^{2n}$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@syms n::(interger, positive)
+x(n) = ((n+3)/n)^(2n)
+N(limit(x(n), n=>oo))
+```
+:::
+:::
+
+:::{#exr-suc-02-c}
+Calcular $\lim_{n\to\infty}\frac{1}{1+\sqrt[n]{n^2}}$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@syms n::(interger, positive)
+x(n) = 1/(1+n^(2/n))
+N(limit(x(n), n=>oo))
+```
+:::
+:::
+
+:::{#exr-suc-02-d}
+Calcular $\lim_{n\to\infty}(n+1)(\ln(n+1)-\ln(n+2))$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@syms n::(interger, positive)
+x(n) = (n+1)*(log(n+1)-log(n+2))
+N(limit(x(n), n=>oo))
+```
+:::
+:::
+
+:::{#exr-suc-02-e}
+Calcular $\lim_{n\to\infty}\sqrt{n+1}-\sqrt{n}$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@syms n::(interger, positive)
+x(n) = sqrt(n+1)-sqrt(n)
+N(limit(x(n), n=>oo))
+```
+:::
+:::
+
+:::{#exr-fun-01-a}
+Se considera la función $$f(x)=(1+x^2)e^{-\frac{2}{x}}$$. ¿Cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots
+f(x) = (1+x^2)*exp(-2/x)
+plot(f, ylims=(0,100))
+```
+:::
+:::
+
+:::{#exr-fun-01-b}
+Dada la función $f(x)=e^{\operatorname{arctg}(x/2)}$, ¿cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = exp(atan(x/2))
+plot(f, xlims=(-1000,1000))
+N(limit(f(x),x=>-oo))
+```
+:::
+:::
+
+:::{#exr-fun-01-c}
+Dada la función $f(x)=\dfrac{x^2}{(x-1)^3}$, ¿cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = x^2/(x-1)^3
+plot(f, ylims=(-10,10))
+N(limit(f(x),x=>-oo))
+```
+:::
+:::
+
+:::{#exr-fun-01-d}
+Dada la función $f(x) = \dfrac{2x}{\sqrt[4]{x^2-1}}$, ¿cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = 2x/(x^2-1)^(1/4)
+plot(f, ylims=(-10,10))
+N(limit(f(x),x=>-oo))
+```
+:::
+:::
+
+:::{#exr-fun-02-a}
+¿Cuál es el periodo de la función $g(t)=\frac{\operatorname{sen}(2t)}{\cos(3t)}$?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+f(x) = sin(2x)/cos(3x)
+plot(f,0,10, ylims=(-5,5))
+```
+:::
+:::
+
+:::{#exr-fun-02-b}
+¿Cuál es el periodo de la función $g(t)=\frac{\operatorname{sen}(2t)}{\cos(3t)}$?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+f(x) = sin(3x)cos(2x)
+plot(f,0,10, ylims=(-2,2))
+```
+:::
+:::
+
+:::{#exr-fun-02-c}
+¿Cuál es el periodo de la función $g(t)=\frac{\operatorname{sen}(2t)}{\cos(3t)}$?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+f(x) = sin(3x)-cos(2x)
+plot(f,0,15, ylims=(-2,2))
+```
+:::
+:::
+
+:::{#exr-fun-02-d}
+¿Cuál es el periodo de la función $f(x)=\operatorname{sen}\left(2x+\frac{\pi}{2}\right)\cos(4x)$?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+f(x) = cos(4x)*sin(2x+pi/2)
+plot(f,0,5, ylims=(-3,3))
+```
+:::
+:::
+
+:::{#exr-lim-01-a}
+Dada la función $f(x)=\frac{x^2-1}{e^x}$, ¿cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = (x^2-1)/exp(x)
+plot(f, ylims=(-2,5))
+```
+:::
+:::
+
+:::{#exr-lim-01-b}
+Dada la función $f(x)=\frac{x^3+1}{x-1}$, ¿cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = (x^3+1)/(x-1)
+plot(f, ylims=(-5,5))
+```
+:::
+:::
+
+:::{#exr-lim-01-b}
+Dada la función $f(x)=\frac{x^3+1}{x-1}$, ¿cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = (x^2-1)/exp(x)
+plot(f, ylims=(-2,5))
+```
+:::
+:::
+
+:::{#exr-lim-01-c}
+Dada la función $f(x)=\frac{x^3}{(x-1)^2}$, ¿cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = (x^3)/(x-1)^2
+plot(f, ylims=(-10,10))
+```
+:::
+:::
+
+:::{#exr-lim-01-d}
+Dada la función $f(x)=\left(1+\frac{3}{x}\right)^{x/3}$, ¿cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = (1+3/x)^(x/3)
+plot(f, ylims=(-0,10))
+```
+:::
+:::
+
+:::{#exr-con-01-a}
+Dada la función $f(x)=\frac{x^x-x}{\ln(x)-x+1}$, ¿cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = (x^x-x)/(log(x)-x+1)
+plot(f)
+```
+:::
+:::
+
+:::{#exr-con-01-b}
+Dada la función 
+
+$$
+f(x)=
+\begin{cases}
+\cos(\pi/x) & \mbox{si } x\neq 0\\
+0 & \mbox{si } x=0
+\end{cases},
+$$ 
+¿cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = cos(Sym(pi)/x)
+plot(f)
+```
+:::
+:::
+
+:::{#exr-con-01-c}
+Dada la función $f(x)=\frac{\cos(1/x)}{x^2-1}$, ¿cuál de las siguientes afirmaciones es cierta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = cos(1/x)/(x^2-1)
+plot(f)
+```
+:::
+:::
+
+:::{#exr-der-01-a}
+¿En qué valor de $x<1$ tiene la función $f(x)=\dfrac{x^2-1}{e^x}$ un punto de inflexión?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = (x^2-1)/exp(x)
+N(solve(diff(f,2)))
+```
+:::
+:::
+
+:::{#exr-der-01-b}
+¿En qué valor de $x$ tiene la función $f(x)=\dfrac{x^2}{x^2-4x+3}$ un punto de inflexión?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = x^2/(x^2-4x+3)
+N(solve(diff(f,2)))
+```
+:::
+:::
+
+:::{#exr-der-01-c}
+¿En qué valor de $x$ tiene la función $f(x)=\dfrac{x^3+x^2-x}{x^2+x-2}$ un punto de inflexión?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = (x^3+x^2-x)/(x^2+x-2)
+N(solve(diff(f,2)))
+```
+:::
+:::
+
+:::{#exr-der-01-d}
+¿En qué valor de $x>0$ tiene la función $f(x)=e^{-\left(x-\frac{1}{2}\right)^2}$ un punto de inflexión?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = exp(-(x-1/2)^2)
+N(solve(diff(f,2)))
+```
+:::
+:::
+
+:::{#exr-der-02-a}
+La ecuación de la recta tangente a la gráfica de la función $f(x)=x+e^{-x}$ en el punto $x=0$ es
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = x+exp(-x)
+plot(f, -2, 2, ylims=(0,2))
+f(0)+diff(f(x))(x=>0)*x
+```
+:::
+:::
+
+:::{#exr-der-02-b}
+La ecuación de la recta tangente a la gráfica de la función $f(x)=\dfrac{\ln(x)}{x}$ en el punto $x=1$ es
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = log(x)/x
+plot(f, 0, 5, ylims=(-2,2))
+f(1)+diff(f(x))(x=>1)*(x-1)
+```
+:::
+:::
+
+:::{#exr-der-02-c}
+La ecuación de la recta normal a la gráfica de la función $f(x)=x^2-4x+2$ en el punto $x=5$ es
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = x^2-4x+2
+plot(f, 0, 5, ylims=(-2,2))
+f(5)-1/diff(f(x))(x=>5)*(x-5)
+```
+:::
+:::
+
+:::{#exr-der-02-d}
+La ecuación de la recta normal a la gráfica de la función $f(x)=\ln\left(\sqrt{\frac{x^2}{2}}\right)$ en el punto $x=2$ es
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = log(sqrt(x^2/4))
+plot(f, aspect_ratio=1)
+normal = f(2)-1/diff(f(x))(x=>2)*(x-2)
+plot!(normal)
+```
+:::
+:::
+
+:::{#exr-tay-01-a}
+Dada la función $f(x)=\ln\left(\sqrt{x}\right)$, calcular el valor aproximado de $f(1.2)$ utilizando un polinomio de Taylor de grado $10$ en el punto $a=1$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = log(sqrt(x))
+series(f(x), x, 1, 10).removeO()(x=>1.2)
+```
+:::
+:::
+
+:::{#exr-tay-01-b}
+Dada la función $f(x)=e^{\cos(x)}$, calcular el valor aproximado de $f(3)$ utilizando un polinomio de Taylor de grado $6$ en el punto $a=\pi$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = exp(cos(x))
+N(series(f(x), x, Sym(pi), 6).removeO()(x=>3))
+```
+:::
+:::
+
+:::{#exr-tay-01-c}
+Dada la función $f(x)=\sqrt{x/2}$, calcular el valor aproximado de $f(1)$ utilizando un polinomio de Taylor de grado $15$ en el punto $a=2$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = sqrt(x/2)
+float(series(f(x), x, 2, 15).removeO()(x=>1))
+```
+:::
+:::
+
+:::{#exr-tay-01-d}
+Dada la función $f(x)=\operatorname{sen}(2^x)$, calcular el valor aproximado de $\operatorname{sen}(\sqrt{2})$ utilizando un polinomio de MacLaurin de grado $12$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = sin(2^x)
+float(series(f(x), x, 0, 12).removeO()(x=>0.5))
+```
+:::
+:::
+
+:::{#exr-lim-03-a}
+Calcular $\lim_{x\to\pi/2}e^{\frac{-cos(x)}{x-\pi/2}}$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = exp(-cos(x)/(x-PI/2))
+plot(f, ylims=(0,3))
+N(limit(f(x), x=>PI/2))
+```
+:::
+:::
+
+:::{#exr-lim-03-b}
+Calcular $\lim_{x\to\pi/2}\frac{x-\pi/2}{\cos(x)}$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = (x-Sym(pi)/2)/cos(x)
+plot(f, ylims=(0,3))
+N(limit(f(x), x=>Sym(pi)/2))
+```
+:::
+:::
+
+:::{#exr-lim-03-c}
+Calcular $\lim_{x\to\pi/4}\frac{\operatorname{tg}(x)-1}{\cos(x)-\operatorname{sen}(x)}$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy
+@vars x real=true
+f(x) = (tan(x)-1)/(cos(x)-sin(x))
+plot(f, 0, 1)
+N(limit(f(x), x=>pi/4))
+```
+:::
+:::

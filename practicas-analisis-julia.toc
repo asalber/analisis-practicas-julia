@@ -20,5 +20,11 @@
 \contentsline {section}{\numberline {2.2}Ejercicios propuestos}{24}{section.2.2}%
 \contentsline {chapter}{\numberline {3}Funciones elementales}{27}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Ejercicios Resueltos}{27}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Ejercicios propuestos}{35}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Ejercicios propuestos}{40}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Límites de funciones reales}{43}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Ejercicios Resueltos}{43}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Ejercicios propuestos}{57}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Derivadas de funciones reales}{62}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Ejercicios Resueltos}{62}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Ejercicios propuestos}{79}{section.5.2}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
