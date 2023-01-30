@@ -914,14 +914,17 @@ Solución
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Puntos fuera del dominio de la rama negativa: "</span>, <span class="fu">solve</span>(x<span class="op">-</span><span class="fl">2</span>))</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Puntos fuera del dominio de la rama positiva: "</span>, <span class="fu">solve</span>(<span class="fl">2</span>x<span class="op">-</span><span class="fl">6</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Puntos fuera del dominio de la rama negativa: Sym[2]
+<pre><code>Puntos fuera del dominio de la rama negativa: Sym</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[2]
 Puntos fuera del dominio de la rama positiva: Sym[3]</code></pre>
 </div>
 </div>
 <p>Así pues la rama negativa está definida en todos <span class="math inline">\(\mathbb{R}^-\)</span> y la rama positiva en <span class="math inline">\(\mathbb{R}^+\setminus\{3\}\)</span>. Es en este último punto donde <span class="math inline">\(g\)</span> puede tener asíntota vertical, así que estudiamos los límites laterales.</p>
 <div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límte en 3 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">g</span>(x), x<span class="op">=&gt;</span><span class="fl">3</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límte en 3 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">g</span>(x), x<span class="op">=&gt;</span><span class="fl">3</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límte en 3 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">g</span>(x), x<span class="op">=&gt;</span><span class="fl">3</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límte en 3 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">g</span>(x), x<span class="op">=&gt;</span><span class="fl">3</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Límte en 3 por la izquierda: -oo
 Límte en 3 por la derecha: oo</code></pre>
@@ -929,7 +932,7 @@ Límte en 3 por la derecha: oo</code></pre>
 </div>
 <p>Por tanto, <span class="math inline">\(g\)</span> tiene una asíntota vertical en <span class="math inline">\(x=3\)</span>.</p>
 <div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vline!</span>([<span class="fl">3</span>], label <span class="op">=</span> L<span class="st">"Asíntota vertical </span><span class="sc">$</span>x<span class="st">=3</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vline!</span>([<span class="fl">3</span>], label <span class="op">=</span> L<span class="st">"Asíntota vertical </span><span class="sc">$</span>x<span class="st">=3</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <p><img src="limites_files/figure-html/cell-26-output-1.svg" class="img-fluid"></p>
 </div>
@@ -954,8 +957,8 @@ Solución
 <div class="callout-body-container callout-body">
 <p>Estudiamos los límites en el infinito.</p>
 <div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en -∞: "</span>, <span class="fu">limit</span>(<span class="fu">g1</span>(x), x<span class="op">=&gt;-</span>oo))</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en ∞: "</span>, <span class="fu">limit</span>(<span class="fu">g2</span>(x), x<span class="op">=&gt;</span>oo))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en -∞: "</span>, <span class="fu">limit</span>(<span class="fu">g1</span>(x), x<span class="op">=&gt;-</span>oo))</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en ∞: "</span>, <span class="fu">limit</span>(<span class="fu">g2</span>(x), x<span class="op">=&gt;</span>oo))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Límite en -∞: 1
 Límite en ∞: oo</code></pre>
@@ -963,7 +966,7 @@ Límite en ∞: oo</code></pre>
 </div>
 <p>Por tanto, <span class="math inline">\(g\)</span> tiene una asíntota horizontal <span class="math inline">\(y=1\)</span> en <span class="math inline">\(-\infty\)</span>.</p>
 <div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hline!</span>([<span class="fl">1</span>], label <span class="op">=</span> L<span class="st">"Asíntota horizontal </span><span class="sc">$</span>y<span class="st">=1</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hline!</span>([<span class="fl">1</span>], label <span class="op">=</span> L<span class="st">"Asíntota horizontal </span><span class="sc">$</span>y<span class="st">=1</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <p><img src="limites_files/figure-html/cell-28-output-1.svg" class="img-fluid"></p>
 </div>
@@ -988,21 +991,21 @@ Solución
 <div class="callout-body-container callout-body">
 <p>Estudiamos el límite en <span class="math inline">\(\infty\)</span> de <span class="math inline">\(\frac{f(x)}{x}\)</span> (en <span class="math inline">\(-\infty\)</span> no puede haber asíntota oblicua al haber asíntota horizontal).</p>
 <div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">g2</span>(x)<span class="op">/</span>x, x<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">g2</span>(x)<span class="op">/</span>x, x<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <p><span class="math inline">\(\frac{1}{2}\)</span></p>
 </div>
 </div>
 <p>Por tanto, <span class="math inline">\(g\)</span> tiene una asíntota oblicua con pendiente <span class="math inline">\(b=1/2\)</span> en <span class="math inline">\(\infty\)</span>. Para obtener el término independiente de la asíntota calculamos el límite en <span class="math inline">\(\infty\)</span> de <span class="math inline">\(f(x)-\frac{1}{2}x\)</span>.</p>
 <div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">g2</span>(x)<span class="op">-</span>x<span class="op">/</span><span class="fl">2</span>, x<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">limit</span>(<span class="fu">g2</span>(x)<span class="op">-</span>x<span class="op">/</span><span class="fl">2</span>, x<span class="op">=&gt;</span>oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <p><span class="math inline">\(\frac{3}{2}\)</span></p>
 </div>
 </div>
 <p>Por tanto, <span class="math inline">\(g\)</span> tiene una asíntota oblicua <span class="math inline">\(y=\frac{3}{2}+\frac{1}{2}x\)</span>.</p>
 <div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="fl">3</span><span class="op">/</span><span class="fl">2</span><span class="op">+</span>x<span class="op">/</span><span class="fl">2</span>, label <span class="op">=</span> L<span class="st">"Asíntota oblicua </span><span class="sc">$</span>y<span class="st">=</span><span class="sc">\f</span><span class="st">rac{3}{2}+</span><span class="sc">\f</span><span class="st">rac{1}{2}x</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="fl">3</span><span class="op">/</span><span class="fl">2</span><span class="op">+</span>x<span class="op">/</span><span class="fl">2</span>, label <span class="op">=</span> L<span class="st">"Asíntota oblicua </span><span class="sc">$</span>y<span class="st">=</span><span class="sc">\f</span><span class="st">rac{3}{2}+</span><span class="sc">\f</span><span class="st">rac{1}{2}x</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <p><img src="limites_files/figure-html/cell-31-output-1.svg" class="img-fluid"></p>
 </div>
@@ -1050,12 +1053,12 @@ Solución
 <div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x a real<span class="op">=</span><span class="cn">true</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">h1</span>(x) <span class="op">=</span> (<span class="fl">2</span>x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">2</span>x)<span class="op">/</span>(<span class="fl">3</span>x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>x)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">h2</span>(x) <span class="op">=</span> (<span class="fu">tan</span>(x)<span class="op">-</span>a<span class="op">*</span>x)<span class="op">/</span>x </span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>l1 <span class="op">=</span> <span class="fu">limit</span>(<span class="fu">h1</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"-"</span>)</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>l2 <span class="op">=</span> <span class="fu">limit</span>(<span class="fu">h2</span>(x),x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"+"</span>)</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="fu">Eq</span>(l1,l2))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x a real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">h1</span>(x) <span class="op">=</span> (<span class="fl">2</span>x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">2</span>x)<span class="op">/</span>(<span class="fl">3</span>x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>x)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">h2</span>(x) <span class="op">=</span> (<span class="fu">tan</span>(x)<span class="op">-</span>a<span class="op">*</span>x)<span class="op">/</span>x </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>l1 <span class="op">=</span> <span class="fu">limit</span>(<span class="fu">h1</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"-"</span>)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>l2 <span class="op">=</span> <span class="fu">limit</span>(<span class="fu">h2</span>(x),x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"+"</span>)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="fu">Eq</span>(l1,l2))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>1-element Vector{Sym}:
  3</code></pre>
@@ -1088,19 +1091,19 @@ Solución
 <div class="callout-body-container callout-body">
 <p>Para estudiar las discontinuidades de una función tenemos que estudiar los puntos que no están en el dominio y los puntos donde cambia la definición de la función en el caso de una función definida a trozos.</p>
 <div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">MTH229</span>, <span class="bu">LaTeXStrings</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f1</span>(x) <span class="op">=</span> (x<span class="op">+</span><span class="fl">1</span>)<span class="op">/</span>(x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">f2</span>(x) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fu">exp</span>(<span class="fl">1</span><span class="op">/</span>(x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span>))</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f1, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0</span>, ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">2</span>,<span class="fl">8</span>), legend<span class="op">=</span><span class="cn">false</span>)</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="fu">rangeclamp</span>(f2), <span class="fl">0</span>, <span class="fl">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">MTH229</span>, <span class="bu">LaTeXStrings</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f1</span>(x) <span class="op">=</span> (x<span class="op">+</span><span class="fl">1</span>)<span class="op">/</span>(x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">f2</span>(x) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fu">exp</span>(<span class="fl">1</span><span class="op">/</span>(x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span>))</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f1, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0</span>, ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">2</span>,<span class="fl">8</span>), legend<span class="op">=</span><span class="cn">false</span>)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(<span class="fu">rangeclamp</span>(f2), <span class="fl">0</span>, <span class="fl">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <p><img src="limites_files/figure-html/cell-33-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <p>Para determinar el dominio de la rama negativa, al ser una función racional, tenemos que ver los puntos que anulan el denominador.</p>
 <div class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>2-element Vector{Sym}:
  -1
@@ -1109,8 +1112,8 @@ Solución
 </div>
 <p>Así pues, la función no está definida en <span class="math inline">\(x=-1\)</span> (la otra raíz queda fuera de la rama negativa). Para ver el tipo de discontinuidad estudiamos los límites laterales en <span class="math inline">\(x=-1\)</span>.</p>
 <div class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en -1 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">f1</span>(x), x<span class="op">=&gt;</span> <span class="op">-</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en -1 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">f1</span>(x), x<span class="op">=&gt;</span> <span class="op">-</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en -1 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">f1</span>(x), x<span class="op">=&gt;</span> <span class="op">-</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en -1 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">f1</span>(x), x<span class="op">=&gt;</span> <span class="op">-</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Límite en -1 por la izquierda: -1/2
 Límite en -1 por la derecha: -1/2</code></pre>
@@ -1119,8 +1122,8 @@ Límite en -1 por la derecha: -1/2</code></pre>
 <p>Como el límite existe, <span class="math inline">\(f\)</span> tiene una discontinuidad evitable en <span class="math inline">\(x=-1\)</span>.</p>
 <p>Del mismo modo la rama positiva no está definida en <span class="math inline">\(x=1\)</span> ya que se anula el denominador del exponente de la función exponencial. Para ver el tipo de discontinuidad estudiamos los límites laterales en <span class="math inline">\(x=1\)</span>.</p>
 <div class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">f2</span>(x), x<span class="op">=&gt;</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">f2</span>(x), x<span class="op">=&gt;</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">f2</span>(x), x<span class="op">=&gt;</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">f2</span>(x), x<span class="op">=&gt;</span><span class="fl">1</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Límite en 1 por la izquierda: oo
 Límite en 1 por la derecha: </code></pre>
@@ -1132,8 +1135,8 @@ Límite en 1 por la derecha: </code></pre>
 <p>Como los límites laterales son distintos, <span class="math inline">\(f\)</span> tiene una discontinuidad de salto infinito en <span class="math inline">\(x=1\)</span>.</p>
 <p>Finalmente, estudiamos los límites laterales en <span class="math inline">\(x=0\)</span>, que es donde cambia la definición de la función.</p>
 <div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">f1</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">f2</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la izquierda: "</span>, <span class="fu">limit</span>(<span class="fu">f1</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"-"</span>))</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Límite en 1 por la derecha: "</span>, <span class="fu">limit</span>(<span class="fu">f2</span>(x), x<span class="op">=&gt;</span><span class="fl">0</span>, dir<span class="op">=</span><span class="st">"+"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Límite en 1 por la izquierda: -1
 Límite en 1 por la derecha: E</code></pre>
@@ -1166,25 +1169,25 @@ Solución
 <div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">raices_biseccion</span>(f, a, b, error<span class="op">=</span><span class="fl">1e-10</span>)</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="fu">f</span>(a) <span class="op">==</span> <span class="fl">0</span> <span class="cf">return</span>(a) <span class="cf">end</span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="fu">f</span>(b) <span class="op">==</span> <span class="fl">0</span> <span class="cf">return</span>(b) <span class="cf">end</span></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="fu">f</span>(a) <span class="op">*</span> <span class="fu">f</span>(b) <span class="op">&gt;</span> <span class="fl">0</span> <span class="fu">error</span>(<span class="st">"Las imágenes de los extremos del intervalo no tienen signo distinto."</span>) <span class="cf">end</span></span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  c <span class="op">=</span> (a<span class="op">+</span>b)<span class="op">/</span><span class="fl">2</span></span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="fu">abs</span>(b<span class="op">-</span>a) <span class="op">&gt;</span> error</span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">f</span>(c) <span class="op">==</span> <span class="fl">0</span> <span class="cf">return</span>(c) <span class="cf">end</span></span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">f</span>(a) <span class="op">*</span> <span class="fu">f</span>(c) <span class="op">&lt;</span> <span class="fl">0</span></span>
-<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>       b <span class="op">=</span> c</span>
-<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
-<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>       a <span class="op">=</span> c</span>
-<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> (a<span class="op">+</span>b)<span class="op">/</span><span class="fl">2</span></span>
-<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
-<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>  c</span>
-<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x)<span class="op">=</span>x<span class="op">^</span><span class="fl">5</span><span class="op">+</span><span class="fl">3</span>x<span class="op">^</span><span class="fl">4</span><span class="op">-</span><span class="fl">2</span>x<span class="op">^</span><span class="fl">3</span><span class="op">+</span><span class="fl">6</span>x<span class="op">-</span><span class="fl">4</span></span>
-<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">raices_biseccion</span>(f, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">raices_biseccion</span>(f, a, b, error<span class="op">=</span><span class="fl">1e-10</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="fu">f</span>(a) <span class="op">==</span> <span class="fl">0</span> <span class="cf">return</span>(a) <span class="cf">end</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="fu">f</span>(b) <span class="op">==</span> <span class="fl">0</span> <span class="cf">return</span>(b) <span class="cf">end</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="fu">f</span>(a) <span class="op">*</span> <span class="fu">f</span>(b) <span class="op">&gt;</span> <span class="fl">0</span> <span class="fu">error</span>(<span class="st">"Las imágenes de los extremos del intervalo no tienen signo distinto."</span>) <span class="cf">end</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  c <span class="op">=</span> (a<span class="op">+</span>b)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="fu">abs</span>(b<span class="op">-</span>a) <span class="op">&gt;</span> error</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">f</span>(c) <span class="op">==</span> <span class="fl">0</span> <span class="cf">return</span>(c) <span class="cf">end</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">f</span>(a) <span class="op">*</span> <span class="fu">f</span>(c) <span class="op">&lt;</span> <span class="fl">0</span></span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>       b <span class="op">=</span> c</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>       a <span class="op">=</span> c</span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> (a<span class="op">+</span>b)<span class="op">/</span><span class="fl">2</span></span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a>  c</span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x)<span class="op">=</span>x<span class="op">^</span><span class="fl">5</span><span class="op">+</span><span class="fl">3</span>x<span class="op">^</span><span class="fl">4</span><span class="op">-</span><span class="fl">2</span>x<span class="op">^</span><span class="fl">3</span><span class="op">+</span><span class="fl">6</span>x<span class="op">-</span><span class="fl">4</span></span>
+<span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">raices_biseccion</span>(f, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.6496996753558051</code></pre>
 </div>
@@ -1213,44 +1216,44 @@ Solución
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "UlzBAVFT"
+var ID = "IJJqPMop"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="UlzBAVFT" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="IJJqPMop" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_UlzBAVFT">
+      <div class="form" id="controls_IJJqPMop">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="UlzBAVFT" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="IJJqPMop" type="number" class="form-control" placeholder="Respuesta numérica">
     <span class="input-group-append" href="#" title="Introducir hasta 10 decimales">&nbsp;🎁</span>
 </div>
 
     
         </div>
       </div>
-      <div id="UlzBAVFT_message" style="padding-bottom: 15px"></div>
+      <div id="IJJqPMop_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("UlzBAVFT").addEventListener("change", function() {
+document.getElementById("IJJqPMop").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 2.6130352902246763) <= 1.0e-10);
-  var msgBox = document.getElementById('UlzBAVFT_message');
+  var msgBox = document.getElementById('IJJqPMop_message');
   
-    quizquestions_scorecard["UlzBAVFT"]["attempts"] += 1;
+    quizquestions_scorecard["IJJqPMop"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_UlzBAVFT")
+    var explanation = document.getElementById("explanation_IJJqPMop")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["UlzBAVFT"]["correct"] = true;
+      quizquestions_scorecard["IJJqPMop"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1258,11 +1261,11 @@ document.getElementById("UlzBAVFT").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_UlzBAVFT")
+    var explanation = document.getElementById("explanation_IJJqPMop")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["UlzBAVFT"]["correct"] = false;
+      quizquestions_scorecard["IJJqPMop"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1281,44 +1284,44 @@ document.getElementById("UlzBAVFT").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "lmBhOd4N"
+var ID = "riHMseEM"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="lmBhOd4N" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="riHMseEM" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_lmBhOd4N">
+      <div class="form" id="controls_riHMseEM">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="lmBhOd4N" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="riHMseEM" type="number" class="form-control" placeholder="Respuesta numérica">
     <span class="input-group-append" href="#" title="Introducir hasta 10 decimales">&nbsp;🎁</span>
 </div>
 
     
         </div>
       </div>
-      <div id="lmBhOd4N_message" style="padding-bottom: 15px"></div>
+      <div id="riHMseEM_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("lmBhOd4N").addEventListener("change", function() {
+document.getElementById("riHMseEM").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 2.7145674820219727) <= 1.0e-10);
-  var msgBox = document.getElementById('lmBhOd4N_message');
+  var msgBox = document.getElementById('riHMseEM_message');
   
-    quizquestions_scorecard["lmBhOd4N"]["attempts"] += 1;
+    quizquestions_scorecard["riHMseEM"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_lmBhOd4N")
+    var explanation = document.getElementById("explanation_riHMseEM")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["lmBhOd4N"]["correct"] = true;
+      quizquestions_scorecard["riHMseEM"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1326,11 +1329,11 @@ document.getElementById("lmBhOd4N").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_lmBhOd4N")
+    var explanation = document.getElementById("explanation_riHMseEM")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["lmBhOd4N"]["correct"] = false;
+      quizquestions_scorecard["riHMseEM"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1349,28 +1352,19 @@ document.getElementById("lmBhOd4N").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "bETiETlJ"
+var ID = "w73iXqy3"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="bETiETlJ" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="w73iXqy3" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_bETiETlJ">
+      <div class="form" id="controls_w73iXqy3">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_bETiETlJ_1">
-      <input class="form-check-input" type="radio" name="radio_bETiETlJ" id="radio_bETiETlJ_1" value="1">
-      
-      <span class="label-body px-1">
-        3
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_bETiETlJ_2">
-      <input class="form-check-input" type="radio" name="radio_bETiETlJ" id="radio_bETiETlJ_2" value="2">
+    <label class="form-check-label" for="radio_w73iXqy3_1">
+      <input class="form-check-input" type="radio" name="radio_w73iXqy3" id="radio_w73iXqy3_1" value="1">
       
       <span class="label-body px-1">
         e
@@ -1378,8 +1372,8 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_bETiETlJ_3">
-      <input class="form-check-input" type="radio" name="radio_bETiETlJ" id="radio_bETiETlJ_3" value="3">
+    <label class="form-check-label" for="radio_w73iXqy3_2">
+      <input class="form-check-input" type="radio" name="radio_w73iXqy3" id="radio_w73iXqy3_2" value="2">
       
       <span class="label-body px-1">
         2.7182818284590
@@ -1387,20 +1381,29 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_bETiETlJ_4">
-      <input class="form-check-input" type="radio" name="radio_bETiETlJ" id="radio_bETiETlJ_4" value="4">
+    <label class="form-check-label" for="radio_w73iXqy3_3">
+      <input class="form-check-input" type="radio" name="radio_w73iXqy3" id="radio_w73iXqy3_3" value="3">
       
       <span class="label-body px-1">
-        \(e^{-1}\)
+        \(e^2\)
       </span>
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_bETiETlJ_5">
-      <input class="form-check-input" type="radio" name="radio_bETiETlJ" id="radio_bETiETlJ_5" value="5">
+    <label class="form-check-label" for="radio_w73iXqy3_4">
+      <input class="form-check-input" type="radio" name="radio_w73iXqy3" id="radio_w73iXqy3_4" value="4">
       
       <span class="label-body px-1">
-        \(e^2\)
+        3
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_w73iXqy3_5">
+      <input class="form-check-input" type="radio" name="radio_w73iXqy3" id="radio_w73iXqy3_5" value="5">
+      
+      <span class="label-body px-1">
+        \(e^{-1}\)
       </span>
     </label>
 </div>
@@ -1408,26 +1411,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="bETiETlJ_message" style="padding-bottom: 15px"></div>
+      <div id="w73iXqy3_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_bETiETlJ"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_w73iXqy3"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 2;
-    var msgBox = document.getElementById('bETiETlJ_message');
+    var correct = rb.value == 1;
+    var msgBox = document.getElementById('w73iXqy3_message');
     
-    quizquestions_scorecard["bETiETlJ"]["attempts"] += 1;
+    quizquestions_scorecard["w73iXqy3"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_bETiETlJ")
+    var explanation = document.getElementById("explanation_w73iXqy3")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["bETiETlJ"]["correct"] = true;
+      quizquestions_scorecard["w73iXqy3"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1435,11 +1438,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_bETiETlJ")
+    var explanation = document.getElementById("explanation_w73iXqy3")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["bETiETlJ"]["correct"] = false;
+      quizquestions_scorecard["w73iXqy3"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1463,43 +1466,43 @@ rb.addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "JpqtwG2X"
+var ID = "buFwCniX"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="JpqtwG2X" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="buFwCniX" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_JpqtwG2X">
+      <div class="form" id="controls_buFwCniX">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="JpqtwG2X" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="buFwCniX" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="JpqtwG2X_message" style="padding-bottom: 15px"></div>
+      <div id="buFwCniX_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("JpqtwG2X").addEventListener("change", function() {
+document.getElementById("buFwCniX").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0) <= 1.0e-5);
-  var msgBox = document.getElementById('JpqtwG2X_message');
+  var msgBox = document.getElementById('buFwCniX_message');
   
-    quizquestions_scorecard["JpqtwG2X"]["attempts"] += 1;
+    quizquestions_scorecard["buFwCniX"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_JpqtwG2X")
+    var explanation = document.getElementById("explanation_buFwCniX")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["JpqtwG2X"]["correct"] = true;
+      quizquestions_scorecard["buFwCniX"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1507,11 +1510,11 @@ document.getElementById("JpqtwG2X").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_JpqtwG2X")
+    var explanation = document.getElementById("explanation_buFwCniX")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["JpqtwG2X"]["correct"] = false;
+      quizquestions_scorecard["buFwCniX"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1532,43 +1535,43 @@ document.getElementById("JpqtwG2X").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "6finTNU1"
+var ID = "4uYfSmTX"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="6finTNU1" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="4uYfSmTX" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_6finTNU1">
+      <div class="form" id="controls_4uYfSmTX">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="6finTNU1" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="4uYfSmTX" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="6finTNU1_message" style="padding-bottom: 15px"></div>
+      <div id="4uYfSmTX_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("6finTNU1").addEventListener("change", function() {
+document.getElementById("4uYfSmTX").addEventListener("change", function() {
   var correct = (Math.abs(this.value - -3/2) <= 0.001);
-  var msgBox = document.getElementById('6finTNU1_message');
+  var msgBox = document.getElementById('4uYfSmTX_message');
   
-    quizquestions_scorecard["6finTNU1"]["attempts"] += 1;
+    quizquestions_scorecard["4uYfSmTX"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_6finTNU1")
+    var explanation = document.getElementById("explanation_4uYfSmTX")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["6finTNU1"]["correct"] = true;
+      quizquestions_scorecard["4uYfSmTX"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1576,11 +1579,11 @@ document.getElementById("6finTNU1").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_6finTNU1")
+    var explanation = document.getElementById("explanation_4uYfSmTX")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["6finTNU1"]["correct"] = false;
+      quizquestions_scorecard["4uYfSmTX"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1601,28 +1604,19 @@ document.getElementById("6finTNU1").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "RM5aj242"
+var ID = "286KKsxZ"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="RM5aj242" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="286KKsxZ" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_RM5aj242">
+      <div class="form" id="controls_286KKsxZ">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_RM5aj242_1">
-      <input class="form-check-input" type="radio" name="radio_RM5aj242" id="radio_RM5aj242_1" value="1">
-      
-      <span class="label-body px-1">
-        \(\infty\)
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_RM5aj242_2">
-      <input class="form-check-input" type="radio" name="radio_RM5aj242" id="radio_RM5aj242_2" value="2">
+    <label class="form-check-label" for="radio_286KKsxZ_1">
+      <input class="form-check-input" type="radio" name="radio_286KKsxZ" id="radio_286KKsxZ_1" value="1">
       
       <span class="label-body px-1">
         \(1\)
@@ -1630,17 +1624,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_RM5aj242_3">
-      <input class="form-check-input" type="radio" name="radio_RM5aj242" id="radio_RM5aj242_3" value="3">
+    <label class="form-check-label" for="radio_286KKsxZ_2">
+      <input class="form-check-input" type="radio" name="radio_286KKsxZ" id="radio_286KKsxZ_2" value="2">
       
       <span class="label-body px-1">
-        0
+        \(\infty\)
       </span>
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_RM5aj242_4">
-      <input class="form-check-input" type="radio" name="radio_RM5aj242" id="radio_RM5aj242_4" value="4">
+    <label class="form-check-label" for="radio_286KKsxZ_3">
+      <input class="form-check-input" type="radio" name="radio_286KKsxZ" id="radio_286KKsxZ_3" value="3">
+      
+      <span class="label-body px-1">
+        \(-\infty\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_286KKsxZ_4">
+      <input class="form-check-input" type="radio" name="radio_286KKsxZ" id="radio_286KKsxZ_4" value="4">
       
       <span class="label-body px-1">
         NaN
@@ -1648,11 +1651,11 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_RM5aj242_5">
-      <input class="form-check-input" type="radio" name="radio_RM5aj242" id="radio_RM5aj242_5" value="5">
+    <label class="form-check-label" for="radio_286KKsxZ_5">
+      <input class="form-check-input" type="radio" name="radio_286KKsxZ" id="radio_286KKsxZ_5" value="5">
       
       <span class="label-body px-1">
-        \(-\infty\)
+        0
       </span>
     </label>
 </div>
@@ -1660,26 +1663,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="RM5aj242_message" style="padding-bottom: 15px"></div>
+      <div id="286KKsxZ_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_RM5aj242"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_286KKsxZ"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 5;
-    var msgBox = document.getElementById('RM5aj242_message');
+    var correct = rb.value == 3;
+    var msgBox = document.getElementById('286KKsxZ_message');
     
-    quizquestions_scorecard["RM5aj242"]["attempts"] += 1;
+    quizquestions_scorecard["286KKsxZ"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_RM5aj242")
+    var explanation = document.getElementById("explanation_286KKsxZ")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["RM5aj242"]["correct"] = true;
+      quizquestions_scorecard["286KKsxZ"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1687,11 +1690,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_RM5aj242")
+    var explanation = document.getElementById("explanation_286KKsxZ")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["RM5aj242"]["correct"] = false;
+      quizquestions_scorecard["286KKsxZ"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1712,37 +1715,19 @@ rb.addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "Be2xNygF"
+var ID = "AeWEuBgb"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="Be2xNygF" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="AeWEuBgb" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_Be2xNygF">
+      <div class="form" id="controls_AeWEuBgb">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_Be2xNygF_1">
-      <input class="form-check-input" type="radio" name="radio_Be2xNygF" id="radio_Be2xNygF_1" value="1">
-      
-      <span class="label-body px-1">
-        \(\ln(a)\)
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_Be2xNygF_2">
-      <input class="form-check-input" type="radio" name="radio_Be2xNygF" id="radio_Be2xNygF_2" value="2">
-      
-      <span class="label-body px-1">
-        Las otras opciones son falsas.
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_Be2xNygF_3">
-      <input class="form-check-input" type="radio" name="radio_Be2xNygF" id="radio_Be2xNygF_3" value="3">
+    <label class="form-check-label" for="radio_AeWEuBgb_1">
+      <input class="form-check-input" type="radio" name="radio_AeWEuBgb" id="radio_AeWEuBgb_1" value="1">
       
       <span class="label-body px-1">
         \(\sqrt{a}\)
@@ -1750,20 +1735,38 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_Be2xNygF_4">
-      <input class="form-check-input" type="radio" name="radio_Be2xNygF" id="radio_Be2xNygF_4" value="4">
+    <label class="form-check-label" for="radio_AeWEuBgb_2">
+      <input class="form-check-input" type="radio" name="radio_AeWEuBgb" id="radio_AeWEuBgb_2" value="2">
       
       <span class="label-body px-1">
-        \(1/a\)
+        \(e^a\)
       </span>
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_Be2xNygF_5">
-      <input class="form-check-input" type="radio" name="radio_Be2xNygF" id="radio_Be2xNygF_5" value="5">
+    <label class="form-check-label" for="radio_AeWEuBgb_3">
+      <input class="form-check-input" type="radio" name="radio_AeWEuBgb" id="radio_AeWEuBgb_3" value="3">
       
       <span class="label-body px-1">
-        \(e^a\)
+        Las otras opciones son falsas.
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_AeWEuBgb_4">
+      <input class="form-check-input" type="radio" name="radio_AeWEuBgb" id="radio_AeWEuBgb_4" value="4">
+      
+      <span class="label-body px-1">
+        \(\ln(a)\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_AeWEuBgb_5">
+      <input class="form-check-input" type="radio" name="radio_AeWEuBgb" id="radio_AeWEuBgb_5" value="5">
+      
+      <span class="label-body px-1">
+        \(1/a\)
       </span>
     </label>
 </div>
@@ -1771,26 +1774,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="Be2xNygF_message" style="padding-bottom: 15px"></div>
+      <div id="AeWEuBgb_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_Be2xNygF"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_AeWEuBgb"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 1;
-    var msgBox = document.getElementById('Be2xNygF_message');
+    var correct = rb.value == 4;
+    var msgBox = document.getElementById('AeWEuBgb_message');
     
-    quizquestions_scorecard["Be2xNygF"]["attempts"] += 1;
+    quizquestions_scorecard["AeWEuBgb"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_Be2xNygF")
+    var explanation = document.getElementById("explanation_AeWEuBgb")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["Be2xNygF"]["correct"] = true;
+      quizquestions_scorecard["AeWEuBgb"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1798,11 +1801,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_Be2xNygF")
+    var explanation = document.getElementById("explanation_AeWEuBgb")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["Be2xNygF"]["correct"] = false;
+      quizquestions_scorecard["AeWEuBgb"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1823,19 +1826,19 @@ rb.addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "wKcQPsAi"
+var ID = "VzyEKvzj"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="wKcQPsAi" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="VzyEKvzj" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_wKcQPsAi">
+      <div class="form" id="controls_VzyEKvzj">
         <div style="padding-top: 5px">
     <div class="form-check">
   <label>
-    <input class="form-check-input" type="checkbox" name="check_wKcQPsAi" id="check_wKcQPsAi_1" value="1">
+    <input class="form-check-input" type="checkbox" name="check_VzyEKvzj" id="check_VzyEKvzj_1" value="1">
       <span class="label-body">
         \(x=-1\)
       </span>
@@ -1844,7 +1847,7 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
 </div>
 <div class="form-check">
   <label>
-    <input class="form-check-input" type="checkbox" name="check_wKcQPsAi" id="check_wKcQPsAi_2" value="2">
+    <input class="form-check-input" type="checkbox" name="check_VzyEKvzj" id="check_VzyEKvzj_2" value="2">
       <span class="label-body">
         \(y=1\)
       </span>
@@ -1853,16 +1856,7 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
 </div>
 <div class="form-check">
   <label>
-    <input class="form-check-input" type="checkbox" name="check_wKcQPsAi" id="check_wKcQPsAi_3" value="3">
-      <span class="label-body">
-        \(y=\frac{1}{3}+\frac{1}{3}x\)
-      </span>
-    
-  </label>
-</div>
-<div class="form-check">
-  <label>
-    <input class="form-check-input" type="checkbox" name="check_wKcQPsAi" id="check_wKcQPsAi_4" value="4">
+    <input class="form-check-input" type="checkbox" name="check_VzyEKvzj" id="check_VzyEKvzj_3" value="3">
       <span class="label-body">
         \(y=3x+1\)
       </span>
@@ -1871,7 +1865,16 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
 </div>
 <div class="form-check">
   <label>
-    <input class="form-check-input" type="checkbox" name="check_wKcQPsAi" id="check_wKcQPsAi_5" value="5">
+    <input class="form-check-input" type="checkbox" name="check_VzyEKvzj" id="check_VzyEKvzj_4" value="4">
+      <span class="label-body">
+        \(y=\frac{1}{3}+\frac{1}{3}x\)
+      </span>
+    
+  </label>
+</div>
+<div class="form-check">
+  <label>
+    <input class="form-check-input" type="checkbox" name="check_VzyEKvzj" id="check_VzyEKvzj_5" value="5">
       <span class="label-body">
         \(y=\frac{x-1}{3}\)
       </span>
@@ -1882,15 +1885,15 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="wKcQPsAi_message" style="padding-bottom: 15px"></div>
+      <div id="VzyEKvzj_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="check_wKcQPsAi"]').forEach(function(rb) {
+document.querySelectorAll('input[name="check_VzyEKvzj"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var choice_buttons = document.getElementsByName("check_wKcQPsAi");
+    var choice_buttons = document.getElementsByName("check_VzyEKvzj");
     var selected = [];
     for (var i=0; i < choice_buttons.length; i++) {
         if (choice_buttons[i].checked) {
@@ -1901,17 +1904,17 @@ rb.addEventListener("change", function() {
     var b = [1, 5];
     // https://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript
     var  correct =  (a.length === b.length && a.find((v,i) => v !== b[i]) === undefined)
-    var msgBox = document.getElementById('wKcQPsAi_message');
+    var msgBox = document.getElementById('VzyEKvzj_message');
     
-    quizquestions_scorecard["wKcQPsAi"]["attempts"] += 1;
+    quizquestions_scorecard["VzyEKvzj"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_wKcQPsAi")
+    var explanation = document.getElementById("explanation_VzyEKvzj")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["wKcQPsAi"]["correct"] = true;
+      quizquestions_scorecard["VzyEKvzj"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1919,11 +1922,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Todavía no es correcto </span></div>";
-    var explanation = document.getElementById("explanation_wKcQPsAi")
+    var explanation = document.getElementById("explanation_VzyEKvzj")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["wKcQPsAi"]["correct"] = false;
+      quizquestions_scorecard["VzyEKvzj"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1944,43 +1947,43 @@ rb.addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "chtczqfM"
+var ID = "XZTn7vDT"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="chtczqfM" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="XZTn7vDT" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_chtczqfM">
+      <div class="form" id="controls_XZTn7vDT">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="chtczqfM" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="XZTn7vDT" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="chtczqfM_message" style="padding-bottom: 15px"></div>
+      <div id="XZTn7vDT_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("chtczqfM").addEventListener("change", function() {
+document.getElementById("XZTn7vDT").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 2) <= 0.001);
-  var msgBox = document.getElementById('chtczqfM_message');
+  var msgBox = document.getElementById('XZTn7vDT_message');
   
-    quizquestions_scorecard["chtczqfM"]["attempts"] += 1;
+    quizquestions_scorecard["XZTn7vDT"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_chtczqfM")
+    var explanation = document.getElementById("explanation_XZTn7vDT")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["chtczqfM"]["correct"] = true;
+      quizquestions_scorecard["XZTn7vDT"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1988,11 +1991,11 @@ document.getElementById("chtczqfM").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_chtczqfM")
+    var explanation = document.getElementById("explanation_XZTn7vDT")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["chtczqfM"]["correct"] = false;
+      quizquestions_scorecard["XZTn7vDT"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2021,46 +2024,19 @@ x^3-x-2 &amp; \mbox{si } x\leq 0,\\
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "qg7mpUPR"
+var ID = "nmkKGh91"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="qg7mpUPR" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="nmkKGh91" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_qg7mpUPR">
+      <div class="form" id="controls_nmkKGh91">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_qg7mpUPR_1">
-      <input class="form-check-input" type="radio" name="radio_qg7mpUPR" id="radio_qg7mpUPR_1" value="1">
-      
-      <span class="label-body px-1">
-        \(-2 - \frac{\sqrt{2}}{2}\)
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_qg7mpUPR_2">
-      <input class="form-check-input" type="radio" name="radio_qg7mpUPR" id="radio_qg7mpUPR_2" value="2">
-      
-      <span class="label-body px-1">
-        \(-2+\frac{\sqrt{2}}{2}\)
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_qg7mpUPR_3">
-      <input class="form-check-input" type="radio" name="radio_qg7mpUPR" id="radio_qg7mpUPR_3" value="3">
-      
-      <span class="label-body px-1">
-        \(-2\)
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_qg7mpUPR_4">
-      <input class="form-check-input" type="radio" name="radio_qg7mpUPR" id="radio_qg7mpUPR_4" value="4">
+    <label class="form-check-label" for="radio_nmkKGh91_1">
+      <input class="form-check-input" type="radio" name="radio_nmkKGh91" id="radio_nmkKGh91_1" value="1">
       
       <span class="label-body px-1">
         No hay ningún valor de de \(a\) que haga la función continua
@@ -2068,11 +2044,38 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_qg7mpUPR_5">
-      <input class="form-check-input" type="radio" name="radio_qg7mpUPR" id="radio_qg7mpUPR_5" value="5">
+    <label class="form-check-label" for="radio_nmkKGh91_2">
+      <input class="form-check-input" type="radio" name="radio_nmkKGh91" id="radio_nmkKGh91_2" value="2">
+      
+      <span class="label-body px-1">
+        \(-2 - \frac{\sqrt{2}}{2}\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_nmkKGh91_3">
+      <input class="form-check-input" type="radio" name="radio_nmkKGh91" id="radio_nmkKGh91_3" value="3">
       
       <span class="label-body px-1">
         \(2-\sqrt{2}\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_nmkKGh91_4">
+      <input class="form-check-input" type="radio" name="radio_nmkKGh91" id="radio_nmkKGh91_4" value="4">
+      
+      <span class="label-body px-1">
+        \(-2\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_nmkKGh91_5">
+      <input class="form-check-input" type="radio" name="radio_nmkKGh91" id="radio_nmkKGh91_5" value="5">
+      
+      <span class="label-body px-1">
+        \(-2+\frac{\sqrt{2}}{2}\)
       </span>
     </label>
 </div>
@@ -2080,26 +2083,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="qg7mpUPR_message" style="padding-bottom: 15px"></div>
+      <div id="nmkKGh91_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_qg7mpUPR"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_nmkKGh91"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 1;
-    var msgBox = document.getElementById('qg7mpUPR_message');
+    var correct = rb.value == 2;
+    var msgBox = document.getElementById('nmkKGh91_message');
     
-    quizquestions_scorecard["qg7mpUPR"]["attempts"] += 1;
+    quizquestions_scorecard["nmkKGh91"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_qg7mpUPR")
+    var explanation = document.getElementById("explanation_nmkKGh91")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["qg7mpUPR"]["correct"] = true;
+      quizquestions_scorecard["nmkKGh91"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2107,11 +2110,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_qg7mpUPR")
+    var explanation = document.getElementById("explanation_nmkKGh91")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["qg7mpUPR"]["correct"] = false;
+      quizquestions_scorecard["nmkKGh91"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2133,37 +2136,19 @@ rb.addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "0uSiIAeX"
+var ID = "p4HqSkDe"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="0uSiIAeX" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="p4HqSkDe" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_0uSiIAeX">
+      <div class="form" id="controls_p4HqSkDe">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_0uSiIAeX_1">
-      <input class="form-check-input" type="radio" name="radio_0uSiIAeX" id="radio_0uSiIAeX_1" value="1">
-      
-      <span class="label-body px-1">
-        Salto infinito
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_0uSiIAeX_2">
-      <input class="form-check-input" type="radio" name="radio_0uSiIAeX" id="radio_0uSiIAeX_2" value="2">
-      
-      <span class="label-body px-1">
-        Salto finito
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_0uSiIAeX_3">
-      <input class="form-check-input" type="radio" name="radio_0uSiIAeX" id="radio_0uSiIAeX_3" value="3">
+    <label class="form-check-label" for="radio_p4HqSkDe_1">
+      <input class="form-check-input" type="radio" name="radio_p4HqSkDe" id="radio_p4HqSkDe_1" value="1">
       
       <span class="label-body px-1">
         Evitable
@@ -2171,8 +2156,8 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_0uSiIAeX_4">
-      <input class="form-check-input" type="radio" name="radio_0uSiIAeX" id="radio_0uSiIAeX_4" value="4">
+    <label class="form-check-label" for="radio_p4HqSkDe_2">
+      <input class="form-check-input" type="radio" name="radio_p4HqSkDe" id="radio_p4HqSkDe_2" value="2">
       
       <span class="label-body px-1">
         Segunda especie
@@ -2180,8 +2165,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_0uSiIAeX_5">
-      <input class="form-check-input" type="radio" name="radio_0uSiIAeX" id="radio_0uSiIAeX_5" value="5">
+    <label class="form-check-label" for="radio_p4HqSkDe_3">
+      <input class="form-check-input" type="radio" name="radio_p4HqSkDe" id="radio_p4HqSkDe_3" value="3">
+      
+      <span class="label-body px-1">
+        Salto finito
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_p4HqSkDe_4">
+      <input class="form-check-input" type="radio" name="radio_p4HqSkDe" id="radio_p4HqSkDe_4" value="4">
+      
+      <span class="label-body px-1">
+        Salto infinito
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_p4HqSkDe_5">
+      <input class="form-check-input" type="radio" name="radio_p4HqSkDe" id="radio_p4HqSkDe_5" value="5">
       
       <span class="label-body px-1">
         Es continua
@@ -2192,26 +2195,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="0uSiIAeX_message" style="padding-bottom: 15px"></div>
+      <div id="p4HqSkDe_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_0uSiIAeX"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_p4HqSkDe"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 1;
-    var msgBox = document.getElementById('0uSiIAeX_message');
+    var correct = rb.value == 4;
+    var msgBox = document.getElementById('p4HqSkDe_message');
     
-    quizquestions_scorecard["0uSiIAeX"]["attempts"] += 1;
+    quizquestions_scorecard["p4HqSkDe"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_0uSiIAeX")
+    var explanation = document.getElementById("explanation_p4HqSkDe")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["0uSiIAeX"]["correct"] = true;
+      quizquestions_scorecard["p4HqSkDe"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2219,11 +2222,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_0uSiIAeX")
+    var explanation = document.getElementById("explanation_p4HqSkDe")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["0uSiIAeX"]["correct"] = false;
+      quizquestions_scorecard["p4HqSkDe"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2244,43 +2247,43 @@ rb.addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "aXGJX1vR"
+var ID = "ier6zyOY"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="aXGJX1vR" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="ier6zyOY" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_aXGJX1vR">
+      <div class="form" id="controls_ier6zyOY">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="aXGJX1vR" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="ier6zyOY" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="aXGJX1vR_message" style="padding-bottom: 15px"></div>
+      <div id="ier6zyOY_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("aXGJX1vR").addEventListener("change", function() {
+document.getElementById("ier6zyOY").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 1.2926957193733988) <= 1.0e-15);
-  var msgBox = document.getElementById('aXGJX1vR_message');
+  var msgBox = document.getElementById('ier6zyOY_message');
   
-    quizquestions_scorecard["aXGJX1vR"]["attempts"] += 1;
+    quizquestions_scorecard["ier6zyOY"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_aXGJX1vR")
+    var explanation = document.getElementById("explanation_ier6zyOY")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["aXGJX1vR"]["correct"] = true;
+      quizquestions_scorecard["ier6zyOY"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2288,11 +2291,11 @@ document.getElementById("aXGJX1vR").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_aXGJX1vR")
+    var explanation = document.getElementById("explanation_ier6zyOY")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["aXGJX1vR"]["correct"] = false;
+      quizquestions_scorecard["ier6zyOY"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
