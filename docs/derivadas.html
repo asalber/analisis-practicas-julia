@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -698,10 +698,7 @@ Solución
 <pre><code>Primera derivada: 1/(x + 1)
 Segunda derivada: -1/(x + 1)^2
 Tercera derivada: 2/(x + 1)^3
-Cuarta derivada: </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>-6/(x + 1)^4</code></pre>
+Cuarta derivada: -6/(x + 1)^4</code></pre>
 </div>
 </div>
 <p>La derivada de orden <span class="math inline">\(n\)</span> es <span class="math inline">\(f^{(n}=\frac{(-1)^{n-1}(n-1)!}{(x+1)^n}\)</span>.</p>
@@ -724,16 +721,19 @@ Solución
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x a real<span class="op">=</span><span class="cn">true</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> a<span class="op">^</span>x</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Primera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">g</span>(x),x))</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Segunda derivada: "</span>, <span class="fu">diff</span>(<span class="fu">g</span>(x),x,<span class="fl">2</span>))</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Tercera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">g</span>(x),x,<span class="fl">3</span>))</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Cuarta derivada: "</span>, <span class="fu">diff</span>(<span class="fu">g</span>(x),x,<span class="fl">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x a real<span class="op">=</span><span class="cn">true</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> a<span class="op">^</span>x</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Primera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">g</span>(x),x))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Segunda derivada: "</span>, <span class="fu">diff</span>(<span class="fu">g</span>(x),x,<span class="fl">2</span>))</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Tercera derivada: "</span>, <span class="fu">diff</span>(<span class="fu">g</span>(x),x,<span class="fl">3</span>))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Cuarta derivada: "</span>, <span class="fu">diff</span>(<span class="fu">g</span>(x),x,<span class="fl">4</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Primera derivada: a^x*log(a)
-Segunda derivada: a^x*log(a)^2
+Segunda derivada: </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a^x*log(a)^2
 Tercera derivada: a^x*log(a)^3
 Cuarta derivada: a^x*log(a)^4</code></pre>
 </div>
@@ -1459,28 +1459,19 @@ ax^2+b &amp;  \mbox{si $0&lt;x\leq c$},  \\
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "YzeQwMRU"
+var ID = "YEAdUkO8"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="YzeQwMRU" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="YEAdUkO8" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_YzeQwMRU">
+      <div class="form" id="controls_YEAdUkO8">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_YzeQwMRU_1">
-      <input class="form-check-input" type="radio" name="radio_YzeQwMRU" id="radio_YzeQwMRU_1" value="1">
-      
-      <span class="label-body px-1">
-        \(a=\sqrt{e}, b=0, c=\frac{1}{e}.\)
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_YzeQwMRU_2">
-      <input class="form-check-input" type="radio" name="radio_YzeQwMRU" id="radio_YzeQwMRU_2" value="2">
+    <label class="form-check-label" for="radio_YEAdUkO8_1">
+      <input class="form-check-input" type="radio" name="radio_YEAdUkO8" id="radio_YEAdUkO8_1" value="1">
       
       <span class="label-body px-1">
         Para ningún valor.
@@ -1488,17 +1479,8 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_YzeQwMRU_3">
-      <input class="form-check-input" type="radio" name="radio_YzeQwMRU" id="radio_YzeQwMRU_3" value="3">
-      
-      <span class="label-body px-1">
-        \(a=1, b=0, c=e.\)
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_YzeQwMRU_4">
-      <input class="form-check-input" type="radio" name="radio_YzeQwMRU" id="radio_YzeQwMRU_4" value="4">
+    <label class="form-check-label" for="radio_YEAdUkO8_2">
+      <input class="form-check-input" type="radio" name="radio_YEAdUkO8" id="radio_YEAdUkO8_2" value="2">
       
       <span class="label-body px-1">
         \(a=\frac{1}{2e}, b=0, c=e^{1/2}.\)
@@ -1506,8 +1488,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_YzeQwMRU_5">
-      <input class="form-check-input" type="radio" name="radio_YzeQwMRU" id="radio_YzeQwMRU_5" value="5">
+    <label class="form-check-label" for="radio_YEAdUkO8_3">
+      <input class="form-check-input" type="radio" name="radio_YEAdUkO8" id="radio_YEAdUkO8_3" value="3">
+      
+      <span class="label-body px-1">
+        \(a=\sqrt{e}, b=0, c=\frac{1}{e}.\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_YEAdUkO8_4">
+      <input class="form-check-input" type="radio" name="radio_YEAdUkO8" id="radio_YEAdUkO8_4" value="4">
+      
+      <span class="label-body px-1">
+        \(a=1, b=0, c=e.\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_YEAdUkO8_5">
+      <input class="form-check-input" type="radio" name="radio_YEAdUkO8" id="radio_YEAdUkO8_5" value="5">
       
       <span class="label-body px-1">
         \(a=1, b=1, c=1.\)
@@ -1518,26 +1518,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="YzeQwMRU_message" style="padding-bottom: 15px"></div>
+      <div id="YEAdUkO8_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_YzeQwMRU"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_YEAdUkO8"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 4;
-    var msgBox = document.getElementById('YzeQwMRU_message');
+    var correct = rb.value == 2;
+    var msgBox = document.getElementById('YEAdUkO8_message');
     
-    quizquestions_scorecard["YzeQwMRU"]["attempts"] += 1;
+    quizquestions_scorecard["YEAdUkO8"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_YzeQwMRU")
+    var explanation = document.getElementById("explanation_YEAdUkO8")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["YzeQwMRU"]["correct"] = true;
+      quizquestions_scorecard["YEAdUkO8"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1545,11 +1545,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_YzeQwMRU")
+    var explanation = document.getElementById("explanation_YEAdUkO8")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["YzeQwMRU"]["correct"] = false;
+      quizquestions_scorecard["YEAdUkO8"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1570,19 +1570,19 @@ rb.addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "3mjulngp"
+var ID = "b7T8XZWp"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="3mjulngp" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="b7T8XZWp" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_3mjulngp">
+      <div class="form" id="controls_b7T8XZWp">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_3mjulngp_1">
-      <input class="form-check-input" type="radio" name="radio_3mjulngp" id="radio_3mjulngp_1" value="1">
+    <label class="form-check-label" for="radio_b7T8XZWp_1">
+      <input class="form-check-input" type="radio" name="radio_b7T8XZWp" id="radio_b7T8XZWp_1" value="1">
       
       <span class="label-body px-1">
         \(\frac{(-1)^n (2n-1)!}{2^n}(x+1)^{-(2n-1)/2}.\)
@@ -1590,8 +1590,8 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_3mjulngp_2">
-      <input class="form-check-input" type="radio" name="radio_3mjulngp" id="radio_3mjulngp_2" value="2">
+    <label class="form-check-label" for="radio_b7T8XZWp_2">
+      <input class="form-check-input" type="radio" name="radio_b7T8XZWp" id="radio_b7T8XZWp_2" value="2">
       
       <span class="label-body px-1">
         \(\frac{(-1)^n \prod_{i=1}^n 2i+1}{2^n}(x+1)^{-(2n+1)/2}.\)
@@ -1599,8 +1599,17 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_3mjulngp_3">
-      <input class="form-check-input" type="radio" name="radio_3mjulngp" id="radio_3mjulngp_3" value="3">
+    <label class="form-check-label" for="radio_b7T8XZWp_3">
+      <input class="form-check-input" type="radio" name="radio_b7T8XZWp" id="radio_b7T8XZWp_3" value="3">
+      
+      <span class="label-body px-1">
+        \(\frac{(-1)^n \prod_{i=1}^n 2i}{2^n}(x+1)^{-(2n+1)/2}.\)
+      </span>
+    </label>
+</div>
+<div class="form-check">
+    <label class="form-check-label" for="radio_b7T8XZWp_4">
+      <input class="form-check-input" type="radio" name="radio_b7T8XZWp" id="radio_b7T8XZWp_4" value="4">
       
       <span class="label-body px-1">
         \(\frac{(-1)^n \prod_{i=1}^n 2i-1}{2^n}(x+1)^{-(2n+1)/2}.\)
@@ -1608,20 +1617,11 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_3mjulngp_4">
-      <input class="form-check-input" type="radio" name="radio_3mjulngp" id="radio_3mjulngp_4" value="4">
+    <label class="form-check-label" for="radio_b7T8XZWp_5">
+      <input class="form-check-input" type="radio" name="radio_b7T8XZWp" id="radio_b7T8XZWp_5" value="5">
       
       <span class="label-body px-1">
         \(\frac{(-1)^n n!}{2^n}(x+1)^{-n/2}.\)
-      </span>
-    </label>
-</div>
-<div class="form-check">
-    <label class="form-check-label" for="radio_3mjulngp_5">
-      <input class="form-check-input" type="radio" name="radio_3mjulngp" id="radio_3mjulngp_5" value="5">
-      
-      <span class="label-body px-1">
-        \(\frac{(-1)^n \prod_{i=1}^n 2i}{2^n}(x+1)^{-(2n+1)/2}.\)
       </span>
     </label>
 </div>
@@ -1629,26 +1629,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="3mjulngp_message" style="padding-bottom: 15px"></div>
+      <div id="b7T8XZWp_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_3mjulngp"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_b7T8XZWp"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var correct = rb.value == 3;
-    var msgBox = document.getElementById('3mjulngp_message');
+    var correct = rb.value == 4;
+    var msgBox = document.getElementById('b7T8XZWp_message');
     
-    quizquestions_scorecard["3mjulngp"]["attempts"] += 1;
+    quizquestions_scorecard["b7T8XZWp"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_3mjulngp")
+    var explanation = document.getElementById("explanation_b7T8XZWp")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["3mjulngp"]["correct"] = true;
+      quizquestions_scorecard["b7T8XZWp"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1656,11 +1656,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_3mjulngp")
+    var explanation = document.getElementById("explanation_b7T8XZWp")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["3mjulngp"]["correct"] = false;
+      quizquestions_scorecard["b7T8XZWp"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1681,43 +1681,43 @@ rb.addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "9HzkyqCO"
+var ID = "lpK7gUnT"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="9HzkyqCO" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="lpK7gUnT" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_9HzkyqCO">
+      <div class="form" id="controls_lpK7gUnT">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="9HzkyqCO" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="lpK7gUnT" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="9HzkyqCO_message" style="padding-bottom: 15px"></div>
+      <div id="lpK7gUnT_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("9HzkyqCO").addEventListener("change", function() {
+document.getElementById("lpK7gUnT").addEventListener("change", function() {
   var correct = (Math.abs(this.value - -1) <= 1.0e-15);
-  var msgBox = document.getElementById('9HzkyqCO_message');
+  var msgBox = document.getElementById('lpK7gUnT_message');
   
-    quizquestions_scorecard["9HzkyqCO"]["attempts"] += 1;
+    quizquestions_scorecard["lpK7gUnT"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_9HzkyqCO")
+    var explanation = document.getElementById("explanation_lpK7gUnT")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["9HzkyqCO"]["correct"] = true;
+      quizquestions_scorecard["lpK7gUnT"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1725,11 +1725,11 @@ document.getElementById("9HzkyqCO").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_9HzkyqCO")
+    var explanation = document.getElementById("explanation_lpK7gUnT")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["9HzkyqCO"]["correct"] = false;
+      quizquestions_scorecard["lpK7gUnT"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1753,43 +1753,43 @@ document.getElementById("9HzkyqCO").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "Kdc5952s"
+var ID = "KDYnP5IF"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="Kdc5952s" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="KDYnP5IF" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_Kdc5952s">
+      <div class="form" id="controls_KDYnP5IF">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="Kdc5952s" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="KDYnP5IF" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="Kdc5952s_message" style="padding-bottom: 15px"></div>
+      <div id="KDYnP5IF_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("Kdc5952s").addEventListener("change", function() {
+document.getElementById("KDYnP5IF").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0) <= 1.0e-5);
-  var msgBox = document.getElementById('Kdc5952s_message');
+  var msgBox = document.getElementById('KDYnP5IF_message');
   
-    quizquestions_scorecard["Kdc5952s"]["attempts"] += 1;
+    quizquestions_scorecard["KDYnP5IF"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_Kdc5952s")
+    var explanation = document.getElementById("explanation_KDYnP5IF")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["Kdc5952s"]["correct"] = true;
+      quizquestions_scorecard["KDYnP5IF"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1797,11 +1797,11 @@ document.getElementById("Kdc5952s").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_Kdc5952s")
+    var explanation = document.getElementById("explanation_KDYnP5IF")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["Kdc5952s"]["correct"] = false;
+      quizquestions_scorecard["KDYnP5IF"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1822,43 +1822,43 @@ document.getElementById("Kdc5952s").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "mIESxQVx"
+var ID = "1U7A4pSv"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="mIESxQVx" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="1U7A4pSv" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_mIESxQVx">
+      <div class="form" id="controls_1U7A4pSv">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="mIESxQVx" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="1U7A4pSv" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="mIESxQVx_message" style="padding-bottom: 15px"></div>
+      <div id="1U7A4pSv_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("mIESxQVx").addEventListener("change", function() {
+document.getElementById("1U7A4pSv").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 1.0307764064044151) <= 1.0e-5);
-  var msgBox = document.getElementById('mIESxQVx_message');
+  var msgBox = document.getElementById('1U7A4pSv_message');
   
-    quizquestions_scorecard["mIESxQVx"]["attempts"] += 1;
+    quizquestions_scorecard["1U7A4pSv"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_mIESxQVx")
+    var explanation = document.getElementById("explanation_1U7A4pSv")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["mIESxQVx"]["correct"] = true;
+      quizquestions_scorecard["1U7A4pSv"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1866,11 +1866,11 @@ document.getElementById("mIESxQVx").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_mIESxQVx")
+    var explanation = document.getElementById("explanation_1U7A4pSv")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["mIESxQVx"]["correct"] = false;
+      quizquestions_scorecard["1U7A4pSv"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1891,19 +1891,19 @@ document.getElementById("mIESxQVx").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "fkeERuey"
+var ID = "lwTkWrwo"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="fkeERuey" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="lwTkWrwo" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_fkeERuey">
+      <div class="form" id="controls_lwTkWrwo">
         <div style="padding-top: 5px">
     <div class="form-check">
   <label>
-    <input class="form-check-input" type="checkbox" name="check_fkeERuey" id="check_fkeERuey_1" value="1">
+    <input class="form-check-input" type="checkbox" name="check_lwTkWrwo" id="check_lwTkWrwo_1" value="1">
       <span class="label-body">
         Es decreciente en todo \(\mathbb{R}\).
       </span>
@@ -1912,16 +1912,7 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
 </div>
 <div class="form-check">
   <label>
-    <input class="form-check-input" type="checkbox" name="check_fkeERuey" id="check_fkeERuey_2" value="2">
-      <span class="label-body">
-        Tiene un punto de inflexión en \(x=3\).
-      </span>
-    
-  </label>
-</div>
-<div class="form-check">
-  <label>
-    <input class="form-check-input" type="checkbox" name="check_fkeERuey" id="check_fkeERuey_3" value="3">
+    <input class="form-check-input" type="checkbox" name="check_lwTkWrwo" id="check_lwTkWrwo_2" value="2">
       <span class="label-body">
         Tiene un mínimo en \(x=1\).
       </span>
@@ -1930,18 +1921,27 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
 </div>
 <div class="form-check">
   <label>
-    <input class="form-check-input" type="checkbox" name="check_fkeERuey" id="check_fkeERuey_4" value="4">
+    <input class="form-check-input" type="checkbox" name="check_lwTkWrwo" id="check_lwTkWrwo_3" value="3">
       <span class="label-body">
-        Tiene un máximo en \(x=1\).
+        Es cóncava hacia abajo en \((1,3)\).
       </span>
     
   </label>
 </div>
 <div class="form-check">
   <label>
-    <input class="form-check-input" type="checkbox" name="check_fkeERuey" id="check_fkeERuey_5" value="5">
+    <input class="form-check-input" type="checkbox" name="check_lwTkWrwo" id="check_lwTkWrwo_4" value="4">
       <span class="label-body">
-        Es cóncava hacia abajo en \((1,3)\).
+        Tiene un punto de inflexión en \(x=3\).
+      </span>
+    
+  </label>
+</div>
+<div class="form-check">
+  <label>
+    <input class="form-check-input" type="checkbox" name="check_lwTkWrwo" id="check_lwTkWrwo_5" value="5">
+      <span class="label-body">
+        Tiene un máximo en \(x=1\).
       </span>
     
   </label>
@@ -1950,15 +1950,15 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="fkeERuey_message" style="padding-bottom: 15px"></div>
+      <div id="lwTkWrwo_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="check_fkeERuey"]').forEach(function(rb) {
+document.querySelectorAll('input[name="check_lwTkWrwo"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
-    var choice_buttons = document.getElementsByName("check_fkeERuey");
+    var choice_buttons = document.getElementsByName("check_lwTkWrwo");
     var selected = [];
     for (var i=0; i < choice_buttons.length; i++) {
         if (choice_buttons[i].checked) {
@@ -1966,20 +1966,20 @@ rb.addEventListener("change", function() {
         }
     }
     var a = selected;
-    var b = [2, 5];
+    var b = [3, 4];
     // https://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript
     var  correct =  (a.length === b.length && a.find((v,i) => v !== b[i]) === undefined)
-    var msgBox = document.getElementById('fkeERuey_message');
+    var msgBox = document.getElementById('lwTkWrwo_message');
     
-    quizquestions_scorecard["fkeERuey"]["attempts"] += 1;
+    quizquestions_scorecard["lwTkWrwo"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_fkeERuey")
+    var explanation = document.getElementById("explanation_lwTkWrwo")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["fkeERuey"]["correct"] = true;
+      quizquestions_scorecard["lwTkWrwo"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -1987,11 +1987,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Todavía no es correcto </span></div>";
-    var explanation = document.getElementById("explanation_fkeERuey")
+    var explanation = document.getElementById("explanation_lwTkWrwo")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["fkeERuey"]["correct"] = false;
+      quizquestions_scorecard["lwTkWrwo"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2040,43 +2040,43 @@ l = \sqrt{x^2 + y^2} + \sqrt{(a-x)^2 + (b-y)^2}
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "8BAGABRl"
+var ID = "uD0sEGJt"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="8BAGABRl" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="uD0sEGJt" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_8BAGABRl">
+      <div class="form" id="controls_uD0sEGJt">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="8BAGABRl" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="uD0sEGJt" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="8BAGABRl_message" style="padding-bottom: 15px"></div>
+      <div id="uD0sEGJt_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("8BAGABRl").addEventListener("change", function() {
+document.getElementById("uD0sEGJt").addEventListener("change", function() {
   var correct = (Math.abs(this.value - -3.398979485566356196394568149411782783931894961313340256865385134501920754915012) <= 1.0e-5);
-  var msgBox = document.getElementById('8BAGABRl_message');
+  var msgBox = document.getElementById('uD0sEGJt_message');
   
-    quizquestions_scorecard["8BAGABRl"]["attempts"] += 1;
+    quizquestions_scorecard["uD0sEGJt"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_8BAGABRl")
+    var explanation = document.getElementById("explanation_uD0sEGJt")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["8BAGABRl"]["correct"] = true;
+      quizquestions_scorecard["uD0sEGJt"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2084,11 +2084,11 @@ document.getElementById("8BAGABRl").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_8BAGABRl")
+    var explanation = document.getElementById("explanation_uD0sEGJt")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["8BAGABRl"]["correct"] = false;
+      quizquestions_scorecard["uD0sEGJt"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2108,43 +2108,43 @@ document.getElementById("8BAGABRl").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "lO13ziSn"
+var ID = "gVzkU8HI"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="lO13ziSn" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="gVzkU8HI" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_lO13ziSn">
+      <div class="form" id="controls_gVzkU8HI">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="lO13ziSn" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="gVzkU8HI" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="lO13ziSn_message" style="padding-bottom: 15px"></div>
+      <div id="gVzkU8HI_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("lO13ziSn").addEventListener("change", function() {
+document.getElementById("gVzkU8HI").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0.6938137821521027377253394906617635760042565649179162339459134290936299528178376) <= 1.0e-5);
-  var msgBox = document.getElementById('lO13ziSn_message');
+  var msgBox = document.getElementById('gVzkU8HI_message');
   
-    quizquestions_scorecard["lO13ziSn"]["attempts"] += 1;
+    quizquestions_scorecard["gVzkU8HI"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_lO13ziSn")
+    var explanation = document.getElementById("explanation_gVzkU8HI")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["lO13ziSn"]["correct"] = true;
+      quizquestions_scorecard["gVzkU8HI"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2152,11 +2152,11 @@ document.getElementById("lO13ziSn").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_lO13ziSn")
+    var explanation = document.getElementById("explanation_gVzkU8HI")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["lO13ziSn"]["correct"] = false;
+      quizquestions_scorecard["gVzkU8HI"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2182,43 +2182,43 @@ document.getElementById("lO13ziSn").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "ourF0dEJ"
+var ID = "1jsPCxjJ"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="ourF0dEJ" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="1jsPCxjJ" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_ourF0dEJ">
+      <div class="form" id="controls_1jsPCxjJ">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="ourF0dEJ" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="1jsPCxjJ" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="ourF0dEJ_message" style="padding-bottom: 15px"></div>
+      <div id="1jsPCxjJ_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("ourF0dEJ").addEventListener("change", function() {
+document.getElementById("1jsPCxjJ").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0.4794255386042030002732879352155713880818033679406000866321398766357564842729006) <= 1.0e-20);
-  var msgBox = document.getElementById('ourF0dEJ_message');
+  var msgBox = document.getElementById('1jsPCxjJ_message');
   
-    quizquestions_scorecard["ourF0dEJ"]["attempts"] += 1;
+    quizquestions_scorecard["1jsPCxjJ"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_ourF0dEJ")
+    var explanation = document.getElementById("explanation_1jsPCxjJ")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["ourF0dEJ"]["correct"] = true;
+      quizquestions_scorecard["1jsPCxjJ"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2226,11 +2226,11 @@ document.getElementById("ourF0dEJ").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_ourF0dEJ")
+    var explanation = document.getElementById("explanation_1jsPCxjJ")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["ourF0dEJ"]["correct"] = false;
+      quizquestions_scorecard["1jsPCxjJ"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2251,43 +2251,43 @@ document.getElementById("ourF0dEJ").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "TiIZPYyr"
+var ID = "hmjQS06P"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="TiIZPYyr" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="hmjQS06P" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_TiIZPYyr">
+      <div class="form" id="controls_hmjQS06P">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group">
-    <input id="TiIZPYyr" type="number" class="form-control" placeholder="Respuesta numérica">
+    <input id="hmjQS06P" type="number" class="form-control" placeholder="Respuesta numérica">
 </div>
 
     
         </div>
       </div>
-      <div id="TiIZPYyr_message" style="padding-bottom: 15px"></div>
+      <div id="hmjQS06P_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.getElementById("TiIZPYyr").addEventListener("change", function() {
+document.getElementById("hmjQS06P").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0.54630248984379026211399832391180098056793212890625) <= 1.0e-20);
-  var msgBox = document.getElementById('TiIZPYyr_message');
+  var msgBox = document.getElementById('hmjQS06P_message');
   
-    quizquestions_scorecard["TiIZPYyr"]["attempts"] += 1;
+    quizquestions_scorecard["hmjQS06P"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_TiIZPYyr")
+    var explanation = document.getElementById("explanation_hmjQS06P")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["TiIZPYyr"]["correct"] = true;
+      quizquestions_scorecard["hmjQS06P"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2295,11 +2295,11 @@ document.getElementById("TiIZPYyr").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_TiIZPYyr")
+    var explanation = document.getElementById("explanation_hmjQS06P")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["TiIZPYyr"]["correct"] = false;
+      quizquestions_scorecard["hmjQS06P"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2321,19 +2321,19 @@ document.getElementById("TiIZPYyr").addEventListener("change", function() {
 if (typeof quizquestions_scorecard === 'undefined') {
    quizquestions_scorecard = {};
 }
-var ID = "0AWQ8Nm2"
+var ID = "s7bRSapR"
 if (typeof quizquestions_scorecard[ID] === 'undefined') {
       quizquestions_scorecard[ID] = {attempts: 0, correct: false};
 }
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="0AWQ8Nm2" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="s7bRSapR" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_0AWQ8Nm2">
+      <div class="form" id="controls_s7bRSapR">
         <div style="padding-top: 5px">
     <div class="form-check">
-    <label class="form-check-label" for="radio_0AWQ8Nm2_1">
-      <input class="form-check-input" type="radio" name="radio_0AWQ8Nm2" id="radio_0AWQ8Nm2_1" value="1">
+    <label class="form-check-label" for="radio_s7bRSapR_1">
+      <input class="form-check-input" type="radio" name="radio_s7bRSapR" id="radio_s7bRSapR_1" value="1">
       
       <span class="label-body px-1">
         El polinomio de Taylor de grado 20 en \(\pi/6\).
@@ -2341,8 +2341,8 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     </label>
 </div>
 <div class="form-check">
-    <label class="form-check-label" for="radio_0AWQ8Nm2_2">
-      <input class="form-check-input" type="radio" name="radio_0AWQ8Nm2" id="radio_0AWQ8Nm2_2" value="2">
+    <label class="form-check-label" for="radio_s7bRSapR_2">
+      <input class="form-check-input" type="radio" name="radio_s7bRSapR" id="radio_s7bRSapR_2" value="2">
       
       <span class="label-body px-1">
         El polinomio de MacLaurin de grado 100.
@@ -2353,26 +2353,26 @@ if (typeof quizquestions_scorecard[ID] === 'undefined') {
     
         </div>
       </div>
-      <div id="0AWQ8Nm2_message" style="padding-bottom: 15px"></div>
+      <div id="s7bRSapR_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 
 <script text="text/javascript">
-document.querySelectorAll('input[name="radio_0AWQ8Nm2"]').forEach(function(rb) {
+document.querySelectorAll('input[name="radio_s7bRSapR"]').forEach(function(rb) {
 rb.addEventListener("change", function() {
     var correct = rb.value == 1;
-    var msgBox = document.getElementById('0AWQ8Nm2_message');
+    var msgBox = document.getElementById('s7bRSapR_message');
     
-    quizquestions_scorecard["0AWQ8Nm2"]["attempts"] += 1;
+    quizquestions_scorecard["s7bRSapR"]["attempts"] += 1;
 
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correcto </span></div>";
-    var explanation = document.getElementById("explanation_0AWQ8Nm2")
+    var explanation = document.getElementById("explanation_s7bRSapR")
     if (explanation != null) {
        explanation.style.display = "none";
     }
-      quizquestions_scorecard["0AWQ8Nm2"]["correct"] = true;
+      quizquestions_scorecard["s7bRSapR"]["correct"] = true;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
@@ -2380,11 +2380,11 @@ rb.addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrecto </span></div>";
-    var explanation = document.getElementById("explanation_0AWQ8Nm2")
+    var explanation = document.getElementById("explanation_s7bRSapR")
     if (explanation != null) {
        explanation.style.display = "block";
     }
-      quizquestions_scorecard["0AWQ8Nm2"]["correct"] = false;
+      quizquestions_scorecard["s7bRSapR"]["correct"] = false;
   if (typeof score_summary !== 'undefined') {
      score_summary()
   }
