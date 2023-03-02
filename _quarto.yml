@@ -5,6 +5,10 @@ project:
     port: 1313
     browser: false
 
+execute: 
+  freeze: auto
+  cache: true
+
 website:
   favicon: "img/logos/favicon.ico"
   reader-mode: true
@@ -38,9 +42,9 @@ book:
     - funciones-elementales.qmd
     - limites.qmd
     - derivadas.qmd
+    - series.qmd
     
 #bibliography: references.bib
-
 
 format:
   html:
@@ -71,6 +75,8 @@ format:
     
   epub:
     cover-image: img/logos/sticker.png
+    html-math-method: mathml
+    toc: true
 
 
 

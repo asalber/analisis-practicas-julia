@@ -1,9 +1,7 @@
 ---
+title: Introducción
 lang: es
 ---
-<!-- LTeX: language = es-ES -->
-
-# Introducción
 
 La gran potencia de cálculo alcanzada por los ordenadores en las últimas décadas ha convertido a los mismos en poderosas herramientas al servicio de todas aquellas disciplinas que, como las matemáticas, requieren cálculos largos y complejos.
 

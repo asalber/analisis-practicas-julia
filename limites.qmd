@@ -1,9 +1,8 @@
 ---
+title: Límites de funciones reales
 lang: es
 jupyter: julia-1.8
 ---
-
-# Límites de funciones reales
 
 ## Ejercicios Resueltos
 

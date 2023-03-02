@@ -1,0 +1,431 @@
+---
+title: Series de números reales
+lang: es
+jupyter: julia-1.8
+---
+
+## Ejercicios Resueltos
+
+Para la realización de esta práctica se requieren los siguientes paquetes:
+
+```{julia}
+using SymPy  # Para el cálculo simbólico de límites.
+using Plots  # Para el dibujo de gráficas.
+#plotlyjs() # Para obtener gráficos interactivos.
+using LaTeXStrings  # Para usar código LaTeX en los gráficos.
+```
+
+:::{#exr-paradoja-dicotomia-zenon}
+La [paradoja de la dicotomía de Zenon](https://es.wikipedia.org/wiki/Paradojas_de_Zen%C3%B3n#Paradoja_de_la_dicotom%C3%ADa) establece que para que un corredor pueda recorrer una distancia hasta la meta, primero tiene que recorrer la mitad de la distancia, después la mitad de la distancia restante, después la mitad de la distancia restante, y así hasta el infinito, por lo que, aparentemente, nunca llegaría a la meta.
+
+La serie que calcula la distancia recorrida por el corredor es
+
+$$
+\sum \frac{1}{2^n}
+$$
+
+a. Calcular los 50 primeras sumas parciales de la serie.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Definir una función para el término general y aplicar la función a los naturales de 1 a 50 usando [compresiones de arrays](https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html#comprensi%C3%B3n-de-arrays).
+Usar la función `cumsum` para realizar sumas parciales.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución 1
+```{julia}
+N = 50
+a(n) = 1/2^n
+an = [a(n) for n = 1:N]
+An = cumsum(an)
+```
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución 2
+```{julia}
+N = 50
+a(n) = 1/2^n
+A(n) = sum(a, 1:n)
+An = [A(n) for n = 1:N]
+```
+:::
+
+b. Dibujar en una gráfica las 50 primeras sumas parciales de la serie.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Definir una función para el término general y aplicar la función a los naturales de 1 a 100 usando compresiones de arrays como en el ejercicio anterior y usar la función `cumsum` para calcular las sumas parciales.
+Después usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` para dibujar el array de las sumas parciales.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, LaTeXStrings
+scatter(An, legend=false)
+```
+:::
+
+a. ¿Es cierto que el corredor nunca llegará a la meta?
+
+:::{.callout-tip collapse="true"}
+## Solución
+No, porque la serie converge a 1.
+:::
+:::
+
+:::{#exr-serie-exponencial}
+Calcular las 50 primeras sumas parciales de la serie $\sum \frac{1}{n!}$ empezando en $n=0$. ¿Cuántas cifras decimales del número $e$ son correctas en la última suma parcial?
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para que no se desborde cálculo del factorial deben usarse enteros de la clase `BigInt`.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución 1
+```{julia}
+N = 50
+a(n) = 1/factorial(big(n))
+an = [a(n) for n = 0:N]
+An = cumsum(an)
+decimales = round(abs(log10(abs(ℯ-An[N]))))
+println(An)
+println("Cifras del número e correctas: $decimales")
+```
+:::
+:::
+
+:::{#exr-series-geometricas}
+Dibujar una gráfica con los 10 primeros términos de las series geométricas $\sum r^n$ para $r=-2$, $r=-1/2$, $r=1/2$ y $r=2$. ¿Para qué valores de $r$ crees que converge la serie?
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+```{julia}
+using Plots, LaTeXStrings
+an = [(-2)^n for n = 0:9]
+scatter(0:9, cumsum(an), label=L"$\sum (-2)^n$")
+```
+
+La serie diverge.
+
+```{julia}
+bn = [(-1/2)^n for n = 1:9]
+scatter(0:9, cumsum(bn), label=L"$\sum (-1/2)^n$")
+```
+
+La serie converge.
+
+```{julia}
+cn = [(1/2)^n for n = 0:9]
+scatter(0:9, cumsum(cn), label=L"$\sum (1/2)^n$")
+```
+
+La serie converge.
+
+```{julia}
+dn = [2^n for n = 0:9]
+scatter(0:9, cumsum(dn), label=L"$\sum 2^n$")
+```
+
+La serie diverge.
+
+Se puede concluir que la serie converge para $|r|<1$.
+:::
+:::
+
+:::{#exr-series-p}
+Dibujar en la misma gráfica los 100 primeros términos de las series $\sum \frac{1}{n^p}$ para $p=1/2$, $p=1$, $p=3/2$ y $p=2$.
+
+¿Para qué valores de $p$ crees que la serie converge?
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, LaTeXStrings
+a(n,p) = 1/n^p
+an = [a(n,1/2) for n = 1:100]
+scatter(cumsum(an), label=L"$\sum \frac{1}{p^{1/2}}$", legend=:topleft)
+bn = [a(n,1) for n = 1:100]
+scatter!(cumsum(bn), label=L"$\sum \frac{1}{p}$")
+cn = [a(n,3/2) for n = 1:100]
+scatter!(cumsum(cn), label=L"$\sum \frac{1}{p^{3/2}}$")
+dn = [a(n,2) for n = 1:100]
+scatter!(cumsum(dn), label=L"$\sum \frac{1}{p^2}$")
+```
+
+Se puede concluir que la serie converge para $p>1$.
+:::
+:::
+
+:::{#exr-serie-alternada}
+Una suma parcial de cualquier serie convergente se puede utilizar como aproximación de la suma de la serie. La aproximación será mejor cuanto mayor sea el orden de la serie parcial, pero depende de la velocidad a la que la serie converja a su suma. En el caso de las series alternadas que converjan, el error en la estimación de la suma mediante la suma parcial de orden $n$ siempre es menor o igual que el término de $n$ de la sucesión correspondiente, es decir, para la serie $\sum a_n$, se cumple que 
+
+$$
+|\sum_{n=1}^\infty a_n - \sum_{i=1}^n a_i|\leq a_n
+$$
+
+Calcular la suma aproximada de las siguientes series alternadas con un error menor de $10^{-10}$. ¿Cuál es la primera suma parcial que da esa aproximación?
+
+a. $\sum \frac{(-1)^n}{n!}$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+error = 10^-10
+a(n) = (-1)^n/factorial(n)
+i = 0
+while abs(a(i)) >= error
+    i += 1
+end
+println("Suma parcial de orden $i")
+println("Aproximación: $(sum(a, 0:i))")
+```
+:::
+
+b. $\sum \frac{(-1)^n}{n!}$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+error = 10^-10
+a(n) = (-1)^n*log(n)/n^2
+i = 2
+while abs(a(i)) >= error
+    i += 1
+end
+println("Suma parcial de orden $i")
+println("Aproximación: $(sum(a, 2:i))")
+```
+:::
+:::
+
+:::{#exr-serie-bessel}
+La [función de Bessel](https://es.wikipedia.org/wiki/Funci%C3%B3n_de_Bessel) de orden 0 se obtiene a partir de la suma de la serie de potencias
+
+$$
+J_0(x) = \sum_{n=0}^\infty (-1)^n\frac{x^{2n}}{2^{2n}(n!)^2}
+$$
+
+Esta función sirve, entre otras cosas, para explicar la distribución de temperaturas en una lámina circular o las vibraciones de una membrana.
+
+a. Calcular el radio de convergencia de la función de Bessel.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Utilizar el [criterio de la razón](https://aprendeconalf.es/analisis-manual/08-series.html#thm-radio-convergencia-razon) para determinar el radio de convergencia de la serie de potencias.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@vars n int=true
+c(n) = (-1)^n*1/(2^(2n)*factorial(n)^2)
+limit(abs(c(n)/c(n+1)), n => Inf)
+```
+La serie converge para todo $\mathbb{R}$.
+:::
+
+b. Dibujar en una misma gráfica la suma funcional parcial de orden 10 de la serie y la función de Bessel de orden 0.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Usar el paquete [`Bessels`](https://github.com/JuliaMath/Bessels.jl) para dibujar la función de Bessel de orden 0.
+:::
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, LaTeXStrings, Bessels
+@vars x real=true
+a(x,n) = (-1)^n/(2^(2n)*factorial(n)^2) * x^(2n)
+N = 10
+an = [a(x,n) for n=0:N]
+An = sum(an)
+plot(An, -8, 8,  ylims = (-1,1), label=L"$\sum_{n=0}^{10} (-1)^n\frac{x^{2n}}{2^{2n}(n!)^2}$")
+plot!(besselj0, label = L"$J_0(x)$")
+```
+La serie converge para todo $\mathbb{R}$.
+:::
+
+:::{#exr-series-fourier}
+Una serie de Fourier es una serie cuyo término general se construye combinando funciones sinusoidales simples (como senos y cosenos) que converge puntualmente a una función periódica continua. La forma general de una serie de Fourier es 
+
+$$
+a_0 + \sum a_n\cos\left(\frac{2n\pi}{T}t\right)+b_n\operatorname{sen}\left(\frac{2n\pi}{T}t\right),
+$$
+donde $a_n$ y $b_n$ son los coeficientes de Fourier y $T$ es el periodo.
+
+Las series de Fourier son muy útiles para aproximar funciones periódicas que describen las ondas, por lo que se utilizan a menudo para modelizar procesos que involucran sonido, imágenes o corriente eléctrica.
+
+Dibujar las gráficas las 10 primeras sumas parciales de las siguientes series de Fourier y predecir hacia qué función convergen.
+
+a. $\sum \operatorname{sen}(nt)$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy, Latexify
+@vars t real=true
+a(t,n) = sin(n*t)
+N = 10
+an = [a(t,n) for n=1:N]
+An = cumsum(an)
+plots = []  # Array para guardar las gráficas
+for i in An
+    push!(plots, plot(i, label=latexify(i), legend=:outertop))
+end
+plot(plots..., layout=(5,2), size=(800,1600))
+```
+
+Converge aproximadamente a la función de tipo _pulso_, que se anula en todo su dominio excepto en los puntos $x=2n\pi$ donde se produce discontinuidad de salto.
+:::
+
+b. $\sum \frac{\operatorname{sen}(nt)}{n}$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy, Latexify
+@vars t real=true
+a(t,n) = sin(n*t)/n
+N = 10
+an = [a(t,n) for n=1:N]
+An = cumsum(an)
+plots = []  # Array para guardar las gráficas
+for i in An
+    push!(plots, plot(i, label=latexify(i), legend=:outertop))
+end
+plot(plots..., layout=(5,2), size=(800,1600))
+```
+
+Converge aproximadamente a la función de tipo _diente de sierra_ con periodo $2\pi$.
+:::
+
+c. $\sum \dfrac{\operatorname{sen}((2n-1)t)}{2n-1}$
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using Plots, SymPy, Latexify
+@vars t real=true
+a(t,n) = sin((2n-1)t)/(2n-1)
+N = 10
+an = [a(t,n) for n=1:N]
+An = cumsum(an)
+plots = []  # Array para guardar las gráficas
+for i in An
+    push!(plots, plot(i, label=latexify(i), legend=:outertop))
+end
+plot(plots..., layout=(5,2), size=(800,1600))
+```
+
+Converge aproximadamente a la función 
+
+$$
+f(x)=\begin{cases}
+0.75 & \mbox{si $2k\pi<x<(2k+1)\pi$}\\
+-0.75 & \mbox{si $(2k+1)\pi<x<(2k+2)\pi$}
+\end{cases}
+$$
+:::
+:::
+
+## Ejercicios propuestos
+
+```{julia}
+#| echo: false
+#| results: "hidden"
+using QuizQuestions
+nothing
+```
+
+:::{#exr-series-propuesto-1}
+Calcular la suma parcial de orden 100 de las siguientes series (empezando en $n=1$):
+
+a. $\sum \frac{1}{n2^n}$
+
+```{julia}
+#| hold: true
+#| echo: false
+a(n) = 1/(big(n)*2^big(n))
+numericq(sum(a, 1:50), 1e-20, hint="Introducir hasta 20 decimales")
+```
+
+b. $\sum \frac{n!}{n^n}$
+
+```{julia}
+#| hold: true
+#| echo: false
+a(n) = factorial(big(n))/big(n)^big(n)
+numericq(sum(a, 1:100), 1e-40, hint="Introducir hasta 40 decimales")
+```
+:::
+
+:::{#exr-series-propuesto-2}
+Dibujar las 100 primeras sumas parciales de las siguientes series y determinar cuáles convergen.
+
+```{julia}
+#| echo: false
+choices = (L"$\sum \frac{\ln(n)}{n}$", L"$\sum \frac{n+1}{\sqrt{n^5}}$", L"$\sum \frac{e^{1/n}}{n}$", L"$\sum n!/n^n$", L"$\sum  \cos(1/n)$")
+answers = [2,4]
+multiq(choices, answers)
+```
+:::
+
+:::{#exr-series-propuesto-3}
+La fuerza que ejerce la gravedad que actúa sobre un cuerpo  de masa $m$ a una altura $h$ sobre la superficie de la Tierra viene dada por la fórmula
+
+$$
+F(h) = \frac{mgR^2}{(R+h)^2}
+$$
+
+donde R es el radio de la Tierra (tomar un radio medio 6371 km) y $g$ es la aceleración de la gravedad (tomar $9.81$ m/s^2). Expresar $F$ como una serie de potencias y aplicar el teorema de la serie alternada para calcular los valores de $h$ para los que la aproximación clásica $F=mg$ no difiere más de un 1% del valor real.
+
+```{julia}
+#| hold: true
+#| echo: false
+numericq(1000, 1)
+```
+:::
+
+:::{#exr-series-propuesto-4}
+¿Cuál de las siguientes gráficas se corresponde con la serie de Fourier 
+
+$$
+\sum (-1)^n\frac{\operatorname{sen}((2n-1)t)}{(2n-1)^2} \mbox{ ?}
+$$
+
+```{julia}
+#| echo: false
+using Plots, SymPy
+@vars t real=true
+a(t,n) = (-1)^n*sin((2n-1)t)/(2n-1)^2
+b(t,n) = cos((2n-1)t)/(2n-1)
+c(t,n) = sin(3n*t)
+d(t,n) = cos(n*t)/n
+N = 10
+an = [a(t,n) for n=1:N]
+An = cumsum(an)
+p1 = plot(An[N], legend=false)
+bn = [b(t,n) for n=1:N]
+Bn = cumsum(bn)
+p2 = plot(Bn[N], legend=false)
+cn = [c(t,n) for n=1:N]
+Cn = cumsum(cn)
+p3 = plot(Cn[N], legend=false)
+dn = [d(t,n) for n=1:N]
+Dn = cumsum(dn)
+p4 = plot(Dn[N], legend=false)
+l = @layout [a b; c d]
+p = plot(p1, p2, p3, p4, layout=l)
+imgfile = "img/series/graficas-series-fourier.png"
+savefig(p, imgfile)
+hotspotq(imgfile, (0,1/2), (1/2, 1))
+```
+:::

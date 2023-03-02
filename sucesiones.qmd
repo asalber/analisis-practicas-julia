@@ -1,9 +1,8 @@
 ---
+title: Sucesiones de números reales
 lang: es
 jupyter: julia-1.8
 ---
-
-# Sucesiones de números reales
 
 ## Ejercicios Resueltos
 
