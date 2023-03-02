@@ -378,7 +378,34 @@ multiq(choices, answers)
 ```
 :::
 
+
 :::{#exr-series-propuesto-3}
+Calcular el radio de convergencia de las siguientes series de potencias.
+
+a. $\sum \frac{(x-2)^n}{n5^n}$
+
+```{julia}
+#| echo: false
+using SymPy
+@vars n int=true
+c(n) = 1/(n*4^n)
+l = limit(abs(c(n)/c(n+1)), n => Inf)
+numericq(l, 1)
+```
+
+b. $\sum \frac{2^n(x-2)^n}{(n+2)!}$
+
+```{julia}
+#| echo: false
+using SymPy
+@vars n int=true
+c(n) = 2^n/sqrt(n+3)
+l = limit(abs(c(n)/c(n+1)), n => Inf)
+numericq(l, 1)
+```
+:::
+
+:::{#exr-series-propuesto-4}
 La fuerza que ejerce la gravedad que actúa sobre un cuerpo  de masa $m$ a una altura $h$ sobre la superficie de la Tierra viene dada por la fórmula
 
 $$
@@ -394,7 +421,7 @@ numericq(1000, 1)
 ```
 :::
 
-:::{#exr-series-propuesto-4}
+:::{#exr-series-propuesto-5}
 ¿Cuál de las siguientes gráficas se corresponde con la serie de Fourier 
 
 $$
