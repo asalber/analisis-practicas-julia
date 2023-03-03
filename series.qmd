@@ -186,7 +186,7 @@ println("Aproximación: $(sum(a, 0:i))")
 ```
 :::
 
-b. $\sum \frac{(-1)^n}{n!}$
+b. $\sum \frac{(-1)^n\ln(n)}{n^2}$
 
 :::{.callout-tip collapse="true"}
 ## Solución

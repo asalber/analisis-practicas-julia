@@ -278,7 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="ejercicios-resueltos" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="ejercicios-resueltos"><span class="header-section-number">6.1</span> Ejercicios Resueltos</h2>
 <p>Para la realización de esta práctica se requieren los siguientes paquetes:</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy  </span><span class="co"># Para el cálculo simbólico de límites.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots  </span><span class="co"># Para el dibujo de gráficas.</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plotlyjs() # Para obtener gráficos interactivos.</span></span>
@@ -321,7 +321,7 @@ Solución 1
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="fl">50</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span><span class="op">^</span>n</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>an <span class="op">=</span> [<span class="fu">a</span>(n) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span>N]</span>
@@ -371,7 +371,7 @@ Solución 2
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="fl">50</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span><span class="op">^</span>n</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">A</span>(n) <span class="op">=</span> <span class="fu">sum</span>(a, <span class="fl">1</span><span class="op">:</span>n)</span>
@@ -440,7 +440,7 @@ Solución
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">LaTeXStrings</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(An, legend<span class="op">=</span><span class="cn">false</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -500,7 +500,7 @@ Solución 1
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="fl">50</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fu">factorial</span>(<span class="fu">big</span>(n))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>an <span class="op">=</span> [<span class="fu">a</span>(n) for n <span class="op">=</span> <span class="fl">0</span><span class="op">:</span>N]</span>
@@ -531,7 +531,7 @@ Solución
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">LaTeXStrings</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>an <span class="op">=</span> [(<span class="op">-</span><span class="fl">2</span>)<span class="op">^</span>n for n <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">9</span>]</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(<span class="fl">0</span><span class="op">:</span><span class="fl">9</span>, <span class="fu">cumsum</span>(an), label<span class="op">=</span>L<span class="st">"</span><span class="sc">$</span><span class="st">\</span>sum<span class="st"> (-2)^n</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -540,7 +540,7 @@ Solución
 </div>
 </div>
 <p>La serie diverge.</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>bn <span class="op">=</span> [(<span class="op">-</span><span class="fl">1</span><span class="op">/</span><span class="fl">2</span>)<span class="op">^</span>n for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">9</span>]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(<span class="fl">0</span><span class="op">:</span><span class="fl">9</span>, <span class="fu">cumsum</span>(bn), label<span class="op">=</span>L<span class="st">"</span><span class="sc">$</span><span class="st">\</span>sum<span class="st"> (-1/2)^n</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -548,7 +548,7 @@ Solución
 </div>
 </div>
 <p>La serie converge.</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cn <span class="op">=</span> [(<span class="fl">1</span><span class="op">/</span><span class="fl">2</span>)<span class="op">^</span>n for n <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">9</span>]</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(<span class="fl">0</span><span class="op">:</span><span class="fl">9</span>, <span class="fu">cumsum</span>(cn), label<span class="op">=</span>L<span class="st">"</span><span class="sc">$</span><span class="st">\</span>sum<span class="st"> (1/2)^n</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -556,7 +556,7 @@ Solución
 </div>
 </div>
 <p>La serie converge.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dn <span class="op">=</span> [<span class="fl">2</span><span class="op">^</span>n for n <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">9</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(<span class="fl">0</span><span class="op">:</span><span class="fl">9</span>, <span class="fu">cumsum</span>(dn), label<span class="op">=</span>L<span class="st">"</span><span class="sc">$</span><span class="st">\</span>sum<span class="st"> 2^n</span><span class="sc">$</span><span class="st">")</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -584,7 +584,7 @@ Solución
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">LaTeXStrings</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n,p) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span>n<span class="op">^</span>p</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>an <span class="op">=</span> [<span class="fu">a</span>(n,<span class="fl">1</span><span class="op">/</span><span class="fl">2</span>) for n <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>]</span>
@@ -625,7 +625,7 @@ Solución
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>error <span class="op">=</span> <span class="fl">10</span><span class="op">^-</span><span class="fl">10</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n<span class="op">/</span><span class="fu">factorial</span>(n)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="fl">0</span></span>
@@ -643,7 +643,7 @@ Aproximación: 0.36787944117216204</code></pre>
 </div>
 </div>
 <ol start="2" type="a">
-<li><span class="math inline">\(\sum \frac{(-1)^n}{n!}\)</span></li>
+<li><span class="math inline">\(\sum \frac{(-1)^n\ln(n)}{n^2}\)</span></li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
@@ -657,7 +657,7 @@ Solución
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>error <span class="op">=</span> <span class="fl">10</span><span class="op">^-</span><span class="fl">10</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span><span class="fu">n*log</span>(n)<span class="op">/</span>n<span class="op">^</span><span class="fl">2</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="fl">2</span></span>
@@ -712,7 +712,7 @@ Solución
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> n int<span class="op">=</span><span class="cn">true</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n<span class="op">*</span><span class="fl">1</span><span class="op">/</span>(<span class="fl">2</span><span class="op">^</span>(<span class="fl">2</span>n)<span class="fu">*factorial</span>(n)<span class="op">^</span><span class="fl">2</span>)</span>
@@ -757,7 +757,7 @@ Solución
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">LaTeXStrings</span>, <span class="bu">Bessels</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> x real<span class="op">=</span><span class="cn">true</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(x,n) <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>n<span class="op">/</span>(<span class="fl">2</span><span class="op">^</span>(<span class="fl">2</span>n)<span class="fu">*factorial</span>(n)<span class="op">^</span><span class="fl">2</span>) <span class="op">*</span> x<span class="op">^</span>(<span class="fl">2</span>n)</span>
@@ -796,7 +796,7 @@ Solución
 </div>
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">Latexify</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> t real<span class="op">=</span><span class="cn">true</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(t,n) <span class="op">=</span> <span class="fu">sin</span>(n<span class="op">*</span>t)</span>
@@ -831,7 +831,7 @@ Solución
 </div>
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">Latexify</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> t real<span class="op">=</span><span class="cn">true</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(t,n) <span class="op">=</span> <span class="fu">sin</span>(n<span class="op">*</span>t)<span class="op">/</span>n</span>
@@ -866,7 +866,7 @@ Solución
 </div>
 <div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">Latexify</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> t real<span class="op">=</span><span class="cn">true</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>(t,n) <span class="op">=</span> <span class="fu">sin</span>((<span class="fl">2</span>n<span class="op">-</span><span class="fl">1</span>)t)<span class="op">/</span>(<span class="fl">2</span>n<span class="op">-</span><span class="fl">1</span>)</span>
@@ -901,7 +901,7 @@ f(x)=\begin{cases}
 <ol type="a">
 <li><span class="math inline">\(\sum \frac{1}{n2^n}\)</span></li>
 </ol>
-<div class="cell" data-hold="true" data-execution_count="19">
+<div class="cell" data-hold="true" data-execution_count="20">
 <div class="cell-output cell-output-display" data-execution_count="20">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
@@ -971,7 +971,7 @@ document.getElementById("Cj4a3QR0").addEventListener("change", function() {
 <ol start="2" type="a">
 <li><span class="math inline">\(\sum \frac{n!}{n^n}\)</span></li>
 </ol>
-<div class="cell" data-hold="true" data-execution_count="20">
+<div class="cell" data-hold="true" data-execution_count="21">
 <div class="cell-output cell-output-display" data-execution_count="21">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
@@ -1041,7 +1041,7 @@ document.getElementById("IwQXGoGT").addEventListener("change", function() {
 </div>
 <div id="exr-series-propuesto-2" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 6.9 </strong></span>Dibujar las 100 primeras sumas parciales de las siguientes series y determinar cuáles convergen.</p>
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display" data-execution_count="22">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
@@ -1165,7 +1165,7 @@ rb.addEventListener("change", function() {
 <ol type="a">
 <li><span class="math inline">\(\sum \frac{(x-2)^n}{n5^n}\)</span></li>
 </ol>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="23">
 <div class="cell-output cell-output-display" data-execution_count="23">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
@@ -1234,7 +1234,7 @@ document.getElementById("frDWKWh9").addEventListener("change", function() {
 <ol start="2" type="a">
 <li><span class="math inline">\(\sum \frac{2^n(x-2)^n}{(n+2)!}\)</span></li>
 </ol>
-<div class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="24">
 <div class="cell-output cell-output-display" data-execution_count="24">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
@@ -1307,7 +1307,7 @@ document.getElementById("63lS4XVj").addEventListener("change", function() {
 F(h) = \frac{mgR^2}{(R+h)^2}
 \]</span></p>
 <p>donde R es el radio de la Tierra (tomar un radio medio 6371 km) y <span class="math inline">\(g\)</span> es la aceleración de la gravedad (tomar <span class="math inline">\(9.81\)</span> m/s^2). Expresar <span class="math inline">\(F\)</span> como una serie de potencias y aplicar el teorema de la serie alternada para calcular los valores de <span class="math inline">\(h\)</span> para los que la aproximación clásica <span class="math inline">\(F=mg\)</span> no difiere más de un 1% del valor real.</p>
-<div class="cell" data-hold="true" data-execution_count="24">
+<div class="cell" data-hold="true" data-execution_count="25">
 <div class="cell-output cell-output-display" data-execution_count="25">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
@@ -1379,7 +1379,7 @@ document.getElementById("w32NPKkC").addEventListener("change", function() {
 <p><span class="math display">\[
 \sum (-1)^n\frac{\operatorname{sen}((2n-1)t)}{(2n-1)^2} \mbox{ ?}
 \]</span></p>
-<div class="cell" data-execution_count="25">
+<div class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display" data-execution_count="26">
 <script>
 if (typeof quizquestions_scorecard === 'undefined') {
