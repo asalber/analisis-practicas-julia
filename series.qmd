@@ -165,7 +165,7 @@ Se puede concluir que la serie converge para $p>1$.
 Una suma parcial de cualquier serie convergente se puede utilizar como aproximación de la suma de la serie. La aproximación será mejor cuanto mayor sea el orden de la serie parcial, pero depende de la velocidad a la que la serie converja a su suma. En el caso de las series alternadas que converjan, el error en la estimación de la suma mediante la suma parcial de orden $n$ siempre es menor o igual que el término de $n$ de la sucesión correspondiente, es decir, para la serie $\sum a_n$, se cumple que 
 
 $$
-|\sum_{n=1}^\infty a_n - \sum_{i=1}^n a_i|\leq a_n
+\left|\sum_{n=1}^\infty a_n - \sum_{i=1}^n a_i \right|\leq a_n
 $$
 
 Calcular la suma aproximada de las siguientes series alternadas con un error menor de $10^{-10}$. ¿Cuál es la primera suma parcial que da esa aproximación?
@@ -201,6 +201,51 @@ println("Suma parcial de orden $i")
 println("Aproximación: $(sum(a, 2:i))")
 ```
 :::
+:::
+
+:::{#exr-serie-maclaurin}
+Calcular hasta la suma funcional parcial de orden $9$ de la serie de Maclaurin para la función $\operatorname{arctg}(x)$. Deducir el término general de la serie y estudiar su radio de convergencia. 
+
+Se puede probar que esta serie también converge en $x=1$. Usar este hecho para calcular el valor de $\pi$ con un error menor de $10^-8$.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular polinomios de Taylor utilizar la función [`series`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#Taylor-series-1) del paquete `SymPy`.
+
+Para calcular el radio de convergencia utilizar el [criterio de la razón](https://aprendeconalf.es/analisis-manual/08-series.html#thm-radio-convergencia-razon) para determinar el radio de convergencia de la serie de potencias.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@vars x real=true
+p(n) = series(atan(x), x, 0, n+1).removeO()
+for i = 1:5
+    println("Suma funcional parcial de grado $(2i-1): $(p(2i-1))")
+end
+```
+
+El término general de la serie es $\frac{(-1)^{n-1}}{2n-1}$, y por tanto, se trata de una serie alternada.
+
+
+```{julia}
+@vars n int=true
+c(n) = (-1)^(n-1)/(2n-1)
+limit(abs(c(n)/c(n+1)), n => Inf)
+```
+
+El radio de convergencia es $R=1$, y por tanto la serie converge para $-1<x<1$. En realidad, su dominio de convergencia es $[-1,1]$.
+
+```{julia}
+error = 10^-8
+i = 0
+while abs(c(i)) >= error
+    i += 1
+end
+println("Suma parcial de orden $i")
+println("Aproximación de π: $(4*sum(c, 1:i))")
+```
 :::
 
 :::{#exr-serie-bessel}
@@ -378,8 +423,24 @@ multiq(choices, answers)
 ```
 :::
 
-
 :::{#exr-series-propuesto-3}
+¿Hasta qué suma parcial de la serie de Maclaurin de la función $e^x$ hay que llegar para aproximar el número $e$ con un error menor de $10^-10$?
+
+```{julia}
+#| echo: false
+error = 10^-10
+a(n) = 1/factorial(big(n))
+suma = a(0)
+i = 0
+while abs(suma-ℯ) > error
+    i += 1
+    suma += a(i)
+end
+numericq(i, 1)
+```
+:::
+
+:::{#exr-series-propuesto-4}
 Calcular el radio de convergencia de las siguientes series de potencias.
 
 a. $\sum \frac{(x-2)^n}{n5^n}$
@@ -405,23 +466,27 @@ numericq(l, 1)
 ```
 :::
 
-:::{#exr-series-propuesto-4}
+:::{#exr-series-propuesto-5}
 La fuerza que ejerce la gravedad que actúa sobre un cuerpo  de masa $m$ a una altura $h$ sobre la superficie de la Tierra viene dada por la fórmula
 
 $$
 F(h) = \frac{mgR^2}{(R+h)^2}
 $$
 
-donde R es el radio de la Tierra (tomar un radio medio 6371 km) y $g$ es la aceleración de la gravedad (tomar $9.81$ m/s^2). Expresar $F$ como una serie de potencias y aplicar el teorema de la serie alternada para calcular los valores de $h$ para los que la aproximación clásica $F=mg$ no difiere más de un 1% del valor real.
+donde R es el radio de la Tierra (tomar un radio medio 6371 km) y $g$ es la aceleración de la gravedad (tomar $9.81$ m/s^2). Expresar $F$ como una serie de potencias de $h/R$ y aplicar el teorema de la serie alternada para calcular los valores de $h$ para los que la aproximación clásica $F=mg$ no difiere más de un 1% del valor real.
 
 ```{julia}
 #| hold: true
 #| echo: false
+using SymPy
+@vars x m g real=true
+a(n) = m*g*(n+1)*(-x)^n
+a(0)
 numericq(1000, 1)
 ```
 :::
 
-:::{#exr-series-propuesto-5}
+:::{#exr-series-propuesto-6}
 ¿Cuál de las siguientes gráficas se corresponde con la serie de Fourier 
 
 $$
@@ -450,9 +515,9 @@ dn = [d(t,n) for n=1:N]
 Dn = cumsum(dn)
 p4 = plot(Dn[N], legend=false)
 l = @layout [a b; c d]
-p = plot(p1, p2, p3, p4, layout=l)
+plt = plot(p1, p2, p3, p4, layout=l)
 imgfile = "img/series/graficas-series-fourier.png"
-savefig(p, imgfile)
+savefig(plt, imgfile)
 hotspotq(imgfile, (0,1/2), (1/2, 1))
 ```
 :::

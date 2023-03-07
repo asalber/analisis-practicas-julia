@@ -452,7 +452,7 @@ Crear una función para calcular el polinomio de Taylor de grado $n$ una funció
 
 :::{.callout-note collapse="true"}
 ## Ayuda
-La fórmula del polinomio de Taylor de gardo $n$ de la función $f$ en el punto $a$ es 
+La fórmula del polinomio de Taylor de grado $n$ de la función $f$ en el punto $a$ es 
 
 $$
 P^n_{f,a}(x) = f(a)+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2+ \cdots + \frac{f^{(n}(a)}{n!}(x-a)^n.
@@ -479,7 +479,7 @@ plt
 :::
 
 :::{#exr-taylor-2}
-Calcular los polinomios de taylor hasta grado 10 de las siguientes funciones en los puntos indicados.
+Calcular los polinomios de Taylor hasta grado 10 de las siguientes funciones en los puntos indicados.
 
 a. $f(x)=\cos(x)$ en $x=\pi/2$.
 
