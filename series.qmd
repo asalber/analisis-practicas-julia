@@ -162,10 +162,10 @@ Se puede concluir que la serie converge para $p>1$.
 :::
 
 :::{#exr-serie-alternada}
-Una suma parcial de cualquier serie convergente se puede utilizar como aproximación de la suma de la serie. La aproximación será mejor cuanto mayor sea el orden de la serie parcial, pero depende de la velocidad a la que la serie converja a su suma. En el caso de las series alternadas que converjan, el error en la estimación de la suma mediante la suma parcial de orden $n$ siempre es menor o igual que el término de $n$ de la sucesión correspondiente, es decir, para la serie $\sum a_n$, se cumple que 
+Una suma parcial de cualquier serie convergente se puede utilizar como aproximación de la suma de la serie. La aproximación será mejor cuanto mayor sea el orden de la serie parcial, pero depende de la velocidad a la que la serie converja a su suma. En el caso de las series alternadas que converjan, el error en la estimación de la suma mediante la suma parcial de orden $n$ siempre es menor o igual que el término de $n$ de la sucesión correspondiente, es decir, para la serie alternada $\sum (-1)^n a_n$, se cumple que 
 
 $$
-\left|\sum_{n=1}^\infty a_n - \sum_{i=1}^n a_i \right|\leq a_n
+\left|\sum_{n=1}^\infty (-1)^n a_n - \sum_{i=1}^n (-1)^i a_i \right|\leq a_n
 $$
 
 Calcular la suma aproximada de las siguientes series alternadas con un error menor de $10^{-10}$. ¿Cuál es la primera suma parcial que da esa aproximación?
@@ -246,6 +246,7 @@ end
 println("Suma parcial de orden $i")
 println("Aproximación de π: $(4*sum(c, 1:i))")
 ```
+:::
 :::
 
 :::{#exr-serie-bessel}
@@ -352,7 +353,7 @@ plot(plots..., layout=(5,2), size=(800,1600))
 Converge aproximadamente a la función de tipo _diente de sierra_ con periodo $2\pi$.
 :::
 
-c. $\sum \dfrac{\operatorname{sen}((2n-1)t)}{2n-1}$
+c. $\sum \frac{\operatorname{sen}((2n-1)t)}{2n-1}$
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -424,15 +425,15 @@ multiq(choices, answers)
 :::
 
 :::{#exr-series-propuesto-3}
-¿Hasta qué suma parcial de la serie de Maclaurin de la función $e^x$ hay que llegar para aproximar el número $e$ con un error menor de $10^-10$?
+¿Hasta qué suma parcial de la serie de Maclaurin de la función $e^x$ hay que llegar para aproximar el número $\sqrt{e}$ con un error menor de $10^-50$?
 
 ```{julia}
 #| echo: false
-error = 10^-10
-a(n) = 1/factorial(big(n))
+error = 10^-50
+a(n) = 1/(2^n*factorial(big(n)))
 suma = a(0)
 i = 0
-while abs(suma-ℯ) > error
+while abs(suma-sqrt(big(ℯ))) > error
     i += 1
     suma += a(i)
 end
@@ -470,19 +471,21 @@ numericq(l, 1)
 La fuerza que ejerce la gravedad que actúa sobre un cuerpo  de masa $m$ a una altura $h$ sobre la superficie de la Tierra viene dada por la fórmula
 
 $$
-F(h) = \frac{mgR^2}{(R+h)^2}
+F = \frac{mgR^2}{(R+h)^2}
 $$
 
-donde R es el radio de la Tierra (tomar un radio medio 6371 km) y $g$ es la aceleración de la gravedad (tomar $9.81$ m/s^2). Expresar $F$ como una serie de potencias de $h/R$ y aplicar el teorema de la serie alternada para calcular los valores de $h$ para los que la aproximación clásica $F=mg$ no difiere más de un 1% del valor real.
+donde R es el radio de la Tierra (tomar un radio medio 6371 km) y $g$ es la aceleración de la gravedad (tomar $9.81$ m/s^2). Expresar $F$ como una serie de potencias de $h/R$ y aplicar el teorema de la serie alternada para calcular el valor máximo de $h$ para el que la aproximación clásica $F=mg$ no difiere más de un 1% del valor real.
 
 ```{julia}
 #| hold: true
 #| echo: false
 using SymPy
-@vars x m g real=true
-a(n) = m*g*(n+1)*(-x)^n
-a(0)
-numericq(1000, 1)
+@vars m g h real=true
+const R = 6371
+error = 0.01
+a(n) = m*g*(n+1)*(-h/R)^n
+sol = solve(abs(a(1)/a(0))-error)[2]
+numericq(sol, 1)
 ```
 :::
 
