@@ -43,6 +43,7 @@ book:
     - limites.qmd
     - derivadas.qmd
     - series.qmd
+    - integrales.qmd
     
 #bibliography: references.bib
 
