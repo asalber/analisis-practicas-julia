@@ -10,10 +10,11 @@ Para la realización de esta práctica se requieren los siguientes paquetes:
 
 ```{julia}
 using SymPy  # Para el cálculo simbólico de integrales.
-using QuadGK # Para el cálculo numérico de integrales.
+using QuadGK  # Para el cálculo numérico de integrales.
 using Plots  # Para el dibujo de gráficas.
-#plotlyjs() # Para obtener gráficos interactivos.
+#plotlyjs()  # Para obtener gráficos interactivos.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
+using PrettyTables # Para formatear tablas.
 ```
 
 :::{#exr-sumas-riemann}
@@ -52,33 +53,33 @@ a.  Dar una cota del error cometido en la aproximación del área encerrada entr
     ```
     :::
 
-a.  Definir una función para calcular de manera aproximada el área encerrada entre la gráfica de $f$ y el eje $x$ en el intervalo $[a,b]$ tomando sumas de Riemann para una partición en $n$ subintervalos, y el error cometido en la aproximación. Utilizarla para calcular los errores aproximados al aproximar el area de $f($ en el intervalo $[0,1]$ tomando particiones desde 10 a 100 subintervalos.
+a.  Definir una función para calcular de manera aproximada el área encerrada entre la gráfica de $f$ y el eje $x$ en el intervalo $[a,b]$ tomando sumas de Riemann para una partición en $n$ subintervalos, y el error cometido en la aproximación. Utilizarla para calcular los errores aproximados al aproximar el area de $f$ en el intervalo $[0,1]$ tomando particiones desde 10 a 100 subintervalos.
 
-    :::{.callout-tip collapse="true"}
-    ## Solución
-    ```{julia}
-    using PrettyTables
-    f(x) = x^2
-    function area_inf(a, b, n)
-        Δx = (b-a)/n
-        return sum([f(a+(i-1)*Δx)*Δx for i = 1:n])
-    end
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using PrettyTables
+f(x) = x^2
+function area_inf(a, b, n)
+    Δx = (b-a)/n
+    return sum([f(a+(i-1)*Δx)*Δx for i = 1:n])
+end
 
-    function area_sup(a, b, n)
-        Δx = (b-a)/n
-        return sum([f(a+i*Δx)*Δx for i = 1:n])
-    end
+function area_sup(a, b, n)
+    Δx = (b-a)/n
+    return sum([f(a+i*Δx)*Δx for i = 1:n])
+end
 
-    function area(a, b, n)
-        area = (area_inf(a, b, n) + area_sup(a, b, n)) / 2
-        error = area_sup(a, b, n) - area_inf(a, b, n)
-        return area, error
-    end
+function area(a, b, n)
+    area = (area_inf(a, b, n) + area_sup(a, b, n)) / 2
+    error = area_sup(a, b, n) - area_inf(a, b, n)
+    return area, error
+end
 
-    areas = [area(0, 1, n) for n=10:100]
-    pretty_table(hcat(first.(areas), last.(areas)); header = ["Aproximación", "Error"])
-    ```
-    :::
+areas = [area(0, 1, n) for n=10:100]
+pretty_table(hcat(first.(areas), last.(areas)); header = ["Aproximación", "Error"])
+```
+:::
 :::
 
 :::{#exr-primitivas}
@@ -121,7 +122,7 @@ a.  $h(x)= \dfrac{6x+5}{(x^2+x+1)^2}$
     :::{.callout-tip collapse="true"}
     ## Solución
 
-    Se trata de una función racional, así que hacemos primero la descomposición en fracciones simples.
+    Se trata de una función racional, así que hacemos primero la descomposición en fracciones simples. Para ello se puede usar la función [`apart(f)`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#Rational-expressions:-apart,-together,-cancel-1) del paquete [`SymPy`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/).
 
     ```{julia}
     h(x) = (2x^3+x^2+6)/(x^5-x)
@@ -206,7 +207,7 @@ a.  $\displaystyle \int_0^{\pi/2} \frac{dx}{3+\cos(2x)}$
 :::
 
 :::{#exr-integracion-numerica}
-Calcular la integral definida $\displaystyle \int_0^1 x^x\, dx$ con un error menor de 10^{-10}.
+Calcular la integral definida $\displaystyle \int_0^1 x^x\, dx$ con un error menor de $10^{-10}$.
 :::
 
 :::{.callout-tip collapse="true"}
@@ -316,7 +317,7 @@ integrate(f(x), 0, oo)
 :::
 
 :::{#exr-valor-medio}
-Un vehículo se mueve con una velocidad dada por la función $\operatorname(sen)(t)^2$. ¿Cuál es la velocidad media en el intervalo $[0,2\pi]$?
+Un vehículo se mueve con una velocidad dada por la función $\operatorname{sen}(t)^2$. ¿Cuál es la velocidad media en el intervalo $[0,2\pi]$?
 :::
 
 :::{.callout-tip collapse="true"}
@@ -392,7 +393,7 @@ Para el caso particular del toro, calcularemos la mitad de su volumen aprovechan
 ```
 :::
 
-:::{#exr-longitud-teja}
+:::{#exr-longitud-curva}
 Una empresa fabrica tejas de chapa con forma ondulada cuyo perfil viene dado por la curva $y=\operatorname{sin}\left(\frac{x}{2}\right)$. Si se quieren obtener tejas de 100 cm de longitud, ¿qué longitud tienen que tener las planchas de chapa para fabricarlas?
 :::
 
@@ -420,6 +421,97 @@ quadgk(sqrt(1+diff(f(x))^2), 0, 100)
 ```
 :::
 
+:::{#exr-superficie-solido-revolucion}
+El [cuerno de Gabriel](https://es.wikipedia.org/wiki/Cuerno_de_Gabriel) es un sólido de revolución que se obtiene al rotar la función $f(x)=1/x$ alrededor del eje $x$ para $x\geq 1$.
+
+a.  El volumen del cuerno de Gabriel.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    Calculamos su volumen mediante discos cilíndricos transversales al eje $x$.
+
+    ```{julia}
+    using SymPy
+    @vars x real = true
+    f(x) = 1/x
+    integrate(PI*f(x)^2, 1, oo)
+    ```
+    :::
+
+b.  Calcular la superficie del cuerno de Gabriel.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    Para calcular la superficie del sólido de revolución que se obtiene al rotar la gráfica de la función $f(x)$ alrededor del eje $x$ en el intervalo $[a,b]$ hay que calcular la integral definida
+
+    $$
+    \int_a^b 2\pi f(x)\sqrt{1+f'(x)^2}\,dx.
+    $$
+
+    ```{julia}
+    using SymPy
+    @vars x real = true
+    f(x) = 1/x
+    integrate(2PI*f(x)*sqrt(1+diff(f(x))^2), 1, oo)
+    ```
+
+    Así pues, se da la paradoja de que el cuerno de Gabriel tiene un volumen finito, pero una superficie infinita. 
+    :::
+:::
+
+:::{#exr-centro-masas}
+Dibujar la región que se obtiene con la intersección de la recta $y=x-1$ y la parábola $y=x^2$, y dibujar su centroide. ¿Cuál es le volumen del sólido de revolución generado al rotar esta región sobre el eje $x$? ¿Y al rotarla sobre el eje $y$?
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+Dibujamos primero la región. Para ello hay que calcular primero los puntos de corte de las dos curvas.
+
+```{julia}
+using SymPy, Plots
+@vars x real = true
+f(x) = x-1
+g(x) = (x-1)^2
+# Calculo de los puntos de corte.
+a, b = N(solve(f(x)-g(x)))
+plot(f(x), a, b, aspect_ratio = 1, label = "")
+plot!(g(x), a, b, fillrange = f, fillalpha = 0.3, aspect_ratio = 1, c = 1, label = "")
+```
+
+Para calcular el centroide $(\bar x, \bar y)$ de una región plana encerrada por dos curvas $f(x)$ y $g(x)$ en el intervalo $[a,b]$ hay que calcular por separado el centro de masas $\bar x$ con respecto al eje $y$, y el centro de masas $\bar y$ con respecto al eje $x$, mediante cociente de las siguientes integrales definidas
+
+\begin{align*}
+\bar x &=\frac{\int_a^b x (f(x)-g(x))\,dx}{\int_a^b f(x)-g(x)\,dx}\\
+\bar y &=\frac{\frac{1}{2}\int_a^b f(x)^2-g(x)^2\,dx}{\int_a^b f(x)-g(x)\,dx}
+\end{align*}
+
+```{julia}
+# Coordenada x del centroide.
+cx = integrate(x*(f(x)-g(x)), a, b) / integrate(f(x)-g(x), a, b)
+# Coordenada y del centroide
+cy = 1/2 * integrate(f(x)^2-g(x)^2, a, b) / integrate(f(x)-g(x), a, b)
+# Dibujamos el centroide
+scatter!((cx,cy), label = "centroide")
+```
+
+Para calcular el volumen del sólido de revolución generado al rotar esta región sobre el eje $x$ podemos usar el teorema de Pappus que establece que el volumen es el area de la región multiplicada por la longitud del camino recorrido por el centroide. 
+
+Al rotar la región sobre el eje $x$ el camino recorrido por el centroide es $2\pi \bar y$.
+
+```{julia}
+2*PI*cy*integrate(PI*(f(x)-g(x)^2), a, b)
+```
+
+Y al rotarla sobre el eje $y$ el camino recorrido por el centroide es $2\pi \bar x$.
+
+```{julia}
+2*PI*cx*integrate(PI*(f(x)-g(x)^2), a, b)
+```
+:::
+
 
 ## Ejercicios propuestos
 
@@ -430,7 +522,24 @@ using QuizQuestions, SymPy
 nothing
 ```
 
-:::{#exr-series-propuesto-3}
+:::{#exr-integrales-propuesto-1}
+Calcular la suma superior de Riemann de la función $f(x)=\sqrt{\ln(x)}$ en el intervalo $[1,2]$, tomando una partición de 100 subinvervalos de igual amplitud.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+#| hold: true
+#| echo: false
+f(x) = sqrt(log(x))
+Δx = 1/100
+areas_sup = [f(1+i*Δx)*Δx for i = 1:100]
+sol = sum_sup = sum(areas_sup)
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-integrales-propuesto-3}
 Calcular el area encerrada entre las funciones $f(x)=\operatorname{sin}(x)$ y $\cos(x)$ en el intervalo $[0,2\pi]$.
 
 ```{julia}
@@ -444,7 +553,7 @@ numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
-:::{#exr-series-propuesto-4}
+:::{#exr-integrales-propuesto-4}
 Dibujar la gráfica de la función $f(x)=\dfrac{1}{\sqrt{2\pi}}e^{\frac{-x^2}{2}}$ y calcular el área total encerrada entre la gráfica y el eje $x$.
 
 ```{julia}
@@ -458,7 +567,7 @@ numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
-:::{#exr-series-propuesto-5}
+:::{#exr-integrales-propuesto-5}
 La función $T(t)=100te^{-t}$ define la temperatura de un sistema en cada instante $t$. Calcular la temperatura media en el intervalo $[0,5]$.
 
 ```{julia}
@@ -471,7 +580,7 @@ numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
-:::{#exr-series-propuesto-8}
+:::{#exr-integrales-propuesto-8}
 La curva $y=a\cosh(x/a)$ se conoce como _catenaria_. ¿Cuál es la longitud de la catenaria con $a=2$ entre $-1$ y $1$?
 
 ```{julia}
@@ -481,5 +590,28 @@ La curva $y=a\cosh(x/a)$ se conoce como _catenaria_. ¿Cuál es la longitud de l
 c(x) = 2cosh(x/2)
 sol = quadgk(sqrt(1+diff(c)^2), -1, 1)
 numericq(sol[1], 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+
+:::{#exr-integrales-propuesto-9}
+La función de densidad del modelo de distribución de probabilidad exponencial $\mbox{Exp}(1)$ es 
+
+$$
+f(x)=
+\begin{cases}
+0 & \mbox{si $x<0$}\\
+e^{-x} & \mbox{si $x\geq 0$}
+\end{cases}
+$$
+
+¿Cuál de las siguientes afirmaciones es cierta?
+
+```{julia}
+#| hold: true
+#| echo: false
+choices = ("La media es mayor que la mediana.", "La media es igual que la mediana", "La media es menor que la mediana")
+answer = 3
+radioq(choices, answer)
 ```
 :::
