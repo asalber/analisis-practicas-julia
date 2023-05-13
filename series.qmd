@@ -1,7 +1,7 @@
 ---
 title: Series de números reales
 lang: es
-jupyter: julia-1.8
+jupyter: julia-1.9
 ---
 
 ## Ejercicios Resueltos
@@ -11,8 +11,9 @@ Para la realización de esta práctica se requieren los siguientes paquetes:
 ```{julia}
 using SymPy  # Para el cálculo simbólico de límites.
 using Plots  # Para el dibujo de gráficas.
-#plotlyjs() # Para obtener gráficos interactivos.
+#plotlyjs()  # Para obtener gráficos interactivos.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
+using Bessels  # Para definir funciones de Bessel.
 ```
 
 :::{#exr-paradoja-dicotomia-zenon}

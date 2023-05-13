@@ -1,7 +1,7 @@
 ---
 title: Derivadas de funciones reales
 lang: es
-jupyter: julia-1.8
+jupyter: julia-1.9
 ---
 
 ## Ejercicios Resueltos
@@ -14,7 +14,8 @@ using Plots  # Para el dibujo de gráficas.
 #plotlyjs() # Para obtener gráficos interactivos.
 using ImplicitPlots # Para dibujar curvas implícitas.
 using MTH229 # Para restringir la gráfica de una función a su dominio.
-using LaTeXStrings, Latexify  # Para usar código LaTeX en los gráficos.
+using LaTeXStrings  # Para usar código LaTeX en los gráficos.
+using Latexify  # Para convertir expresiones a código LaTeX.
 ```
 
 :::{#exr-tasa-variacion}

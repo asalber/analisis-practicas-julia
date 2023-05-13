@@ -1,7 +1,7 @@
 ---
 title: Sucesiones de números reales
 lang: es
-jupyter: julia-1.8
+jupyter: julia-1.9
 ---
 
 ## Ejercicios Resueltos
