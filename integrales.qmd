@@ -12,7 +12,7 @@ Para la realización de esta práctica se requieren los siguientes paquetes:
 using SymPy  # Para el cálculo simbólico de integrales.
 using QuadGK  # Para el cálculo numérico de integrales.
 using Plots  # Para el dibujo de gráficas.
-#plotlyjs()  # Para obtener gráficos interactivos.
+#using PlotlyJS  # Para obtener gráficos interactivos.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 using PrettyTables # Para formatear tablas.
 ```
@@ -24,6 +24,9 @@ a.  Calcular la suma inferior de Riemann de $f$ en el intervalo $[0,1]$, tomando
 
     :::{.callout-tip collapse="true"}
     ## Solución
+
+    La [suma inferior de Riemann](https://aprendeconalf.es/analisis-manual/09-integrales.html#sumas-de-riemann) de una función $f$ en un intervalo $[a,b]$ se obtiene sumando las áreas de los rectángulos que resultan de tomar una partición del intervalo, tomando como base la amplitud de los subintervalos y el como altura el mínimo valor de $f$ en el subintervalo.
+
     ```{julia}
     f(x) = x^2
     Δx = 1/10
@@ -36,6 +39,9 @@ a.  Calcular la suma superior de Riemann de $f$ en el intervalo $[0,1]$, tomando
 
     :::{.callout-tip collapse="true"}
     ## Solución
+
+    La [suma superior de Riemann](https://aprendeconalf.es/analisis-manual/09-integrales.html#sumas-de-riemann) de una función $f$ en un intervalo $[a,b]$ se obtiene sumando las áreas de los rectángulos que resultan de tomar una partición del intervalo, tomando como base la amplitud de los subintervalos y el como altura el máximo valor de $f$ en el subintervalo.
+
     ```{julia}
     f(x) = x^2
     Δx = 1/10
@@ -48,6 +54,9 @@ a.  Dar una cota del error cometido en la aproximación del área encerrada entr
 
     :::{.callout-tip collapse="true"}
     ## Solución
+
+    La suma inferior de Riemann nos da una cota inferior del área que queda encerrada entre la gráfica de la función y el eje $x$ en el intervalo $[a,b]$, mientras que la suma superior de Riemann nos da una cota superior. Por tanto, si tomamos cualquier valor entre la suma inferior y la suma superior de Riemann como aproximación del área encerrada entre la gráfica de $f$ y el eje $x$, una cota del error cometido será la diferencia entre la suma superior y la suma inferior.
+
     ```{julia}
     error = sum_sup - sum_inf
     ```
@@ -243,7 +252,7 @@ f(x) = x^2-7x+6
 plot(f, 2, 7, fillrange = 0, fillalpha = 0.3, label = L"$f(x)=x^2-7x+6$")
 ```
 
-Para calcular este área no podemos calcular directamente la integral definida de la función enter 2 y 7 porque el área positiva se compensaría con la negativa. Tenemos que descomponer la región en dos partes según el signo de la función e integrarlas por separado.
+Para [calcular el área encerrada entre la gráfica de una función y el eje $x$](https://aprendeconalf.es/analisis-manual/09-integrales.html#sec-calculo-area-funcion-ejex) en un intervalo $[a,b]$, hay que descomponer el intervalo de integración en los subintervalos donde la función es positiva y los subintervalos donde es negativa, e integrar la función en cada intervalo por separado.
 
 ```{julia}
 # Calculamos primero las raíces de la función
@@ -255,7 +264,8 @@ solve(f(x))
 
 :::{.callout-tip collapse="true"}
 ## Solución 2
-En general, para calcular áreas bajo una curva es más rápido integrar el valor absoluto de la función.
+En general, para calcular áreas bajo una curva, es más rápido integrar el valor absoluto de la función.
+
 ```{julia}
 integrate(abs(f(x)), 2, 7)
 ```
@@ -322,7 +332,7 @@ Un vehículo se mueve con una velocidad dada por la función $\operatorname{sen}
 
 :::{.callout-tip collapse="true"}
 ## Solución
-Para calcular el valor medio de una función $f(x)$ en un intervalo $[a,b]$ tenemos que calcular la integral definida
+Para calcular el [valor medio de una función](https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-la-media-de-una-funci%C3%B3n) $f(x)$ en un intervalo $[a,b]$ tenemos que calcular la integral definida
 
 $$
 \frac{1}{b-a}\int_a^b f(x)\,dx.
@@ -352,7 +362,21 @@ f(x) = sin(x)+2
 plot(f, 0, 2pi, ylim=(0,3), fillrange = 0, fillalpha = 0.3, label = "")
 ```
 
-Para calcular el volumen de un sólido de revolución generado al rotar la gráfica de una función $f(x)$ alrededor del eje $x$ en el intervalo $[a,b]$, mediante discos cilíndricos perpendiculares al eje $x$, hay que calcular la integral definida
+A continuación dibujamos el sólido de revolución parametrizado en 3D.
+
+```{julia}
+using SymPy, Unzip, PlotlyJS
+@vars x, u, v real=true
+f(x) = sin(x)+2
+S(u, v) = (u, f(u)*cos(v), f(u)*sin(v))
+us = range(0, 2pi, length=100)
+vs = range(0, 2pi, length=100)
+ws = unzip(S.(us, vs'))
+s = PlotlyJS.surface(x=ws[1], y=ws[2], z=ws[3])
+PlotlyJS.plot(s)
+```
+
+Para calcular el [volumen de un sólido de revolución](https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-vol%C3%BAmenes-de-s%C3%B3lidos-de-revoluci%C3%B3n) generado al rotar la gráfica de una función $f(x)$ alrededor del eje $x$ en el intervalo $[a,b]$, mediante discos cilíndricos perpendiculares al eje $x$, hay que calcular la integral definida
 
 $$
 \int_a^b \pi f(x)^2\, dx
@@ -380,7 +404,7 @@ plot(f(x), 0, 4, fillrange = 0, fillalpha = 0.3, aspect_ratio = 1, label = "")
 plot!(-f(x), 0, 4, fillrange = 0, fillalpha = 0.3, aspect_ratio = 1, label = "")
 ```
 
-En este caso, usaremos envoltorios cilíndricos para calcular el volumen del sólido de revolución. Para calcular el sólido de revolución que se obtiene al rotar alrededor del eje $y$ la gráfica de una función $f(x)$ en el intervalo $[a,b]$, mediante envoltorios cilíndricos, hay que calcular la integral definida
+En este caso, usaremos [envoltorios cilíndricos](https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-vol%C3%BAmenes-con-envoltorios-cil%C3%ADndricos) para calcular el volumen del sólido de revolución. Para calcular el volumen del sólido de revolución que se obtiene al rotar alrededor del eje $y$ la gráfica de una función $f(x)$ en el intervalo $[a,b]$, mediante envoltorios cilíndricos, hay que calcular la integral definida
 
 $$
 \int_a^b 2\pi x f(x)\,dx.
@@ -409,7 +433,7 @@ f(x) = sin(x/2)
 plot(f(x), 0, 100, aspect_ratio = 1, label = "")
 ```
 
-Para calcular la longitud de una curva dada por la gráfica de una función $f(x)$ en un intervalo $[a,b]$, hay que calcular la integral 
+Para calcular la [longitud de una curva](https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-la-longitud-de-una-curva) dada por la gráfica de una función $f(x)$ en un intervalo $[a,b]$, hay que calcular la integral 
 
 $$
 \int_a^b \sqrt{1+f'(x)^2}\,dx.
@@ -444,7 +468,7 @@ b.  Calcular la superficie del cuerno de Gabriel.
     :::{.callout-tip collapse="true"}
     ## Solución
 
-    Para calcular la superficie del sólido de revolución que se obtiene al rotar la gráfica de la función $f(x)$ alrededor del eje $x$ en el intervalo $[a,b]$ hay que calcular la integral definida
+    Para calcular la [superficie del sólido de revolución](https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-superficies-de-s%C3%B3lidos-de-revoluci%C3%B3n) que se obtiene al rotar la gráfica de la función $f(x)$ alrededor del eje $x$ en el intervalo $[a,b]$ hay que calcular la integral definida
 
     $$
     \int_a^b 2\pi f(x)\sqrt{1+f'(x)^2}\,dx.
@@ -459,6 +483,46 @@ b.  Calcular la superficie del cuerno de Gabriel.
 
     Así pues, se da la paradoja de que el cuerno de Gabriel tiene un volumen finito, pero una superficie infinita. 
     :::
+:::
+
+:::{#exr-centro-masas}
+Un depósito con forma de sólido de revolución generado al rotar la gráfica de la función $f(x)=\frac{x^2}{2}$ alrededor del eje $y$ en el intervalo de $0$ a $4$ m, contiene $100000$ l de aceite con una densidad de $\delta = 900$ kg/m$^3$. ¿Qué trabajo se realiza al vaciar el depósito por arriba?
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+Calculamos primero el nivel del aceite en el depósito. Para ello necesitamos el volumen contenido en el depósito hasta una altura $h$.
+
+```{julia}
+using SymPy
+@vars x y real=true
+f(x) = x^2/2
+f⁻¹(y) = solve(y-f(x), x)[2]
+# Volumen hasta una altura h
+V(x) = integrate(PI*f⁻¹(y)^2, 0, x)
+# Nivel para un volumen de 100 m³
+nivel = solve(V(x)-100)[2]
+```
+
+Para calcular el [trabajo realizado por una fuerza](https://aprendeconalf.es/analisis-manual/09-integrales.html#trabajo) aplicada sobre un objeto y que provoca un desplazamiento desde $x=a$ hasta $x=b$, basta con calcular la integral definida 
+
+$$
+\int_a^b f(x)\,dx
+$$
+
+En este caso, tomando discos cilíndricos perpendiculares al eje $y$, el volumen de cada disco viene dado por la función $V(y)=\pi f^{-1}(y)^2\Delta y$ y, por tanto, la masa de cada uno de estos discos es $M(y)=\delta\pi f^{-1}(y)^2\Delta y$. Como la única fuerza que actúa sobre la masa es la gravedad, la fuerza aplicada a la masa de cada disco es $F(y) = gM(y)= g\delta\pi f^{-1}(y)^2\Delta y$. Finalmente, como la masa de cada uno de los discos debe elevarse una distancia $4-y$, el trabajo realizado para vaciar el depósito se calcula mediante la integral definida 
+
+$$
+\int_0^h g\delta\pi f^{-1}(y)^2(4-y)\,dy
+$$
+
+donde $h$ es el nivel del aceite calculado antes.
+
+```{julia}
+δ = 900
+gravedad = 9.81
+N(integrate(gravedad*δ*PI*f⁻¹(y)^2*(4-y), 0, nivel))
+```
 :::
 
 :::{#exr-centro-masas}
@@ -481,7 +545,7 @@ plot(f(x), a, b, aspect_ratio = 1, label = "")
 plot!(g(x), a, b, fillrange = f, fillalpha = 0.3, aspect_ratio = 1, c = 1, label = "")
 ```
 
-Para calcular el centroide $(\bar x, \bar y)$ de una región plana encerrada por dos curvas $f(x)$ y $g(x)$ en el intervalo $[a,b]$ hay que calcular por separado el centro de masas $\bar x$ con respecto al eje $y$, y el centro de masas $\bar y$ con respecto al eje $x$, mediante cociente de las siguientes integrales definidas
+Para calcular el [centroide $(\bar x, \bar y)$ de una región plana](https://aprendeconalf.es/analisis-manual/09-integrales.html#centro-de-masas-de-una-regi%C3%B3n-plana-con-densidad-fija) encerrada por dos curvas $f(x)$ y $g(x)$ en el intervalo $[a,b]$ hay que calcular por separado el centro de masas $\bar x$ con respecto al eje $y$, y el centro de masas $\bar y$ con respecto al eje $x$, mediante cociente de las siguientes integrales definidas
 
 \begin{align*}
 \bar x &=\frac{\int_a^b x (f(x)-g(x))\,dx}{\int_a^b f(x)-g(x)\,dx}\\
@@ -539,7 +603,7 @@ numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
-:::{#exr-integrales-propuesto-3}
+:::{#exr-integrales-propuesto-2}
 Calcular el area encerrada entre las funciones $f(x)=\operatorname{sin}(x)$ y $\cos(x)$ en el intervalo $[0,2\pi]$.
 
 ```{julia}
@@ -553,7 +617,7 @@ numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
-:::{#exr-integrales-propuesto-4}
+:::{#exr-integrales-propuesto-3}
 Dibujar la gráfica de la función $f(x)=\dfrac{1}{\sqrt{2\pi}}e^{\frac{-x^2}{2}}$ y calcular el área total encerrada entre la gráfica y el eje $x$.
 
 ```{julia}
@@ -567,7 +631,7 @@ numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
-:::{#exr-integrales-propuesto-5}
+:::{#exr-integrales-propuesto-4}
 La función $T(t)=100te^{-t}$ define la temperatura de un sistema en cada instante $t$. Calcular la temperatura media en el intervalo $[0,5]$.
 
 ```{julia}
@@ -580,7 +644,31 @@ numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
-:::{#exr-integrales-propuesto-8}
+:::{#exr-integrales-propuesto-5}
+Calcular el volumen del sólido de revolución generado por la rotación al rededor del eje $x$ de la región comprendida entre las funciones $f(x)=\ln(x)$ y $g(x)=\frac{x-1}{2}$.
+
+```{julia}
+#| hold: true
+#| echo: false
+@vars x real = true
+f(x) = log(x)
+g(x) = (x-1)/2
+a, b = solve(f(x)-g(x))
+sol = N(integrate(PI*(f(x)-g(x))^2, a, b))
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+
+Calcular también el volumen del sólido de revolución generado al rotar la misma región alrededor del eje $y$.
+
+```{julia}
+#| hold: true
+#| echo: false
+sol = N(integrate(2PI*x*(f(x)-g(x)), a, b))
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-integrales-propuesto-6}
 La curva $y=a\cosh(x/a)$ se conoce como _catenaria_. ¿Cuál es la longitud de la catenaria con $a=2$ entre $-1$ y $1$?
 
 ```{julia}
@@ -593,8 +681,21 @@ numericq(sol[1], 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
+:::{#exr-integrales-propuesto-7}
+Un depósito metálico tiene la forma del elipsoide que se obtiene al rotar la elipse $\frac{x^2}{4}+y^2=1$ alrededor del eje $x$. Calcular la cantidad de chapa metálica necesaria para construir el depósito.
 
-:::{#exr-integrales-propuesto-9}
+```{julia}
+#| hold: true
+#| echo: false
+using SymPy, QuadGK
+@vars x real = true
+f(x) = sqrt(1-x^2/4)
+sol = quadgk(2PI*f(x)*sqrt(1+diff(f(x))^2), -2, 2)
+numericq(N(sol[1]), 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-integrales-propuesto-8}
 La función de densidad del modelo de distribución de probabilidad exponencial $\mbox{Exp}(1)$ es 
 
 $$
