@@ -25,56 +25,56 @@ $$
 \sum \frac{1}{2^n}
 $$
 
-a. Calcular los 50 primeras sumas parciales de la serie.
+a.  Calcular los 50 primeras sumas parciales de la serie.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Definir una función para el término general y aplicar la función a los naturales de 1 a 50 usando [compresiones de arrays](https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html#comprensi%C3%B3n-de-arrays).
-Usar la función `cumsum` para realizar sumas parciales.
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Definir una función para el término general y aplicar la función a los naturales de 1 a 50 usando [compresiones de arrays](https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html#comprensi%C3%B3n-de-arrays).
+    Usar la función `cumsum` para realizar sumas parciales.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución 1
-```{julia}
-N = 50
-a(n) = 1/2^n
-an = [a(n) for n = 1:N]
-An = cumsum(an)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución 1
+    ```{julia}
+    N = 50
+    a(n) = 1/2^n
+    an = [a(n) for n = 1:N]
+    An = cumsum(an)
+    ```
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución 2
-```{julia}
-N = 50
-a(n) = 1/2^n
-A(n) = sum(a, 1:n)
-An = [A(n) for n = 1:N]
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución 2
+    ```{julia}
+    N = 50
+    a(n) = 1/2^n
+    A(n) = sum(a, 1:n)
+    An = [A(n) for n = 1:N]
+    ```
+    :::
 
-b. Dibujar en una gráfica las 50 primeras sumas parciales de la serie.
+a.  Dibujar en una gráfica las 50 primeras sumas parciales de la serie.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Definir una función para el término general y aplicar la función a los naturales de 1 a 100 usando compresiones de arrays como en el ejercicio anterior y usar la función `cumsum` para calcular las sumas parciales.
-Después usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` para dibujar el array de las sumas parciales.
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Definir una función para el término general y aplicar la función a los naturales de 1 a 100 usando compresiones de arrays como en el ejercicio anterior y usar la función `cumsum` para calcular las sumas parciales.
+    Después usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` para dibujar el array de las sumas parciales.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using Plots, LaTeXStrings
-scatter(An, legend=false)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using Plots, LaTeXStrings
+    scatter(An, legend=false)
+    ```
+    :::
 
-a. ¿Es cierto que el corredor nunca llegará a la meta?
+a.  ¿Es cierto que el corredor nunca llegará a la meta?
 
-:::{.callout-tip collapse="true"}
-## Solución
-No, porque la serie converge a 1.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    No, porque la serie converge a 1.
+    :::
 :::
 
 :::{#exr-serie-exponencial}
@@ -171,37 +171,37 @@ $$
 
 Calcular la suma aproximada de las siguientes series alternadas con un error menor de $10^{-10}$. ¿Cuál es la primera suma parcial que da esa aproximación?
 
-a. $\sum \frac{(-1)^n}{n!}$
+a.  $\sum \frac{(-1)^n}{n!}$
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-error = 10^-10
-a(n) = (-1)^n/factorial(n)
-i = 0
-while abs(a(i)) >= error
-    i += 1
-end
-println("Suma parcial de orden $i")
-println("Aproximación: $(sum(a, 0:i))")
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    error = 10^-10
+    a(n) = (-1)^n/factorial(n)
+    i = 0
+    while abs(a(i)) >= error
+        i += 1
+    end
+    println("Suma parcial de orden $i")
+    println("Aproximación: $(sum(a, 0:i))")
+    ```
+    :::
 
-b. $\sum \frac{(-1)^n\ln(n)}{n^2}$
+a.  $\sum \frac{(-1)^n\ln(n)}{n^2}$
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-error = 10^-10
-a(n) = (-1)^n*log(n)/n^2
-i = 2
-while abs(a(i)) >= error
-    i += 1
-end
-println("Suma parcial de orden $i")
-println("Aproximación: $(sum(a, 2:i))")
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    error = 10^-10
+    a(n) = (-1)^n*log(n)/n^2
+    i = 2
+    while abs(a(i)) >= error
+        i += 1
+    end
+    println("Suma parcial de orden $i")
+    println("Aproximación: $(sum(a, 2:i))")
+    ```
+    :::
 :::
 
 :::{#exr-serie-maclaurin}
@@ -259,45 +259,45 @@ $$
 
 Esta función sirve, entre otras cosas, para explicar la distribución de temperaturas en una lámina circular o las vibraciones de una membrana.
 
-a. Calcular el radio de convergencia de la función de Bessel.
+a.  Calcular el radio de convergencia de la función de Bessel.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Utilizar el [criterio de la razón](https://aprendeconalf.es/analisis-manual/08-series.html#thm-radio-convergencia-razon) para determinar el radio de convergencia de la serie de potencias.
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Utilizar el [criterio de la razón](https://aprendeconalf.es/analisis-manual/08-series.html#thm-radio-convergencia-razon) para determinar el radio de convergencia de la serie de potencias.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using SymPy
-@vars n int=true
-c(n) = (-1)^n*1/(2^(2n)*factorial(n)^2)
-limit(abs(c(n)/c(n+1)), n => Inf)
-```
-La serie converge para todo $\mathbb{R}$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @vars n int=true
+    c(n) = (-1)^n*1/(2^(2n)*factorial(n)^2)
+    limit(abs(c(n)/c(n+1)), n => Inf)
+    ```
+    La serie converge para todo $\mathbb{R}$.
+    :::
 
-b. Dibujar en una misma gráfica la suma funcional parcial de orden 10 de la serie y la función de Bessel de orden 0.
+a.  Dibujar en una misma gráfica la suma funcional parcial de orden 10 de la serie y la función de Bessel de orden 0.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Usar el paquete [`Bessels`](https://github.com/JuliaMath/Bessels.jl) para dibujar la función de Bessel de orden 0.
-:::
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Usar el paquete [`Bessels`](https://github.com/JuliaMath/Bessels.jl) para dibujar la función de Bessel de orden 0.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using Plots, LaTeXStrings, Bessels
-@vars x real=true
-a(x,n) = (-1)^n/(2^(2n)*factorial(n)^2) * x^(2n)
-N = 10
-an = [a(x,n) for n=0:N]
-An = sum(an)
-plot(An, -8, 8,  ylims = (-1,1), label=L"$\sum_{n=0}^{10} (-1)^n\frac{x^{2n}}{2^{2n}(n!)^2}$")
-plot!(besselj0, label = L"$J_0(x)$")
-```
-La serie converge para todo $\mathbb{R}$.
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using Plots, LaTeXStrings, Bessels
+    @vars x real=true
+    a(x,n) = (-1)^n/(2^(2n)*factorial(n)^2) * x^(2n)
+    N = 10
+    an = [a(x,n) for n=0:N]
+    An = sum(an)
+    plot(An, -8, 8,  ylims = (-1,1), label=L"$\sum_{n=0}^{10} (-1)^n\frac{x^{2n}}{2^{2n}(n!)^2}$")
+    plot!(besselj0, label = L"$J_0(x)$")
+    ```
+    La serie converge para todo $\mathbb{R}$.
+    :::
 :::
 
 :::{#exr-series-fourier}
@@ -401,7 +401,7 @@ a. $\sum \frac{1}{n2^n}$
 #| hold: true
 #| echo: false
 a(n) = 1/(big(n)*2^big(n))
-numericq(sum(a, 1:50), 1e-20, hint="Introducir hasta 20 decimales")
+numericq(sum(a, 1:100), 1e-20, hint="Introducir hasta 20 decimales")
 ```
 
 b. $\sum \frac{n!}{n^n}$
@@ -426,7 +426,7 @@ multiq(choices, answers)
 :::
 
 :::{#exr-series-propuesto-3}
-¿Hasta qué suma parcial de la serie de Maclaurin de la función $e^x$ hay que llegar para aproximar el número $\sqrt{e}$ con un error menor de $10^-50$?
+¿Hasta qué suma parcial de la serie de Maclaurin de la función $e^x$ hay que llegar para aproximar el número $\sqrt{e}$ con un error menor de $10^{-50}$?
 
 ```{julia}
 #| echo: false
@@ -451,12 +451,12 @@ a. $\sum \frac{(x-2)^n}{n5^n}$
 #| echo: false
 using SymPy
 @vars n int=true
-c(n) = 1/(n*4^n)
+c(n) = 1/(n*5^n)
 l = limit(abs(c(n)/c(n+1)), n => Inf)
 numericq(l, 1)
 ```
 
-b. $\sum \frac{2^n(x-2)^n}{(n+2)!}$
+b. $\sum \frac{2^n(x-2)^n}{\sqrt(n+3)}$
 
 ```{julia}
 #| echo: false

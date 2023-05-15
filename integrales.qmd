@@ -1,5 +1,5 @@
 ---
-title: Integrales de funciones
+title: Integrales de funciones reales
 lang: es
 jupyter: julia-1.9
 ---
