@@ -12,7 +12,7 @@ Para la realización de esta práctica se requieren los siguientes paquetes:
 using SymPy  # Para el cálculo simbólico de integrales.
 using QuadGK  # Para el cálculo numérico de integrales.
 using Plots  # Para el dibujo de gráficas.
-#using PlotlyJS  # Para obtener gráficos interactivos.
+#plotlyjs()  # Para obtener gráficos interactivos.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 using PrettyTables # Para formatear tablas.
 ```
@@ -64,31 +64,31 @@ a.  Dar una cota del error cometido en la aproximación del área encerrada entr
 
 a.  Definir una función para calcular de manera aproximada el área encerrada entre la gráfica de $f$ y el eje $x$ en el intervalo $[a,b]$ tomando sumas de Riemann para una partición en $n$ subintervalos, y el error cometido en la aproximación. Utilizarla para calcular los errores aproximados al aproximar el area de $f$ en el intervalo $[0,1]$ tomando particiones desde 10 a 100 subintervalos.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using PrettyTables
-f(x) = x^2
-function area_inf(a, b, n)
-    Δx = (b-a)/n
-    return sum([f(a+(i-1)*Δx)*Δx for i = 1:n])
-end
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using PrettyTables
+    f(x) = x^2
+    function area_inf(a, b, n)
+        Δx = (b-a)/n
+        return sum([f(a+(i-1)*Δx)*Δx for i = 1:n])
+    end
 
-function area_sup(a, b, n)
-    Δx = (b-a)/n
-    return sum([f(a+i*Δx)*Δx for i = 1:n])
-end
+    function area_sup(a, b, n)
+        Δx = (b-a)/n
+        return sum([f(a+i*Δx)*Δx for i = 1:n])
+    end
 
-function area(a, b, n)
-    area = (area_inf(a, b, n) + area_sup(a, b, n)) / 2
-    error = area_sup(a, b, n) - area_inf(a, b, n)
-    return area, error
-end
+    function area(a, b, n)
+        area = (area_inf(a, b, n) + area_sup(a, b, n)) / 2
+        error = area_sup(a, b, n) - area_inf(a, b, n)
+        return area, error
+    end
 
-areas = [area(0, 1, n) for n=10:100]
-pretty_table(hcat(first.(areas), last.(areas)); header = ["Aproximación", "Error"])
-```
-:::
+    areas = [area(0, 1, n) for n=10:100]
+    pretty_table(hcat(first.(areas), last.(areas)); header = ["Aproximación", "Error"])
+    ```
+    :::
 :::
 
 :::{#exr-primitivas}
@@ -365,15 +365,28 @@ plot(f, 0, 2pi, ylim=(0,3), fillrange = 0, fillalpha = 0.3, label = "")
 A continuación dibujamos el sólido de revolución parametrizado en 3D.
 
 ```{julia}
-using SymPy, Unzip, PlotlyJS
+using Unzip
 @vars x, u, v real=true
 f(x) = sin(x)+2
 S(u, v) = (u, f(u)*cos(v), f(u)*sin(v))
 us = range(0, 2pi, length=100)
 vs = range(0, 2pi, length=100)
 ws = unzip(S.(us, vs'))
-s = PlotlyJS.surface(x=ws[1], y=ws[2], z=ws[3])
-PlotlyJS.plot(s)
+surface(ws...)
+```
+
+También es posible dibujarlo de manera interactiva con la activando el backend de [Plotly](https://plotly.com/julia/) mediante la función [`plotlyjs()`](https://docs.juliaplots.org/latest/gallery/plotlyjs/).
+
+```{julia}
+# Activamos el bakden de Plotly.
+plotlyjs()
+@vars x, u, v real=true
+f(x) = sin(x)+2
+S(u, v) = (u, f(u)*cos(v), f(u)*sin(v))
+us = range(0, 2pi, length=100)
+vs = range(0, 2pi, length=100)
+ws = unzip(S.(us, vs'))
+plot(surface(ws...))
 ```
 
 Para calcular el [volumen de un sólido de revolución](https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-vol%C3%BAmenes-de-s%C3%B3lidos-de-revoluci%C3%B3n) generado al rotar la gráfica de una función $f(x)$ alrededor del eje $x$ en el intervalo $[a,b]$, mediante discos cilíndricos perpendiculares al eje $x$, hay que calcular la integral definida
@@ -398,6 +411,8 @@ Dibujamos primero la región.
 
 ```{julia}
 using SymPy, Plots
+# Volvemos a activar el backend por defecto.
+gr()
 @vars x real = true
 f(x) = sqrt(1-(x-2)^2)
 plot(f(x), 0, 4, fillrange = 0, fillalpha = 0.3, aspect_ratio = 1, label = "")

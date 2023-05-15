@@ -312,7 +312,7 @@ Las series de Fourier son muy útiles para aproximar funciones periódicas que d
 
 Dibujar las gráficas las 10 primeras sumas parciales de las siguientes series de Fourier y predecir hacia qué función convergen.
 
-a. $\sum \operatorname{sen}(nt)$
+a.  $\sum \operatorname{sen}(nt)$
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -382,6 +382,7 @@ f(x)=\begin{cases}
 $$
 :::
 :::
+
 
 ## Ejercicios propuestos
 
