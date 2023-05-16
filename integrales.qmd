@@ -581,13 +581,13 @@ Para calcular el volumen del sólido de revolución generado al rotar esta regi�
 Al rotar la región sobre el eje $x$ el camino recorrido por el centroide es $2\pi \bar y$.
 
 ```{julia}
-2*PI*cy*integrate(PI*(f(x)-g(x)^2), a, b)
+2*PI*cy*integrate(f(x)-g(x), a, b)
 ```
 
 Y al rotarla sobre el eje $y$ el camino recorrido por el centroide es $2\pi \bar x$.
 
 ```{julia}
-2*PI*cx*integrate(PI*(f(x)-g(x)^2), a, b)
+2*PI*cx*integrate(f(x)-g(x), a, b)
 ```
 :::
 
