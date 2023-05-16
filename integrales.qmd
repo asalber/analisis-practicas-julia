@@ -613,7 +613,7 @@ Calcular la suma superior de Riemann de la función $f(x)=\sqrt{\ln(x)}$ en el i
 f(x) = sqrt(log(x))
 Δx = 1/100
 areas_sup = [f(1+i*Δx)*Δx for i = 1:100]
-sol = sum_sup = sum(areas_sup)
+sol = sum(areas_sup)
 numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
