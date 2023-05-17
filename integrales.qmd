@@ -347,7 +347,7 @@ f(x) = sin(x)^2
 :::
 
 :::{#exr-solido-revolucion-discos}
-Representar gráficamente la región del primer cuadrante limitada por la función $f(x)=(x+\operatorname{sen}(x))^2$ y el eje $x$ en el intervalo $[0,2\pi]$ y hallar el volumen del sólido de revolución generado al rotar esta región alrededor del eje $x$.
+Representar gráficamente la región del primer cuadrante limitada por la función $f(x)=2+\operatorname{sen}(x)$ y el eje $x$ en el intervalo $[0,2\pi]$ y hallar el volumen del sólido de revolución generado al rotar esta región alrededor del eje $x$.
 :::
 
 :::{.callout-tip collapse="true"}
@@ -536,12 +536,12 @@ donde $h$ es el nivel del aceite calculado antes.
 ```{julia}
 δ = 900
 gravedad = 9.81
-N(integrate(gravedad*δ*PI*f⁻¹(y)^2*(4-y), 0, nivel))
+N(integrate(gravedad*δ*PI*f⁻¹(y)^2*(8-y), 0, nivel))
 ```
 :::
 
 :::{#exr-centro-masas}
-Dibujar la región que se obtiene con la intersección de la recta $y=x-1$ y la parábola $y=x^2$, y dibujar su centroide. ¿Cuál es le volumen del sólido de revolución generado al rotar esta región sobre el eje $x$? ¿Y al rotarla sobre el eje $y$?
+Dibujar la región que se obtiene con la intersección de la recta $y=x-1$ y la parábola $y=(x-1)^2$, y dibujar su centroide. ¿Cuál es le volumen del sólido de revolución generado al rotar esta región sobre el eje $x$? ¿Y al rotarla sobre el eje $y$?
 :::
 
 :::{.callout-tip collapse="true"}
@@ -627,7 +627,7 @@ Calcular el area encerrada entre las funciones $f(x)=\operatorname{sin}(x)$ y $\
 @vars x real = true
 f(x) = sin(x)
 g(x) = cos(x)
-sol = N(integrate(abs(f(x)-g(x)), 0, pi))
+sol = N(integrate(abs(f(x)-g(x)), 0, 2pi))
 numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
@@ -654,7 +654,7 @@ La función $T(t)=100te^{-t}$ define la temperatura de un sistema en cada instan
 #| echo: false
 @vars t real = true
 T(t) = 100t*exp(-t)
-sol = N(1/5 * integrate(T(t), 1, 5))
+sol = N(1/5 * integrate(T(t), 0, 5))
 numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::

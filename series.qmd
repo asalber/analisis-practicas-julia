@@ -476,7 +476,7 @@ $$
 F = \frac{mgR^2}{(R+h)^2}
 $$
 
-donde R es el radio de la Tierra (tomar un radio medio 6371 km) y $g$ es la aceleración de la gravedad (tomar $9.81$ m/s^2). Expresar $F$ como una serie de potencias de $h/R$ y aplicar el teorema de la serie alternada para calcular el valor máximo de $h$ para el que la aproximación clásica $F=mg$ no difiere más de un 1% del valor real.
+donde R es el radio de la Tierra (tomar un radio medio 6371 km) y $g$ es la aceleración de la gravedad (tomar $9.81$ m/s^2). Expresar $F$ como una serie de potencias de $h/R$ y usarla para dar la aproximación de cuarto grado de $F$ para $h=100$ m. ¿Cuál es error relativo cometido en la aproximación?
 
 ```{julia}
 #| hold: true
@@ -485,11 +485,25 @@ using SymPy
 @vars m g h real=true
 const R = 6371
 error = 0.01
-a(n) = m*g*(n+1)*(-h/R)^n
-sol = solve(abs(a(1)/a(0))-error)[2]
-numericq(sol, 1)
+F(h) = m*g*R^2/(R+h)^2
+aprox = series(F(h), h, 0, 5).removeO()(h => 100) 
+sol = float(abs((F(100) - aprox)/F(100)))
+numericq(sol, 1e-20, hint="Introducir hasta 10 decimales")
 ```
 :::
+
+Aplicar el teorema de la serie alternada para dar una cota superior del error relativo cometido en la aproximación anterior.
+
+```{julia}
+#| hold: true
+#| echo: false
+#| # Haciendo el cambio x=h/R se obtiene la función m*g*1/(1+x)^2 que tiene una aproximación de Maclaurin sencilla.
+a(n) = m*g*(n+1)*(-h/R)^n
+sol = float((a(4)/F(h))(h => 100))
+numericq(sol, 1, hint="Introducir hasta 10 decimales")
+```
+:::
+
 
 :::{#exr-series-propuesto-6}
 ¿Cuál de las siguientes gráficas se corresponde con la serie de Fourier 
