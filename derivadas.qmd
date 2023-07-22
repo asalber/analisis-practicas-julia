@@ -1,7 +1,7 @@
 ---
 title: Derivadas de funciones reales
 lang: es
-jupyter: julia-1.9
+#jupyter: julia-1.9
 ---
 
 ## Ejercicios Resueltos
@@ -147,7 +147,7 @@ Representar gráficamente la función $f(x)=|x-1|$ y estudiar su derivabilidad e
 ## Solución
 ```{julia}
 using Plots, SymPy, LaTeXStrings
-@vars x real=true
+@syms x::real
 f(x) = abs(x-1)
 display(plot(f(x), label=L"f(x)=|x-1|"))
 println("Derivada por la izquierda: ", limit((f(x)-f(1))/(x-1), x=>1, dir="-"))
@@ -166,7 +166,7 @@ a. Dibujar la gráfica de $f$ y dibujar las rectas secantes a $f$ en los interva
 ## Solución
 ```{julia}
 using Plots, SymPy, LaTeXStrings, Latexify
-@vars x real=true
+@syms x::real
 f(x) = sqrt(x)
 plt = plot(f, 0, 2, ylims=(0,2.5), linewidth = 3, label=L"f(x)=\sqrt{x}", legend=:topleft)
 secante(x, i, j) = f(i) + (f(j)-f(i))/(j-i) * (x - i)
@@ -212,7 +212,7 @@ Usar la función [`diff(f,n)`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tuto
 ## Solución
 ```{julia}
 using SymPy
-@vars x real=true
+@syms x::real
 f(x) = log(x+1)
 println("Primera derivada: ", diff(f))
 println("Segunda derivada: ", diff(f,2))
@@ -228,7 +228,7 @@ b. $f(x)=a^x$
 ## Solución
 ```{julia}
 using SymPy
-@vars x a real=true
+@syms x::real a::real
 g(x) = a^x
 println("Primera derivada: ", diff(g(x),x))
 println("Segunda derivada: ", diff(g(x),x,2))
@@ -244,7 +244,7 @@ c. $h(x)=\operatorname{sen}(x)+\cos(x)$
 ## Solución
 ```{julia}
 using SymPy
-@vars x real=true
+@syms x::real
 h(x) = sin(x)+cos(x)
 println("Primera derivada: ", diff(h))
 println("Segunda derivada: ", diff(h,2))
@@ -288,7 +288,7 @@ $$
 ## Solución
 ```{julia}
 using Plots, SymPy, LaTeXStrings, Latexify
-@vars x real=true
+@syms x::real
 f(x) = log(sqrt(x+1))
 plot(f, -1, 3, xlims=(-1,3), ylims=(-1,2), aspect_ratio=1, label=L"f(x)=\ln(\sqrt{x+1})", legend=:topright)
 tg = f(1)+diff(f)(1)*(x-1)
@@ -308,7 +308,7 @@ a. Dibujar la gráfica de $g$.
 ## Solución
 ```{julia}
 using Plots, SymPy, LaTeXStrings, Latexify
-@vars x real=true
+@syms x::real
 g(x)=(2x^3-3x)/(x^2+1)
 plot(g, -2, 2, label=L"g(x)=\frac{2x^3-3x}{x^2+1}", legend=:topleft)
 ```
@@ -403,7 +403,7 @@ Para dibujar curvas implícitas utilizar la función `implicit_plot` del paquete
 ## Solución
 ```{julia}
 using ImplicitPlots, Plots, SymPy, LaTeXStrings, Latexify
-@vars x y real=true
+@syms x::real y::real
 f(x,y)=x^4-3x^2+2y^2
 implicit_plot(f; xlims=(-3,3), ylims=(-1.5,1.5), label=L"x^4-3x^2+2y^2=0", legend=:topleft)
 ```
@@ -464,7 +464,7 @@ $$
 ## Solución
 ```{julia}
 using Plots, SymPy, LaTeXStrings, Latexify
-@vars x real=true
+@syms x::real
 function taylor(f, a=0, n=2)
     sum(diff(f, x, i)(a)/factorial(i)*(x-a)^i for i=0:n)
 end
@@ -493,7 +493,7 @@ Para calcular polinomios de Taylor utilizar la función [`series`](https://docs.
 ## Solución
 ```{julia}
 using SymPy
-@vars x real=true
+@syms x::real
 f(x) = cos(x)
 series(f(x), x, Sym(pi)/2, 10)
 ```
@@ -537,7 +537,7 @@ $$
 Utilizaremos un polinomio de MacLaurin de grado 5 para la función $f(x)=\ln(1+x)$.
 ```{julia}
 using SymPy
-@vars x real=true
+@syms x::real
 pol = series(log(1+x), x, 0, 6).removeO()
 println("Aproximación de ln(1.2): ", N(pol(0.2)))
 ```
@@ -617,7 +617,7 @@ $$
 ```{julia}
 #| echo: false
 using SymPy
-@vars x a b c real=true
+@syms x::real a::real b::real c::real
 f1(x) = sin(x)^2
 f2(x) = a*x^2+b
 f3(x) = log(x)
@@ -636,7 +636,7 @@ radioq(choices, answer)
 ```{julia}
 #| echo: false
 using SymPy
-@vars x real=true
+@syms x::real
 f(x) = 1/sqrt(x+1)
 diff(f,1)
 diff(f,2)
@@ -655,7 +655,7 @@ la recta tangente a $g$ con paralelas?
 ```{julia}
 #| echo: false
 using SymPy
-@vars x real=true
+@syms x::real
 f(x) = ln(sqrt(x^2/2))
 g(x) = x^3+x^2-1
 sol = solve(Eq(-1/diff(f), diff(g)))[1]
@@ -670,7 +670,7 @@ a. Mínimo absoluto
 ```{julia}
 #| echo: false
 using SymPy
-@vars x real=true
+@syms x::real
 g(x) = sqrt(x^4-3x^3+2.5x^2)
 raices = solve(diff(g(x)))
 min = N(minimum(g.(vcat(-0.5, 0, raices, 1.5))))
@@ -693,7 +693,7 @@ numericq(max, 1e-5)
 ```{julia}
 #| echo: false
 using SymPy
-@vars x real=true
+@syms x::real
 h(x) = (x^2+1)/exp(x)
 solve(diff(h))
 solve(diff(h,2))
@@ -723,7 +723,7 @@ Coordenada x
 ```{julia}
 #| echo: false
 using Plots, SymPy, ImplicitPlots
-@vars x y a b l real=true
+@syms x::real y::real a::real b::real l::real
 @syms u()
 f(x, y, a, b) = sqrt(x^2 + y^2) + sqrt((a-x)^2 + (b-y)^2)
 eqn = f(x,y,a,b) - l
@@ -759,7 +759,7 @@ a. Polinomio de Taylor de grado 20 en el punto $\pi/6$.
 ```{julia}
 #| echo: false
 using SymPy
-@vars x real=true
+@syms x::real
 f(x)=sin(x)
 p1 = series(f(x), x, Sym(pi)/6, 20).removeO()
 sol1 = float(p1(0.5))

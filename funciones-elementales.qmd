@@ -1,7 +1,7 @@
 ---
 title: Funciones elementales
 lang: es
-jupyter: julia-1.9
+#jupyter: julia-1.9
 ---
 
 ## Ejercicios Resueltos
@@ -92,7 +92,7 @@ Para dibujar la gráfica de la función, usar la función `plot` pasándole el n
 ## Solución
 ```{julia}
 using Plots, SymPy
-@vars t  #Declaramos t como una variable simbólica
+@syms t  #Declaramos t como una variable simbólica
 y₀ = 5
 v₀ = 10
 const gravedad = -9.8  #Declaramos la gravedad como una constante
@@ -144,7 +144,7 @@ Después utilizar la función [`solve`](https://docs.juliahub.com/SymPy/KzewI/1.
 ## Solución
 ```{julia}
 using Plots, SymPy
-@vars r v
+@syms r v
 vol(r) = 4/3*pi*r^3
 rad = solve(v-vol(r),r)[1]
 plot(rad, xlab="Volumen (m³)", ylab="Radio (m)", legend=false)
@@ -163,7 +163,7 @@ Después utilizar a el operador de composición $\circ$ para componer la funció
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-@vars t
+@syms t
 vol(t)=t^2+2t
 plot(rad∘vol, xlim=(0,10), xlab="Tiempo (min)", ylab="Radio (m)")
 ```

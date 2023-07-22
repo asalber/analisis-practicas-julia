@@ -1,7 +1,7 @@
 ---
 title: Integrales de funciones reales
 lang: es
-jupyter: julia-1.9
+#jupyter: julia-1.9
 ---
 
 ## Ejercicios Resueltos
@@ -103,7 +103,7 @@ a.  $f(x)=x^2\ln(x)$
 
     ```{julia}
     using SymPy
-    @vars x real=true
+    @syms x::real
     primitiva = integrate(x^2*ln(x))
     ```
 
@@ -154,7 +154,7 @@ a.  $i(x)= x^a$
     Cuando en la función aparece algún parámetro, es necesario indicar la variable con respecto a la que calcular la integral. Para ello se utiliza la función `integrate(f, x)`, siendo `x` la variable con respecto a la que integrar.
 
     ```{julia}
-    @vars a real=true
+    @syms a::real
     integrate(x^a, x)
     ```
     :::
@@ -164,17 +164,17 @@ a.  $j(x) = (1 + \log(x))\sqrt{1 + x^2\log(x)^2}$
     :::{.callout-tip collapse="true"}
     ## Solución
     ```{julia}
-    @vars x real=true
+    @syms x::real
     j(x) = (1 + log(x)) * sqrt(1 + (x*log(x))^2 )
     # El cálculo directo de la integral no funciona.
     integrate(j(x))
     # Ayudamos a SymPy con la sustitución.
-    u(x) = x*log(x)
-    @vars y dy real=true
+    h(x) = x*log(x)
+    @syms y::real dy::real
     # Definimos la nueva función con el cambio de variable.
-    g(y) = j(x)(u(x) => y, diff(u(x), x) => 1)
+    g(y) = j(x)(h(x) => y, diff(h(x), x) => 1)
     # Integramos la nueva función y deshacemos el cambio de variable.
-    integrate(g(y))(y => u(x))
+    integrate(g(y))(y => h(x))
     ```
     :::
 :::
@@ -191,7 +191,7 @@ a.  $\displaystyle \int_{-1/2}^0 \frac{x^3}{x^2+x+1}\, dx$
 
     ```{julia}
     using SymPy
-    @vars x real=true
+    @syms x::real
     integrate(x^3/x^2+x+1, -1/2, 0)
     ```
     :::
@@ -224,7 +224,7 @@ Calcular la integral definida $\displaystyle \int_0^1 x^x\, dx$ con un error men
 
 ```{julia}
 using SymPy
-@vars x real=true
+@syms x::real
 f(x) = x^x
 integrate(f(x), 0, 1)
 ```
@@ -247,7 +247,7 @@ Dibujamos primero la región.
 
 ```{julia}
 using Plots, SymPy, LaTeXStrings
-@vars x real = true
+@syms x::real
 f(x) = x^2-7x+6
 plot(f, 2, 7, fillrange = 0, fillalpha = 0.3, label = L"$f(x)=x^2-7x+6$")
 ```
@@ -281,7 +281,7 @@ Calculamos primero el área comprendida entre las dos funciones.
 
 ```{julia}
 using Plots, SymPy, LaTeXStrings
-@vars x real = true
+@syms x::real
 f(x) = -x^2+6x
 g(x) = x^2-2x
 # Calculamos primero los puntos de corte de la función.
@@ -294,7 +294,7 @@ Y ahora dibujamos el área calculada.
 
 ```{julia}
 using Plots, SymPy, LaTeXStrings
-@vars x real = true
+@syms x::real
 f(x) = -x^2+6x
 g(x) = x^2-2x
 plot(f, -1, 5, label = L"$f(x)=-x^2+6x$")
@@ -314,7 +314,7 @@ Dibujamos primero la gráfica.
 
 ```{julia}
 using Plots, SymPy, LaTeXStrings
-@vars x real = true
+@syms x::real
 f(x) = exp(-x)
 plot(f(x), 0, 10, label = L"$f(x)=e^{-x}$")
 ```
@@ -340,7 +340,7 @@ $$
 
 ```{julia}
 using SymPy
-@vars x real = true
+@syms x::real
 f(x) = sin(x)^2
 1/(2*PI) * integrate(f(x), 0, 2PI)
 ```
@@ -357,7 +357,7 @@ Dibujamos primero la región.
 
 ```{julia}
 using SymPy, Plots
-@vars x real = true
+@syms x::real
 f(x) = sin(x)+2
 plot(f, 0, 2pi, ylim=(0,3), fillrange = 0, fillalpha = 0.3, label = "")
 ```
@@ -366,7 +366,7 @@ A continuación dibujamos el sólido de revolución parametrizado en 3D.
 
 ```{julia}
 using Unzip
-@vars x, u, v real=true
+@syms x::real u::real v::real
 f(x) = sin(x)+2
 S(u, v) = (u, f(u)*cos(v), f(u)*sin(v))
 us = range(0, 2pi, length=100)
@@ -378,14 +378,8 @@ surface(ws...)
 También es posible dibujarlo de manera interactiva con la activando el backend de [Plotly](https://plotly.com/julia/) mediante la función [`plotlyjs()`](https://docs.juliaplots.org/latest/gallery/plotlyjs/).
 
 ```{julia}
-# Activamos el bakden de Plotly.
+# Activamos el backend de Plotly.
 plotlyjs()
-@vars x, u, v real=true
-f(x) = sin(x)+2
-S(u, v) = (u, f(u)*cos(v), f(u)*sin(v))
-us = range(0, 2pi, length=100)
-vs = range(0, 2pi, length=100)
-ws = unzip(S.(us, vs'))
 plot(surface(ws...))
 ```
 
@@ -413,7 +407,7 @@ Dibujamos primero la región.
 using SymPy, Plots
 # Volvemos a activar el backend por defecto.
 gr()
-@vars x real = true
+@syms x::real
 f(x) = sqrt(1-(x-2)^2)
 plot(f(x), 0, 4, fillrange = 0, fillalpha = 0.3, aspect_ratio = 1, label = "")
 plot!(-f(x), 0, 4, fillrange = 0, fillalpha = 0.3, aspect_ratio = 1, label = "")
@@ -443,7 +437,7 @@ Dibujamos primero el perfil de las chapas.
 
 ```{julia}
 using SymPy, Plots
-@vars x real = true
+@syms x::real
 f(x) = sin(x/2)
 plot(f(x), 0, 100, aspect_ratio = 1, label = "")
 ```
@@ -472,7 +466,7 @@ a.  El volumen del cuerno de Gabriel.
 
     ```{julia}
     using SymPy
-    @vars x real = true
+    @syms x::real
     f(x) = 1/x
     integrate(PI*f(x)^2, 1, oo)
     ```
@@ -491,7 +485,7 @@ b.  Calcular la superficie del cuerno de Gabriel.
 
     ```{julia}
     using SymPy
-    @vars x real = true
+    @syms x::real
     f(x) = 1/x
     integrate(2PI*f(x)*sqrt(1+diff(f(x))^2), 1, oo)
     ```
@@ -510,7 +504,7 @@ Calculamos primero el nivel del aceite en el depósito. Para ello necesitamos el
 
 ```{julia}
 using SymPy
-@vars x y real=true
+@syms x::real y::real
 f(x) = x^2/2
 f⁻¹(y) = solve(y-f(x), x)[2]
 # Volumen hasta una altura h
@@ -551,7 +545,7 @@ Dibujamos primero la región. Para ello hay que calcular primero los puntos de c
 
 ```{julia}
 using SymPy, Plots
-@vars x real = true
+@syms x::real
 f(x) = x-1
 g(x) = (x-1)^2
 # Calculo de los puntos de corte.
@@ -624,7 +618,7 @@ Calcular el area encerrada entre las funciones $f(x)=\operatorname{sin}(x)$ y $\
 ```{julia}
 #| hold: true
 #| echo: false
-@vars x real = true
+@syms x::real
 f(x) = sin(x)
 g(x) = cos(x)
 sol = N(integrate(abs(f(x)-g(x)), 0, 2pi))
@@ -639,7 +633,7 @@ Dibujar la gráfica de la función $f(x)=\dfrac{1}{\sqrt{2\pi}}e^{\frac{-x^2}{2}
 #| hold: true
 #| echo: false
 using QuadGK
-@vars x real = true
+@syms x::real
 f(x) = exp(-1/2 * x^2)/sqrt(2*pi)
 sol = N(integrate(f(x), -oo, oo))
 numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
@@ -652,7 +646,7 @@ La función $T(t)=100te^{-t}$ define la temperatura de un sistema en cada instan
 ```{julia}
 #| hold: true
 #| echo: false
-@vars t real = true
+@syms t::real
 T(t) = 100t*exp(-t)
 sol = N(1/5 * integrate(T(t), 0, 5))
 numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
@@ -665,7 +659,7 @@ Calcular el volumen del sólido de revolución generado por la rotación al rede
 ```{julia}
 #| hold: true
 #| echo: false
-@vars x real = true
+@syms x::real
 f(x) = log(x)
 g(x) = (x-1)/2
 a, b = solve(f(x)-g(x))
@@ -689,7 +683,7 @@ La curva $y=a\cosh(x/a)$ se conoce como _catenaria_. ¿Cuál es la longitud de l
 ```{julia}
 #| hold: true
 #| echo: false
-@vars x real = true
+@syms x::real
 c(x) = 2cosh(x/2)
 sol = quadgk(sqrt(1+diff(c)^2), -1, 1)
 numericq(sol[1], 1e-5, hint="Introducir hasta 5 decimales")
@@ -703,7 +697,7 @@ Un depósito metálico tiene la forma del elipsoide que se obtiene al rotar la e
 #| hold: true
 #| echo: false
 using SymPy, QuadGK
-@vars x real = true
+@syms x::real
 f(x) = sqrt(1-x^2/4)
 sol = quadgk(2PI*f(x)*sqrt(1+diff(f(x))^2), -2, 2)
 numericq(N(sol[1]), 1e-5, hint="Introducir hasta 5 decimales")

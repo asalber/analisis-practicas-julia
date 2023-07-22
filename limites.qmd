@@ -1,7 +1,7 @@
 ---
 title: Límites de funciones reales
 lang: es
-jupyter: julia-1.9
+#jupyter: julia-1.9
 ---
 
 ## Ejercicios Resueltos
@@ -67,13 +67,13 @@ d. Calcular el límite por la izquierda y por la derecha de $f$ en $x=3$.
 
 :::{.callout-note collapse="true"}
 ## Ayuda
-Declarar la variable simbólica `x` con `@vars` imponiento la restricción `real=true`, definir la función y usar la función [`limit`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Limits-1) del paquete `SymPy` para calcular los límites laterales de la función. Para el límite por la izquierda indicar el parámetro `dir="-"` y para el límite por la derecha `dir="+"`.
+Declarar la variable simbólica `x` con `@syms` imponiento la restricción `real=true`, definir la función y usar la función [`limit`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Limits-1) del paquete `SymPy` para calcular los límites laterales de la función. Para el límite por la izquierda indicar el parámetro `dir="-"` y para el límite por la derecha `dir="+"`.
 :::
 
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-@vars x real=true
+@syms x::real
 li = limit(f(x), x=>3, dir="-")
 println("Límite por la izquierda: ", li)
 ld = limit(f(x), x=>3, dir="+")
@@ -112,7 +112,7 @@ c. Calcular el límite por la izquierda y por la derecha de $g$ en $x=0$.
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-@vars x real=true
+@syms x::real
 li = limit(g(x), x=>0, dir="-")
 println("Límite por la izquierda: ", li)
 ld = limit(g(x), x=>0, dir="+")
@@ -165,7 +165,7 @@ b. Calcular los límites anteriores. ¿Coinciden los resultados con los conjetur
 ## Solución
 ```{julia}
 using SymPy
-@vars x real=true
+@syms x::real
 println("Límite por la izquieda en -2: ", limit(f(x), x=>-2, dir="-"))
 println("Límite por la izquieda en -2: ", limit(f(x), x=>-2, dir="+"))
 println("Límite en -∞: ", limit(f(x), x=>-oo))
@@ -189,7 +189,7 @@ a. $\lim_{x\to 0} \operatorname{sen}\left(\frac{1}{x}\right)$
 ## Solución
 ```{julia}
 using SymPy
-@vars x real=true
+@syms x::real
 limit(sin(1/x), x=>0)
 ```
 Como no se obtiene un valor concreto, sino un rango de valores, el límite no existe.
@@ -218,7 +218,7 @@ c. $\lim_{x\to a} \frac{\operatorname{sen}(x)-\operatorname{sen}(a)}{x-a}$
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-@vars a real=true
+@syms a::real
 limit((sin(x)-sin(a))/(x-a), x=>a)
 ```
 :::
@@ -240,7 +240,7 @@ f(0)
 Ahora calculamos el límite de $f$ en $0$.
 
 ```{julia}
-@vars x real=true
+@syms x::real
 f(x)=sin(x)/x
 limit(f(x), x=>0)
 ```
@@ -306,7 +306,7 @@ Para respetar las discontinuidades utilizar la función `rangeclamp()` del paque
 ## Solución
 ```{julia}
 using Plots, MTH229, LaTeXStrings
-@vars x real=true
+@syms x::real
 g1(x) = x/(x-2)
 g2(x) = x^2/(2x-6)
 g(x) = x<=0 ? g1(x) : g2(x)
@@ -393,7 +393,7 @@ Calcular el límite en $0$ por la izquierda de la función de la rama negativa, 
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-@vars x a real=true
+@syms x::real a::real
 h1(x) = (2x^2-2x)/(3x^2+x)
 h2(x) = (tan(x)-a*x)/x 
 l1 = limit(h1(x), x=>0, dir="-")
@@ -631,7 +631,7 @@ $$
 ```{julia}
 #| echo: false
 using Latexify
-@vars a real=true
+@syms a::real
 h1(x) = x^3-x-2
 h2(x) = cos(x-Sym(pi)/4)+a 
 l1 = limit(h1(x), x=>0, dir="-")

@@ -1,7 +1,7 @@
 ---
 title: Series de números reales
 lang: es
-jupyter: julia-1.9
+#jupyter: julia-1.9
 ---
 
 ## Ejercicios Resueltos
@@ -220,7 +220,7 @@ Para calcular el radio de convergencia utilizar el [criterio de la razón](https
 ## Solución
 ```{julia}
 using SymPy
-@vars x real=true
+@syms x::real
 p(n) = series(atan(x), x, 0, n+1).removeO()
 for i = 1:5
     println("Suma funcional parcial de grado $(2i-1): $(p(2i-1))")
@@ -231,7 +231,7 @@ El término general de la serie es $\frac{(-1)^{n-1}}{2n-1}$, y por tanto, se tr
 
 
 ```{julia}
-@vars n int=true
+@syms n::integer
 c(n) = (-1)^(n-1)/(2n-1)
 limit(abs(c(n)/c(n+1)), n => Inf)
 ```
@@ -270,7 +270,7 @@ a.  Calcular el radio de convergencia de la función de Bessel.
     ## Solución
     ```{julia}
     using SymPy
-    @vars n int=true
+    @syms n::integer
     c(n) = (-1)^n*1/(2^(2n)*factorial(n)^2)
     limit(abs(c(n)/c(n+1)), n => Inf)
     ```
@@ -288,7 +288,7 @@ a.  Dibujar en una misma gráfica la suma funcional parcial de orden 10 de la se
     ## Solución
     ```{julia}
     using Plots, LaTeXStrings, Bessels
-    @vars x real=true
+    @syms x::real
     a(x,n) = (-1)^n/(2^(2n)*factorial(n)^2) * x^(2n)
     N = 10
     an = [a(x,n) for n=0:N]
@@ -318,7 +318,7 @@ a.  $\sum \operatorname{sen}(nt)$
 ## Solución
 ```{julia}
 using Plots, SymPy, Latexify
-@vars t real=true
+@syms t::real
 a(t,n) = sin(n*t)
 N = 10
 an = [a(t,n) for n=1:N]
@@ -339,7 +339,7 @@ b. $\sum \frac{\operatorname{sen}(nt)}{n}$
 ## Solución
 ```{julia}
 using Plots, SymPy, Latexify
-@vars t real=true
+@syms t::real
 a(t,n) = sin(n*t)/n
 N = 10
 an = [a(t,n) for n=1:N]
@@ -360,7 +360,7 @@ c. $\sum \frac{\operatorname{sen}((2n-1)t)}{2n-1}$
 ## Solución
 ```{julia}
 using Plots, SymPy, Latexify
-@vars t real=true
+@syms t::real
 a(t,n) = sin((2n-1)t)/(2n-1)
 N = 10
 an = [a(t,n) for n=1:N]
@@ -451,7 +451,7 @@ a. $\sum \frac{(x-2)^n}{n5^n}$
 ```{julia}
 #| echo: false
 using SymPy
-@vars n int=true
+@syms n::integer
 c(n) = 1/(n*5^n)
 l = limit(abs(c(n)/c(n+1)), n => Inf)
 numericq(l, 1)
@@ -462,7 +462,7 @@ b. $\sum \frac{2^n(x-2)^n}{\sqrt(n+3)}$
 ```{julia}
 #| echo: false
 using SymPy
-@vars n int=true
+@syms n::integer
 c(n) = 2^n/sqrt(n+3)
 l = limit(abs(c(n)/c(n+1)), n => Inf)
 numericq(l, 1)
@@ -482,7 +482,7 @@ donde R es el radio de la Tierra (tomar un radio medio 6371 km) y $g$ es la acel
 #| hold: true
 #| echo: false
 using SymPy
-@vars m g h real=true
+@syms m::real g::real h::real
 const R = 6371
 error = 0.01
 F(h) = m*g*R^2/(R+h)^2
@@ -515,7 +515,7 @@ $$
 ```{julia}
 #| echo: false
 using Plots, SymPy
-@vars t real=true
+@syms t::real
 a(t,n) = (-1)^n*sin((2n-1)t)/(2n-1)^2
 b(t,n) = cos((2n-1)t)/(2n-1)
 c(t,n) = sin(3n*t)
