@@ -8,6 +8,7 @@ project:
 execute: 
   freeze: auto
   cache: true
+  daemon: 3600
 
 website:
   favicon: "img/logos/favicon.ico"
@@ -37,13 +38,14 @@ book:
     site: "@aprendeconalf"
   chapters:
     - index.qmd
-    - introduccion.qmd
-    - sucesiones.qmd
-    - funciones-elementales.qmd
-    - limites.qmd
-    - derivadas.qmd
-    - series.qmd
-    - integrales.qmd
+    - 01-introduccion.qmd
+    - 02-sucesiones.qmd
+    - 03-funciones-elementales.qmd
+    - 04-limites.qmd
+    - 05-derivadas.qmd
+    - 06-series.qmd
+    - 07-integrales.qmd
+    - 08-funciones-vectoriales.qmd
     
 #bibliography: references.bib
 
