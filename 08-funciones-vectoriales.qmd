@@ -15,6 +15,7 @@ using Makie, GLMakie # Para el dibújo de gráficas en 3d.
 #plotlyjs() # Para obtener gráficos interactivos.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 using LinearAlgebra # Para el módulo, producto escalar y vectorial de vectores.
+using Roots # Para calcular soluciones de ecuaciones numéricamente.
 using CalculusWithJulia # Utilidades para dibujar vectores.
 ```
 
@@ -254,6 +255,11 @@ a.  Definir una función para crear nudos tóricos con parámetros `p` y `q` par
 
     ```{julia}
     using GLMakie
+    """
+        nudo_torico(ax, p, q, toro)
+
+    Función dibuja un nudo tórico de parámetros p, q sobre los ejes ax. Si el parámetro toro es true dibuja también el toro sobre el que se traza el nudo.
+    """
     function nudo_torico(ax::Axis3, p::Int64, q::Int64, toro::Bool = true)
         if toro 
             alpha = 0.5
@@ -454,6 +460,137 @@ N(integrate(norm(diff.(f(t))), 0, h))
 :::
 :::
 
+:::{#exr-curvatura}
+Dibujar función de curvatura de campana de Gauss correspondiente a la función de densidad de una distribución normal estándar
+
+$$
+f(x) = \frac{1}{\sqrt{2\pi}}e^{-x^2/2}.
+$$
+
+¿En qué puntos la curvatura es nula? ¿Dónde la curvatura es máxima localmente?
+
+:::{.callout-note collapse="true"}
+## Ayuda
+La [curvatura de la gráfica de una función real](https://aprendeconalf.es/analisis-ejercicios/10-funciones-vectoriales.html#exr-curvatura-funcion) $f(x)$ se calcula mediante la fórmula 
+
+$$
+\kappa(x) = \frac{|f''(x)|}{(1+f''(x)^2)^{3/2}}.
+$$
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+Dibujamos primero la gráfica de la función y la de la función curvatura.
+
+```{julia}
+using SymPy, GLMakie
+@syms x::real
+# Definimos la función 
+f(x) = 1/sqrt(2pi) * exp(-x^2/2)
+# Dibujamos la gráfica de la función
+fig = Figure()
+ax = Axis(fig[1,1], autolimitaspect = 1)
+lines!(ax, -3..3, f, label = L"$f(t)= \frac{1}{\sqrt{2\pi}}e^{-x^2/2}$")
+fig
+# Calculamos la segunda derivada de la función
+df2 = diff(f, 2)
+# Calculamos la función de curvatura
+k(x) = abs(df2(x)) / (1 + df2(x)^2)^(3/2)
+# Definimos una serie de puntos de la función curvatura
+xs = range(-3, 3, 200)
+points = Point2.(xs, k.(xs))
+# Dibujamos la función de curvatura
+lines!(ax, points, label = "Curvatura")
+# Añadimos la leyenda
+axislegend()
+fig
+```
+
+Ahora calculamos los puntos con curvatura máxima y mínima localmente.
+
+```{julia}
+# Calculamos los puntos que anulan la curvatura.
+solve(k(x),x)
+# Calculamos los puntos críticos de la curvatura.
+# solve(diff(k(x)), x) No encuentra la solución, así que buscamos la solución numéricamente.
+using Roots
+println("Máximo local en x = $(find_zero(diff(k(x)), -2))")
+println("Máximo local en x = $(find_zero(diff(k(x)), 0))")
+println("Máximo local en x = $(find_zero(diff(k(x)), 2))")
+```
+:::
+:::
+
+:::{#exr-curvatura-torsion}
+La _torsión_ de una trayectoria de una función vectorial $\mathbf{f}(t)$ en el espacio real $\mathbb{R}^3$ mide la intensidad con la que una curva se sale del plano osculador y se calcula con la fórmula
+
+$$
+\tau(t) = \frac{(\mathbf{f}'(t)\times \mathbf{f}''(t))\mathbf{f}'''(t)}{|\mathbf{f}'(t)\times \mathbf{f}''(t)|^2}
+$$
+
+Definir una función para la curvatura y y otra para la torsión de la trayectoria de la función vectorial $\mathbf{h}(t)=\cos(2t)\mathbf{i} + \operatorname{sen}(t) \mathbf{j} + \cos(t) \mathbf{k}$, y utilizarla para calcular la curvatura y la torsión en los instantes $t=0, \pi/4, \pi/2, 3\pi/2$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+Calculamos primero la curvatura.
+
+```{julia}
+using SymPy, LinearAlgebra
+"""
+    curvatura(h, a)
+
+Calcula la curvatura de la trayectoria de una función vectorial h en el punto a.
+"""
+function curvatura(f, a)
+    @syms t::real
+    # Calculamos la primera derivada.
+    df(t) = diff.(f(t))
+    # Calculamos la segunda derivada.
+    df2(t) = diff.(df(t))
+    # Calculamos la curvatura
+    k(t) = norm(cross(df(t), df2(t))) / norm(df(t))^3
+    return N(subs(k(t), t=>a))
+end
+
+f(t) = [cos(2t), sin(t), cos(t)]
+println("Curvatura en t=0: $(curvatura(f, 0))")
+println("Curvatura en t=π/4: $(curvatura(f, pi/4))")
+println("Curvatura en t=π/2: $(curvatura(f, pi/2))")
+println("Curvatura en t=3π/4: $(curvatura(f, 3pi/4))")
+```
+
+Y ahora calculamos la torsión.
+
+
+```{julia}
+using SymPy, LinearAlgebra
+"""
+    torsion(h, a)
+
+Calcula la torsion de la trayectoria de una función vectorial h en el punto a.
+"""
+function torsion(f, a)
+    @syms t::real
+    # Calculamos la primera derivada.
+    df(t) = diff.(f(t))
+    # Calculamos la segunda derivada.
+    df2(t) = diff.(df(t))
+    # Calculamos la tercera derivada.
+    df3(t) = diff.(df2(t))
+    # Calculamos la torsión.
+    τ(t) = dot(cross(df(t), df2(t)), df3(t)) / norm(cross(df(t), df2(t)))^2
+    return N(subs(τ(t), t=>a))
+end
+
+println("Torsión en t=0: $(torsion(f, 0))")
+println("Torsión en t=π/4: $(torsion(f, pi/4))")
+println("Torsión en t=π/2: $(torsion(f, pi/2))")
+println("Torsión en t=3π/4: $(torsion(f, 3pi/4))")
+```
+:::
+:::
 
 
 ## Ejercicios propuestos
