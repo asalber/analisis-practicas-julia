@@ -132,8 +132,7 @@ a.  Dibujar $\mathbf{u}$, $\mathbf{v}$ y $\mathbf{u}\times\mathbf{v}$ en el espa
     O = [0, 0 ,0]
     arrows!(ax, [Point3(O)], [Vec3(u), Vec3(v), Vec3(u × v)], 
         linecolor = [:blue,:red, :green], arrowcolor = [:blue,:red, :green],
-        linewidth = 0.02, arrowsize = Vec3(0.1, 0.1, 0.1),
-        align = :origin)
+        linewidth = 0.02, arrowsize = Vec3(0.1, 0.1, 0.1))
     fig
     ```
     :::
@@ -592,6 +591,93 @@ println("Torsión en t=3π/4: $(torsion(f, 3pi/4))")
 :::
 :::
 
+:::{#exr-cinematica} 
+Se lanza una pelota desde la terraza de un edificio de altura $h$ con una rapidez inicial $r$ y un ángulo sobre el horizonte $\theta$. Estudiar la trayectoria que describe la pelota suponiendo que la única fuerza que actúa sobre ella es la de la gravedad.
+
+a.  Definir una función para calcular la función vectorial de la posición de la pelota tomando como parámetros la altura del edificio, la rapidez inicial y el ángulo de lanzamiento.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy
+    """
+        pelota(h, r, θ)
+
+    Devuelve un vector con las componentes de la función vectorial que define la posición de una pelota lanzada desde una altura h, con una rapidez r y un ángulo de lanzamiento θ con respecto al horizonte.
+    """
+    function pelota(h, r, θ)
+        @syms t::positive
+        g = 9.81
+        v₀ = [r*cos(θ), r*sin(θ)]
+        a(t) = [Sym(0), -Sym(g)]
+        v(t) = integrate.(a(t), t) + v₀
+        return integrate.(v(t), t) + [0, h]
+    end
+    ```
+    :::
+
+a.  Construir una función para dibujar la gráfica de la trayectoria de la pelota tomando como parámetros la altura del edificio, la rapidez inicial y el ángulo de lanzamiento.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using GLMakie
+    """
+        trayectoria_pelota(ax, h, r, θ)
+
+    Dibuja sobre los ejes ax la gráfica de la trayectoria de una pelota lanzada desde una altura h, con una rapidez r y un ángulo de lanzamiento θ con respecto al horizonte.
+    """
+    function trayectoria_pelota!(ax, h, r, θ)
+        @syms t::positive
+        f = lambdify(pelota(h, r, θ))
+        t₀ = solve(f(t)[2], t)[1]
+        ts = range(0, t₀, 200)
+        points = Point2.(f.(ts))
+        lines!(ax, points, label = "h =$(h), r = $(r), θ = $(θ)")
+        return ax
+    end
+
+    fig = Figure()
+    ax = Axis(fig[1,1], title = "Trayectoria de la pelota", aspect = DataAspect())
+    trayectoria_pelota!(ax, 100, 20, PI/4)
+    trayectoria_pelota!(ax, 100, 20, PI/6)
+    trayectoria_pelota!(ax, 100, 20, PI/8)
+    trayectoria_pelota!(ax, 100, 20, PI/10)
+    # Añadimos la leyenda
+    axislegend(position = :lb)
+    fig
+    ```
+    :::
+
+a.  Si se lanza la pelota a nivel del suelo, con una rapidez de 20 m/s ¿para qué ángulo se alcanzará una mayor distancia? ¿Y si se lanza desde 100 m de altura?
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    Calculamos primero el ángulo para una altura 0.
+    ```{julia}
+    @syms θ, t:: positive
+    f(t) = pelota(0, 20, θ)
+    t₀ = solve(f(t)[2], t)[1]
+    solve(diff(subs(f(t)[1], t=>t₀), θ))
+    ```
+
+    Y ahora para una altura de 100 m.
+
+    ```{julia}
+    using Roots
+    @syms θ, t:: positive
+    f(t) = pelota(100, 20, θ)
+    t₀ = solve(f(t)[2], t)[2]
+    find_zero(diff(subs(f(t)[1], t=>t₀), θ), 0.5)
+    ```
+    :::
+
+a.  Determinar las componentes tangencial y normal del vector aceleración. 
+
+:::
 
 ## Ejercicios propuestos
 <!-- 
