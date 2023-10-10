@@ -271,10 +271,7 @@ a.  Definir una función para crear nudos tóricos con parámetros `p` y `q` par
         x1 = [2cos(u) + cos(u) * cos(v) for u in U, v in V]
         y1 = [2sin(u) + sin(u) * cos(v) for u in U, v in V]
         z1 = [sin(v) for u in U, v in V]
-        # Inicializamos la figura y los ejes.
-        #fig = Figure()
-        #ax = Axis3(fig[1,1], show_axis = true)
-        # Dibujamos el toro.
+        # Dibujamos el toro en los ejes.
         Makie.surface!(ax, x1, y1, z1; colormap = :viridis, shading = false, transparency = true, alpha = alpha)
         # Definimos la función vectorial de nudo tórico.
         f(t) = [(2+cos(q*t))cos(p*t), (2+cos(q*t))sin(p*t), -sin(q*t)] 
@@ -307,13 +304,13 @@ a.  Calcular las ecuaciones de la recta tangente y el plano normal a la trayecto
     ```{julia}
     using SymPy, Plots
     @syms t::real
-    # Definimos la función vectorial
+    # Definimos la función vectorial.
     f(t) = [sin(2t), cos(t)]
     # Instante 
     a = pi/2
-    # Dibujamos la trayectoria
+    # Dibujamos la trayectoria.
     Plots.plot(f(t)..., 0, 2pi, aspect_ratio = :equal, label = "f(t)=(sen(t), cos(t))")
-    # Dibujamos el punto de tangencia
+    # Dibujamos el punto de tangencia.
     Plots.scatter!([f(a)[1]],[f(a)[2]], label = "")
     # Calculamos la derivada en el punto.
     df = subs.(diff.(f(t)), t=>a)
@@ -321,7 +318,7 @@ a.  Calcular las ecuaciones de la recta tangente y el plano normal a la trayecto
     tl(t) = f(a) + df * t
     # Dibujamos la recta tangente.
     Plots.plot!(tl(t)..., -1, 1, label = "Tangente")
-    # Calculamos la ecuación de la recta normal
+    # Calculamos la ecuación de la recta normal.
     nl(t) = f(a) - [df[2],-df[1]] * t
     Plots.plot!(nl(t)..., -0.6, 0.6, label = "Normal")
     ```
@@ -335,11 +332,11 @@ a.  Calcular las ecuaciones de las recta tangente y el plano normal a la trayect
     ```{julia}
     using SymPy, LinearAlgebra, GLMakie
     @syms x, y, z, t::real
-    # Definimos la función vectorial
+    # Definimos la función vectorial.
     g(t) = [cos(t), sin(t), sqrt(t)]
     # Instante 
     a = pi/2
-    # Dibujamos la trayectoria
+    # Dibujamos la trayectoria.
     ts = range(0, 2pi, 200)
     points = Point3.(g.(ts))
     fig = Figure()
@@ -398,15 +395,15 @@ points = Point3.(f.(ts))
 lines!(ax, points, linewidth = 3, color = :red)
 # Punto
 a = pi/2
-# Dibujamos el punto
+# Dibujamos el punto.
 Makie.scatter!(ax, [Point3(f(a))])
-# Vector tangente unitario
+# Vector tangente unitario.
 Tan(t) = diff.(f(t)) / norm(diff.(f(t)))
 Ta = subs.(Tan(t), t=>a)
-# Vector normal unitario
+# Vector normal unitario.
 Norm(t) = diff.(Tan(t)) / norm(diff.(Tan(t)))
 Na = subs.(Norm(t), t=>a)
-# Calculamos la ecuación del plano osculador
+# Calculamos la ecuación del plano osculador.
 po(x,y) = solve(dot(([x, y, z] - f(a)), cross(Ta, Na)), z)[1]
 xs = range(-3, -1, 2)
 ys = range(-1, 1, 2)
@@ -422,7 +419,7 @@ Para construir un cuaderno de 30 cm de altura se utiliza una espiral de alambre 
 
 :::{.callout-note collapse="true"}
 ## Ayuda
-La [longitud de la trayectoria de una función vectorial](https://aprendeconalf.es/analisis-manual/12-funciones-vectoriales.html#longitud-de-la-trayectoria-de-una-funci%C3%B3n-vectorial) $\mathbf{fe}(t)$ en el intervalo $t\in [a,b]$ se calcula mediante la integral
+La [longitud de la trayectoria de una función vectorial](https://aprendeconalf.es/analisis-manual/12-funciones-vectoriales.html#longitud-de-la-trayectoria-de-una-funci%C3%B3n-vectorial) $\mathbf{f}(t)$ en el intervalo $t\in [a,b]$ se calcula mediante la integral
 
 $$
 \int_a^b |\mathbf{f}'(t)|\, dt
@@ -436,11 +433,11 @@ Dibujamos primero la espiral.
 ```{julia}
 using SymPy, GLMakie
 @syms t::real
-# Definimos la función vectorial
+# Definimos la función vectorial.
 f(t) = [cos(t), sin(t), t/8]
-# Calculamos el número de revoluciones
+# Calculamos el número de revoluciones.
 h = solve(f(t)[3]-30)[1]
-# Dibujamos la trayectoria
+# Dibujamos la trayectoria.
 ts = range(0, 240, 2000)
 points = Point3.(f.(ts))
 fig = Figure()
@@ -485,18 +482,18 @@ Dibujamos primero la gráfica de la función y la de la función curvatura.
 ```{julia}
 using SymPy, GLMakie
 @syms x::real
-# Definimos la función 
+# Definimos la función.
 f(x) = 1/sqrt(2pi) * exp(-x^2/2)
-# Dibujamos la gráfica de la función
+# Dibujamos la gráfica de la función.
 fig = Figure()
 ax = Axis(fig[1,1], autolimitaspect = 1)
 lines!(ax, -3..3, f, label = L"$f(t)= \frac{1}{\sqrt{2\pi}}e^{-x^2/2}$")
 fig
-# Calculamos la segunda derivada de la función
+# Calculamos la segunda derivada de la función.
 df2 = diff(f, 2)
-# Calculamos la función de curvatura
+# Calculamos la función de curvatura.
 k(x) = abs(df2(x)) / (1 + df2(x)^2)^(3/2)
-# Definimos una serie de puntos de la función curvatura
+# Definimos una serie de puntos de la función curvatura.
 xs = range(-3, 3, 200)
 points = Point2.(xs, k.(xs))
 # Dibujamos la función de curvatura
@@ -608,10 +605,15 @@ a.  Definir una función para calcular la función vectorial de la posición de 
     """
     function pelota(h, r, θ)
         @syms t::positive
+        # Constante con al aceleración de la gravedad
         g = 9.81
+        # Velocidad inicial.
         v₀ = [r*cos(θ), r*sin(θ)]
+        # Aceleración constante
         a(t) = [Sym(0), -Sym(g)]
+        # Obtenemos el vector velocidad integrando la aceleración.
         v(t) = integrate.(a(t), t) + v₀
+        # Obtenemos el vector posición integrando el vector velocidad.
         return integrate.(v(t), t) + [0, h]
     end
     ```
@@ -631,10 +633,15 @@ a.  Construir una función para dibujar la gráfica de la trayectoria de la pelo
     """
     function trayectoria_pelota!(ax, h, r, θ)
         @syms t::positive
+        # Lambdificamos la expresión de la función vectorial para poder llamarla con parámetros.
         f = lambdify(pelota(h, r, θ))
+        # Calculamos el instante en el que la pelota toca el suelo.
         t₀ = solve(f(t)[2], t)[1]
+        # Definimos un rango de valores desde 0 hasta el instante en que la pelota toca el suelo.
         ts = range(0, t₀, 200)
+        # Obtenemos los puntos de la trayectoria.
         points = Point2.(f.(ts))
+        # Dibujamos la trayectoria.
         lines!(ax, points, label = "h =$(h), r = $(r), θ = $(θ)")
         return ax
     end
@@ -657,10 +664,14 @@ a.  Si se lanza la pelota a nivel del suelo, con una rapidez de 20 m/s ¿para qu
     ## Solución
 
     Calculamos primero el ángulo para una altura 0.
+
     ```{julia}
     @syms θ, t:: positive
+    # Definimos la función vectorial.
     f(t) = pelota(0, 20, θ)
+    # Calculamos el instante en que la pelota toca el suelo.
     t₀ = solve(f(t)[2], t)[1]
+    # Calculamos los puntos críticos de la derivada de la posición horizontal de la pelota.
     solve(diff(subs(f(t)[1], t=>t₀), θ))
     ```
 
@@ -669,71 +680,83 @@ a.  Si se lanza la pelota a nivel del suelo, con una rapidez de 20 m/s ¿para qu
     ```{julia}
     using Roots
     @syms θ, t:: positive
+    # Definimos la función vectorial.
     f(t) = pelota(100, 20, θ)
+    # Definimos la función vectorial.
     t₀ = solve(f(t)[2], t)[2]
+    # Calculamos los puntos críticos de la derivada de la posición horizontal de la pelota.
     find_zero(diff(subs(f(t)[1], t=>t₀), θ), 0.5)
     ```
     :::
 
-a.  Determinar las componentes tangencial y normal del vector aceleración. 
+a.  Determinar las componentes tangencial y normal del vector aceleración, para una altura de 100 m, una rapidez de 20 m/s y un ángulo $\pi/4$. Comprobar que la componente tangencial de la aceleración se anula en el mismo instante en el que la componente normal es máxima y cuando la pelota alcanza la máxima altura.
 
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    La componente tangencial del vector aceleración se puede calcular con la fórmula
+
+    $$
+    a_T(t) = |\mathbf{v}(t)|' = \frac{\mathbf{f}'(t)\mathbf{f}''(t)}{|\mathbf{f}'(t)|}.
+    $$
+
+    Y la componente normal mediante la fórmula
+
+    $$
+    a_N(t) = \kappa(t)|\mathbf{v}(t)|^2 = \frac{|\mathbf{f}'(t)\times \mathbf{f}''(t)|}{|\mathbf{f}'(t)|}.
+    $$
+
+    Si la trayectoria no es en el plano real, se pueden aplicar estas fórmulas añadiendo una tercera componente nula. 
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    Calculamos primero la componente tangencial del vector aceleración.
+
+    ```{julia}
+    using LinearAlgebra
+    @syms t::positive
+    # Creamos la función vectorial
+    f(t) = pelota(100, 20, PI/4)
+    # Añadimos una tercera componente nula para estar en el espacio real.
+    f3 = push!(f(t), 0)
+    # Calculamos la primera derivada (vector velocidad).
+    df = diff.(f3, t)
+    # Calculamos la segunda derivada (vector aceleración).
+    df2 = diff.(df, t)
+    # Calculamos la componente tangencial del vector aceleración.
+    at = dot(df, df2) / norm(df)
+    ```
+    Y a continuación la componente normal.
+
+    ```{julia}
+    an = norm(cross(df, df2)) / norm(df)
+    ```
+
+    Ahora calculamos el instante en el que se anula la componente tangencial.
+
+    ```{julia}
+    solve(at)
+    ```
+
+    Finalmente comprobamos que es el mismo instante en el que la componente normal de la aceleración es máxima.
+
+    ```{julia}
+    # Instante en el que la componente normal de la acelaración es máxima.
+    solve(diff(an))
+    ```
+
+    Y comprobamos también que  coincide con el instante en que la pelota alcanza la máxima altura.
+
+    ```{julia}
+    solve(diff(f(t)[2]))
+    ```
+    :::
 :::
 
 ## Ejercicios propuestos
-<!-- 
-```{julia}
-#| echo: false
-#| results: "hidden"
-using QuizQuestions
-nothing
-```
-
-:::{#exr-derivabilidad}
-Dada la función
-
-$$
-f(x)=
-\begin{cases}
-\operatorname{sen}(x)^2 & \mbox{si $x\leq 0$},  \\
-ax^2+b &  \mbox{si $0<x\leq c$},  \\
-\ln(x) &  \mbox{si $c<x$},
-\end{cases}
-$$
-
-¿Para qué valores de $a$, $b$ y $c$ la función es derivable en todo $\mathbb{R}$?
-
-```{julia}
-#| echo: false
-using SymPy
-@syms x::real a::real b::real c::real
-f1(x) = sin(x)^2
-f2(x) = a*x^2+b
-f3(x) = log(x)
-nonlinsolve([limit(f1, 0, dir="-") - limit(f2, 0, dir="+"),limit(f2(x), x, c, dir="-") - limit(f3, c, dir="+")], (a,b,c))
-solve(limit(f1, 0, dir="-") - limit(f2, 0, dir="+"))
-solve(limit(f2(x), x, c, dir="-") - limit(f3, c, dir="+"))[1]
-choices = (L"a=\sqrt{e}, b=0, c=\frac{1}{e}.", L"a=\frac{1}{2e}, b=0, c=e^{1/2}.", L"a=1, b=1, c=1.", L"a=1, b=0, c=e.", "Para ningún valor.")
-answer = 2
-radioq(choices, answer)
-```
-:::
-
-
-:::{#exr-pendientes-tangentes}
-Dadas las funciones $f(x)=\ln\left(\sqrt{\dfrac{x^2}{2}}\right)$ y $g(x)=x^3+1$, ¿en qué puntos la recta normal a $f$ y
-la recta tangente a $g$ con paralelas?
-
-```{julia}
-#| echo: false
-using SymPy
-@syms x::real
-f(x) = ln(sqrt(x^2/2))
-g(x) = x^3+x^2-1
-sol = solve(Eq(-1/diff(f), diff(g)))[1]
-numericq(sol, 1e-15)
-```
-:::
 
 
 
- -->
+
+
