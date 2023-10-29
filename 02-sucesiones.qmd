@@ -28,8 +28,8 @@ Definir una función para el término general y aplicar la función a los natura
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-x(n) = 2n + 1
-print([x(n) for n = 1:10])
+a(n) = 2n + 1
+print([a(n) for n = 1:10])
 ```
 :::
 
@@ -40,11 +40,11 @@ b. $\left(\frac{1}{n}\right)_{n=1}^\infty$
 ## Solución
 ```{julia}
 # Como reales
-x(n) = 1 / n
-print([x(n) for n = 1:10])
+a(n) = 1 / n
+print([a(n) for n = 1:10])
 # Como racionales
-x(n) = 1//n
-print([x(n) for n = 1:10])
+a(n) = 1//n
+print([a(n) for n = 1:10])
 ```
 :::
 
@@ -53,8 +53,8 @@ c. $\left((-1)^n\right)_{n=1}^\infty$
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-x(n) = (-1)^n
-print([x(n) for n = 1:10])
+a(n) = (-1)^n
+print([a(n) for n = 1:10])
 ```
 :::
 
@@ -63,18 +63,18 @@ d. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-x(n) = (1 + 1 / n)^n
-print([x(n) for n = 1:10])
+a(n) = (1 + 1 / n)^n
+print([a(n) for n = 1:10])
 ```
 :::
 
-e. $x_1=1$ y $x_{n+1}=\sqrt{1+x_n}$ $\forall n\in\mathbb{N}$
+e. $a_1=1$ y $a_{n+1}=\sqrt{1+a_n}$ $\forall n\in\mathbb{N}$
 
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-x(n) = n == 1 ? 1 : sqrt(1+x(n-1))
-print([x(n) for n = 1:10])
+a(n) = n == 1 ? 1 : sqrt(1+a(n-1))
+print([a(n) for n = 1:10])
 ```
 :::
 :::
@@ -99,16 +99,16 @@ a. $\left(\frac{n}{4n+2}\right)_{n=1}^\infty$
 
 ```{julia}
 using Plots
-x(n) = n / (4n + 2)
-scatter([x(n) for n = 1:50], legend=false)
+a(n) = n / (4n + 2)
+scatter([a(n) for n = 1:50], legend=false)
 ```
 
 ## Makie
 
 ```{julia}
 using GLMakie
-x(n) = n / (4n + 2)
-Makie.scatter([x(n) for n = 1:50])
+a(n) = n / (4n + 2)
+Makie.scatter([a(n) for n = 1:50])
 ```
 :::
 
@@ -125,16 +125,16 @@ b. $\left(\frac{2^n}{n^2}\right)_{n=1}^\infty$
 ## Plots
 ```{julia}
 using Plots
-x(n) = 2^n / (4n + 2)
-scatter([x(n) for n = 1:50], legend=false)
+a(n) = 2^n / (4n + 2)
+scatter([a(n) for n = 1:50], legend=false)
 ```
 
 ## Makie
 
 ```{julia}
 using GLMakie
-x(n) = 2^n / (4n + 2)
-Makie.scatter([x(n) for n = 1:50])
+a(n) = 2^n / (4n + 2)
+Makie.scatter([a(n) for n = 1:50])
 ```
 :::
 
@@ -150,16 +150,16 @@ c. $\left(\frac{(-1)^n}{n}\right)_{n=1}^\infty$
 ## Plots
 ```{julia}
 using Plots
-x(n) = (-1)^n / n
-scatter([x(n) for n = 1:50], legend=false)
+a(n) = (-1)^n / n
+scatter([a(n) for n = 1:50], legend=false)
 ```
 
 ## Makie
 
 ```{julia}
 using GLMakie
-x(n) = (-1)^n / n
-Makie.scatter([x(n) for n = 1:50])
+a(n) = (-1)^n / n
+Makie.scatter([a(n) for n = 1:50])
 ```
 :::
 
@@ -176,23 +176,23 @@ d. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
 
 ```{julia}
 using Plots
-x(n) = (1 + 1 / n)^n
-scatter([x(n) for n = 1:50], legend=false)
+a(n) = (1 + 1 / n)^n
+scatter([a(n) for n = 1:50], legend=false)
 ```
 
 ## Makie
 
 ```{julia}
 using GLMakie
-x(n) = (1 + 1 / n)^n
-Makie.scatter([x(n) for n = 1:50])
+a(n) = (1 + 1 / n)^n
+Makie.scatter([a(n) for n = 1:50])
 ```
 :::
 
 La sucesión converge aproximadamente a $2.7$.
 :::
 
-e. $x_1 = 0.5$ y $x_{n+1}=\frac{3}{2+x_n}$ $\forall n\in\mathbb{N}$
+e. $a_1 = 0.5$ y $a_{n+1}=\frac{3}{2+a_n}$ $\forall n\in\mathbb{N}$
 
 :::{.callout-tip collapse="true"}
 ## Solución
@@ -202,16 +202,16 @@ e. $x_1 = 0.5$ y $x_{n+1}=\frac{3}{2+x_n}$ $\forall n\in\mathbb{N}$
 
 ```{julia}
 using Plots
-x(n) =  n == 1 ? 0.5 : 3/(2+x(n-1))
-scatter([x(n) for n = 1:50], legend=false)
+a(n) =  n == 1 ? 0.5 : 3/(2+a(n-1))
+scatter([a(n) for n = 1:50], legend=false)
 ```
 
 ## Makie
 
 ```{julia}
 using GLMakie
-x(n) = n == 1 ? 0.5 : 3/(2+x(n-1))
-Makie.scatter([x(n) for n = 1:50])
+a(n) = n == 1 ? 0.5 : 3/(2+a(n-1))
+Makie.scatter([a(n) for n = 1:50])
 ```
 :::
 
@@ -233,9 +233,9 @@ Definir una función para el término general y usar la función [`limit`](https
 ## Solución
 ```{julia}
 using SymPy
-@syms n::(integer, positive)  # Declaración de la variable simbólica n.
-x(n) = 1/n
-limit(x(n), n=>oo)
+@syms n  # Declaración de la variable simbólica n.
+a(n) = 1/n
+limit(a(n), n=>oo)
 ```
 :::
 
@@ -244,9 +244,9 @@ b. $\left((-1)^n\right)_{n=1}^\infty$
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-@syms n::(integer, positive)
-x(n) = (-1)^n
-limit(x(n), n=>oo)
+@syms n
+a(n) = (-1)^n
+limit(a(n), n=>oo)
 ```
 :::
 
@@ -255,9 +255,9 @@ c. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
-@syms n::(integer, positive)
-x(n) = (1 + 1 / n)^n
-limit(x(n), n=>oo)
+@syms n
+a(n) = (1 + 1 / n)^n
+limit(a(n), n=>oo)
 ```
 :::
 :::
@@ -310,6 +310,29 @@ print([a(10^i) for i = 1:6])
 ```
 :::
 
+a. Dibujar con los primeros 50 términos de la sucesión de los perímetros de los polígonos tomando $r=1$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+:::{.panel-tabset}
+## Plots
+```{julia}
+using Plots
+a(n) = 2n*sin(pi/n)
+scatter([a(n) for n = 1:50], legend=false)
+```
+
+## Makie
+
+```{julia}
+using GLMakie
+a(n) = 2n*sin(pi/n)
+Makie.scatter([a(n) for n = 1:50])
+```
+:::
+:::
+
 b. Dibujar con los primeros 50 términos de la sucesión de las areas de los polígonos tomando $r=1$.
 
 :::{.callout-tip collapse="true"}
@@ -328,30 +351,54 @@ scatter([a(n) for n = 1:50], legend=false)
 ```{julia}
 using GLMakie
 a(n) = n*sin(2*pi/n)/2
-Makie.scatter([x(n) for n = 1:50])
+Makie.scatter([a(n) for n = 1:50])
 ```
 :::
 :::
 
-c. Calcular el límite de la sucesión de las areas de los polígonos tomando $r=1$.
+a. Calcular el límite de la sucesión de los perímetros de los polígonos tomando $r=1$.
 
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
 using SymPy
-@syms n::(integer, positive)
-a(n) = n*sin(2*pi/n)/2
-float(limit(a(n), n=>oo))
+@syms n
+a(n) = 2n*sin(PI/n)  # Para cálculo simbólico es mejor utilizar la constante simbólica PI en lugar de pi.
+limit(a(n), n=>oo)
 ```
 :::
 
-d. Usando el resultado anterior, calcular el area del círculo de radio $r$.
+a. Usando el resultado anterior, calcular el perímetro del círculo de radio $r$.
 
 :::{.callout-tip collapse="true"}
 ## Solución
 ```{julia}
 using SymPy
-@syms n::(integer, positive), r
+@syms n, r
+a(n) = 2n*r*sin(PI/n)
+limit(a(n), n=>oo)
+```
+:::
+
+a. Calcular el límite de la sucesión de las areas de los polígonos tomando $r=1$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@syms n
+a(n) = n*sin(2*PI/n)/2
+limit(a(n), n=>oo)
+```
+:::
+
+a. Usando el resultado anterior, calcular el area del círculo de radio $r$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@syms n, r
 a(n) = n*r^2*sin(2*pi/n)/2
 limit(a(n), n=>oo)
 ```
@@ -359,7 +406,7 @@ limit(a(n), n=>oo)
 :::
 
 :::{#exr-subsucesiones}
-Dada la sucesión $x_1=1$ y $x_{n+1}=1+\frac{1}{n}$ $\forall n\in\mathbb{N}$, se pide:
+Dada la sucesión $a_1=1$ y $a_{n+1}=1+\frac{1}{a_n}$ $\forall n\in\mathbb{N}$, se pide:
 
 a. Dibujar la gráfica de los 10 primeros términos de la sucesión. ¿Es una sucesión monótona?
 
@@ -370,16 +417,16 @@ a. Dibujar la gráfica de los 10 primeros términos de la sucesión. ¿Es una su
 ## Plots
 ```{julia}
 using Plots
-x(n) =  n == 1 ? 1 : 1 + 1 / x(n-1)
-scatter([x(n) for n = 1:10], legend=false)
+a(n) =  n == 1 ? 1 : 1 + 1 / a(n-1)
+scatter([a(n) for n = 1:10], legend=false)
 ```
 
 ## Makie
 
 ```{julia}
 using GLMakie
-x(n) = n == 1 ? 1 : 1 + 1 / x(n-1)
-Makie.scatter([x(n) for n = 1:10])
+a(n) = n == 1 ? 1 : 1 + 1 / a(n-1)
+Makie.scatter([a(n) for n = 1:10])
 ```
 :::
 
@@ -394,18 +441,25 @@ b. Dibujar la gráfica de los 5 primeros términos de las subsucesiones con los 
 ## Plots
 ```{julia}
 using Plots, LaTeXStrings
-x(n) =  n == 1 ? 1 : 1 + 1 / x(n-1)
-n1 = 1:2:10
-n2 = 2:2:10
-Plots.scatter(n1, x.(n1), label=L"$x_{2n-1}$")
-Plots.scatter!(n2, x.(n2), label=L"$x_{2n}$")
+a(n) =  n == 1 ? 1 : 1 + 1 / a(n-1)
+Plots.scatter([a(2i-1) for i=1:5], label = L"$a_{2n-1}$")
+Plots.scatter!([a(2i) for i=1:5], label = L"$a_{2n}$")
 ```
 
+## Makie
+
+```{julia}
+using GLMakie
+a(n) = n == 1 ? 1 : 1 + 1 / a(n-1)
+fig, ax = Makie.scatter([a(2i-1) for i = 1:5], label = L"$a_{2n-1}$" )
+Makie.scatter!(ax,[a(2i) for i=1:5], label = L"$a_{2n}$")
+axislegend()
+fig
+```
 :::
 
 La sucesión de los términos impares es creciente y la de los pares es decreciente.
 :::
-
 :::
 
 ## Ejercicios propuestos
@@ -423,8 +477,8 @@ Calcular el décimo término de la sucesión $\left(\frac{3n^2+n}{6n^2-1}\right)
 ```{julia}
 #| hold: true
 #| echo: false
-x(n)=(3n^2+n)/(6n^2-1)
-numericq(x(10), 1e-5, hint="Introducir hasta 5 decimales")
+a(n)=(3n^2+n)/(6n^2-1)
+numericq(a(10), 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
@@ -441,15 +495,15 @@ radioq(choices, answer)
 :::
 
 :::{#exr-sucesiones-propuesto-3}
-¿Cuál de las siguientes gráficas corresponde a la sucesión $x_1=3$ y $x_{n+1}=\sqrt{2x_n}$ $\forall n\in\mathbb{N}$.
+¿Cuál de las siguientes gráficas corresponde a la sucesión $a_1=3$ y $a_{n+1}=\sqrt{2a_n}$ $\forall n\in\mathbb{N}$.
 ```{julia}
 #| echo: false
 using Plots
-x(n) = n==1 ? 3 : sqrt(2x(n-1))
-y(n) = n==1 ? 3 : 1 + 3/x(n-1)
+a(n) = n==1 ? 3 : sqrt(2a(n-1))
+y(n) = n==1 ? 3 : 1 + 3/a(n-1)
 p1 = Plots.scatter([sqrt(n) for n=1:50], legend=false)
 p2 = Plots.scatter([(1+2/n)^n for n=1:50], legend=false)
-p3 = Plots.scatter([x(n) for n=1:50], legend=false)
+p3 = Plots.scatter([a(n) for n=1:50], legend=false)
 p4 = Plots.scatter([y(n) for n=1:50], legend=false)
 l = @layout [a b; c d]
 p1 = Plots.plot(p1, p2, p3, p4, layout=l)
@@ -478,7 +532,7 @@ yesnoq("no")
 :::
 
 :::{#exr-sucesiones-propuesto-6}
-A la vista de la gráfica de los 20 primeros términos de la sucesión dada por $x_1=1$ y $x_{n+1}=\sqrt{x_n+2}$ $\forall n\in \mathbb{N}$, ¿crees que la sucesión converge? 
+A la vista de la gráfica de los 20 primeros términos de la sucesión dada por $a_1=1$ y $a_{n+1}=\sqrt{a_n+2}$ $\forall n\in \mathbb{N}$, ¿crees que la sucesión converge? 
 
 ```{julia}
 #| echo: false
