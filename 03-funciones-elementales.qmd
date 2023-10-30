@@ -10,7 +10,7 @@ Para la realización de esta práctica se requieren los siguientes paquetes:
 
 ```{julia}
 using Plots  # Para el dibujo de gráficas.
-#plotlyjs()  # Para obtener gráficos interactivos.
+using Makie # Para obtener gráficos interactivos.
 using SymPy # Para el cálculo simbólico.
 using MTH229 # Para restringir la gráfica de una función a su dominio.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
@@ -35,18 +35,33 @@ Dibujar una gráfica con la evolución del la población de bacterias.
 
 :::{.callout-note collapse="true"}
 ## Ayuda
-Definir los valores de las horas en un vector `x` y el número de bacterias en otro `y` y luego utilizar la función  [`scatter(x,y)`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` para dibujar una gráfica de puntos.
+Definir los valores de las horas en un vector `x` y el número de bacterias en otro `y` y luego utilizar la función [`scater(x,y)`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Makie`, o [`scatter(x,y)`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` para dibujar una gráfica de puntos.
 :::
 
 :::{.callout-tip collapse="true"}
 ## Solución
 
+:::{.panel-tabset}
+
+## Makie
+```{julia}
+using GLMakie
+horas = 0:7
+bacterias = [1, 2, 4, 8, 16, 32, 64, 128]
+fig = Figure()
+ax = Axis(fig[1,1], xlabel="Horas", ylabel="Bacterias", title="Evolución de la población de bacterias")
+Makie.scatter!(ax, horas, bacterias)
+fig
+```
+
+## Plots
 ```{julia}
 using Plots
 horas = 0:7
 bacterias = [1, 2, 4, 8, 16, 32, 64, 128]
-scatter(horas, bacterias, xlab="Horas", ylab="Bacterias", title="Evolución de la población de bacterias", legend=false)
+Plots.scatter(horas, bacterias, xlab="Horas", ylab="Bacterias", title="Evolución de la población de bacterias", legend=false)
 ```
+:::
 :::
 
 ¿Los pares dados en la tabla forman una función?
@@ -60,15 +75,25 @@ Si, porque para cada hora hay a lo sumo un número de bacterias con el que se re
 
 :::{.callout-note collapse="true"}
 ## Ayuda
-Para añadir una nueva gráfica a una anterior se añade un signo de exclamación `!` a la función de graficación. Para una gráfica de líneas, utilizar la función  [`plot!`](https://aprendeconalf.es/manual-julia/graficos.html#gr%C3%A1fica-de-una-funci%C3%B3n-de-una-variable) del paquete `Plots`, pasándole el nombre de la función si se ha definido previamente o la [definición anónima de la función](https://aprendeconalf.es/manual-julia/funciones.html#funciones-an%C3%B3nimas) 
+Para añadir una nueva gráfica a una anterior se añade un signo de exclamación `!` a la función de graficación. Para una gráfica de líneas, utilizar la función  [`lines!`](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-l%C3%ADneas) del paquete `Makie`, o [`plot!`](https://aprendeconalf.es/manual-julia/graficos.html#gr%C3%A1fica-de-una-funci%C3%B3n-de-una-variable) del paquete `Plots`, pasándole el nombre de la función si se ha definido previamente o la [definición anónima de la función](https://aprendeconalf.es/manual-julia/funciones.html#funciones-an%C3%B3nimas) 
 :::
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
+```{julia}
+Makie.lines!(ax, 0..7, x -> 2^x)
+fig
+```
+
+## Plots
 ```{julia}
 using Plots
-plot!(x -> 2^x)
+Plots.plot!(x -> 2^x)
 ```
+:::
 :::
 :::
 
@@ -85,11 +110,29 @@ donde $y_0$ es la altura inicial del objeto, $v_0$ la velocidad inicial con que 
 ## Ayuda
 Declarar $t$ como una variable simbólica usando el paquete [`SymPy`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#Symbols-1), definir después las constantes $y_0$, $v_0$ y $g$, y luego definir la función $y(t)$ mediante la fórmula dada.
 
-Para dibujar la gráfica de la función, usar la función `plot` pasándole el nombre de la función. Como no tienen sentido los instantes negativos, ni las posiciones negativas, restringir la ventana de graficación a valores de $t$ y de $y$ positivos usando los parámetros [`xlim`](https://aprendeconalf.es/manual-julia/graficos.html#ventana-de-graficaci%C3%B3n) e [`ylim`](https://aprendeconalf.es/manual-julia/graficos.html#ventana-de-graficaci%C3%B3n).
+Para dibujar la gráfica de la función, usar la función [lines!](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-l%C3%ADneas) del paquete `Makie` o la función `plot` del paquete `Plots`, pasándole el nombre de la función. Como no tienen sentido los instantes negativos, ni las posiciones negativas, restringir la ventana de graficación a valores de $t$ y de $y$ positivos usando los parámetros [`xlim`](https://aprendeconalf.es/manual-julia/graficos.html#ventana-de-graficaci%C3%B3n) e [`ylim`](https://aprendeconalf.es/manual-julia/graficos.html#ventana-de-graficaci%C3%B3n).
 :::
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
+```{julia}
+using Makie, SymPy
+@syms t  #Declaramos t como una variable simbólica
+y₀ = 5
+v₀ = 10
+const gravedad = -9.8  #Declaramos la gravedad como una constante
+y0(t) = y₀+v₀*t+ 1/2*gravedad*t^2
+fig = Figure()
+ax = Axis(fig[1,1], limits=(0, 3, 0, 15), xlabel="Tiempo (s)", ylabel="Altura (m)")
+Makie.lines!(ax, 0..3, y0, label="Pelota")
+fig
+```
+
+## Plots
+
 ```{julia}
 using Plots, SymPy
 @syms t  #Declaramos t como una variable simbólica
@@ -97,8 +140,9 @@ y₀ = 5
 v₀ = 10
 const gravedad = -9.8  #Declaramos la gravedad como una constante
 y0(t) = y₀+v₀*t+ 1/2*gravedad*t^2
-plot(y0, xlims=(0,3), ylims=(0,15), label="Pelota", xlab="Tiempo (s)", ylab="Altura (m)")
+Plots.plot(y0, xlims=(0,3), ylims=(0,15), label="Pelota", xlab="Tiempo (s)", ylab="Altura (m)")
 ```
+:::
 :::
 
 Al mismo tiempo que se lanza la pelota, un ascensor exterior baja por la fachada del mismo edificio desde una altura de $8$ m con una velocidad constante de $5$ m/s. Dibujar la gráfica de la posición del ascensor junto a la gráfica de la pelota.
@@ -110,23 +154,48 @@ La función que define la posición del ascensor que baja desde una altura $y_1$
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
 ```{julia}
 y₁ = 8
 v₁ = 2
 y1(t) = y₁-v₁*t
-plot!(y1, label="Ascensor")
+Makie.lines!(ax, 0..3, y1, label="Ascensor")
+axislegend()
+fig
 ```
+
+## Plots
+```{julia}
+y₁ = 8
+v₁ = 2
+y1(t) = y₁-v₁*t
+Plots.plot!(y1, label="Ascensor")
+```
+:::
 :::
 
 ¿En qué instantes el ascensor estará a la misma altura de la pelota? Dibujar los puntos correspondientes a esos instantes en la gráfica anterior.
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
+```{julia}
+sol = N(solve(y0(t)-y1(t)))
+Makie.scatter!(ax, sol, y1.(sol), label="Intersección")
+fig
+```
+
+## Plots
 ```{julia}
 sol = solve(y0(t)-y1(t))
 print("Instantes: ", sol)
-scatter!(sol, y1.(sol), label="Intersección")
+Plots.scatter!(sol, y1.(sol), label="Intersección")
 ```
+:::
 :::
 :::
 
@@ -142,13 +211,29 @@ Después utilizar la función [`solve`](https://docs.juliahub.com/SymPy/KzewI/1.
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
+```{julia}
+using GLMakie, SymPy
+@syms r v
+vol(r) = 4/3*pi*r^3
+rad = lambdify(solve(v-vol(r),r)[1])
+fig = Figure()
+ax = Axis(fig[1,1], xlabel="Volumen (m³)", ylabel="Radio (m)")
+Makie.lines!(ax, 0..10, rad)
+fig
+```
+
+## Plots
 ```{julia}
 using Plots, SymPy
 @syms r v
 vol(r) = 4/3*pi*r^3
-rad = solve(v-vol(r),r)[1]
-plot(rad, xlab="Volumen (m³)", ylab="Radio (m)", legend=false)
+rad2 = solve(v-vol(r),r)[1]
+Plots.plot(rad2, xlim=(0,10), xlab="Volumen (m³)", ylab="Radio (m)", legend=false)
 ```
+:::
 :::
 
 Si empezamos a introducir helio en el globo de manera que su volumen a los $t$ minutos viene dado por la función $v(t)=t^2+2t$, dibujar la gráfica de la función que da el radio en cada instante.
@@ -162,11 +247,26 @@ Después utilizar a el operador de composición $\circ$ para componer la funció
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
 ```{julia}
+using GLMakie
+vol(t)=t^2+2t
+fig = Figure()
+ax = Axis(fig[1,1], xlabel = "Tiempo (min)", ylabel = "Radio (m)")
+Makie.lines!(ax, 0..10, rad∘vol)
+fig
+```
+
+## Plots
+```{julia}
+using Plots, SymPy
 @syms t
 vol(t)=t^2+2t
-plot(rad∘vol, xlim=(0,10), xlab="Tiempo (min)", ylab="Radio (m)")
+Plots.plot(rad2∘vol, xlim = (0,10), xlab = "Tiempo (min)", ylab = "Radio (m)", legend = false)
 ```
+:::
 :::
 
 Si el globo explota cuando el radio alcanza los 3 m, ¿cuándo explotará el globo?
@@ -197,30 +297,45 @@ en el intervalo $[-3,4]$ y determinar, observando la gráfica, lo siguiente:
 
 :::{.callout-note collapse="true"}
 ## Ayuda
-Definir la función y usar la función [`plot`](https://docs.juliaplots.org/latest/tutorial/#Basic-Plotting:-Line-Plots) del paquete `Plots`.
+Definir la función y usar la función usar la función [`lines!`](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-l%C3%ADneas) del paquete `Makie` o [`plot`](https://docs.juliaplots.org/latest/tutorial/#Basic-Plotting:-Line-Plots) del paquete `Plots`.
 :::
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
+```{julia}
+using GLMakie
+f(x) = 2x^3-3x^2-12x+4
+fig = Figure()
+ax = Axis(fig[1,1])
+Makie.lines!(ax, -3..4, f, label = L"$f(x) = 2x^3-3x^2-12x+4$")
+axislegend()
+fig
+```
+
+## Plots
 ```{julia}
 using Plots, LaTeXStrings
 f(x) = 2x^3-3x^2-12x+4
-plot(f, -3, 4, label=L"$f(x) = 2x^3-3x^2-12x+4$")
+Plots.plot(f, -3, 4, label=L"$f(x) = 2x^3-3x^2-12x+4$")
 ```
+:::
 :::
 
 a. Dominio
 
 :::{.callout-tip collapse="true"}
 ## Solución
-$Dom(f)=\mathbb{R}$
+$\operatorname{Dom}(f)=\mathbb{R}$
 :::
 
 b. Imagen
 
 :::{.callout-tip collapse="true"}
 ## Solución
-$Im(f)=\mathbb{R}$
+$\operatorname{Im}(f)=\mathbb{R}$
 :::
 
 c. Raíces
@@ -277,9 +392,7 @@ h. Puntos de inflexión
 ## Solución
 Punto de inflexión en $x=0.5$.
 :::
-
 :::
-
 
 :::{#exr-grafica-funcion-racional}
 Dibujar la gráfica de la función 
@@ -292,24 +405,41 @@ en el intervalo $[-8,8]$ y determinar, observando la gráfica, lo siguiente:
 
 :::{.callout-note collapse="true"}
 ## Ayuda
-Usar la función `plot` como en el ejercicio anterior con el parámetro `aspect_ratio=1.0` para que los ejes tengan la misma escala. 
+Usar la función `lines` del paquete `Makie`, o la función `plot` del paquete `Plots` con el parámetro `aspect_ratio=1.0` para que los ejes tengan la misma escala. 
 
 Para respetar las discontinuidades autilizar la función `rangeclamp()` del paquete `MTH229`.
 :::
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
+
 ```{julia}
+using GLMakie
 g(t) = (t^4+19t^2-5) / (t^4+9t^2-10)
-plot(rangeclamp(g), -8, 8, aspect_ratio=1.0, ylims=(-5,5) , xticks =Vector(-10:10), yticks = Vector(-5:5), label=L"$g(t) = \frac{t^4+19t^2-5}{t^4+9t^2-10}$")
+fig = Figure()
+ax = Axis(fig[1,1])
+Makie.lines!(ax, -8..8, rangeclamp(g), label = L"$g(t) = \frac{t^4+19t^2-5}{t^4+9t^2-10}$")
+axislegend()
+fig
 ```
+
+## Plots
+```{julia}
+using Plots
+g(t) = (t^4+19t^2-5) / (t^4+9t^2-10)
+Plots.plot(rangeclamp(g), -8, 8, aspect_ratio=1.0, ylims=(-5,5) , xticks =Vector(-10:10), yticks = Vector(-5:5), label=L"$g(t) = \frac{t^4+19t^2-5}{t^4+9t^2-10}$")
+```
+:::
 :::
 
 a. Dominio. ¿Qué pasa si aplicamos la función a algún valor fuera de su dominio?
 
 :::{.callout-tip collapse="true"}
 ## Solución
-$Dom(f)=\mathbb{R}\setminus\{-1,1\}$
+$\operatorname{Dom}(f)=\mathbb{R}\setminus\{-1,1\}$
 
 ```{julia}
 g(-1), g(1)
@@ -322,7 +452,7 @@ b. Imagen
 
 :::{.callout-tip collapse="true"}
 ## Solución
-$Im(f)=\mathbb{R}\setminus (0.5,1]$
+$\operatorname{Im}(f)=\mathbb{R}\setminus (0.5,1]$
 :::
 
 c. Asíntotas. Dibujarlas.
@@ -331,18 +461,32 @@ c. Asíntotas. Dibujarlas.
 ## Ayuda
 Buscar las asíntotas verticales en los puntos fuera del dominio de la función.
 
-Para dibujar asíntotas verticales usar la función [`vline`](https://docs.juliaplots.org/latest/api/#Plots.vline-Tuple) del paquete `Plots`, y para dibujar las asíntotas horizontales usar la función [`hline`](https://docs.juliaplots.org/latest/api/#Plots.hline-Tuple).
+Para dibujar asíntotas verticales usar la función
+[`vlines!`](https://docs.makie.org/stable/reference/plots/hvlines/index.html) del paquete `Makie`, o [`vline`](https://docs.juliaplots.org/latest/api/#Plots.vline-Tuple) del paquete `Plots`, y para dibujar las asíntotas horizontales usar la función [`hlines!`](https://docs.makie.org/stable/reference/plots/hvlines/index.html) del paquete `Makie`, o [`hline`](https://docs.juliaplots.org/latest/api/#Plots.hline-Tuple) del paquete `Plots`.
 :::
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
+
 ```{julia}
-vline!([-1,1], label="Asíntotas verticales")
-hline!([1], label="Asíntotas horizontales", legend=:bottomright)
+av = Makie.vlines!(ax, [-1,1], color = :red)
+ah = Makie.hlines!([1], color = :green)
+axislegend(ax, [av, ah], ["Asíntotas verticales", "Asíntotas Horizontales"], position = :rb)
+fig
+```
+
+## Plots
+```{julia}
+Plots.vline!([-1,1], label="Asíntotas verticales")
+Plots.hline!([1], label="Asíntotas horizontales", legend=:bottomright)
 ```
 Asíntotas verticales en $x=-1$ y $x=1$.  
 Asíntotas horizontales en $y=1$.  
 No hay asíntotas oblicuas.
+:::
 :::
 
 d. Raíces
@@ -398,13 +542,31 @@ Dibujar la gráficas de las siguientes funciones exponenciales $2^x$, $e^x$, $0.
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
+
+```{julia}
+using GLMakie
+fig = Figure()
+ax = Axis(fig[1,1])
+Makie.lines!(ax, -2..2, x -> 2^x, label=L"$2^x$")
+Makie.lines!(ax, -2..2, exp, label=L"$e^x$")
+Makie.lines!(ax, -2..2, x -> 0.5^x, label=L"$0.5^x$")
+Makie.lines!(ax, -2..2, x -> 0.7^x, label=L"$0.7^x$")
+axislegend(position = :lt)
+fig
+```
+
+## Plots
 ```{julia}
 using Plots, LaTeXStrings
-plot(2^x, -2, 2, label=L"$2^x$")
-plot!(exp(x), label=L"$e^x$")
-plot!(0.5^x, label=L"$2^x$")
-plot!(0.7^x, label=L"$2^x$")
+Plots.plot(2^x, -2, 2, label=L"$2^x$")
+Plots.plot!(exp(x), label=L"$e^x$")
+Plots.plot!(0.5^x, label=L"$2^x$")
+Plots.plot!(0.7^x, label=L"$2^x$")
 ```
+:::
 :::
 
 a. ¿Cuál es el dominio de una función exponencial?
@@ -464,13 +626,30 @@ El periodo es el mínimo intervalo en el que la gráfica de la función se repit
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
+
+```{julia}
+using GLMakie
+fig = Figure()
+ax = Axis(fig[1,1])
+Makie.lines!(ax, -2pi..2pi, x -> sin(x+2), label=L"$\sin(x+2)$")
+Makie.lines!(ax, -2pi..2pi, x -> sin(x)+2, label=L"$\sin(x)+2$")
+Makie.lines!(ax, -2pi..2pi, x -> sin(2x), label=L"$\sin(2x)$")
+Makie.lines!(ax, -2pi..2pi, x -> 2sin(x), label=L"$2\sin(x)$")
+axislegend()
+fig
+```
+
+## Plots
 ```{julia}
 using Plots, LaTeXStrings
-plot(sin(x), -2*pi, 2*pi, label=L"$\operatorname{sen}(x)$")
-plot!(sin(x+2), label=L"$\operatorname{sen}(x+2)$")
-plot!(sin(x)+2, label=L"$\operatorname{sen}(x)+2$")
-plot!(sin(2x), label=L"$\operatorname{sen}(2x)$")
-plot!(2sin(x), label=L"$2\operatorname{sen}(x)$")
+Plots.plot(sin(x), -2*pi, 2*pi, label=L"$\operatorname{sen}(x)$")
+Plots.plot!(sin(x+2), label=L"$\operatorname{sen}(x+2)$")
+Plots.plot!(sin(x)+2, label=L"$\operatorname{sen}(x)+2$")
+Plots.plot!(sin(2x), label=L"$\operatorname{sen}(2x)$")
+Plots.plot!(2sin(x), label=L"$2\operatorname{sen}(x)$")
 ```
 
 | Función | Periodo | Amplitud |
@@ -482,6 +661,7 @@ plot!(2sin(x), label=L"$2\operatorname{sen}(x)$")
 | $2\operatorname{sen}(x)$ | $2\pi$ | 2 | 
 
 Se observa que al sumar una constante a la función seno o a su argumento, el periodo y la amplitud no cambian. Sin embargo, si se multiplica por una constante el seno, cambia la amplitud, y si se multiplica su argumento, cambia el periodo.
+:::
 :::
 :::
 
@@ -504,14 +684,25 @@ Usar el [operador condicional](https://aprendeconalf.es/manual-julia/estructuras
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
+
+```{julia}
+using GLMakie
+h(x) = x<=0 ? -2x : x<=2 ? x^2 : 4
+Makie.lines(-5..5, h)
+```
+
+## Plots
 ```{julia}
 using Plots
 h(x) = x<=0 ? -2x : x<=2 ? x^2 : 4
-plot(h, legend = false)
+Plots.plot(h, legend = false)
 ```
 :::
 :::
-
+:::
 
 :::{#exr-funciones-parametricas}
 Una hormiga se mueve sobre el plano real de manera que en cada instante $t$ su posición viene dada por las funciones
@@ -527,14 +718,27 @@ Dibujar la gráfica de la trayectoria de la hormiga.
 
 :::{.callout-tip collapse="true"}
 ## Solución
+:::{.panel-tabset}
+
+## Makie
+
+```{julia}
+using GLMakie
+u1(t)=sin(t)
+v1(t)=sin(2t)
+ts = range(0, 4pi, 200)
+Makie.lines(u1.(ts), v1.(ts))
+```
+
+## Plots
 ```{julia}
 using Plots
 u1(t)=sin(t)
 v1(t)=sin(2t)
-plot(u1, v1, 0, 4pi, aspect_ratio=1.0, legend = false)
+Plots.plot(u1, v1, 0, 4pi, aspect_ratio=1.0, legend = false)
 ```
 :::
-
+:::
 :::
 
 
@@ -640,12 +844,12 @@ v1(t) = 2cos(t)
 v2(t) = sin(t)+cos(t)
 u1(t) = sin(2t)-cos(t)
 u2(t) = cos(2t)
-p1 = plot(u0, v0, 0, 2pi, aspect_ratio=1.0, legend=false)
-p2 = plot(u1, v2, 0, 2pi, aspect_ratio=1.0, legend=false)
-p3 = plot(u0, v2, 0, 2pi, aspect_ratio=1.0, legend=false)
-p4 = plot(u2, v2, 0, 2pi, aspect_ratio=1.0, legend=false)
+p1 = Plots.plot(u0, v0, 0, 2pi, aspect_ratio=1.0, legend=false)
+p2 = Plots.plot(u1, v2, 0, 2pi, aspect_ratio=1.0, legend=false)
+p3 = Plots.plot(u0, v2, 0, 2pi, aspect_ratio=1.0, legend=false)
+p4 = Plots.plot(u2, v2, 0, 2pi, aspect_ratio=1.0, legend=false)
 l = @layout [a b; c d]
-p = plot(p1, p2, p3, p4, layout=l)
+p = Plots.plot(p1, p2, p3, p4, layout=l)
 imgfile = "img/funciones-elementales/graficas-funciones-parametricas.png"
 savefig(p, imgfile)
 hotspotq(imgfile, (1/2,1), (1/2,1))
