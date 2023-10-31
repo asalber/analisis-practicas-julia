@@ -145,7 +145,7 @@ Plots.plot(y0, xlims=(0,3), ylims=(0,15), label="Pelota", xlab="Tiempo (s)", yla
 :::
 :::
 
-Al mismo tiempo que se lanza la pelota, un ascensor exterior baja por la fachada del mismo edificio desde una altura de $8$ m con una velocidad constante de $5$ m/s. Dibujar la gráfica de la posición del ascensor junto a la gráfica de la pelota.
+Al mismo tiempo que se lanza la pelota, un ascensor exterior baja por la fachada del mismo edificio desde una altura de $8$ m con una velocidad constante de $2$ m/s. Dibujar la gráfica de la posición del ascensor junto a la gráfica de la pelota.
 
 :::{.callout-note collapse="true"}
 ## Ayuda
