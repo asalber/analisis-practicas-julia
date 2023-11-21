@@ -184,6 +184,29 @@ a.  $h(x) = \dfrac{\operatorname{sen}(x^2+y^2)}{\sqrt{x^2+y^2}}$
     :::
 :::
 
+:::{#exr-superficie-curvas-nivel}
+Dibujar en una misma gráfica la superficie de la función $f(x,y) = -4x e^{-x^2-y^2}$ y sus curvas de nivel.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using GLMakie
+f(x, y) = -4x*exp(-x^2-y^2)
+xs = ys = range(-2, 2, 50)
+zs = f.(xs, ys')
+zmin = minimum(zs)
+fig = Figure()
+ax = Axis3(fig[1,1], )
+surf = Makie.surface!(ax, xs, ys, zs, transparency = true)
+Makie.wireframe!(ax, xs, ys, zs, color = (:black, 0.1), transparency = true)
+Makie.contour!(ax, xs, ys, zs, levels = 20, transformation = (:xy, zmin), transparency=true)
+Colorbar(fig[1, 2], surf, height = Relative(0.5))
+fig
+```
+:::
+:::
+
+
 :::{#exr-derivada-parcial}
 Sea $f(x,y)= x^2-2y^2$.
 
@@ -191,26 +214,13 @@ a.  Dibujar la gráfica y el punto $(1, 1, f(1,1))$.
 
     :::{.callout-note collapse="true"}
     ## Ayuda
-    Usar la función [`surface`](https://aprendeconalf.es/manual-julia/graficos.html#gr%C3%A1ficos-en-el-espacio-real) del paquete `Plots` o la función [`surface`](https://aprendeconalf.es/manual-julia/graficos.html#superficies) del paquete `Makie` para representar superficies de funciones de dos variables. 
+    Usar la función [`surface`](https://aprendeconalf.es/manual-julia/graficos.html#superficies) del paquete `Makie` para representar superficies de funciones de dos variables. 
 
-    Usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` o la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-puntos) del paquete Makie para dibujar puntos.
+    Usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-puntos) del paquete Makie para dibujar puntos.
     :::
 
     :::{.callout-tip collapse="true"}
     ## Solución
-
-    :::{.panel-tabset}
-    ## Plots
-    ```{julia}
-    using Plots
-    plotlyjs()
-    f(x, y) = x^2 - 2y^2
-    xs = ys = range(-2, 2, 50)
-    Plots.surface(xs, ys, f, xlab = "x", ylab = "y", zlab = "z", camera=(45,30))
-    Plots.scatter!([1], [1], [f(1,1)], color=:red)
-    ```
-
-    ## Makie
 
     ```{julia}
     using GLMakie
@@ -218,42 +228,26 @@ a.  Dibujar la gráfica y el punto $(1, 1, f(1,1))$.
     xs = ys = range(-2, 2, 30)
     fig = Figure()
     ax = Axis3(fig[1,1], azimuth = pi/4)
-    Makie.surface!(ax, xs, ys, f)
+    Makie.surface!(ax, xs, ys, f, transparency = true)
     Makie.scatter!(ax, Point3(1, 1, f(1,1)), color = :red)
     fig
     ```
     :::
-    :::
 
-a.  Dibujar el plano $x=1$ sobre la superficie. ¿Cuál es la curva que resulta de la intersección del plano con la superficie?
+a.  Dibujar el plano $y=1$ sobre la superficie. ¿Cuál es la curva que resulta de la intersección del plano con la superficie? ¿Cómo es la pendiente de la tangente a esta curva en $x=1$?
 
     :::{.callout-tip collapse="true"}
     ## Solución
 
-    :::{.panel-tabset}
-    ## Plots
     ```{julia}
-    using Plots
-    plotlyjs()
-    f(x, y) = x^2 - 2y^2
-    xs = ys = range(-2, 2, 50)
-    Plots.surface(xs, ys, f, xlab = "x", ylab = "y", zlab = "z", camera=(45,30))
-    Plots.scatter!([1], [1], [f(1,1)], color=:red)
-    ```
-
-    ## Makie
-
-    ```{julia}
-    using GLMakie
-    f(x, y) = x^2 - 2y^2
-    xs = ys = range(-2, 2, 30)
-    fig = Figure()
-    ax = Axis3(fig[1,1], azimuth = pi/4)
-    Makie.surface!(ax, xs, ys, f)
-    Makie.scatter!(ax, Point3(1, 1, f(1,1)), color = :red)
+    xs = [-2 -2; 2 2]
+    zs = [-6 2; -6 2]
+    ys = [1 1; 1 1]
+    Makie.surface!(ax, xs, ys, zs; colormap = [:orange])
     fig
     ```
-    :::
+
+    La curva resultante es la parábola $f(x) = x^2$. La pendiente de la recta tangente a esta curva en $x=1$ vale $2$.
     :::
 
 a.  Calcular la derivada parcial de $f$ con respecto a $x$ en el punto $(1,1)$.
@@ -265,6 +259,34 @@ a.  Calcular la derivada parcial de $f$ con respecto a $x$ en el punto $(1,1)$.
     using SymPy
     @syms x y
     subs(diff(f(x,y), x), x => 1, y => 1)
+    ``` 
+    :::
+
+a.  Dibujar el plano $x=1$ sobre la superficie. ¿Cuál es la curva que resulta de la intersección del plano con la superficie? ¿Cómo es la pendiente de la tangente a esta curva en $y=1$?
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    ys = [-2 -2; 2 2]
+    zs = [-6 2; -6 2]
+    xs = [1 1; 1 1]
+    Makie.surface!(ax, xs, ys, zs; colormap = [:magenta])
+    fig
+    ```
+
+    La curva resultante es la parábola $g(y) = -2y^2$. La pendiente de la recta tangente a esta curva en $y=1$ vale $-4$.
+    :::
+
+a.  Calcular la derivada parcial de $f$ con respecto a $y$ en el punto $(1,1)$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy
+    @syms x y
+    subs(diff(f(x,y), y), x => 1, y => 1)
     ```
     :::
 :::
