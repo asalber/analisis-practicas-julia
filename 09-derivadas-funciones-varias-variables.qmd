@@ -1,0 +1,538 @@
+---
+title: Derivadas de funciones de varias variables
+lang: es
+#jupyter: julia-1.9
+---
+
+## Ejercicios Resueltos
+
+Para la realización de esta práctica se requieren los siguientes paquetes:
+
+```{julia}
+using SymPy  # Para el cálculo simbólico.
+using Plots  # Para el dibujo de gráficas.
+using Makie, GLMakie # Para el dibújo de gráficas en 3d.
+using LaTeXStrings  # Para usar código LaTeX en los gráficos.
+using LinearAlgebra # Para el módulo y el producto escalar de vectores.
+```
+
+:::{#exr-superficies}
+Dibujar las gráficas de las siguientes funciones.
+
+a.  $f(x,y) = 2x + 3y$.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Usar la función [`surface`](https://aprendeconalf.es/manual-julia/graficos.html#gr%C3%A1ficos-en-el-espacio-real) del paquete `Plots` o la función [`surface`](https://aprendeconalf.es/manual-julia/graficos.html#superficies) del paquete `Makie` para representar superficies de funciones de dos variables.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    f(x, y) = x/2 - 2y
+    xs = ys = range(0, 2, 2)
+    Plots.surface(xs, ys, f, xlab = "x", ylab = "y", zlab = "z")
+    ```
+
+    ## Makie
+
+    ```{julia}
+    using GLMakie
+    f(x, y) = x/2 - 2y
+    xs = ys = range(0, 2, 2)
+    Makie.surface(xs, ys, f)
+    ```
+    :::
+    :::
+
+a.  $g(x) = x^2 - y^2$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    g(x, y) = x^2-y^2
+    xs = ys = range(-1, 1, 30)
+    Plots.surface(xs, ys, g, xlab = "x", ylab = "y", zlab = "z")
+    ```
+
+    ## Makie
+
+    ```{julia}
+    using GLMakie
+    g(x, y) = x^2 - y^2
+    xs = ys = range(-1, 1, 30)
+    Makie.surface(xs, ys, g)
+    ```
+    :::
+    :::
+
+a.  $h(x) = \dfrac{\operatorname{sen}(x^2+y^2)}{\sqrt{x^2+y^2}}$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    h(x, y) = sin(x^2+y^2)/sqrt(x^2+y^2)
+    xs = ys = range(-pi, pi, 80)
+    Plots.surface(xs, ys, h, xlab = "x", ylab = "y", zlab = "z")
+    ```
+
+    ## Makie
+
+    ```{julia}
+    using GLMakie
+    h(x, y) = sin(x^2+y^2)/sqrt(x^2+y^2)
+    xs = ys = range(-pi, pi, 80)
+    Makie.surface(xs, ys, h)
+    ```
+    :::
+    :::
+:::
+
+:::{#exr-curvas-nivel}
+Dibujar las curvas de nivel de las siguientes funciones.
+
+a.  $f(x,y) = 2x + 3y$.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Usar la función [`contour`](https://docs.juliaplots.org/stable/series_types/contour/) del paquete `Plots` o la función [`contour`](https://docs.makie.org/stable/reference/plots/contour/index.html) del paquete `Makie` para representar curvas de nivel de funciones de dos variables.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    f(x, y) = x/2 - 2y
+    xs = ys = range(0, 2, 50)
+    Plots.contour(xs, ys, f, levels = 7, xlab = "x", ylab = "y", clabels = true)
+    ```
+
+    ## Makie
+
+    ```{julia}
+    using GLMakie
+    f(x, y) = x/2 - 2y
+    xs = ys = range(0, 2, 50)
+    Makie.contour(xs, ys, f, labels = true,  levels = 0:-0.5:-3)
+    ```
+    :::
+    :::
+
+a.  $g(x) = x^2 - y^2$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    g(x, y) = x^2 - y^2
+    xs = ys = range(-1, 1, 100)
+    Plots.contour(xs, ys, g, levels = 9, xlab = "x", ylab = "y", clabels = true)
+    ```
+
+    ## Makie
+
+    ```{julia}
+    using GLMakie
+    f(x, y) = x^2 - y^2
+    xs = ys = range(-1, 1, 100)
+    Makie.contour(xs, ys, f, labels = true,  levels = -1:0.2:1)
+    ```
+    :::
+    :::
+
+a.  $h(x) = \dfrac{\operatorname{sen}(x^2+y^2)}{\sqrt{x^2+y^2}}$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    h(x, y) = sin(x^2+y^2)/sqrt(x^2+y^2)
+    xs = ys = range(-pi, pi, 80)
+    Plots.contour(xs, ys, h, xlab = "x", ylab = "y")
+    ```
+
+    ## Makie
+
+    ```{julia}
+    using GLMakie
+    h(x, y) = sin(x^2+y^2)/sqrt(x^2+y^2)
+    xs = ys = range(-pi, pi, 80)
+    Makie.contour(xs, ys, h, labels = true,  levels = -1:0.2:1)
+    ```
+    :::
+    :::
+:::
+
+:::{#exr-derivada-parcial}
+Sea $f(x,y)= x^2-2y^2$.
+
+a.  Dibujar la gráfica y el punto $(1, 1, f(1,1))$.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Usar la función [`surface`](https://aprendeconalf.es/manual-julia/graficos.html#gr%C3%A1ficos-en-el-espacio-real) del paquete `Plots` o la función [`surface`](https://aprendeconalf.es/manual-julia/graficos.html#superficies) del paquete `Makie` para representar superficies de funciones de dos variables. 
+
+    Usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` o la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-puntos) del paquete Makie para dibujar puntos.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    plotlyjs()
+    f(x, y) = x^2 - 2y^2
+    xs = ys = range(-2, 2, 50)
+    Plots.surface(xs, ys, f, xlab = "x", ylab = "y", zlab = "z", camera=(45,30))
+    Plots.scatter!([1], [1], [f(1,1)], color=:red)
+    ```
+
+    ## Makie
+
+    ```{julia}
+    using GLMakie
+    f(x, y) = x^2 - 2y^2
+    xs = ys = range(-2, 2, 30)
+    fig = Figure()
+    ax = Axis3(fig[1,1], azimuth = pi/4)
+    Makie.surface!(ax, xs, ys, f)
+    Makie.scatter!(ax, Point3(1, 1, f(1,1)), color = :red)
+    fig
+    ```
+    :::
+    :::
+
+a.  Dibujar el plano $x=1$ sobre la superficie. ¿Cuál es la curva que resulta de la intersección del plano con la superficie?
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    plotlyjs()
+    f(x, y) = x^2 - 2y^2
+    xs = ys = range(-2, 2, 50)
+    Plots.surface(xs, ys, f, xlab = "x", ylab = "y", zlab = "z", camera=(45,30))
+    Plots.scatter!([1], [1], [f(1,1)], color=:red)
+    ```
+
+    ## Makie
+
+    ```{julia}
+    using GLMakie
+    f(x, y) = x^2 - 2y^2
+    xs = ys = range(-2, 2, 30)
+    fig = Figure()
+    ax = Axis3(fig[1,1], azimuth = pi/4)
+    Makie.surface!(ax, xs, ys, f)
+    Makie.scatter!(ax, Point3(1, 1, f(1,1)), color = :red)
+    fig
+    ```
+    :::
+    :::
+
+a.  Calcular la derivada parcial de $f$ con respecto a $x$ en el punto $(1,1)$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy
+    @syms x y
+    subs(diff(f(x,y), x), x => 1, y => 1)
+    ```
+    :::
+:::
+
+:::{#exr-derivadas-parciales}
+La presión $P$ de un gas perfecto depende de la temperatura $T$ y del volumen que ocupa $V$ según la función 
+
+$$
+P(T,V) = \frac{nRT}{V},
+$$
+
+donde $n$ y $R$ son constantes positivas propias de cada gas.
+
+a.  Calcular la derivada parcial de la presión con respecto a la temperatura. ¿Cómo la interpretarías?
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy
+    @syms n R T V
+    diff(n*R*T/V, T)
+    ```
+
+    Como $n$, $R$ y $V$ son positivos, la derivada parcial es positiva, por lo que si se mantiene el volumen constante y empezamos a aumentar la temperatura, la presión aumentará.
+    :::
+
+a.  Calcular la derivada parcial de la presión con respecto al volumen. ¿Cómo la interpretarías?
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    diff(n*R*T/V, V)
+    ```
+
+    Como $n$, $R$, $T$ y $V$ son positivos, la derivada parcial es negativa, por lo que si se mantiene la temperatura constante y empezamos a aumentar el volumen, la presión disminuirá.
+    :::
+:::
+
+:::{#exr-igualdad-derivadas-cruzadas}
+Dada la función $f(x,y) = e^{x+y}\operatorname{sen}\left(\frac{x}{y}\right)$, calcular las siguientes derivadas parciales de segundo orden.
+
+a.  $\dfrac{\partial^2f}{\partial y\partial x}$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy
+    @syms x y
+    f(x, y) = exp(x+y)sin(x/y)
+    diff(f(x, y), x, y)
+    ```
+    :::
+
+a.  $\dfrac{\partial^2f}{\partial x\partial y}$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy
+    @syms x y
+    f(x, y) = exp(x+y)sin(x/y)
+    diff(f(x, y), y, x)
+    ```
+    :::
+
+a.  ¿Se cumple la igualdad de las derivadas cruzadas?
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Si, $\dfrac{\partial^2f}{\partial y\partial x} = \dfrac{\partial^2f}{\partial x\partial y}$, porque ambas derivadas son continuas en todo su dominio.
+    :::
+:::
+
+:::{#exr-gradiente}
+La función $f(x, y, z) = e^{-x-2y-3z}$ da la temperatura en cada posición $(x,y,z)$ de una habitación. 
+
+a.  Si un mosquito está en la posición $(1, 1, 1)$, ¿en qué dirección debe volar para que la temperatura decrezca lo más rápidamente posible? ¿Cuál será la tasa de variación de la temperatura si el mosquito se mueve en esa dirección? 
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Debe moverse en la dirección opuesta al [vector gradiente](https://aprendeconalf.es/analisis-manual/13-derivadas-funciones-varias-variables.html#vector-gradiente) de $f$.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    :::{.panel-tabset}
+    ## Solución 1
+
+    ```{julia}
+    using SymPy, LinearAlgebra
+    @syms x y z
+    f(x, y, z) = exp(-x-2y-3z)
+    ex = collect(diff.(f(x, y, z), (x, y, z)))
+    ∇f = lambdify(ex, (x, y, z))
+    println("Dirección de máximo decrecimiento : $(-∇f(1, 1, 1))")
+    println("Tasa de variación en esa dirección: $(-norm(∇f(1, 1, 1)))")
+    ```
+
+    ## Solución 2
+
+    ```{julia}
+    using SymPy, LinearAlgebra
+    @syms x y z
+    f(x, y, z) = exp(-x-2y-3z)
+    ex = [diff(f(x,y,z), i) for i in (x, y, z)]
+    ∇f = lambdify(ex, (x, y, z))
+    println("Dirección de máximo decrecimiento : $(-∇f(1, 1, 1))")
+    println("Tasa de variación en esa dirección: $(-norm(∇f(1, 1, 1)))")
+    ```
+    :::
+    :::
+
+a.  Si el mosquito se mueve siguiendo la dirección del vector $(2, -1, 3)$, ¿la temperatura aumenta o disminuye? ¿Cuál será la tasa de variación de la temperatura en esa dirección?
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    La tasa de variación de la función viene dada por la [derivada direccional](https://aprendeconalf.es/analisis-manual/13-derivadas-funciones-varias-variables.html#derivada-direccional) de la función en el punto $(1, 1, 1)$ siguiendo la dirección del vector $(2, -1, 3)$.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    dot(∇f(1, 1, 1), normalize([2, -1, 3]))
+    ```
+
+    La temperatura disminuye.
+    :::
+:::
+
+:::{#exr-recta-normal-plano-tangente}
+Calcular las ecuaciones de la recta normal y el plano tangente a la superficie $x+2y-\ln(z)+4=0$ en el punto $(0,-2,1)$, y dibujarlos.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Usar la propiedad de que el vector gradiente de una función $f(x,y,z)$ es siempre normal a las curvas de nivel $f(x,y,z)=0$.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+Dibujamos primero la superficie. 
+
+```{julia}
+using SymPy, GLMakie
+f(x, y, z) = x + 2y - log(z) + 4
+@syms x y z
+f1 = lambdify(solve(f(x,y,z), z)[1])
+xs = range(-0.5, 0.5, 30)
+ys = range(-2.5, -1.5, 30)
+fig = Figure()
+ax = Axis3(fig[1,1], aspect = :data)
+Makie.surface!(ax, xs, ys, f1)
+Makie.scatter!(ax, Point3(0, -2, 1), color = :red)
+fig
+```
+
+Calculamos primero la ecuación de la recta normal.
+
+```{julia}
+using SymPy
+ex = collect(diff.(f(x, y, z), (x, y, z)))
+∇f = lambdify(ex, (x, y, z))
+nl(t) = [0, -2, 1] + t*∇f(0, -2, 1) 
+@syms t
+println("Ecuación de la recta normal $(nl(t))")
+```
+
+Y la dibujamos sobre la misma gráfica de la superficie.
+
+```{julia}
+ts = range(-0.5, 0.5, 2)
+points = Point3.(nl.(ts))
+Makie.lines!(ax, points)
+fig
+```
+
+A continuación calculamos la ecuación del plano tangente.
+
+```{julia}
+using LinearAlgebra
+tp(x,y) = solve(dot(([x, y, z] - [0, -2, 1]), ∇f(0, -2, 1)), z)[1]
+println("Ecuación del plano tangente z = $(tp(x,y))")
+```
+
+Y finalmente lo dibujamos en la misma gráfica de la superficie.
+
+```{julia}
+Makie.surface!(ax, xs, ys, tp, colormap = ["red"], alpha = 0.5, transparency = true)
+fig
+```
+:::
+:::
+
+:::{#exr-extremos}
+La función $f(x,y) = x^3+y^3-3xy$ determina la concentración de una sustancia $z$ en función de las concentraciones de otras dos $x$ e $y$ en una reacción química.
+
+a.  Representar la gráfica de la función.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using GLMakie
+    f(x, y) = x^3+y^3-3x*y
+    xs = ys = range(-0.5, 1.5, 30)
+    Makie.surface(xs, ys, f)
+    ```
+    :::
+
+a.  Calcular los puntos críticos de la función.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Los puntos críticos son los puntos que anulan el gradiente. Para resolver el sistema de ecuaciones que resulta de igualar el vector gradiente al vector nulo se pueden utilizar las funciones [`linsolve`](https://docs.juliahub.com/SymPy/KzewI/1.2.1/Tutorial/solvers/#Solving-Equations-Algebraically) (para sistemas lineales) o [`nonlinsolve`](https://docs.juliahub.com/SymPy/KzewI/1.2.1/Tutorial/solvers/#Solving-Equations-Algebraically) (para sistemas no lineales) del paquete `SymPy`.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy
+    @syms x y
+    nonlinsolve(diff.(f(x, y), (x, y)), (x, y))
+    ```
+    :::
+
+a.  Determinar los extremos relativos y los puntos de silla. ¿Para qué concentraciones de $x$ e $y$ la concentración de $z$ será mínima?
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Para [determinar los extremos relativos y los puntos de silla](https://aprendeconalf.es/analisis-manual/13-derivadas-funciones-varias-variables.html#thm-extremos-funcion-dos-variables) de una función de dos variables, hay que calcular el hessiano en los puntos críticos.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    Definimos una función para el hessiano.
+    ```{julia}
+    using LinearAlgebra
+    hes = lambdify(det(hessian(f(x,y), (x,y))))
+    ```
+
+    Calculamos el hessiano en el punto crítico $(0,0)$.
+
+    ```{julia}
+    hes(0,0)
+    ```
+
+    Como es negativo, en $(0,0)$ hay un punto de inflexión.
+
+    Calculamos el hessiano en el punto crítico $(1,1)$.
+
+    ```{julia}
+    hes(1,1)
+    ```
+
+    Como es positivo, existe un extremo relativo en $(1,1)$. Para ver si se trata de un máximo o mínimo calculamos $\frac{\partial^2 f}{\partial x^2}$.
+
+    ```{julia}
+    fxx = lambdify(diff(f(x,y), x, x), (x,y))
+    fxx(1,1)
+    ```
+
+    Como es positiva, en $(1,1)$ hay un mínimo. Así pues, la concentración de $z$ será mínima cuando las concentraciones de $x$ e $y$ sean 1.
+    :::
+:::
