@@ -11,7 +11,8 @@ Para la realización de esta práctica se requieren los siguientes paquetes:
 ```{julia}
 using SymPy  # Para el cálculo simbólico.
 using Plots  # Para el dibujo de gráficas.
-using Makie, GLMakie # Para el dibújo de gráficas en 3d.
+using Makie, GLMakie # Para el dibujo de gráficas en 3d.
+using ImplicitPlots # Para el dibujo de gráficas de funciones implícitas.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 using LinearAlgebra # Para el módulo y el producto escalar de vectores.
 ```
@@ -384,7 +385,7 @@ a.  Si un mosquito está en la posición $(1, 1, 1)$, ¿en qué dirección debe 
     using SymPy, LinearAlgebra
     @syms x y z
     f(x, y, z) = exp(-x-2y-3z)
-    ex = collect(diff.(f(x, y, z), (x, y, z)))
+    ex = diff.(f(x, y, z), [x, y, z])
     ∇f = lambdify(ex, (x, y, z))
     println("Dirección de máximo decrecimiento : $(-∇f(1, 1, 1))")
     println("Tasa de variación en esa dirección: $(-norm(∇f(1, 1, 1)))")
@@ -452,7 +453,7 @@ Calculamos primero la ecuación de la recta normal.
 
 ```{julia}
 using SymPy
-ex = collect(diff.(f(x, y, z), (x, y, z)))
+ex = diff.(f(x, y, z), [x, y, z])
 ∇f = lambdify(ex, (x, y, z))
 nl(t) = [0, -2, 1] + t*∇f(0, -2, 1) 
 @syms t
@@ -483,6 +484,60 @@ Makie.surface!(ax, xs, ys, tp, colormap = ["red"], alpha = 0.5, transparency = t
 fig
 ```
 :::
+:::
+
+:::{#exr-derivadas-implicitas}
+La ecuación $x^3+y^3=8$ define una curva implícita.
+
+a.  Dibujar la gráfica de la ecuación.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Usar la función [`implicit_plot`](https://juliapackages.com/p/implicitplots) del paquete `ImplicitPlots` para dibujar la gráfica de una función implícita definida por una ecuación.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using Plots, ImplicitPlots, LaTeXStrings
+    f(x, y) = x^3 + y^3 - 8 
+    implicit_plot(f, xlab =  L"$x$", ylab = L"$y$", legend = false)
+    ```
+    :::
+
+a.  Calcular la derivada de $y$ como función implícita de $x$.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    La derivada de $y$ como función implícita de $x$ en la ecuación $f(x,y)=0$ se puede calcular como
+
+    $$
+    \frac{dy}{dx} = -\frac{\partial f/\partial x}{\partial f/\partial y}
+    $$
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms x y u()
+    y′ = -diff(f(x, y), x) / diff(f(x, y), y)
+    ```
+    :::
+
+a.  Calcular la ecuación de la recta tangente a la curva implícita en el punto $(\sqrt[3]{4}, \sqrt[3]{4})$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    x₀ = y₀ = 2^(2/3)
+    tan = lambdify(y₀ + subs(y′, y => y₀, x => x₀)*(x-x₀))
+    Plots.plot!(tan)
+    ```
+    :::
+
+<!-- a.  Calcular la segunda derivada de $y$. ¿Cómo es la concavidad de la función en el punto $(\sqrt[3]{4}, \sqrt[3]{4})$? -->
 :::
 
 :::{#exr-extremos}
@@ -556,5 +611,93 @@ a.  Determinar los extremos relativos y los puntos de silla. ¿Para qué concent
     ```
 
     Como es positiva, en $(1,1)$ hay un mínimo. Así pues, la concentración de $z$ será mínima cuando las concentraciones de $x$ e $y$ sean 1.
+    :::
+:::
+
+:::{#exr-polinomios-taylor}
+Sea $f(x,y)=\sqrt{xy}$.
+
+a.  Dibujar la gráfica de $f$ y el punto $(1, 1, f(1,1))$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+```{julia}
+using GLMakie
+f(x, y) = sqrt(x*y)
+a = b = 1
+xs = ys = range(0.5, 2, 30)
+fig = Figure()
+ax = Axis3(fig[1,1], azimuth = -pi/4, elevation = 0.1)
+Makie.surface!(ax, xs, ys, f)
+Makie.scatter!(ax, Point3(a, b, f(a,b)), color = :red)
+fig
+```
+    :::
+
+a.  Calcular el polinomio de Taylor de primer grado de $f$ en el punto $(1,1)$ y representarlo gráficamente.
+Comprobar que se obtiene el plano tangente a la superficie de $f$ en el punto $(1,1)$.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    La fórmula del polinomio de Taylor de primer grado de la función $f(x,y)$ en el punto $(a,b)$ es
+
+    $$
+    P^1(x,y) = f(a,b) + \nabla f(a,b)(x-a, y-b).
+    $$
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy, LinearAlgebra
+    @syms x, y
+    ex = diff.(f(x, y), [x, y])
+    ∇f = lambdify(ex, (x, y))
+    p1(s,t) = f(a, b) + dot(∇f(a, b), [s-a, t-b])
+    Makie.surface!(ax, xs, ys, p1; colormap = [:orange], transparency = true)
+    fig
+    ```
+    :::
+
+a.  Utilizar el polinomio anterior para calcular el valor aproximado de $\sqrt{1.01\cdot 0.99}$. ¿Cuál es el error cometido en la aproximación?
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    error = abs(f(1.01, 0.99) - p1(1.01, 0.99))
+    ```
+    :::
+
+a.  Calcular el polinomio de Taylor de segundo grado de $f$ en el punto $(1,1)$ y representarlo gráficamente.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    La fórmula del polinomio de Taylor de segundo grado de la función $f(x,y)$ en el punto $(a,b)$ es
+
+    $$
+    P^2(x,y) = f(a,b) + \nabla f(a,b)(x-a, y-b) + \frac{1}{2!}\nabla^2f(a,b)(x-a,y-b)(x-a,y-b).
+    $$
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy, LinearAlgebra
+    @syms x, y
+    ∇²f = lambdify(hessian(f(x,y), (x, y)), (x, y))
+    p2(s,t) = f(a, b) + dot(∇f(a, b), [s-a, t-b]) + dot(∇²f(a,b) * [s-a; t-b],  [s-a, t-b])
+    Makie.surface!(ax, xs, ys, p2; colormap = [:magenta], transparency = true)
+    fig
+    ```
+    :::
+
+a.  Utilizar el polinomio anterior para calcular el valor aproximado de $\sqrt{1.01\cdot 0.99}$.
+¿Cuál es error cometido en la aproximación? ¿Es mayor o menor que en la aproximación mediante el polinomio de Taylor de primer grado?
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    error = f(1.01, 0.99) - p2(1.01, 0.99) 
+    ```
     :::
 :::
