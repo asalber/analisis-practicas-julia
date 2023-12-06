@@ -597,10 +597,8 @@ nothing
 
 :::{#exr-integrales-propuesto-1}
 Calcular la suma superior de Riemann de la función $f(x)=\sqrt{\ln(x)}$ en el intervalo $[1,2]$, tomando una partición de 100 subinvervalos de igual amplitud.
-:::
 
-:::{.callout-tip collapse="true"}
-## Solución
+
 ```{julia}
 #| hold: true
 #| echo: false
