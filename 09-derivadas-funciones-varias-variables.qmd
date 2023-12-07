@@ -621,17 +621,17 @@ a.  Dibujar la gráfica de $f$ y el punto $(1, 1, f(1,1))$.
 
     :::{.callout-tip collapse="true"}
     ## Solución
-```{julia}
-using GLMakie
-f(x, y) = sqrt(x*y)
-a = b = 1
-xs = ys = range(0.5, 2, 30)
-fig = Figure()
-ax = Axis3(fig[1,1], azimuth = -pi/4, elevation = 0.1)
-Makie.surface!(ax, xs, ys, f)
-Makie.scatter!(ax, Point3(a, b, f(a,b)), color = :red)
-fig
-```
+    ```{julia}
+    using GLMakie
+    f(x, y) = sqrt(x*y)
+    a = b = 1
+    xs = ys = range(0.5, 2, 30)
+    fig = Figure()
+    ax = Axis3(fig[1,1], azimuth = -pi/4, elevation = 0.1)
+    Makie.surface!(ax, xs, ys, f)
+    Makie.scatter!(ax, Point3(a, b, f(a,b)), color = :red)
+    fig
+    ```
     :::
 
 a.  Calcular el polinomio de Taylor de primer grado de $f$ en el punto $(1,1)$ y representarlo gráficamente.
@@ -701,3 +701,165 @@ a.  Utilizar el polinomio anterior para calcular el valor aproximado de $\sqrt{1
     ```
     :::
 :::
+
+## Ejercicios propuestos
+
+```{julia}
+#| echo: false
+#| results: "hidden"
+using QuizQuestions, SymPy
+nothing
+```
+
+:::{#exr-derivadas-funciones-varias-variables-propuesto-1}
+¿Emparejar las siguientes funciones de dos variables con sus diagramas de contorno?
+
+```{julia}
+#| echo: false
+using GLMakie
+myblue = RGBf(0.067,0.529,0.871)
+myred = RGBf(1.0, 0.13, 0.32)
+size_inches = (8, 6)
+size_pt = 100 .* size_inches
+fig = Figure(resolution = size_pt, fontsize = 16, backgroundcolor = RGBAf(0,0,0,0))
+ax1 = Axis(fig[1,1], aspect = 1, xlabel = L"$x$", ylabel = L"$y$")
+f(x,y) = sin(2x^2+y^2)/sqrt(x^2+y^2)
+xs = ys = range(-2, 2; length=100)
+Makie.contour!(ax1, xs, ys, f.(xs, ys'), labels = true, levels = -2:0.2:2)
+g(x,y) = cos(x*y)/sqrt(x^2+1)
+ax2 = Axis(fig[1,2], aspect = 1, xlabel = L"$x$", ylabel = L"$y$")
+Makie.contour!(ax2, xs, ys, g.(xs, ys'), labels = true, levels = -2:0.2:4)
+h(x,y) = cos(x)-sin(2y)
+ax3 = Axis(fig[2,1], aspect = 1, xlabel = L"$x$", ylabel = L"$y$")
+Makie.contour!(ax3, xs, ys, h.(xs, ys'), labels = true, levels = -2:0.2:2)
+i(x,y) = sin(x^2)-cos(y^2)/2
+xs = ys = range(-2, 2; length=100)
+ax4 = Axis(fig[2,2], aspect = 1, xlabel = L"$x$", ylabel = L"$y$")
+Makie.contour!(ax4, xs, ys, i.(xs, ys'), labels = true, levels = -2:0.2:2)
+Label(fig[1, 1, Top()], "A", padding = (0, 0, 5, 0))
+Label(fig[1, 2, Top()], "B", padding = (0, 0, 5, 0))
+Label(fig[2, 1, Top()], "C", padding = (0, 0, 5, 0))
+Label(fig[2, 2, Top()], "D", padding = (0, 0, 5, 0))
+fig
+```
+
+```{julia}
+#| hold: true
+#| echo: false
+d = Dict(L"$f(x,y) = \frac{\operatorname{sen}(2x^2+y^2)}{\sqrt{x^2+y^2}}$" => "A", L"$g(x,y) = \frac{\cos(xy)}{\sqrt{x^2+1}}$" => "B", L"$h(x,y) = \cos(x)-\operatorname{sen}(2y)$" => "C", L"$i(x,y) = \frac{1}{2}(\operatorname{sen}(x^2)-\cos(y^2))$" => "D")
+matchq(d, label="Empareja la función con su gráfica.")
+```
+:::
+
+:::{#exr-derivadas-funciones-varias-variables-propuesto-2}
+Dada la función 
+
+$$
+f(x,y)=\frac{\ln(\sqrt{\cos(x^2y)})}{z^2},
+$$
+
+calcular $\dfrac{\partial^3 f}{\partial y\partial z\partial x}$ en el punto $(2,\pi,1)$.
+
+```{julia}
+#| echo: false
+using SymPy
+@syms x, y, z::real
+f(x,y,z) = log(sqrt(cos(x^2*y)))/z^2
+sol = N(subs(diff(f(x,y,z), x, z, y), x=>2, y=>pi, z=>1))
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-derivadas-funciones-varias-variables-propuesto-3}
+La velocidad de una reacción química típicamente depende de la temperatura y de la concentración de los reactivos. En una reacción de hidrólisis del acetato de etilo por hidróxido de sodio (NaOH) en una solución acuosa, la velocidad de reacción viene dada por la fórmula $R(t,e,s)=\frac{t}{3}\sqrt[3]{e^2s^2}$, donde $t$ es la temperatura de la reacción, $e$ la concentración de acetato de etilo y $s$ la concentración de hidróxido de sodio.
+
+a.  ¿En qué dirección debe cambiarse la temperatura y las concentraciones de los reactivos para que la velocidad de reacción aumente lo más rápidamente posible si la temperatura y las concentraciones actuales son the 40ºC, 0.4 mol/l y 0.5 mol/l respectivamente?
+
+    ```{julia}
+    #| echo: false
+    using SymPy
+    @syms x, y, z::real
+    f(x,y,z) = x/3 * (y*z)^(3/2)
+    ex = diff.(f(x, y, z), [x, y, z])
+    ∇f = lambdify(ex, (x, y, z))
+    sol = ∇f(40, 0.4, 0.5)
+    fillblankq("Dirección de cambio de la temperatura: ____" , sol[1])
+    ```
+
+    ```{julia}
+    #| echo: false
+    fillblankq("Dirección de cambio del acetato de etilo: ____" , sol[2])
+    ```
+
+    ```{julia}
+    #| echo: false
+    fillblankq("Dirección de cambio del hidróxido de sodio: ____" , sol[3])
+    ```
+
+a.  ¿Cómo cambiará la velocidad de reacción en ese instante si la temperatura disminuye al mismo ritmo que aumenta la concentración del acetato de etilo y la concentración de acetato de etilo aumenta la mitad de lo que aumenta la concentración del hidróxido de sodio?
+
+    ```{julia}
+    #| echo: false
+    using LinearAlgebra
+    sol = dot(∇f(40, 0.4, 0.5), normalize([-1/2, 1/2, 1]))
+    numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+    ```
+:::
+
+:::{#exr-derivadas-funciones-varias-variables-propuesto-4}
+La superficie $\frac{e^{z\cos(xy)}}{xz}=\frac{1}{e}$ define a $z$ como función implícita $z=f(x,y)$.
+
+a.  ¿Cuál de las siguientes afirmaciones es cierta?
+
+    ```{julia}
+    #| echo: false  
+    using SymPy, LinearAlgebra
+    @syms x, y, z::real
+    f(x,y,z) = exp(z*cos(x*y))/(x*z)-1/ℯ
+    fx = diff.(f(x,y,z), x)
+    fy = diff.(f(x,y,z), y)
+    fz = diff.(f(x,y,z), z)
+    - subs(fx, x=>1, y=>pi, z=>1) / subs(fz, x=>1, y=>pi, z=>1)
+    choices = (L"La variable $z$ aumenta $1/e$ unidades por cada unidad que aumente $x$, si $y$ se mantiene constante.", L"La variable $z$ aumenta la mitad de lo que aumenta $x$, si $y$ se mantiene constante.", L"La variable $z$ disminuye lo mismo que aumenta $y$, si $x$ se mantiene constante.", L"La variable $z$ se mantiene constante cuando se incrementa $x$, si $y$ se mantiene constante.", "Las otras opciones son falsas.")
+    answer = 2
+    radioq(choices, answer)
+    ```
+
+a.  ¿Cuál es la ecuación del plano tangente en el punto $(1,\pi,1)$?
+
+    ```{julia}
+    #| echo: false        
+    ex = diff.(f(x, y, z), [x, y, z])
+    ∇f = lambdify(ex, (x, y, z))
+    tp(x,y) = solve(dot(([x, y, z] - [1, PI, 1]), ∇f(1, PI, 1)), z)[1]
+    choices = (L"$z=1-x+\frac{y}{\pi}$", L"$z=\frac{3-x}{2}$", L"$z=(\pi+1)x-y$", L"$z=x+y-(\pi+2)$", "Las otras opciones son falsas.")
+    answer = 2
+    radioq(choices, answer)
+    ```
+:::
+
+:::{#exr-derivadas-funciones-varias-variables-propuesto-5}
+Dada la función $f(x,y)=-\dfrac{y}{9+x^2+y^2}$, ¿cuál de las siguientes afirmaciones es cierta?
+
+```{julia}
+#| echo: false     
+using SymPy, LinearAlgebra
+@syms x, y::real
+f(x,y) = -y/(9+x^2+y^2)
+nonlinsolve(diff.(f(x, y), (x, y)), (x, y))
+choices = (L"Tiene un máximo relativo en el punto $(3,-3)$.", L"Tiene un máximo relativo en el punto $(0,3)$ y un mínimo relativo en el punto $(0,-3)$.", L"Tiene un máximo relativo en el punto $(0,-3)$ y un punto de silla en el punto $(0,3)$.", "No tiene extremos relativos.", L"Tiene un máximo relativo en el punto $(0,-3)$ y un mínimo relativo en el punto $(0,3)$.")
+answer = 5
+radioq(choices, answer)
+```
+:::
+
+:::{#exr-derivadas-funciones-varias-variables-propuesto-6}
+Calcular el polinomio de Taylor de segundo grado de la función $f(x,y)=\operatorname{sen}(x/y)$ en el punto $(\pi/2,1)$ y utilizarlo para calcular el valor aproximado de $f(1.5,1)$.
+
+```{julia}
+#| echo: false  
+sol = 0.99749394
+numericq(sol, 1e-8, hint="Introducir hasta 8 decimales")
+```
+:::
+
