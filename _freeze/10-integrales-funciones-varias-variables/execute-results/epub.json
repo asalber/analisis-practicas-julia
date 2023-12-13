@@ -1,0 +1,19 @@
+{
+  "hash": "2ff7c76223f4432c380c4788e4ed78fd",
+  "result": {
+    "markdown": "---\ntitle: Derivadas de funciones de varias variables\nlang: es\n#jupyter: julia-1.9\n---\n\n## Ejercicios Resueltos\n\nPara la realización de esta práctica se requieren los siguientes paquetes:\n\n::: {.cell execution_count=1}\n``` {.julia .cell-code}\nusing SymPy  # Para el cálculo simbólico.\nusing Plots  # Para el dibujo de gráficas.\nusing Makie, GLMakie # Para el dibujo de gráficas en 3d.\nusing LaTeXStrings  # Para usar código LaTeX en los gráficos.\nusing LinearAlgebra # Para el módulo y el producto escalar de vectores.\n```\n:::\n\n\n:::{#exr-derivadas-parciales}\nLa presión $P$ de un gas perfecto depende de la temperatura $T$ y del volumen que ocupa $V$ según la función \n\n$$\nP(T,V) = \\frac{nRT}{V},\n$$\n\ndonde $n$ y $R$ son constantes positivas propias de cada gas.\n\na.  Calcular la derivada parcial de la presión con respecto a la temperatura. ¿Cómo la interpretarías?\n\n    :::{.callout-tip collapse=\"true\"}\n    ## Solución\n\n\n    ::: {.cell execution_count=2}\n    ``` {.julia .cell-code}\n    using SymPy\n    @syms n R T V\n    diff(n*R*T/V, T)\n    ```\n    \n    ::: {.cell-output .cell-output-display execution_count=3}\n    $\\frac{R n}{V}$\n    :::\n    :::\n    \n    \n    Como $n$, $R$ y $V$ son positivos, la derivada parcial es positiva, por lo que si se mantiene el volumen constante y empezamos a aumentar la temperatura, la presión aumentará.\n    :::\n\na.  Calcular la derivada parcial de la presión con respecto al volumen. ¿Cómo la interpretarías?\n\n    :::{.callout-tip collapse=\"true\"}\n    ## Solución\n\n\n    ::: {.cell execution_count=3}\n    ``` {.julia .cell-code}\n    diff(n*R*T/V, V)\n    ```\n    \n    ::: {.cell-output .cell-output-display execution_count=4}\n    $- \\frac{R T n}{V^{2}}$\n    :::\n    :::\n    \n    \n    Como $n$, $R$, $T$ y $V$ son positivos, la derivada parcial es negativa, por lo que si se mantiene la temperatura constante y empezamos a aumentar el volumen, la presión disminuirá.\n    :::\n:::\n\n",
+    "supporting": [
+      "10-integrales-funciones-varias-variables_files/figure-epub"
+    ],
+    "filters": [],
+    "engineDependencies": {
+      "jupyter": [
+        {
+          "jsWidgets": false,
+          "jupyterWidgets": false,
+          "htmlLibraries": []
+        }
+      ]
+    }
+  }
+}

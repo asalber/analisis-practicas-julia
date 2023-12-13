@@ -34,110 +34,128 @@ La siguiente tabla recoge sus mediciones.
 |4 | 16|
 |5 | 25|
 
-a. Dibujar la gráfica que resulta de unir los puntos correspondientes a los pares de la tabla con segmentos. ¿Qué forma tiene la gráfica?
+a.  Dibujar la gráfica que resulta de unir los puntos correspondientes a los pares de la tabla con segmentos. ¿Qué forma tiene la gráfica?
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Definir dos arrays con los valores del tiempo y la distancia y usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` para dibujar los puntos y la función [`plots`](https://aprendeconalf.es/manual-julia/graficos.html#gr%C3%A1fica-de-una-funci%C3%B3n-de-una-variable) del paquete `Plots` para dibujar un diagrama de líneas uniendo los puntos.
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Definir dos arrays con los valores del tiempo y la distancia y usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots`, o bien la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-puntos) del paquete `Makie`, para dibujar el array de términos.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using Plots
-t = [0, 1, 2, 3, 4, 5, 6]
-d = [0, 1, 4, 9, 16, 25, 36]
-scatter(t, d, legend=false)
-plt = plot!(t, d, linecolor="blue", xlab="Tiempo (s)", ylab="Distancia recorrida (cm)")
-```
+    :::{.callout-tip collapse="true"}
+    ## Solución
 
-Se aprecia que una forma parabólica.
-:::
+    :::{.panel-tabset}
 
-b. Calcular la velocidad media (tasa de variación media) desde los instantes $t=0, 1, 2$ hasta el instante $t=3$ y dibujar la rectas secantes a la gráfica anterior en esos instantes. ¿Cómo es la tendencia de las velocidades medias?
+    ## Plots
+    ```{julia}
+    using Plots
+    t = [0, 1, 2, 3, 4, 5, 6]
+    d = [0, 1, 4, 9, 16, 25, 36]
+    Plots.scatter(t, d, legend=false)
+    plt = Plots.plot!(t, d, linecolor="blue", xlab="Tiempo (s)", ylab="Distancia recorrida (cm)")
+    ```
 
-:::{.callout-note collapse="true"}
-## Ayuda
-La tasa de variación media de una función $f$ en un intervalo $[a,b]$ viene dada por la fórmula
+    ## Makie
+    ```{julia}
+    using GLMakie
+    t = [0, 1, 2, 3, 4, 5, 6]
+    d = [0, 1, 4, 9, 16, 25, 36]
+    fig = Figure()
+    ax = Axis(fig[1,1], xlabel="Tiempo (s)", ylabel="Distancia recorrida (cm)")
+    Makie.scatter!(ax, t, d)
+    f(x) = x^2
+    Makie.lines!(ax, 0..6, f)
+    fig
+    ```
+    :::
 
-$$
-TVM(f,[a,b]) = \frac{f(b)-f(a)}{b-a},
-$$
+    Se aprecia que una forma parabólica.
+    :::
 
-y la recta secante a la función $f$ en el intervalo $[a,b]$ tiene ecuación
+a.  Calcular la velocidad media (tasa de variación media) desde los instantes $t=0, 1, 2$ hasta el instante $t=3$ y dibujar la rectas secantes a la gráfica anterior en esos instantes. ¿Cómo es la tendencia de las velocidades medias?
 
-$$
-y = f(a) + TVM(f,[a,b]) (x-a).
-$$
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    La tasa de variación media de una función $f$ en un intervalo $[a,b]$ viene dada por la fórmula
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-# Función para el cálculo de la velocidad media en del instante i al instante j.
-tvm(i, j) = (d[j]-d[i])/(t[j]-t[i])
-j = 4
-# Cálculo de las velocidades medias.
-for i in 1:3
-    println("Velocidad media desde el instante $(t[i]) al instante $(t[j]): $(tvm(i, j)) cm/s")
-end
-# Función para calcular la ecuación de la recta secante en los instantes i y j.
-secante(x, i, j) = d[i] + tvm(i, j) * (x - t[i])
-# Dibujo de las rectas secantes
-for i in 1:3
-     plt = plot!(x -> secante(x,i,j))
-end
-plt
-```
-Las velocidades medias crecen a medida que pasa el tiempo.
-:::
+    $$
+    TVM(f,[a,b]) = \frac{f(b)-f(a)}{b-a},
+    $$
 
-c. Calcular la velocidad media desde el instante $t=3$ hasta los instantes $t=6, 5, 4$ y dibujar la rectas secantes a la gráfica anterior en esos instantes. ¿Cómo es la tendencia de las velocidades medias? ¿Hacia dónde tiende la velocidad media cuando los aproximamos al instante $t=3$ con instantes menores y mayores?
+    y la recta secante a la función $f$ en el intervalo $[a,b]$ tiene ecuación
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-i = 4
-# Cálculo de las velocidades medias.
-for j in 7:-1:5
-    println("Velocidad media desde el instante $(t[i]) al instante $(t[j]): $(tvm(i, j)) cm/s")
-end
-# Dibujo de las rectas secantes.
-for j in 7:-1:5
-     plt = plot!(x -> secante(x,i,j))
-end
-plt
-```
-Las velocidades medias decrecen a medida que el tiempo decrece.
+    $$
+    y = f(a) + TVM(f,[a,b]) (x-a).
+    $$
+    :::
 
-Se puede deducir que las velocidades medias tienden a $6$ cm/s cuando los instantes se aproximan a $3$ s.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    # Función para el cálculo de la velocidad media en del instante i al instante j.
+    tvm(i, j) = (d[j]-d[i])/(t[j]-t[i])
+    j = 4
+    # Cálculo de las velocidades medias.
+    for i in 1:3
+        println("Velocidad media desde el instante $(t[i]) al instante $(t[j]): $(tvm(i, j)) cm/s")
+    end
+    # Función para calcular la ecuación de la recta secante en los instantes i y j.
+    secante(x, i, j) = d[i] + tvm(i, j) * (x - t[i])
+    # Dibujo de las rectas secantes
+    for i in 1:3
+        plt = Plots.plot!(x -> secante(x,i,j))
+    end
+    plt
+    ```
+    Las velocidades medias crecen a medida que pasa el tiempo.
+    :::
 
-d. Calcular la variación en la distancia recorrida cada segundo que pasa. ¿Cómo evoluciona la velocidad de la bola? 
+a.  Calcular la velocidad media desde el instante $t=3$ hasta los instantes $t=6, 5, 4$ y dibujar la rectas secantes a la gráfica anterior en esos instantes. ¿Cómo es la tendencia de las velocidades medias? ¿Hacia dónde tiende la velocidad media cuando los aproximamos al instante $t=3$ con instantes menores y mayores?
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-v = []
-for i in 2:length(d)
-    push!(v, d[i]-d[i-1])
-    println("Velocidad media desde el instante $(t[i-1]) al instante $(t[i]): $(v[i-1]) cm/s")
-end
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    i = 4
+    # Cálculo de las velocidades medias.
+    for j in 7:-1:5
+        println("Velocidad media desde el instante $(t[i]) al instante $(t[j]): $(tvm(i, j)) cm/s")
+    end
+    # Dibujo de las rectas secantes.
+    for j in 7:-1:5
+        plt = Plots.plot!(x -> secante(x,i,j))
+    end
+    plt
+    ```
+    Las velocidades medias decrecen a medida que el tiempo decrece.
 
-e. Calcular la variación en la velocidad cada segundo que pasa. ¿Cómo evoluciona la aceleración de la bola? ¿Qué conclusiones sacó Galileo sobre la aceleración de la bola?
+    Se puede deducir que las velocidades medias tienden a $6$ cm/s cuando los instantes se aproximan a $3$ s.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-for i in 2:length(v)
-    println("Aceleración media desde el instante $(t[i-1]) al instante $(t[i]): $(v[i]-v[i-1]) cm/s")
-end
-```
+a.  Calcular la variación en la distancia recorrida cada segundo que pasa. ¿Cómo evoluciona la velocidad de la bola? 
 
-Se observa que la aceleración es la misma. Galileo concluyó que la aceleración de un cuerpo en caída libre era uniforme.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    v = []
+    for i in 2:length(d)
+        push!(v, d[i]-d[i-1])
+        println("Velocidad media desde el instante $(t[i-1]) al instante $(t[i]): $(v[i-1]) cm/s")
+    end
+    ```
+    :::
+
+a.  Calcular la variación en la velocidad cada segundo que pasa. ¿Cómo evoluciona la aceleración de la bola? ¿Qué conclusiones sacó Galileo sobre la aceleración de la bola?
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    for i in 2:length(v)
+        println("Aceleración media desde el instante $(t[i-1]) al instante $(t[i]): $(v[i]-v[i-1]) cm/s")
+    end
+    ```
+
+    Se observa que la aceleración es la misma. Galileo concluyó que la aceleración de un cuerpo en caída libre era uniforme.
+    :::
 :::
 
 :::{#exr-derivabilidad}
@@ -149,7 +167,7 @@ Representar gráficamente la función $f(x)=|x-1|$ y estudiar su derivabilidad e
 using Plots, SymPy, LaTeXStrings
 @syms x::real
 f(x) = abs(x-1)
-display(plot(f(x), label=L"f(x)=|x-1|"))
+display(Plots.plot(f(x), label=L"f(x)=|x-1|"))
 println("Derivada por la izquierda: ", limit((f(x)-f(1))/(x-1), x=>1, dir="-"))
 println("Derivada por la derecha: ", limit((f(x)-f(1))/(x-1), x=>1, dir="+"))
 ```
@@ -157,113 +175,112 @@ Como la derivada por la izquierda y por la derecha no son iguales, la función n
 :::
 :::
 
-:::{#exr-secantes-tangente}
-Sea $f(x)=\sqrt{x}$.
-
-a. Dibujar la gráfica de $f$ y dibujar las rectas secantes a $f$ en los intervalos $[\frac{i}{10}, 1]$ para $i=0,\ldots, 9$. ¿Hacia dónde tienden las pendientes de las rectas secantes?
-
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using Plots, SymPy, LaTeXStrings, Latexify
-@syms x::real
-f(x) = sqrt(x)
-plt = plot(f, 0, 2, ylims=(0,2.5), linewidth = 3, label=L"f(x)=\sqrt{x}", legend=:topleft)
-secante(x, i, j) = f(i) + (f(j)-f(i))/(j-i) * (x - i)
-for i in 0:9
-    sec = secante(x, i/10, 1)
-    plt = plot!(sec, label =L"y=" * latexify(sec))
-end
-plt
-```
-Se deduce que las pendientes de las rectas secantes tienen a $0.5$.
-:::
-
-b. Dibujar la recta tangente a la gráfica de $f$ en $x=1$. 
-
-:::{.callout-note collapse="true"}
-## Ayuda
-La ecuación de la recta tangente a la función $f(x)$ en el punto $a$ es $y=f(a)+f'(a)(x-a)$.
-
-Usar la función [`diff(f)`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Derivatives-1) del paquete `SymPy` para calcular simbólicamente la derivada de la función `f`.
-:::
-
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-tg = f(1) + diff(f)(1) * (x-1)
-plot!(tg, linewidth = 2, color = "red", label="Tangente " * L"y=" * latexify(tg))
-```
-:::
-:::
-
 :::{#exr-derivadas-sucesivas}
 Calcular las derivadas de las siguientes funciones hasta el orden 4 y deducir la expresión de la derivada de orden $n$.
 
+a.  $f(x)=\ln(x+1)$
 
-a. $f(x)=\ln(x+1)$
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Usar la función [`diff(f,n)`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Derivatives-1) del paquete `SymPy` para calcular simbólicamente la derivada de grado `n` de la función `f`.
+    :::
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Usar la función [`diff(f,n)`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Derivatives-1) del paquete `SymPy` para calcular simbólicamente la derivada de grado `n` de la función `f`.
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms x::real
+    f(x) = log(x+1)
+    println("Primera derivada: ", diff(f))
+    println("Segunda derivada: ", diff(f,2))
+    println("Tercera derivada: ", diff(f,3))
+    println("Cuarta derivada: ", diff(f,4))
+    ```
+    La derivada de orden $n$ es $f^{(n}=\frac{(-1)^{n-1}(n-1)!}{(x+1)^n}$.
+    :::
+
+a.  $f(x)=a^x$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms x::real a::real
+    g(x) = a^x
+    println("Primera derivada: ", diff(g(x), x))
+    println("Segunda derivada: ", diff(g(x), x, 2))
+    println("Tercera derivada: ", diff(g(x), x, 3))
+    println("Cuarta derivada: ", diff(g(x), x, 4))
+    ```
+    La derivada de orden $n$ es $g^{(n}=a^x\ln(a)^n$.
+    :::
+
+a.  $h(x)=\operatorname{sen}(x)+\cos(x)$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms x::real
+    h(x) = sin(x)+cos(x)
+    println("Primera derivada: ", diff(h))
+    println("Segunda derivada: ", diff(h,2))
+    println("Tercera derivada: ", diff(h,3))
+    println("Cuarta derivada: ", diff(h,4))
+    ```
+    La derivada de orden $n$ es 
+
+    $$
+    h^{(n}=
+    \begin{cases}
+    \operatorname{sen}(x)+\cos(x) & \mbox{si } n=4k\\
+    \cos(x)-\operatorname{sen}(x) & \mbox{si } n=4k+1\\
+    -\operatorname{sen}(x)-\cos(x) & \mbox{si } n=4k+2\\
+    -\cos(x)+\operatorname{sen}(x) & \mbox{si } n=4k+3\\
+    \end{cases}
+    \quad k\in\mathbb{N}
+    $$
+    :::
 :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using SymPy
-@syms x::real
-f(x) = log(x+1)
-println("Primera derivada: ", diff(f))
-println("Segunda derivada: ", diff(f,2))
-println("Tercera derivada: ", diff(f,3))
-println("Cuarta derivada: ", diff(f,4))
-```
-La derivada de orden $n$ es $f^{(n}=\frac{(-1)^{n-1}(n-1)!}{(x+1)^n}$.
-:::
+:::{#exr-secantes-tangente}
+Sea $f(x)=\sqrt{x}$.
 
-b. $f(x)=a^x$
+a.  Dibujar la gráfica de $f$ y dibujar las rectas secantes a $f$ en los intervalos $[\frac{i}{10}, 1]$ para $i=0,\ldots, 9$. ¿Hacia dónde tienden las pendientes de las rectas secantes?
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using SymPy
-@syms x::real a::real
-g(x) = a^x
-println("Primera derivada: ", diff(g(x),x))
-println("Segunda derivada: ", diff(g(x),x,2))
-println("Tercera derivada: ", diff(g(x),x,3))
-println("Cuarta derivada: ", diff(g(x),x,4))
-```
-La derivada de orden $n$ es $g^{(n}=a^x\ln(a)^n$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using Plots, SymPy, LaTeXStrings, Latexify
+    @syms x::real
+    f(x) = sqrt(x)
+    plt = Plots.plot(f, 0, 2, ylims=(0,2.5), linewidth = 3, label=L"f(x)=\sqrt{x}", legend=:topleft)
+    secante(x, i, j) = f(i) + (f(j)-f(i))/(j-i) * (x - i)
+    for i in 0:9
+        sec = secante(x, i/10, 1)
+        plt = Plots.plot!(sec, label =L"y=" * latexify(sec))
+    end
+    plt
+    ```
+    Se deduce que las pendientes de las rectas secantes tienen a $0.5$.
+    :::
 
-c. $h(x)=\operatorname{sen}(x)+\cos(x)$
+a.  Dibujar la recta tangente a la gráfica de $f$ en $x=1$. 
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using SymPy
-@syms x::real
-h(x) = sin(x)+cos(x)
-println("Primera derivada: ", diff(h))
-println("Segunda derivada: ", diff(h,2))
-println("Tercera derivada: ", diff(h,3))
-println("Cuarta derivada: ", diff(h,4))
-```
-La derivada de orden $n$ es 
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    La ecuación de la recta tangente a la función $f(x)$ en el punto $a$ es $y=f(a)+f'(a)(x-a)$.
 
-$$
-h^{(n}=
-\begin{cases}
-\operatorname{sen}(x)+\cos(x) & \mbox{si } n=4k\\
-\cos(x)-\operatorname{sen}(x) & \mbox{si } n=4k+1\\
--\operatorname{sen}(x)-\cos(x) & \mbox{si } n=4k+2\\
--\cos(x)+\operatorname{sen}(x) & \mbox{si } n=4k+3\\
-\end{cases}
-\quad k\in\mathbb{N}
-$$
-:::
+    Usar la función [`diff(f)`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Derivatives-1) del paquete `SymPy` para calcular simbólicamente la derivada de la función `f`.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    tg = f(1) + diff(f)(1) * (x-1)
+    Plots.plot!(tg, linewidth = 2, color = "red", label="Tangente " * L"y=" * latexify(tg))
+    ```
+    :::
 :::
 
 :::{#exr-tangente-normal}
@@ -274,7 +291,7 @@ Calcular y dibujar las rectas tangente y normal a la gráfica de la función $f(
 La ecuación de la recta tangente a una función $f$ en el punto $a$ es 
 
 $$
-y = f(a)+f'(a)(x-a),
+y = f(a) + f'(a)(x-a),
 $$
 
 y la de la recta normal
@@ -290,11 +307,11 @@ $$
 using Plots, SymPy, LaTeXStrings, Latexify
 @syms x::real
 f(x) = log(sqrt(x+1))
-plot(f, -1, 3, xlims=(-1,3), ylims=(-1,2), aspect_ratio=1, label=L"f(x)=\ln(\sqrt{x+1})", legend=:topright)
-tg = f(1)+diff(f)(1)*(x-1)
-plot!(tg, label="Tangente "*L"y="*latexify(tg))
-nm = f(1)-1/diff(f)(1)*(x-1)
-plot!(nm, label="Normal "*L"y="*latexify(nm))
+Plots.plot(f, -1, 3, xlims=(-1,3), ylims=(-1,2), aspect_ratio=1, label=L"f(x)=\ln(\sqrt{x+1})", legend=:topright)
+tg = f(1) + diff(f)(1) * (x-1)
+Plots.plot!(tg, label="Tangente "*L"y="*latexify(tg))
+nm = f(1) - 1/diff(f)(1) * (x-1)
+Plots.plot!(nm, label="Normal "*L"y="*latexify(nm))
 ```
 :::
 :::
@@ -302,150 +319,149 @@ plot!(nm, label="Normal "*L"y="*latexify(nm))
 :::{#exr-crecimiento-extremos-concavidad}
 Sea la función $g(x)=\dfrac{2x^3-3x}{x^2+1}$.
 
-a. Dibujar la gráfica de $g$.
+a.  Dibujar la gráfica de $g$.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using Plots, SymPy, LaTeXStrings, Latexify
-@syms x::real
-g(x)=(2x^3-3x)/(x^2+1)
-plot(g, -2, 2, label=L"g(x)=\frac{2x^3-3x}{x^2+1}", legend=:topleft)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using Plots, SymPy, LaTeXStrings, Latexify
+    @syms x::real
+    g(x) = (2x^3-3x) / (x^2+1)
+    Plots.plot(g, -2, 2, label=L"g(x)=\frac{2x^3-3x}{x^2+1}", legend=:topleft)
+    ```
+    :::
 
-b. Calcular la derivada de $g$ y dibujar su gráfica en la misma gráfica que la de $g$.
+a.  Calcular la derivada de $g$ y dibujar su gráfica en la misma gráfica que la de $g$.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-plot!(diff(g), label=L"g'(x)="*latexify(simplify(diff(g))))
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    Plots.plot!(diff(g), label=L"g'(x)="*latexify(simplify(diff(g))))
+    ```
+    :::
 
-c. Calcular los puntos críticos de $g$.
+a.  Calcular los puntos críticos de $g$.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Los puntos críticos de una función son los puntos donde se anula la derivada.
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Los puntos críticos de una función son los puntos donde se anula la derivada.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-N.(solve(diff(g)))
-```
-Existen dos puntos críticos en $x=-0.55$ y $x=0.55$ aproximadamente.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    N.(solve(diff(g)))
+    ```
+    Existen dos puntos críticos en $x=-0.55$ y $x=0.55$ aproximadamente.
+    :::
 
-d. A la vista de los puntos críticos y de la gráfica de la función derivada, determinar los intervalos de crecimiento y los extremos relativos de la función.
+a.  A la vista de los puntos críticos y de la gráfica de la función derivada, determinar los intervalos de crecimiento y los extremos relativos de la función.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Una función $f$ derivable en el punto $a$ es creciente si y solo si $f'(a)>0$ y decrecientes si y solo si $f'(a)<0$.
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Una función $f$ derivable en el punto $a$ es creciente si y solo si $f'(a)>0$ y decrecientes si y solo si $f'(a)<0$.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-La derivada es positiva en los intervalos $(-\infty,-0.55)$ y $(0.55,\infty)$, por lo que la función $g$ es creciente en estos intervalos, y la derivada es negativa en el intervalo $(-0.55, 0.55)$, por lo que la función $g$ es decreciente en este intervalo.
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    La derivada es positiva en los intervalos $(-\infty,-0.55)$ y $(0.55,\infty)$, por lo que la función $g$ es creciente en estos intervalos, y la derivada es negativa en el intervalo $(-0.55, 0.55)$, por lo que la función $g$ es decreciente en este intervalo.
 
-En el punto crítico $x=-0.55$ la derivada es positiva a la izquierda y negativa a la derecha, por lo que, según el criterio de la primera derivada, la función $g$ tiene un máximo relativo.
+    En el punto crítico $x=-0.55$ la derivada es positiva a la izquierda y negativa a la derecha, por lo que, según el criterio de la primera derivada, la función $g$ tiene un máximo relativo.
 
-En el punto crítico $x=0.55$ la derivada es negativa a la izquierda y positiva a la derecha, por lo que, según el criterio de la primera derivada, la función $g$ tiene un mínimo relativo.
-:::
+    En el punto crítico $x=0.55$ la derivada es negativa a la izquierda y positiva a la derecha, por lo que, según el criterio de la primera derivada, la función $g$ tiene un mínimo relativo.
+    :::
 
-e. Calcular segunda la derivada de $g$ y dibujar su gráfica en la misma gráfica que la de $g$.
+a.  Calcular segunda la derivada de $g$ y dibujar su gráfica en la misma gráfica que la de $g$.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-plot!(diff(g,2), label=L"g''(x)="*latexify(simplify(diff(g(x),x,2))))
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    Plots.plot!(diff(g,2), label=L"g''(x)="*latexify(simplify(diff(g(x),x,2))))
+    ```
+    :::
 
+a.  Calcular los puntos que anulan la segunda derivada de $g$.
 
-f. Calcular los puntos que anulan la segunda derivada de $g$.
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    N.(solve(diff(g,2)))
+    ```
+    Existen tres puntos donde se anula $g''(x)$, en $x=-1.73$, $x=0$ y $x=1.73$ aproximadamente.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-N.(solve(diff(g,2)))
-```
-Existen tres puntos donde se anula $g''(x)$, en $x=-1.73$, $x=0$ y $x=1.73$ aproximadamente.
-:::
+a.  A la vista de las raíces de la gráfica de la segunda derivada, determinar los intervalos de concavidad y los puntos de inflexión de la función $g$.
 
-g. A la vista de las raíces de la gráfica de la segunda derivada, determinar los intervalos de concavidad y los puntos de inflexión de la función $g$.
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Una función $f$ dos veces derivable en el punto $a$ es cóncava hacia arriba si y solo si $f''(a)>0$ y cóncava hacia abajo si y solo si $f''(a)<0$. Los puntos de inflexión de una función son los puntos donde cambia la concavidad. 
+    :::
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Una función $f$ dos veces derivable en el punto $a$ es cóncava hacia arriba si y solo si $f''(a)>0$ y cóncava hacia abajo si y solo si $f''(a)<0$. Los puntos de inflexión de una función son los puntos donde cambia la concavidad. 
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    La segunda derivada es positiva en los intervalos $(-\infty,-1,73)$ y $(0,1.73)$, por lo que la función $g$ es cóncava hacia arriba en esos intervalos, y la segunda derivada es negativa en los intervalos $(-1.73,0)$ y $(1.73,\infty)$, por lo que la función $g$ es cóncava hacia abajo en esos intervalos.
 
-:::{.callout-tip collapse="true"}
-## Solución
-La segunda derivada es positiva en los intervalos $(-\infty,-1,73)$ y $(0,1.73)$, por lo que la función $g$ es cóncava hacia arriba en esos intervalos, y la segunda derivada es negativa en los intervalos $(-1.73,0)$ y $(1.73,\infty)$, por lo que la función $g$ es cóncava hacia abajo en esos intervalos.
-
-$g$ tiene tres puntos de inflexión en $x=1.73$, $x=0$ y $x=1.73$, donde cambia la concavidad de la función.
-:::
+    $g$ tiene tres puntos de inflexión en $x=1.73$, $x=0$ y $x=1.73$, donde cambia la concavidad de la función.
+    :::
 :::
 
 :::{#exr-tangente-implicita}
-Considérese la curva con ecuación $x^4-x^2+y^2=0$. 
+Considérese la curva con ecuación $x^4 - 3x^2 + 2y^2=0$. 
 
-a. Dibujar la gráfica de la curva.
+a.  Dibujar la gráfica de la curva.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Para dibujar curvas implícitas utilizar la función `implicit_plot` del paquete [`ImplicitPlots`](https://juliapackages.com/p/implicitplots).
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Para dibujar curvas implícitas utilizar la función `implicit_plot` del paquete [`ImplicitPlots`](https://juliapackages.com/p/implicitplots).
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using ImplicitPlots, Plots, SymPy, LaTeXStrings, Latexify
-@syms x::real y::real
-f(x,y)=x^4-3x^2+2y^2
-implicit_plot(f; xlims=(-3,3), ylims=(-1.5,1.5), label=L"x^4-3x^2+2y^2=0", legend=:topleft)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using ImplicitPlots, Plots, SymPy, LaTeXStrings, Latexify
+    @syms x::real y::real
+    f(x,y) = x^4 - 3x^2 + 2y^2
+    implicit_plot(f; xlims=(-3,3), ylims=(-1.5,1.5), label=L"x^4-3x^2+2y^2=0", legend=:topleft)
+    ```
+    :::
 
-b. Calcular la tasa de variación de $y$ con respecto a $x$ en el punto $(1,1)$.
+a.  Calcular la tasa de variación de $y$ con respecto a $x$ en el punto $(1,1)$.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Para realizar derivadas implícitas simbólicamente hay que definir una función simbólica con el comando `@syms u()` del paquete `SymPy` y reemplazar `y` por `u(x)` en la ecuación de la curva implícita.
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Para realizar derivadas implícitas simbólicamente hay que definir una función simbólica con el comando `@syms u()` del paquete `SymPy` y reemplazar `y` por `u(x)` en la ecuación de la curva implícita.
 
-Después hay que hacer la derivada de ambos lados de la ecuación y finalmente hay que resolver la ecuación despejando la derivada de `u(x)`.
-:::
+    Después hay que hacer la derivada de ambos lados de la ecuación y finalmente hay que resolver la ecuación despejando la derivada de `u(x)`.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-# Declaramos una función simbólica
-@syms u()
-# Reemplazamos y por una función simbólica u(x).
-ex1 = f(x,y)(y=>u(x))
-# Calculamos la derivada de ambos lados de la ecuación y la resolvemos para la derivada de u'(x).
-du_dx = solve(diff(ex1,x), diff(u(x),x))[1]
-# Deshacemos el cambio y=u(x).
-dy_dx = du_dx(u(x)=>y)
-println("y'=", dy_dx)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    # Declaramos una función simbólica
+    @syms u()
+    # Reemplazamos y por una función simbólica u(x).
+    ex1 = subs(f(x,y), y=>u(x))
+    # Calculamos la derivada de ambos lados de la ecuación y la resolvemos para la derivada de u'(x).
+    du = solve(diff(ex1, x), diff(u(x), x))[1]
+    # Deshacemos el cambio y = u(x).
+    dy = subs(du, u(x) => y)
+    println("y'=", dy)
+    ```
+    :::
 
-c. Dibujar la recta tangente a la curva anterior en el punto $(1,1)$.
+a.  Dibujar la recta tangente a la curva anterior en el punto $(1,1)$.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using Latexify
-# Definimos la funciónd de la recta tangente
-tg = 1 + dy_dx(x=>1, y=>1) * (x-1)
-plot!(tg, label="Tangente "*L"y="*latexify(tg))
-# Dibujamos el punto (1,1)
-scatter!([1],[1], label="")
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using Latexify
+    # Definimos la funciónd de la recta tangente
+    tg = 1 + dy(1,1) * (x-1)
+    Plots.plot!(tg, label="Tangente "*L"y="*latexify(tg))
+    # Dibujamos el punto (1,1)
+    Plots.scatter!([1],[1], label="")
+    ```
+    :::
 :::
 
 :::{#exr-taylor-1}
@@ -465,14 +481,17 @@ $$
 ```{julia}
 using Plots, SymPy, LaTeXStrings, Latexify
 @syms x::real
+
 function taylor(f, a=0, n=2)
-    sum(diff(f, x, i)(a)/factorial(i)*(x-a)^i for i=0:n)
+    sum(diff(f, x, i)(a) / factorial(i) * (x-a)^i for i=0:n)
 end
-f(x)=sin(x)
-plt = plot(f, ylims=(-2,2), linewidth=3, label=L"f(x)=\operatorname{sen}(x)")
+
+f(x) = sin(x)
+plt = Plots.plot(f, ylims=(-2,2), linewidth=3, label=L"f(x)=\operatorname{sen}(x)")
+
 for i in 1:5
     pol = taylor(f(x), 0, i)
-    plt = plot!(pol, label=latexstring("P^{$(i)}(x)=$(pol)"))
+    plt = Plots.plot!(pol, label=latexstring("P^{$(i)}(x)=$(pol)"))
 end 
 plt
 ```
@@ -482,42 +501,46 @@ plt
 :::{#exr-taylor-2}
 Calcular los polinomios de Taylor hasta grado 10 de las siguientes funciones en los puntos indicados.
 
-a. $f(x)=\cos(x)$ en $x=\pi/2$.
+a.  $f(x)=\cos(x)$ en $x=\pi/2$.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Para calcular polinomios de Taylor utilizar la función [`series`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#Taylor-series-1) del paquete `SymPy`.
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Para calcular polinomios de Taylor utilizar la función [`series`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#Taylor-series-1) del paquete `SymPy`.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using SymPy
-@syms x::real
-f(x) = cos(x)
-series(f(x), x, Sym(pi)/2, 10)
-```
-:::
+    :::{.callout-warning}
+    La función `series` da el polinomio de grado $n-1$ junto con el error de orden $n$, por lo que si se quiere un polinomio de orden $n$ hay que llamar a la función con un orden $n+1$. 
+    :::
+    :::
 
-b. $g(x)=\ln(x)$ en $x=1$
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms x::real
+    f(x) = cos(x)
+    SymPy.series(f(x), x, Sym(pi)/2, 11)
+    ```
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-g(x) = log(x)
-series(g(x), x, 1, 10)
-```
-:::
+a.  $g(x)=\ln(x)$ en $x=1$
 
-c. $h(x)=e^{\operatorname{sen}(x)}$ en $x=0$
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    g(x) = log(x)
+    SymPy.series(g(x), x, 1, 10)
+    ```
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-h(x) = exp(sin(x))
-series(h(x), x, 0, 10)
-```
-:::
+    a.  $h(x)=e^{\operatorname{sen}(x)}$ en $x=0$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    h(x) = exp(sin(x))
+    SymPy.series(h(x), x, 0, 10)
+    ```
+    :::
 :::
 
 :::{#exr-taylor-3}
@@ -535,17 +558,19 @@ $$
 :::{.callout-tip collapse="true"}
 ## Solución
 Utilizaremos un polinomio de MacLaurin de grado 5 para la función $f(x)=\ln(1+x)$.
+
 ```{julia}
 using SymPy
 @syms x::real
-pol = series(log(1+x), x, 0, 6).removeO()
+f(x) = log(1+x)
+pol = SymPy.series(f(x), x, 0, 6).removeO()
 println("Aproximación de ln(1.2): ", N(pol(0.2)))
 ```
 
 Para dar una cota del error cometido calculamos el resto de Taylor en la forma de Lagrange.
 
 ```{julia}
-resto = diff(log(1+x), x, 6)/factorial(6)*0.2^6
+resto = diff(f, 6) / factorial(6) * 0.2^6
 println("Resto de Taylor de orden 6: ", resto)
 println("Derivada del resto : ", diff(resto))
 ```
@@ -560,16 +585,16 @@ Así pues, el error en la aproximación de $\ln(1.2)$ es menor que $1.06\cdot 10
 Para ver la fórmula general del resto de Taylor en la forma de Lagrange para un polinomio de Taylor de orden $n$, calculamos las primeras derivadas sucesivas.
 
 ```{julia}
-println("Primera derivada: ", diff(log(1+x)))
-println("Segunda derivada: ", diff(log(1+x), x, 2))
-println("Tercera derivada: ", diff(log(1+x), x, 3))
-println("Cuarta derivada: ", diff(log(1+x), x, 4))
+println("Primera derivada: ", diff(f))
+println("Segunda derivada: ", diff(f, 2))
+println("Tercera derivada: ", diff(f, 3))
+println("Cuarta derivada: ", diff(f, 4))
 ```
 
 Así pues, se deduce que la derivada de orden $n$ es $f^{(n}(x)=(-1)^{n-1}\frac{(n-1)!}{(x+1)^n}$, de manera que el resto de Taylor de orden $n$ es 
 
 $$
-|R^n_{f,0}(x)| =\left|(-1)^{n-1}\frac{(n-1)!}{(n+1)!(x+1)^n}0.2^{n+1}\right| = \left|\frac{0.2^{n+1}}{(n+1)n(x+1)^n}\right|\ x\in [0,0.2].
+|R^n_{f,0}(x)| = \left|(-1)^{n-1}\frac{(n-1)!}{(n+1)!(x+1)^n}0.2^{n+1}\right| = \left|\frac{0.2^{n+1}}{(n+1)n(x+1)^n}\right|\ x\in [0,0.2].
 $$
 
 Como se trata de una función positiva y decreciente en el intervalo $[0,0.2]$, alcanza el máximo absoluto en el extremo inferior del intervalo, es decir, en $x=0$, y por tanto se tiene,
@@ -582,7 +607,7 @@ Finalmente calculamos el primer número natural $n$ tal que $|R^n_{f,1}(x)|<10^{
 
 ```{julia}
 n=6
-while 0.2^(n+1)/(n*(n+1)) > 10^-10
+while 0.2^(n+1) / (n*(n+1)) > 10^-10
     n += 1
 end
 print(n)
@@ -656,9 +681,10 @@ la recta tangente a $g$ con paralelas?
 #| echo: false
 using SymPy
 @syms x::real
-f(x) = ln(sqrt(x^2/2))
+#f(x) = log(sqrt(x^2/2))
+f(x) = 1/2*(log(x^2)-log(2))
 g(x) = x^3+x^2-1
-sol = solve(Eq(-1/diff(f), diff(g)))[1]
+sol = solve(-1/diff(f(x))-diff(g(x)),x)[1]
 numericq(sol, 1e-15)
 ```
 :::
@@ -666,24 +692,25 @@ numericq(sol, 1e-15)
 :::{#exr-extremos-absolutos}
 Calcular el máximo y el mínimo absoluto de la función $g(x)=\sqrt{x^4-3x^3+\frac{5}{2}x^2}$ en el intervalo $[-0.5,1.5]$.
 
-a. Mínimo absoluto
-```{julia}
-#| echo: false
-using SymPy
-@syms x::real
-g(x) = sqrt(x^4-3x^3+2.5x^2)
-raices = solve(diff(g(x)))
-min = N(minimum(g.(vcat(-0.5, 0, raices, 1.5))))
-numericq(min, 1e-5)
-```
+a.  Mínimo absoluto
 
-b. Máximo absoluto
+    ```{julia}
+    #| echo: false
+    using SymPy
+    @syms x::real
+    g(x) = sqrt(x^4-3x^3+2.5x^2)
+    raices = solve(diff(g(x)))
+    min = N(minimum(g.(vcat(-0.5, 0, raices, 1.5))))
+    numericq(min, 1e-5)
+    ```
 
-```{julia}
-#| echo: false
-max = N(maximum(g.(vcat(-0.5, 0, raices, 1.5))))
-numericq(max, 1e-5)
-```
+a.  Máximo absoluto
+
+    ```{julia}
+    #| echo: false
+    max = N(maximum(g.(vcat(-0.5, 0, raices, 1.5))))
+    numericq(max, 1e-5)
+    ```
 :::
 
 
@@ -735,8 +762,8 @@ eqn1 = eqn(x => cps[2])
 ysol = N(solve(eqn1(a=>3, b=>2, l=>10), y))[1]
 xsol = N(cps[2](y=>ysol, a=>3, b=>2, l=>10))
 #tl(x) = ysol + 0 * (x- xsol)
-#implicit_plot((x,y)->f(x,y,3,3) - 10, xlims=(-4, 7), ylims=(-10, 10))
-#plot!(tl)
+#implicit_Plots.plot((x,y)->f(x,y,3,3) - 10, xlims=(-4, 7), ylims=(-10, 10))
+#Plots.plot!(tl)
 numericq(xsol, 1e-5)
 ```
 :::
@@ -754,37 +781,37 @@ numericq(ysol, 1e-5)
 :::{#exr-aproximacion-taylor}
 Calcular de manera aproximada el valor de $\operatorname{sen}(1/2)$ usando los siguientes polinomios de Taylor de la función $f(x)=\operatorname{sen}(x)$.
 
-a. Polinomio de Taylor de grado 20 en el punto $\pi/6$.
+a.  Polinomio de Taylor de grado 20 en el punto $\pi/6$.
 
-```{julia}
-#| echo: false
-using SymPy
-@syms x::real
-f(x)=sin(x)
-p1 = series(f(x), x, Sym(pi)/6, 20).removeO()
-sol1 = float(p1(0.5))
-numericq(sol1, 1e-20, "Introducir al menos 20 decimales")
-```
+    ```{julia}
+    #| echo: false
+    using SymPy
+    @syms x::real
+    f(x)=sin(x)
+    p1 = SymPy.series(f(x), x, Sym(pi)/6, 20).removeO()
+    sol1 = float(p1(0.5))
+    numericq(sol1, 1e-20, "Introducir al menos 20 decimales")
+    ```
 
-b. Polinomio de MacLaurin de grado 100.
+a.  Polinomio de MacLaurin de grado 100.
 
-```{julia}
-#| echo: false
-f(x) = tan(x)
-p2 = series(f(x), x, 0, 100).removeO()
-sol2 = BigFloat(N(p2(0.5)))
-numericq(sol2, 1e-20, "Introducir al menos 20 decimales")
-```
+    ```{julia}
+    #| echo: false
+    f(x) = tan(x)
+    p2 = SymPy.series(f(x), x, 0, 100).removeO()
+    sol2 = BigFloat(N(p2(0.5)))
+    numericq(sol2, 1e-20, "Introducir al menos 20 decimales")
+    ```
 :::
 
-c. ¿Qué polinomio da una mejor aproximación?
+a.  ¿Qué polinomio da una mejor aproximación?
 
-```{julia}
-#| echo: false
-choices = (L"El polinomio de Taylor de grado 20 en $\pi/6$.", "El polinomio de MacLaurin de grado 100.")
-answer = 1
-radioq(choices, answer)
-```
+    ```{julia}
+    #| echo: false
+    choices = (L"El polinomio de Taylor de grado 20 en $\pi/6$.", "El polinomio de MacLaurin de grado 100.")
+    answer = 1
+    radioq(choices, answer)
+    ```
 
 
 

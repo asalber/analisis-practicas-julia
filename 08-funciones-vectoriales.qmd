@@ -864,7 +864,7 @@ a.  ¿Cuál será la torsión de la trayectoria en el instante $t=2$?
 :::
 
 :::{#exr-funciones-vectoriales-propuesto-6}
-Un coche circula por una circuito elíptico cuya trayectoria viene dada por la función vectorial $f(t)=(400\cos(t), 100\operatorname{sen}(t))$, donde $t$ está dado en minutos y las coordenadas de $f$ en metros.
+Un coche circula por una circuito elíptico cuya trayectoria viene dada por la función vectorial $f(t)=(400\cos(10t), 100\operatorname{sen}(10t))$, donde $t$ está dado en minutos y las coordenadas de $f$ en metros.
 
 a.  Calcular la rapidez del vehículo en el instante $t=\pi$.
 

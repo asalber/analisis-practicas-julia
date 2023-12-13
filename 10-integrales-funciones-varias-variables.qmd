@@ -1,0 +1,53 @@
+---
+title: Derivadas de funciones de varias variables
+lang: es
+#jupyter: julia-1.9
+---
+
+## Ejercicios Resueltos
+
+Para la realización de esta práctica se requieren los siguientes paquetes:
+
+```{julia}
+using SymPy  # Para el cálculo simbólico.
+using Plots  # Para el dibujo de gráficas.
+using Makie, GLMakie # Para el dibujo de gráficas en 3d.
+using LaTeXStrings  # Para usar código LaTeX en los gráficos.
+using LinearAlgebra # Para el módulo y el producto escalar de vectores.
+```
+
+:::{#exr-derivadas-parciales}
+La presión $P$ de un gas perfecto depende de la temperatura $T$ y del volumen que ocupa $V$ según la función 
+
+$$
+P(T,V) = \frac{nRT}{V},
+$$
+
+donde $n$ y $R$ son constantes positivas propias de cada gas.
+
+a.  Calcular la derivada parcial de la presión con respecto a la temperatura. ¿Cómo la interpretarías?
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy
+    @syms n R T V
+    diff(n*R*T/V, T)
+    ```
+
+    Como $n$, $R$ y $V$ son positivos, la derivada parcial es positiva, por lo que si se mantiene el volumen constante y empezamos a aumentar la temperatura, la presión aumentará.
+    :::
+
+a.  Calcular la derivada parcial de la presión con respecto al volumen. ¿Cómo la interpretarías?
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    diff(n*R*T/V, V)
+    ```
+
+    Como $n$, $R$, $T$ y $V$ son positivos, la derivada parcial es negativa, por lo que si se mantiene la temperatura constante y empezamos a aumentar el volumen, la presión disminuirá.
+    :::
+:::

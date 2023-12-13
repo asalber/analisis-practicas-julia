@@ -685,7 +685,7 @@ a.  Calcular el polinomio de Taylor de segundo grado de $f$ en el punto $(1,1)$ 
     using SymPy, LinearAlgebra
     @syms x, y
     ∇²f = lambdify(hessian(f(x,y), (x, y)), (x, y))
-    p2(s,t) = f(a, b) + dot(∇f(a, b), [s-a, t-b]) + dot(∇²f(a,b) * [s-a; t-b],  [s-a, t-b])
+    p2(s,t) = f(a, b) + dot(∇f(a, b), [s-a, t-b]) + 1/2 * dot(∇²f(a,b) * [s-a; t-b],  [s-a, t-b])
     Makie.surface!(ax, xs, ys, p2; colormap = [:magenta], transparency = true)
     fig
     ```
@@ -755,7 +755,7 @@ matchq(d, label="Empareja la función con su gráfica.")
 Dada la función 
 
 $$
-f(x,y)=\frac{\ln(\sqrt{\cos(x^2y)})}{z^2},
+f(x,y,z)=\frac{\ln(\sqrt{\cos(x^2y)})}{z^2},
 $$
 
 calcular $\dfrac{\partial^3 f}{\partial y\partial z\partial x}$ en el punto $(2,\pi,1)$.
@@ -771,7 +771,7 @@ numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 :::
 
 :::{#exr-derivadas-funciones-varias-variables-propuesto-3}
-La velocidad de una reacción química típicamente depende de la temperatura y de la concentración de los reactivos. En una reacción de hidrólisis del acetato de etilo por hidróxido de sodio (NaOH) en una solución acuosa, la velocidad de reacción viene dada por la fórmula $R(t,e,s)=\frac{t}{3}\sqrt[3]{e^2s^2}$, donde $t$ es la temperatura de la reacción, $e$ la concentración de acetato de etilo y $s$ la concentración de hidróxido de sodio.
+La velocidad de una reacción química típicamente depende de la temperatura y de la concentración de los reactivos. En una reacción de hidrólisis del acetato de etilo por hidróxido de sodio (NaOH) en una solución acuosa, la velocidad de reacción viene dada por la fórmula $R(t,a,s)=\frac{t}{3}\sqrt[3]{a^2s^2}$, donde $t$ es la temperatura de la reacción, $a$ la concentración de acetato de etilo y $s$ la concentración de hidróxido de sodio.
 
 a.  ¿En qué dirección debe cambiarse la temperatura y las concentraciones de los reactivos para que la velocidad de reacción aumente lo más rápidamente posible si la temperatura y las concentraciones actuales son the 40ºC, 0.4 mol/l y 0.5 mol/l respectivamente?
 
@@ -779,7 +779,7 @@ a.  ¿En qué dirección debe cambiarse la temperatura y las concentraciones de 
     #| echo: false
     using SymPy
     @syms x, y, z::real
-    f(x,y,z) = x/3 * (y*z)^(3/2)
+    f(x,y,z) = x/3 * (y*z)^(2/3)
     ex = diff.(f(x, y, z), [x, y, z])
     ∇f = lambdify(ex, (x, y, z))
     sol = ∇f(40, 0.4, 0.5)
