@@ -1,5 +1,5 @@
 ---
-title: Derivadas de funciones de varias variables
+title: Integrales de funciones de varias variables
 lang: es
 #jupyter: julia-1.9
 ---
