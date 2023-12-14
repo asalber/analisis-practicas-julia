@@ -92,14 +92,17 @@ a.  Definir una función para calcular de manera aproximada el área encerrada e
 :::
 
 :::{#exr-primitivas}
-Calcular las primitivas de las siguientes funciones:
+Calcular las primitivas de las siguientes funciones.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular la primitiva de una función se puede usar la función [`integrate(f)`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Integrals-1) del paquete [`SymPy`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/), donde `f` es la función a integrar.
+:::
 
 a.  $f(x)=x^2\ln(x)$
 
     :::{.callout-tip collapse="true"}
     ## Solución
-
-    Para calcular la primitiva de una función se puede usar la función [`integrate(f)`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Integrals-1) del paquete [`SymPy`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/), donde `f` es la función a integrar.
 
     ```{julia}
     using SymPy

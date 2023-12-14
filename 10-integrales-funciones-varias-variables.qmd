@@ -12,42 +12,291 @@ Para la realización de esta práctica se requieren los siguientes paquetes:
 using SymPy  # Para el cálculo simbólico.
 using Plots  # Para el dibujo de gráficas.
 using Makie, GLMakie # Para el dibujo de gráficas en 3d.
+using HCubature # Para el cálculo numérico de integrales múltiples.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 using LinearAlgebra # Para el módulo y el producto escalar de vectores.
 ```
 
-:::{#exr-derivadas-parciales}
-La presión $P$ de un gas perfecto depende de la temperatura $T$ y del volumen que ocupa $V$ según la función 
+:::{#exr-volumen-figuras-geometricas}
+Calcular el volumen de las siguientes figuras geométricas usando integrales múltiples.
 
-$$
-P(T,V) = \frac{nRT}{V},
-$$
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular numéricamente integrales definidas de funciones de varias variables usar la función [`hcubature`](https://juliapackages.com/p/hcubature) del paquete `HCubature`.
+:::
 
-donde $n$ y $R$ son constantes positivas propias de cada gas.
+a.  Un paralelogramo de base rectangular $[0,1]\times [0,5]$ y altura $10$.
 
-a.  Calcular la derivada parcial de la presión con respecto a la temperatura. ¿Cómo la interpretarías?
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using HCubature
+    f(x, y) = 10
+    f(v) = f(v...)
+    hcubature(f, [0,0], [1,5])
+    ```
+    :::
+
+a.  Una cuña de base rectangular $[0,2]\times [0,5]$ y altura $10$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    f(x, y) = 10x
+    f(v) = f(v...)
+    hcubature(f, [0,0], [1,5])
+    ```
+    :::
+
+a.  Un cilindro de base circular centrada en el origen con radio $1$ y altura $10$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    f(x, y) = x^2+y^2<1 ? 10 : 0
+    f(v) = f(v...)
+    hcubature(f, [-1,-1], [1,1])
+    ```
+    :::
+
+a.  Una semiesfera centrada en el origen con radio $1$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    f(x, y) = x^2+y^2<1 ? sqrt(1-x^2-y^2) : 0
+    f(v) = f(v...)
+    hcubature(f, [-1,-1], [1,1])
+    ```
+    :::
+:::
+
+:::{#exr-integrales-iteradas}
+Calcular las siguientes integrales iteradas.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular la primitiva de una función se puede usar la función [`integrate`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Integrals-1) del paquete [`SymPy`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/).
+:::
+
+a.  $\int_0^1\int_0^2 x+y \,dy\,dx$.
 
     :::{.callout-tip collapse="true"}
     ## Solución
 
     ```{julia}
     using SymPy
-    @syms n R T V
-    diff(n*R*T/V, T)
+    @syms x y
+    f(x, y) = x + y
+    integrate(f(x,y), (y, 0, 2), (x, 0, 1))
     ```
-
-    Como $n$, $R$ y $V$ son positivos, la derivada parcial es positiva, por lo que si se mantiene el volumen constante y empezamos a aumentar la temperatura, la presión aumentará.
     :::
 
-a.  Calcular la derivada parcial de la presión con respecto al volumen. ¿Cómo la interpretarías?
+a.  $\int_0^2\int_0^1 x+y \,dx\,dy$.
 
     :::{.callout-tip collapse="true"}
     ## Solución
 
     ```{julia}
-    diff(n*R*T/V, V)
+    integrate(f(x,y), (x, 0, 1), (y, 0, 2))
     ```
+    :::
 
-    Como $n$, $R$, $T$ y $V$ son positivos, la derivada parcial es negativa, por lo que si se mantiene la temperatura constante y empezamos a aumentar el volumen, la presión disminuirá.
+a.  $\int_0^1\int_0^2\int_0^3 xyz \,dz\,dy\,dx$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    @syms z
+    f(x, y, z) = x * y * z
+    integrate(f(x,y,z), (z, 0, 3), (y, 0, 2), (x, 0, 1))
+    ```
+    :::
+
+a.  $\int_0^3\int_0^1\int_0^2 xyz \,dy\,dx\,dz$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    @syms z
+    f(x, y, z) = x * y * z
+    integrate(f(x,y,z), (y, 0, 2), (x, 0, 1), (z, 0, 3))
+    ```
     :::
 :::
+
+:::{#exr-integrales-dobles-regiones-irregulares}
+Calcular las siguientes integrales dobles sobre las regiones dadas.
+
+a.  $\int_0^2\int_0^{x/2} e^{x+y}\,dy\,dx$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms x y
+    f(x, y) = exp(x+y)
+    integrate(f(x,y), (y, 0, x/2), (x, 0, 2))
+    ```
+    :::
+
+a.  Calcular la integral anterior invirtiendo el orden de integración.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    integrate(f(x,y), (x, 2y, 2), (y, 0, 1))
+    ```
+    :::
+
+a.  $\int_0^1\int_0^{\sqrt{x}} x^2y\,dy\,dx$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms x y
+    f(x, y) = x^2*y
+    integrate(f(x,y), (y, x, sqrt(x)), (x, 0, 1))
+    ```
+    :::
+
+a.  $\int_0^1\int_y^1 \cos(x^2) \,dx\,dy$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    f(x, y) = cos(x^2)
+    integrate(f(x,y), (x, y, 1), (y, 0, 1))
+    ```
+
+    Como la función $\cos(x^2)$ no tiene primitiva inmediata, el resultado aparece en función de a función de la [integral de Fresnel](https://es.wikipedia.org/wiki/Integral_de_Fresnel). Sin embargo, resulta más sencillo calcular esta integral doble iterada invirtiendo el orden de integración, es decir, $\int_0^1\int_0^x \cos(x^2) \,dy\,dx$.
+
+    ```{julia}
+    integrate(f(x,y), (y, 0, x), (x, 0, 1))
+    ```
+    :::
+:::
+
+:::{#exr-integrales-dobles-volumenes}
+Calcular los volúmenes que quedan por debajo de las funciones siguientes en las regiones dadas.
+
+a.  $x + 2y + 3z = 6$ en el primer octante.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms x y z
+    f(x, y) = solve(x+2y+3z-6, z)[1]
+    g(x) = solve(f(x,y), y)
+    integrate(f(x,y), (y, 0, g(x)), (x, 0, 6))
+    ```
+    :::
+
+a.  $f(x,y) = xy$ en $[-1,1]\times [-1,1]$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using HCubature
+    f(x, y) = abs(x*y)
+    f(v) = f(v...)
+    hcubature(f, [-1,-1], [1,1])
+    ```
+    :::
+:::
+
+:::{#exr-volumen-balsa}
+Un balsa de residuos líquidos con forma elíptica de ecuación $2x^2 + y^2 = 9$ tiene una profundidad dada por la función $f(x,y) = \frac{x^2}{2} + \frac{y^2}{2} - 10$. Calcular el volumen de la balsa.
+:::
+
+:::{#exr-volumen-entre-superficies}
+Calcular el volumen comprendido entre las superficies de las funciones $f(x,y)=x^2+y^2$ y $g(x,y)=2x$.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@syms x y
+f(x, y) = x^2 + y^2
+g(x, y) = 2x
+sol = solve(f(x,y)-g(x,y), y)
+integrate(g(x,y)-f(x,y), (y, sol[1], sol[2]), (x, 0, 2))
+```
+:::
+:::
+
+:::{#exr-volumen-entre-superficies}
+Una placa metálica delimitada por las curvas $y=2-x^2$ e $y=-3+2x^2$ tiene una densidad dada por la función $d(x,y)=x^2y^2$.
+
+a.  Calcular la masa de la placa.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    La masa de una región plana con densidad variable $\delta(x,y)$ se calcula mediante la integral.
+
+    $$
+    \int_R \delta(x,y)\,dA.
+    $$
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms x y
+    d(x,y) = x^2 * y^2
+    g(x) = 2 - x^2
+    h(x) = -3 + 2x^2
+    sol = solve(g(x)-h(x), x)
+    m = integrate(d(x,y), (y, h(x), g(x)), (x, sol[1], sol[2]))
+    ```
+    :::
+
+a.  Calcular el centro de masas de la placa
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Las coordenadas del centro de masas se obtienen mediante las siguientes integrales.
+
+    \begin{align*}
+    \bar x 
+    &= \frac{M_y}{m}
+    = \frac{\int_R x\delta(x,y)\,dA}{\int_R \delta(x,y)\,dA} \\
+    \bar y
+    &= \frac{M_x}{m}
+    = \frac{\int_R y\delta(x,y)\,dA}{\int_R \delta(x,y)\,dA}
+    \end{align*}
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    Calculamos primero la componente $x$ del centro de masas. 
+
+    ```{julia}
+    # Momento con respecto a y
+    my = integrate(x*d(x,y), (y, h(x), g(x)), (x, sol[1], sol[2]))
+    # Centro de masas en x.
+    my / m
+    ```
+
+    Y después la componente $y$ del centro de masas.
+
+    ```{julia}
+    # Momento con respecto a x
+    mx = integrate(y*d(x,y), (y, h(x), g(x)), (x, sol[1], sol[2]))
+    # Centro de masas en y.
+    mx / m
+    ```
+    :::
+:::
+

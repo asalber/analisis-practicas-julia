@@ -288,46 +288,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ejercicios-resueltos" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="ejercicios-resueltos"><span class="header-section-number">10.1</span> Ejercicios Resueltos</h2>
 <p>Para la realización de esta práctica se requieren los siguientes paquetes:</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy  </span><span class="co"># Para el cálculo simbólico.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots  </span><span class="co"># Para el dibujo de gráficas.</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Makie</span>, <span class="bu">GLMakie </span><span class="co"># Para el dibujo de gráficas en 3d.</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LaTeXStrings  </span><span class="co"># Para usar código LaTeX en los gráficos.</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra </span><span class="co"># Para el módulo y el producto escalar de vectores.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">HCubature </span><span class="co"># Para el cálculo numérico de integrales múltiples.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LaTeXStrings  </span><span class="co"># Para usar código LaTeX en los gráficos.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra </span><span class="co"># Para el módulo y el producto escalar de vectores.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="exr-derivadas-parciales" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 10.1 </strong></span>La presión <span class="math inline">\(P\)</span> de un gas perfecto depende de la temperatura <span class="math inline">\(T\)</span> y del volumen que ocupa <span class="math inline">\(V\)</span> según la función</p>
-<p><span class="math display">\[
-P(T,V) = \frac{nRT}{V},
-\]</span></p>
-<p>donde <span class="math inline">\(n\)</span> y <span class="math inline">\(R\)</span> son constantes positivas propias de cada gas.</p>
-<ol type="a">
-<li><p>Calcular la derivada parcial de la presión con respecto a la temperatura. ¿Cómo la interpretarías?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div id="exr-volumen-figuras-geometricas" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 10.1 </strong></span>Calcular el volumen de las siguientes figuras geométricas usando integrales múltiples.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solución
+Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> n R T V</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(n<span class="op">*</span>R<span class="op">*</span>T<span class="op">/</span>V, T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<p><span class="math inline">\(\frac{R n}{V}\)</span></p>
+<p>Para calcular numéricamente integrales definidas de funciones de varias variables usar la función <a href="https://juliapackages.com/p/hcubature"><code>hcubature</code></a> del paquete <code>HCubature</code>.</p>
 </div>
 </div>
-<p>Como <span class="math inline">\(n\)</span>, <span class="math inline">\(R\)</span> y <span class="math inline">\(V\)</span> son positivos, la derivada parcial es positiva, por lo que si se mantiene el volumen constante y empezamos a aumentar la temperatura, la presión aumentará.</p>
 </div>
-</div>
-</div></li>
-<li><p>Calcular la derivada parcial de la presión con respecto al volumen. ¿Cómo la interpretarías?</p>
+<ol type="a">
+<li><p>Un paralelogramo de base rectangular <span class="math inline">\([0,1]\times [0,5]\)</span> y altura <span class="math inline">\(10\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -341,12 +329,509 @@ Solución
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(n<span class="op">*</span>R<span class="op">*</span>T<span class="op">/</span>V, V)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">HCubature</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fl">10</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="fl">0</span>,<span class="fl">0</span>], [<span class="fl">1</span>,<span class="fl">5</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>(50.0, 7.105427357601002e-15)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p>Una cuña de base rectangular <span class="math inline">\([0,2]\times [0,5]\)</span> y altura <span class="math inline">\(10\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fl">10</span>x</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="fl">0</span>,<span class="fl">0</span>], [<span class="fl">1</span>,<span class="fl">5</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<p><span class="math inline">\(- \frac{R T n}{V^{2}}\)</span></p>
+<pre><code>(25.0, 3.552713678800501e-15)</code></pre>
 </div>
 </div>
-<p>Como <span class="math inline">\(n\)</span>, <span class="math inline">\(R\)</span>, <span class="math inline">\(T\)</span> y <span class="math inline">\(V\)</span> son positivos, la derivada parcial es negativa, por lo que si se mantiene la temperatura constante y empezamos a aumentar el volumen, la presión disminuirá.</p>
+</div>
+</div>
+</div></li>
+<li><p>Un cilindro de base circular centrada en el origen con radio <span class="math inline">\(1\)</span> y altura <span class="math inline">\(10\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>y<span class="op">^</span><span class="fl">2</span><span class="op">&lt;</span><span class="fl">1</span> ? <span class="fl">10</span> <span class="op">:</span> <span class="fl">0</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="op">-</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span>], [<span class="fl">1</span>,<span class="fl">1</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>(31.41598951201623, 4.6813472010342655e-7)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p>Una semiesfera centrada en el origen con radio <span class="math inline">\(1\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>y<span class="op">^</span><span class="fl">2</span><span class="op">&lt;</span><span class="fl">1</span> ? <span class="fu">sqrt</span>(<span class="fl">1</span><span class="op">-</span>x<span class="op">^</span><span class="fl">2</span><span class="op">-</span>y<span class="op">^</span><span class="fl">2</span>) <span class="op">:</span> <span class="fl">0</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="op">-</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span>], [<span class="fl">1</span>,<span class="fl">1</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>(2.0943951101375893, 3.12087277156216e-8)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+</ol>
+</div>
+<div id="exr-integrales-iteradas" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 10.2 </strong></span>Calcular las siguientes integrales iteradas.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ayuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para calcular la primitiva de una función se puede usar la función <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Integrals-1"><code>integrate</code></a> del paquete <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.31/"><code>SymPy</code></a>.</p>
+</div>
+</div>
+</div>
+<ol type="a">
+<li><p><span class="math inline">\(\int_0^1\int_0^2 x+y \,dy\,dx\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x <span class="op">+</span> y</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, <span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<p><span class="math inline">\(3\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p><span class="math inline">\(\int_0^2\int_0^1 x+y \,dx\,dy\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (x, <span class="fl">0</span>, <span class="fl">1</span>), (y, <span class="fl">0</span>, <span class="fl">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<p><span class="math inline">\(3\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p><span class="math inline">\(\int_0^1\int_0^2\int_0^3 xyz \,dz\,dy\,dx\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> z</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y, z) <span class="op">=</span> x <span class="op">*</span> y <span class="op">*</span> z</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y,z), (z, <span class="fl">0</span>, <span class="fl">3</span>), (y, <span class="fl">0</span>, <span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<p><span class="math inline">\(\frac{9}{2}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p><span class="math inline">\(\int_0^3\int_0^1\int_0^2 xyz \,dy\,dx\,dz\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> z</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y, z) <span class="op">=</span> x <span class="op">*</span> y <span class="op">*</span> z</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y,z), (y, <span class="fl">0</span>, <span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">1</span>), (z, <span class="fl">0</span>, <span class="fl">3</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<p><span class="math inline">\(\frac{9}{2}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+</ol>
+</div>
+<div id="exr-integrales-dobles-regiones-irregulares" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 10.3 </strong></span>Calcular las siguientes integrales dobles sobre las regiones dadas.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\int_0^2\int_0^{x/2} e^{x+y}\,dy\,dx\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">exp</span>(x<span class="op">+</span>y)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, x<span class="op">/</span><span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<p><span class="math inline">\(- e^{2} + \frac{1}{3} + \frac{2 e^{3}}{3}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p>Calcular la integral anterior invirtiendo el orden de integración.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (x, <span class="fl">2</span>y, <span class="fl">2</span>), (y, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<p><span class="math inline">\(- e^{2} + \frac{1}{3} + \frac{2 e^{3}}{3}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p><span class="math inline">\(\int_0^1\int_0^{\sqrt{x}} x^2y\,dy\,dx\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">*</span>y</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, x, <span class="fu">sqrt</span>(x)), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<p><span class="math inline">\(\frac{1}{40}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p><span class="math inline">\(\int_0^1\int_y^1 \cos(x^2) \,dx\,dy\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">cos</span>(x<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (x, y, <span class="fl">1</span>), (y, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<p><span class="math inline">\(- \frac{\sqrt{2} \sqrt{\pi} \left(- \frac{\sqrt{2} \sin{\left(1 \right)} \Gamma\left(\frac{1}{4}\right)}{8 \sqrt{\pi} \Gamma\left(\frac{5}{4}\right)} + \frac{C\left(\frac{\sqrt{2}}{\sqrt{\pi}}\right) \Gamma\left(\frac{1}{4}\right)}{4 \Gamma\left(\frac{5}{4}\right)}\right) \Gamma\left(\frac{1}{4}\right)}{8 \Gamma\left(\frac{5}{4}\right)} + \frac{\sqrt{2} \sqrt{\pi} C\left(\frac{\sqrt{2}}{\sqrt{\pi}}\right) \Gamma\left(\frac{1}{4}\right)}{8 \Gamma\left(\frac{5}{4}\right)}\)</span></p>
+</div>
+</div>
+<p>Como la función <span class="math inline">\(\cos(x^2)\)</span> no tiene primitiva inmediata, el resultado aparece en función de a función de la <a href="https://es.wikipedia.org/wiki/Integral_de_Fresnel">integral de Fresnel</a>. Sin embargo, resulta más sencillo calcular esta integral doble iterada invirtiendo el orden de integración, es decir, <span class="math inline">\(\int_0^1\int_0^x \cos(x^2) \,dy\,dx\)</span>.</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, x), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<p><span class="math inline">\(\frac{\sin{\left(1 \right)}}{2}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+</ol>
+</div>
+<div id="exr-integrales-dobles-volumenes" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 10.4 </strong></span>Calcular los volúmenes que quedan por debajo de las funciones siguientes en las regiones dadas.</p>
+<ol type="a">
+<li><p><span class="math inline">\(x + 2y + 3z = 6\)</span> en el primer octante.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y z</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">solve</span>(x<span class="op">+</span><span class="fl">2</span>y<span class="op">+</span><span class="fl">3</span>z<span class="op">-</span><span class="fl">6</span>, z)[<span class="fl">1</span>]</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">f</span>(x,y), y)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, <span class="fu">g</span>(x)), (x, <span class="fl">0</span>, <span class="fl">6</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<p><span class="math inline">\(6\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p><span class="math inline">\(f(x,y) = xy\)</span> en <span class="math inline">\([-1,1]\times [-1,1]\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">HCubature</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">abs</span>(x<span class="op">*</span>y)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="op">-</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span>], [<span class="fl">1</span>,<span class="fl">1</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>(1.0, 0.0)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+</ol>
+</div>
+<div id="exr-volumen-balsa" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 10.5 </strong></span>Un balsa de residuos líquidos con forma elíptica de ecuación <span class="math inline">\(2x^2 + y^2 = 9\)</span> tiene una profundidad dada por la función <span class="math inline">\(f(x,y) = \frac{x^2}{2} + \frac{y^2}{2} - 10\)</span>. Calcular el volumen de la balsa.</p>
+</div>
+<div id="exr-volumen-entre-superficies" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 10.6 </strong></span>Calcular el volumen comprendido entre las superficies de las funciones <span class="math inline">\(f(x,y)=x^2+y^2\)</span> y <span class="math inline">\(g(x,y)=2x\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x, y) <span class="op">=</span> <span class="fl">2</span>x</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">f</span>(x,y)<span class="fu">-g</span>(x,y), y)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">g</span>(x,y)<span class="fu">-f</span>(x,y), (y, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]), (x, <span class="fl">0</span>, <span class="fl">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<p><span class="math inline">\(- \frac{\pi}{2}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-volumen-entre-superficies" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 10.7 </strong></span>Una placa metálica delimitada por las curvas <span class="math inline">\(y=2-x^2\)</span> e <span class="math inline">\(y=-3+2x^2\)</span> tiene una densidad dada por la función <span class="math inline">\(d(x,y)=x^2y^2\)</span>.</p>
+<ol type="a">
+<li><p>Calcular la masa de la placa.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ayuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La masa de una región plana con densidad variable <span class="math inline">\(\delta(x,y)\)</span> se calcula mediante la integral.</p>
+<p><span class="math display">\[
+\int_R \delta(x,y)\,dA.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">d</span>(x,y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span> <span class="op">*</span> y<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> <span class="fl">2</span> <span class="op">-</span> x<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(x) <span class="op">=</span> <span class="op">-</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">2</span>x<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">g</span>(x)<span class="fu">-h</span>(x), x)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="fu">integrate</span>(<span class="fu">d</span>(x,y), (y, <span class="fu">h</span>(x), <span class="fu">g</span>(x)), (x, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<p><span class="math inline">\(\frac{460 \sqrt{15}}{729}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p>Calcular el centro de masas de la placa</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ayuda
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Las coordenadas del centro de masas se obtienen mediante las siguientes integrales.</p>
+<p><span class="math display">\[\begin{align*}
+\bar x
+&amp;= \frac{M_y}{m}
+= \frac{\int_R x\delta(x,y)\,dA}{\int_R \delta(x,y)\,dA} \\
+\bar y
+&amp;= \frac{M_x}{m}
+= \frac{\int_R y\delta(x,y)\,dA}{\int_R \delta(x,y)\,dA}
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Calculamos primero la componente <span class="math inline">\(x\)</span> del centro de masas.</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Momento con respecto a y</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>my <span class="op">=</span> <span class="fu">integrate</span>(<span class="fu">x*d</span>(x,y), (y, <span class="fu">h</span>(x), <span class="fu">g</span>(x)), (x, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]))</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Centro de masas en x.</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>my <span class="op">/</span> m</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<p><span class="math inline">\(0\)</span></p>
+</div>
+</div>
+<p>Y después la componente <span class="math inline">\(y\)</span> del centro de masas.</p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Momento con respecto a x</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>mx <span class="op">=</span> <span class="fu">integrate</span>(<span class="fu">y*d</span>(x,y), (y, <span class="fu">h</span>(x), <span class="fu">g</span>(x)), (x, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Centro de masas en y.</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>mx <span class="op">/</span> m</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<p><span class="math inline">\(- \frac{4159}{5313}\)</span></p>
+</div>
+</div>
 </div>
 </div>
 </div></li>

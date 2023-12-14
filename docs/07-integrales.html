@@ -293,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ejercicios-resueltos" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="ejercicios-resueltos"><span class="header-section-number">7.1</span> Ejercicios Resueltos</h2>
 <p>Para la realización de esta práctica se requieren los siguientes paquetes:</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy  </span><span class="co"># Para el cálculo simbólico de integrales.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">QuadGK  </span><span class="co"># Para el cálculo numérico de integrales.</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots  </span><span class="co"># Para el dibujo de gráficas.</span></span>
@@ -318,7 +318,7 @@ Solución
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La <a href="https://aprendeconalf.es/analisis-manual/09-integrales.html#sumas-de-riemann">suma inferior de Riemann</a> de una función <span class="math inline">\(f\)</span> en un intervalo <span class="math inline">\([a,b]\)</span> se obtiene sumando las áreas de los rectángulos que resultan de tomar una partición del intervalo, tomando como base la amplitud de los subintervalos y el como altura el mínimo valor de <span class="math inline">\(f\)</span> en el subintervalo.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Δx <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">10</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>areas_inf <span class="op">=</span> [<span class="fu">f</span>((i<span class="op">-</span><span class="fl">1</span>)<span class="op">*</span>Δx)<span class="op">*</span>Δx for i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>]</span>
@@ -344,7 +344,7 @@ Solución
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La <a href="https://aprendeconalf.es/analisis-manual/09-integrales.html#sumas-de-riemann">suma superior de Riemann</a> de una función <span class="math inline">\(f\)</span> en un intervalo <span class="math inline">\([a,b]\)</span> se obtiene sumando las áreas de los rectángulos que resultan de tomar una partición del intervalo, tomando como base la amplitud de los subintervalos y el como altura el máximo valor de <span class="math inline">\(f\)</span> en el subintervalo.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Δx <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">10</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>areas_sup <span class="op">=</span> [<span class="fu">f</span>(i<span class="op">*</span>Δx)<span class="op">*</span>Δx for i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>]</span>
@@ -370,7 +370,7 @@ Solución
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La suma inferior de Riemann nos da una cota inferior del área que queda encerrada entre la gráfica de la función y el eje <span class="math inline">\(x\)</span> en el intervalo <span class="math inline">\([a,b]\)</span>, mientras que la suma superior de Riemann nos da una cota superior. Por tanto, si tomamos cualquier valor entre la suma inferior y la suma superior de Riemann como aproximación del área encerrada entre la gráfica de <span class="math inline">\(f\)</span> y el eje <span class="math inline">\(x\)</span>, una cota del error cometido será la diferencia entre la suma superior y la suma inferior.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>error <span class="op">=</span> sum_sup <span class="op">-</span> sum_inf</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>0.10000000000000003</code></pre>
@@ -392,7 +392,7 @@ Solución
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">PrettyTables</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">area_inf</span>(a, b, n)</span>
@@ -517,42 +517,25 @@ Solución
 </ol>
 </div>
 <div id="exr-primitivas" class="theorem exercise">
-<p><span class="theorem-title"><strong>Ejercicio 7.2 </strong></span>Calcular las primitivas de las siguientes funciones:</p>
-<ol type="a">
-<li><p><span class="math inline">\(f(x)=x^2\ln(x)\)</span></p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<p><span class="theorem-title"><strong>Ejercicio 7.2 </strong></span>Calcular las primitivas de las siguientes funciones.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solución
+Ayuda
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Para calcular la primitiva de una función se puede usar la función <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Integrals-1"><code>integrate(f)</code></a> del paquete <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.31/"><code>SymPy</code></a>, donde <code>f</code> es la función a integrar.</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>primitiva <span class="op">=</span> <span class="fu">integrate</span>(x<span class="op">^</span><span class="fl">2</span><span class="fu">*ln</span>(x))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<p><span class="math inline">\(\frac{x^{3} \log{\left(x \right)}}{3} - \frac{x^{3}}{9}\)</span></p>
-</div>
-</div>
-<p>Obsérvese que la primitiva obtenida con la función <code>integrate</code> no incluye la típica constante que define la familia de primitivas.</p>
-<p>Podemos comprobar que efectivamente es la primitiva derivándola.</p>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(primitiva)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<p><span class="math inline">\(x^{2} \log{\left(x \right)}\)</span></p>
 </div>
 </div>
 </div>
-</div>
-</div></li>
-<li><p><span class="math inline">\(g(x)= \dfrac{\ln(\ln(x))}{x}\)</span></p>
+<ol type="a">
+<li><p><span class="math inline">\(f(x)=x^2\ln(x)\)</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -565,16 +548,26 @@ Solución
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>primitiva <span class="op">=</span> <span class="fu">integrate</span>(x<span class="op">^</span><span class="fl">2</span><span class="fu">*ln</span>(x))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<p><span class="math inline">\(\frac{x^{3} \log{\left(x \right)}}{3} - \frac{x^{3}}{9}\)</span></p>
+</div>
+</div>
+<p>Obsérvese que la primitiva obtenida con la función <code>integrate</code> no incluye la típica constante que define la familia de primitivas.</p>
+<p>Podemos comprobar que efectivamente es la primitiva derivándola.</p>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">ln</span>(<span class="fu">ln</span>(x))<span class="op">/</span>x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<p><span class="math inline">\(\log{\left(x \right)} \log{\left(\log{\left(x \right)} \right)} - \log{\left(x \right)}\)</span></p>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(primitiva)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<p><span class="math inline">\(x^{2} \log{\left(x \right)}\)</span></p>
 </div>
 </div>
 </div>
 </div>
 </div></li>
-<li><p><span class="math inline">\(h(x)= \dfrac{6x+5}{(x^2+x+1)^2}\)</span></p>
+<li><p><span class="math inline">\(g(x)= \dfrac{\ln(\ln(x))}{x}\)</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -587,26 +580,16 @@ Solución
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Se trata de una función racional, así que hacemos primero la descomposición en fracciones simples. Para ello se puede usar la función <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#Rational-expressions:-apart,-together,-cancel-1"><code>apart(f)</code></a> del paquete <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/"><code>SymPy</code></a>.</p>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(x) <span class="op">=</span> (<span class="fl">2</span>x<span class="op">^</span><span class="fl">3</span><span class="op">+</span>x<span class="op">^</span><span class="fl">2</span><span class="op">+</span><span class="fl">6</span>)<span class="op">/</span>(x<span class="op">^</span><span class="fl">5</span><span class="op">-</span>x)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Descomposición en fracciones simples.</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">apart</span>(<span class="fu">h</span>(x))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<p><span class="math inline">\(\frac{5 x + 2}{2 \left(x^{2} + 1\right)} + \frac{5}{4 \left(x + 1\right)} + \frac{9}{4 \left(x - 1\right)} - \frac{6}{x}\)</span></p>
-</div>
-</div>
-<p>Y ahora calculamos la primitiva.</p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">h</span>(x))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<p><span class="math inline">\(- 6 \log{\left(x \right)} + \frac{9 \log{\left(x - 1 \right)}}{4} + \frac{5 \log{\left(x + 1 \right)}}{4} + \frac{5 \log{\left(x^{2} + 1 \right)}}{4} + \operatorname{atan}{\left(x \right)}\)</span></p>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">ln</span>(<span class="fu">ln</span>(x))<span class="op">/</span>x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<p><span class="math inline">\(\log{\left(x \right)} \log{\left(\log{\left(x \right)} \right)} - \log{\left(x \right)}\)</span></p>
 </div>
 </div>
 </div>
 </div>
 </div></li>
-<li><p><span class="math inline">\(i(x)= x^a\)</span></p>
+<li><p><span class="math inline">\(h(x)= \dfrac{6x+5}{(x^2+x+1)^2}\)</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -619,18 +602,26 @@ Solución
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Cuando en la función aparece algún parámetro, es necesario indicar la variable con respecto a la que calcular la integral. Para ello se utiliza la función <code>integrate(f, x)</code>, siendo <code>x</code> la variable con respecto a la que integrar.</p>
+<p>Se trata de una función racional, así que hacemos primero la descomposición en fracciones simples. Para ello se puede usar la función <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#Rational-expressions:-apart,-together,-cancel-1"><code>apart(f)</code></a> del paquete <a href="https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/"><code>SymPy</code></a>.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(x) <span class="op">=</span> (<span class="fl">2</span>x<span class="op">^</span><span class="fl">3</span><span class="op">+</span>x<span class="op">^</span><span class="fl">2</span><span class="op">+</span><span class="fl">6</span>)<span class="op">/</span>(x<span class="op">^</span><span class="fl">5</span><span class="op">-</span>x)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Descomposición en fracciones simples.</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">apart</span>(<span class="fu">h</span>(x))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<p><span class="math inline">\(\frac{5 x + 2}{2 \left(x^{2} + 1\right)} + \frac{5}{4 \left(x + 1\right)} + \frac{9}{4 \left(x - 1\right)} - \frac{6}{x}\)</span></p>
+</div>
+</div>
+<p>Y ahora calculamos la primitiva.</p>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> a<span class="op">::</span><span class="dt">real</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(x<span class="op">^</span>a, x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<p><span class="math inline">\(\begin{cases} \frac{x^{a + 1}}{a + 1} &amp; \text{for}\: a \neq -1 \\\log{\left(x \right)} &amp; \text{otherwise} \end{cases}\)</span></p>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">h</span>(x))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<p><span class="math inline">\(- 6 \log{\left(x \right)} + \frac{9 \log{\left(x - 1 \right)}}{4} + \frac{5 \log{\left(x + 1 \right)}}{4} + \frac{5 \log{\left(x^{2} + 1 \right)}}{4} + \operatorname{atan}{\left(x \right)}\)</span></p>
 </div>
 </div>
 </div>
 </div>
 </div></li>
-<li><p><span class="math inline">\(j(x) = (1 + \log(x))\sqrt{1 + x^2\log(x)^2}\)</span></p>
+<li><p><span class="math inline">\(i(x)= x^a\)</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -643,7 +634,31 @@ Solución
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>Cuando en la función aparece algún parámetro, es necesario indicar la variable con respecto a la que calcular la integral. Para ello se utiliza la función <code>integrate(f, x)</code>, siendo <code>x</code> la variable con respecto a la que integrar.</p>
 <div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> a<span class="op">::</span><span class="dt">real</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(x<span class="op">^</span>a, x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<p><span class="math inline">\(\begin{cases} \frac{x^{a + 1}}{a + 1} &amp; \text{for}\: a \neq -1 \\\log{\left(x \right)} &amp; \text{otherwise} \end{cases}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p><span class="math inline">\(j(x) = (1 + \log(x))\sqrt{1 + x^2\log(x)^2}\)</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">j</span>(x) <span class="op">=</span> (<span class="fl">1</span> <span class="op">+</span> <span class="fu">log</span>(x)) <span class="op">*</span> <span class="fu">sqrt</span>(<span class="fl">1</span> <span class="op">+</span> (<span class="fu">x*log</span>(x))<span class="op">^</span><span class="fl">2</span> )</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># El cálculo directo de la integral no funciona.</span></span>
@@ -669,31 +684,6 @@ Solución
 <ol type="a">
 <li><p><span class="math inline">\(\displaystyle \int_{-1/2}^0 \frac{x^3}{x^2+x+1}\, dx\)</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solución
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Para calcular una integral definida también se puede usar la función <code>integrate(f, a, b)</code>, del paquete <code>SymPy</code>, donde, además de la función <code>f</code>, hay que indicar los límites de integración <code>a</code> y <code>b</code>.</p>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(x<span class="op">^</span><span class="fl">3</span><span class="op">/</span>x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>x<span class="op">+</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span><span class="op">/</span><span class="fl">2</span>, <span class="fl">0</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<p><span class="math inline">\(0.25\)</span></p>
-</div>
-</div>
-</div>
-</div>
-</div></li>
-<li><p><span class="math inline">\(\displaystyle \int_2^4 \frac{\sqrt{16-x^2}}{x}\, dx\)</span></p>
-<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -705,16 +695,19 @@ Solución
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>Para calcular una integral definida también se puede usar la función <code>integrate(f, a, b)</code>, del paquete <code>SymPy</code>, donde, además de la función <code>f</code>, hay que indicar los límites de integración <code>a</code> y <code>b</code>.</p>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">sqrt</span>(<span class="fl">16</span><span class="op">-</span>x<span class="op">^</span><span class="fl">2</span>)<span class="op">/</span>x, <span class="fl">2</span>, <span class="fl">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<p><span class="math inline">\(- 2 \sqrt{3} + 4 \operatorname{acosh}{\left(2 \right)}\)</span></p>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(x<span class="op">^</span><span class="fl">3</span><span class="op">/</span>x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>x<span class="op">+</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span><span class="op">/</span><span class="fl">2</span>, <span class="fl">0</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<p><span class="math inline">\(0.25\)</span></p>
 </div>
 </div>
 </div>
 </div>
 </div></li>
-<li><p><span class="math inline">\(\displaystyle \int_0^{\pi/2} \frac{dx}{3+\cos(2x)}\)</span></p>
+<li><p><span class="math inline">\(\displaystyle \int_2^4 \frac{\sqrt{16-x^2}}{x}\, dx\)</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -728,6 +721,28 @@ Solución
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">sqrt</span>(<span class="fl">16</span><span class="op">-</span>x<span class="op">^</span><span class="fl">2</span>)<span class="op">/</span>x, <span class="fl">2</span>, <span class="fl">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<p><span class="math inline">\(- 2 \sqrt{3} + 4 \operatorname{acosh}{\left(2 \right)}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></li>
+<li><p><span class="math inline">\(\displaystyle \int_0^{\pi/2} \frac{dx}{3+\cos(2x)}\)</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fl">1</span><span class="op">/</span>(<span class="fl">3</span><span class="fu">+cos</span>(<span class="fl">2</span>x)), <span class="fl">0</span>, PI<span class="op">/</span><span class="fl">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <p><span class="math inline">\(\frac{\sqrt{2} \pi}{8}\)</span></p>
@@ -742,7 +757,7 @@ Solución
 <p><span class="theorem-title"><strong>Ejercicio 7.4 </strong></span>Calcular la integral definida <span class="math inline">\(\displaystyle \int_0^1 x^x\, dx\)</span> con un error menor de <span class="math inline">\(10^{-10}\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -751,9 +766,9 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> x<span class="op">^</span>x</span>
@@ -763,7 +778,7 @@ Solución
 </div>
 </div>
 <p>Esta función no tiene primitiva como se puede comprobar al realizar la integral con la función <code>integrate</code>. Para calcularla hay que recurrir a métodos numéricos de aproximación. Para ello se puede usar la función <a href="https://juliamath.github.io/QuadGK.jl/stable/functions/#QuadGK.quadgk"><code>quadgk</code></a> del paquete <a href="https://juliamath.github.io/QuadGK.jl/stable/"><code>QuadGK</code></a> que realiza el cálculo de la integral mediante el método de la cuadratura de Gauss-Kronrod.</p>
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">QuadGK</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quadgk</span>(<span class="fu">f</span>(x), <span class="fl">0</span>, <span class="fl">1</span>, rtol <span class="op">=</span> <span class="fl">10</span><span class="op">^-</span><span class="fl">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
@@ -777,7 +792,7 @@ Solución
 <p><span class="theorem-title"><strong>Ejercicio 7.5 </strong></span>Dibujar y calcular el área encerrada por la parábola <span class="math inline">\(y=x^{2}-7x+6\)</span> y el eje de abscisas en el intervalo <span class="math inline">\([2,7]\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -786,10 +801,10 @@ Solución 1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Dibujamos primero la región.</p>
-<div class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">7</span>x<span class="op">+</span><span class="fl">6</span></span>
@@ -848,7 +863,7 @@ Solución 1
 </div>
 </div>
 <p>Para <a href="https://aprendeconalf.es/analisis-manual/09-integrales.html#sec-calculo-area-funcion-ejex">calcular el área encerrada entre la gráfica de una función y el eje <span class="math inline">\(x\)</span></a> en un intervalo <span class="math inline">\([a,b]\)</span>, hay que descomponer el intervalo de integración en los subintervalos donde la función es positiva y los subintervalos donde es negativa, e integrar la función en cada intervalo por separado.</p>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos primero las raíces de la función</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(<span class="fu">f</span>(x))</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Descomponemos el intervalo de integración en los subintervalos [2,6] (función negativa) y [6,7] (función positiva) y calculamos las integrales por separado</span></span>
@@ -861,7 +876,7 @@ Solución 1
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -870,10 +885,10 @@ Solución 2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>En general, para calcular áreas bajo una curva, es más rápido integrar el valor absoluto de la función.</p>
-<div class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">abs</span>(<span class="fu">f</span>(x)), <span class="fl">2</span>, <span class="fl">7</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <p><span class="math inline">\(\frac{43}{2}\)</span></p>
@@ -886,7 +901,7 @@ Solución 2
 <p><span class="theorem-title"><strong>Ejercicio 7.6 </strong></span>Calcular y dibujar el área comprendida entre las parábolas <span class="math inline">\(y=-x^2+6x\)</span> e <span class="math inline">\(y=x^2-2x\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -895,10 +910,10 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Calculamos primero el área comprendida entre las dos funciones.</p>
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="op">-</span>x<span class="op">^</span><span class="fl">2</span><span class="op">+</span><span class="fl">6</span>x</span>
@@ -912,7 +927,7 @@ Solución
 </div>
 </div>
 <p>Y ahora dibujamos el área calculada.</p>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="op">-</span>x<span class="op">^</span><span class="fl">2</span><span class="op">+</span><span class="fl">6</span>x</span>
@@ -985,7 +1000,7 @@ Solución
 <p><span class="theorem-title"><strong>Ejercicio 7.7 </strong></span>Dibujar la gráfica de la función <span class="math inline">\(f(x)=e^{-x}\)</span> y calcular el área total encerrada entre la gráfica y el eje <span class="math inline">\(x\)</span> para <span class="math inline">\(x&gt;0\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -994,10 +1009,10 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Dibujamos primero la gráfica.</p>
-<div class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">SymPy</span>, <span class="bu">LaTeXStrings</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">exp</span>(<span class="op">-</span>x)</span>
@@ -1052,7 +1067,7 @@ Solución
 </div>
 </div>
 <p>Y ahora calculamos el área mediante la integral impropia entre <span class="math inline">\(0\)</span> y <span class="math inline">\(\infty\)</span>.</p>
-<div class="cell" data-execution_count="24">
+<div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x), <span class="fl">0</span>, oo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <p><span class="math inline">\(1\)</span></p>
@@ -1065,7 +1080,7 @@ Solución
 <p><span class="theorem-title"><strong>Ejercicio 7.8 </strong></span>Un vehículo se mueve con una velocidad dada por la función <span class="math inline">\(\operatorname{sen}(t)^2\)</span>. ¿Cuál es la velocidad media en el intervalo <span class="math inline">\([0,2\pi]\)</span>?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1074,13 +1089,13 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Para calcular el <a href="https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-la-media-de-una-funci%C3%B3n">valor medio de una función</a> <span class="math inline">\(f(x)\)</span> en un intervalo <span class="math inline">\([a,b]\)</span> tenemos que calcular la integral definida</p>
 <p><span class="math display">\[
 \frac{1}{b-a}\int_a^b f(x)\,dx.
 \]</span></p>
-<div class="cell" data-execution_count="25">
+<div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">sin</span>(x)<span class="op">^</span><span class="fl">2</span></span>
@@ -1096,7 +1111,7 @@ Solución
 <p><span class="theorem-title"><strong>Ejercicio 7.9 </strong></span>Representar gráficamente la región del primer cuadrante limitada por la función <span class="math inline">\(f(x)=2+\operatorname{sen}(x)\)</span> y el eje <span class="math inline">\(x\)</span> en el intervalo <span class="math inline">\([0,2\pi]\)</span> y hallar el volumen del sólido de revolución generado al rotar esta región alrededor del eje <span class="math inline">\(x\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1105,10 +1120,10 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Dibujamos primero la región.</p>
-<div class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span>, <span class="bu">Plots</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">sin</span>(x)<span class="op">+</span><span class="fl">2</span></span>
@@ -1163,7 +1178,7 @@ Solución
 </div>
 </div>
 <p>A continuación dibujamos el sólido de revolución parametrizado en 3D.</p>
-<div class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Unzip</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real </span>u<span class="op">::</span><span class="dt">real </span>v<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">sin</span>(x)<span class="op">+</span><span class="fl">2</span></span>
@@ -5448,7 +5463,7 @@ GBAxIGJAxMA8TnHWLDEgYkDEgIgBEQP/A1GL8MOovEKYAAAAAElFTkSuQmCC
 </div>
 </div>
 <p>También es posible dibujarlo de manera interactiva con la activando el backend de <a href="https://plotly.com/julia/">Plotly</a> mediante la función <a href="https://docs.juliaplots.org/latest/gallery/plotlyjs/"><code>plotlyjs()</code></a>.</p>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Activamos el backend de Plotly.</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotlyjs</span>()</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">surface</span>(ws<span class="op">...</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -37333,7 +37348,7 @@ for more information.
 <p><span class="math display">\[
 \int_a^b \pi f(x)^2\, dx
 \]</span></p>
-<div class="cell" data-execution_count="29">
+<div class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">N</span>(<span class="fu">integrate</span>(<span class="fu">pi*f</span>(x)<span class="op">^</span><span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">2</span>pi))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>88.82643960980422410690317029966353336734417982417697812151367494195434357891355</code></pre>
@@ -37346,7 +37361,7 @@ for more information.
 <p><span class="theorem-title"><strong>Ejercicio 7.10 </strong></span>Calcular el volumen del toro que se obtiene al rotar la circunferencia de ecuación <span class="math inline">\((x-2)^2+y^2=1\)</span> alrededor del eje <span class="math inline">\(y\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -37355,10 +37370,10 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Dibujamos primero la región.</p>
-<div class="cell" data-execution_count="30">
+<div class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span>, <span class="bu">Plots</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Volvemos a activar el backend por defecto.</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gr</span>()</span>
@@ -37424,7 +37439,7 @@ Solución
 \int_a^b 2\pi x f(x)\,dx.
 \]</span></p>
 <p>Para el caso particular del toro, calcularemos la mitad de su volumen aprovechando que es simétrico con respecto al plano <span class="math inline">\(xz\)</span> y lo multiplicaremos por 2.</p>
-<div class="cell" data-execution_count="31">
+<div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span> <span class="op">*</span> <span class="fu">integrate</span>(<span class="fl">2</span><span class="fu">PI*x*f</span>(x), <span class="fl">1</span>, <span class="fl">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <p><span class="math inline">\(4 \pi^{2}\)</span></p>
@@ -37437,7 +37452,7 @@ Solución
 <p><span class="theorem-title"><strong>Ejercicio 7.11 </strong></span>Una empresa fabrica tejas de chapa con forma ondulada cuyo perfil viene dado por la curva <span class="math inline">\(y=\operatorname{sin}\left(\frac{x}{2}\right)\)</span>. Si se quieren obtener tejas de 100 cm de longitud, ¿qué longitud tienen que tener las planchas de chapa para fabricarlas?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -37446,10 +37461,10 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Dibujamos primero el perfil de las chapas.</p>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span>, <span class="bu">Plots</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fu">sin</span>(x<span class="op">/</span><span class="fl">2</span>)</span>
@@ -37508,7 +37523,7 @@ Solución
 <p><span class="math display">\[
 \int_a^b \sqrt{1+f'(x)^2}\,dx.
 \]</span></p>
-<div class="cell" data-execution_count="33">
+<div class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">QuadGK</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quadgk</span>(<span class="fu">sqrt</span>(<span class="fl">1</span><span class="fu">+diff</span>(<span class="fu">f</span>(x))<span class="op">^</span><span class="fl">2</span>), <span class="fl">0</span>, <span class="fl">100</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
@@ -37523,7 +37538,7 @@ Solución
 <ol type="a">
 <li><p>El volumen del cuerno de Gabriel.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -37532,10 +37547,10 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Calculamos su volumen mediante discos cilíndricos transversales al eje <span class="math inline">\(x\)</span>.</p>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span>x</span>
@@ -37549,7 +37564,7 @@ Solución
 </div></li>
 <li><p>Calcular la superficie del cuerno de Gabriel.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -37558,13 +37573,13 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Para calcular la <a href="https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-superficies-de-s%C3%B3lidos-de-revoluci%C3%B3n">superficie del sólido de revolución</a> que se obtiene al rotar la gráfica de la función <span class="math inline">\(f(x)\)</span> alrededor del eje <span class="math inline">\(x\)</span> en el intervalo <span class="math inline">\([a,b]\)</span> hay que calcular la integral definida</p>
 <p><span class="math display">\[
 \int_a^b 2\pi f(x)\sqrt{1+f'(x)^2}\,dx.
 \]</span></p>
-<div class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> <span class="fl">1</span><span class="op">/</span>x</span>
@@ -37583,7 +37598,7 @@ Solución
 <p><span class="theorem-title"><strong>Ejercicio 7.13 </strong></span>Un depósito con forma de sólido de revolución generado al rotar la gráfica de la función <span class="math inline">\(f(x)=\frac{x^2}{2}\)</span> alrededor del eje <span class="math inline">\(y\)</span> en el intervalo de <span class="math inline">\(0\)</span> a <span class="math inline">\(4\)</span> m, contiene <span class="math inline">\(100000\)</span> l de aceite con una densidad de <span class="math inline">\(\delta = 900\)</span> kg/m<span class="math inline">\(^3\)</span>. ¿Qué trabajo se realiza al vaciar el depósito por arriba?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -37592,10 +37607,10 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Calculamos primero el nivel del aceite en el depósito. Para ello necesitamos el volumen contenido en el depósito hasta una altura <span class="math inline">\(h\)</span>.</p>
-<div class="cell" data-execution_count="36">
+<div class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real </span>y<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">2</span></span>
@@ -37617,7 +37632,7 @@ Solución
 \int_0^h g\delta\pi f^{-1}(y)^2(4-y)\,dy
 \]</span></p>
 <p>donde <span class="math inline">\(h\)</span> es el nivel del aceite calculado antes.</p>
-<div class="cell" data-execution_count="37">
+<div class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>δ <span class="op">=</span> <span class="fl">900</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>gravedad <span class="op">=</span> <span class="fl">9.81</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">N</span>(<span class="fu">integrate</span>(<span class="fu">gravedad*δ*PI*f⁻¹</span>(y)<span class="op">^</span><span class="fl">2</span><span class="fu">*</span>(<span class="fl">8</span><span class="op">-</span>y), <span class="fl">0</span>, nivel))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -37632,7 +37647,7 @@ Solución
 <p><span class="theorem-title"><strong>Ejercicio 7.14 </strong></span>Dibujar la región que se obtiene con la intersección de la recta <span class="math inline">\(y=x-1\)</span> y la parábola <span class="math inline">\(y=(x-1)^2\)</span>, y dibujar su centroide. ¿Cuál es le volumen del sólido de revolución generado al rotar esta región sobre el eje <span class="math inline">\(x\)</span>? ¿Y al rotarla sobre el eje <span class="math inline">\(y\)</span>?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -37641,10 +37656,10 @@ Solución
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Dibujamos primero la región. Para ello hay que calcular primero los puntos de corte de las dos curvas.</p>
-<div class="cell" data-execution_count="38">
+<div class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span>, <span class="bu">Plots</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x<span class="op">::</span><span class="dt">real</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x) <span class="op">=</span> x<span class="op">-</span><span class="fl">1</span></span>
@@ -37706,7 +37721,7 @@ Solución
 \bar x &amp;=\frac{\int_a^b x (f(x)-g(x))\,dx}{\int_a^b f(x)-g(x)\,dx}\\
 \bar y &amp;=\frac{\frac{1}{2}\int_a^b f(x)^2-g(x)^2\,dx}{\int_a^b f(x)-g(x)\,dx}
 \end{align*}\]</span></p>
-<div class="cell" data-execution_count="39">
+<div class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coordenada x del centroide.</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>cx <span class="op">=</span> <span class="fu">integrate</span>(<span class="fu">x*</span>(<span class="fu">f</span>(x)<span class="fu">-g</span>(x)), a, b) <span class="op">/</span> <span class="fu">integrate</span>(<span class="fu">f</span>(x)<span class="fu">-g</span>(x), a, b)</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Coordenada y del centroide</span></span>
@@ -37767,14 +37782,14 @@ Solución
 </div>
 <p>Para calcular el volumen del sólido de revolución generado al rotar esta región sobre el eje <span class="math inline">\(x\)</span> podemos usar el teorema de Pappus que establece que el volumen es el area de la región multiplicada por la longitud del camino recorrido por el centroide.</p>
 <p>Al rotar la región sobre el eje <span class="math inline">\(x\)</span> el camino recorrido por el centroide es <span class="math inline">\(2\pi \bar y\)</span>.</p>
-<div class="cell" data-execution_count="40">
+<div class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="fu">*PI*cy*integrate</span>(<span class="fu">f</span>(x)<span class="fu">-g</span>(x), a, b)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <p><span class="math inline">\(0.133333333333333 \pi\)</span></p>
 </div>
 </div>
 <p>Y al rotarla sobre el eje <span class="math inline">\(y\)</span> el camino recorrido por el centroide es <span class="math inline">\(2\pi \bar x\)</span>.</p>
-<div class="cell" data-execution_count="41">
+<div class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span><span class="fu">*PI*cx*integrate</span>(<span class="fu">f</span>(x)<span class="fu">-g</span>(x), a, b)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <p><span class="math inline">\(\frac{\pi}{2}\)</span></p>
@@ -37788,7 +37803,7 @@ Solución
 <h2 data-number="7.2" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">7.2</span> Ejercicios propuestos</h2>
 <div id="exr-integrales-propuesto-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 7.15 </strong></span>Calcular la suma superior de Riemann de la función <span class="math inline">\(f(x)=\sqrt{\ln(x)}\)</span> en el intervalo <span class="math inline">\([1,2]\)</span>, tomando una partición de 100 subinvervalos de igual amplitud.</p>
-<div class="cell" data-hold="true" data-execution_count="43">
+<div class="cell" data-hold="true" data-execution_count="44">
 <div class="cell-output cell-output-display" data-execution_count="44">
 <script>
 var ID = "MsVqzARL"
@@ -37855,7 +37870,7 @@ document.getElementById("MsVqzARL").addEventListener("change", function() {
 </div>
 <div id="exr-integrales-propuesto-2" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 7.16 </strong></span>Calcular el area encerrada entre las funciones <span class="math inline">\(f(x)=\operatorname{sin}(x)\)</span> y <span class="math inline">\(\cos(x)\)</span> en el intervalo <span class="math inline">\([0,2\pi]\)</span>.</p>
-<div class="cell" data-hold="true" data-execution_count="44">
+<div class="cell" data-hold="true" data-execution_count="45">
 <div class="cell-output cell-output-display" data-execution_count="45">
 <script>
 var ID = "tjAMOE3o"
@@ -37922,7 +37937,7 @@ document.getElementById("tjAMOE3o").addEventListener("change", function() {
 </div>
 <div id="exr-integrales-propuesto-3" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 7.17 </strong></span>Dibujar la gráfica de la función <span class="math inline">\(f(x)=\dfrac{1}{\sqrt{2\pi}}e^{\frac{-x^2}{2}}\)</span> y calcular el área total encerrada entre la gráfica y el eje <span class="math inline">\(x\)</span>.</p>
-<div class="cell" data-hold="true" data-execution_count="45">
+<div class="cell" data-hold="true" data-execution_count="46">
 <div class="cell-output cell-output-display" data-execution_count="46">
 <script>
 var ID = "P9aq7euY"
@@ -37989,7 +38004,7 @@ document.getElementById("P9aq7euY").addEventListener("change", function() {
 </div>
 <div id="exr-integrales-propuesto-4" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 7.18 </strong></span>La función <span class="math inline">\(T(t)=100te^{-t}\)</span> define la temperatura de un sistema en cada instante <span class="math inline">\(t\)</span>. Calcular la temperatura media en el intervalo <span class="math inline">\([0,5]\)</span>.</p>
-<div class="cell" data-hold="true" data-execution_count="46">
+<div class="cell" data-hold="true" data-execution_count="47">
 <div class="cell-output cell-output-display" data-execution_count="47">
 <script>
 var ID = "kqjVIKpK"
@@ -38056,7 +38071,7 @@ document.getElementById("kqjVIKpK").addEventListener("change", function() {
 </div>
 <div id="exr-integrales-propuesto-5" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 7.19 </strong></span>Calcular el volumen del sólido de revolución generado por la rotación al rededor del eje <span class="math inline">\(x\)</span> de la región comprendida entre las funciones <span class="math inline">\(f(x)=\ln(x)\)</span> y <span class="math inline">\(g(x)=\frac{x-1}{2}\)</span>.</p>
-<div class="cell" data-hold="true" data-execution_count="47">
+<div class="cell" data-hold="true" data-execution_count="48">
 <div class="cell-output cell-output-display" data-execution_count="48">
 <script>
 var ID = "E10X7GF3"
@@ -38121,7 +38136,7 @@ document.getElementById("E10X7GF3").addEventListener("change", function() {
 </div>
 </div>
 <p>Calcular también el volumen del sólido de revolución generado al rotar la misma región alrededor del eje <span class="math inline">\(y\)</span>.</p>
-<div class="cell" data-hold="true" data-execution_count="48">
+<div class="cell" data-hold="true" data-execution_count="49">
 <div class="cell-output cell-output-display" data-execution_count="49">
 <script>
 var ID = "8Hms5UJU"
@@ -38188,7 +38203,7 @@ document.getElementById("8Hms5UJU").addEventListener("change", function() {
 </div>
 <div id="exr-integrales-propuesto-6" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 7.20 </strong></span>La curva <span class="math inline">\(y=a\cosh(x/a)\)</span> se conoce como <em>catenaria</em>. ¿Cuál es la longitud de la catenaria con <span class="math inline">\(a=2\)</span> entre <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span>?</p>
-<div class="cell" data-hold="true" data-execution_count="49">
+<div class="cell" data-hold="true" data-execution_count="50">
 <div class="cell-output cell-output-display" data-execution_count="50">
 <script>
 var ID = "NcNggCm6"
@@ -38255,7 +38270,7 @@ document.getElementById("NcNggCm6").addEventListener("change", function() {
 </div>
 <div id="exr-integrales-propuesto-7" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 7.21 </strong></span>Un depósito metálico tiene la forma del elipsoide que se obtiene al rotar la elipse <span class="math inline">\(\frac{x^2}{4}+y^2=1\)</span> alrededor del eje <span class="math inline">\(x\)</span>. Calcular la cantidad de chapa metálica necesaria para construir el depósito.</p>
-<div class="cell" data-hold="true" data-execution_count="50">
+<div class="cell" data-hold="true" data-execution_count="51">
 <div class="cell-output cell-output-display" data-execution_count="51">
 <script>
 var ID = "lVqZvqsB"
@@ -38330,7 +38345,7 @@ e^{-x} &amp; \mbox{si $x\geq 0$}
 \end{cases}
 \]</span></p>
 <p>¿Cuál de las siguientes afirmaciones es cierta?</p>
-<div class="cell" data-hold="true" data-execution_count="51">
+<div class="cell" data-hold="true" data-execution_count="52">
 <div class="cell-output cell-output-display" data-execution_count="52">
 <script>
 var ID = "AjxAk374"
