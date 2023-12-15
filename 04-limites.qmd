@@ -556,43 +556,43 @@ radioq(choices, answer)
 :::{#exr-limites-2}
 Calcular los siguientes límites.
 
-a. $\displaystyle \lim_{x\rightarrow \pi/4}\frac{\operatorname{sen}(x)-\cos(x)}{1-\operatorname{tg}(x)}$.
+a.  $\displaystyle \lim_{x\rightarrow \pi/4}\frac{\operatorname{sen}(x)-\cos(x)}{1-\operatorname{tg}(x)}$.
 
-```{julia}
-#| echo: false
-@syms x::real
-f(x) = (sin(x)-cos(x))/(tan(x))
-l = limit(f(x), x=>Sym(pi)/4)
-numericq(l, 1e-5)
-```
+    ```{julia}
+    #| echo: false
+    @syms x::real
+    f(x) = (sin(x)-cos(x))/(1-tan(x))
+    l = N(limit(f(x), x => PI/4))
+    numericq(l, 1e-5)
+    ```
 
-b. $\displaystyle \lim_{x\rightarrow \infty}\sqrt{x^2+x+1}-\sqrt{x^2-2x-1}$.
+a.  $\displaystyle \lim_{x\rightarrow \infty}\sqrt{x^2+x+1}-\sqrt{x^2-2x-1}$.
 
-```{julia}
-#| echo: false
-@syms x::real
-f(x) = sqrt(x^2+x+1)-sqrt(x^2-2x-1)
-l = limit(f(x), x=>-oo)
-numericq(l)
-```  
+    ```{julia}
+    #| echo: false
+    @syms x::real
+    f(x) = sqrt(x^2+x+1)-sqrt(x^2-2x-1)
+    l = float(limit(f(x), x=>oo))
+    numericq(l)
+    ```  
 
-c. $\displaystyle \lim_{x\to 0^+} \frac{x^x-1}{x}$
+a.  $\displaystyle \lim_{x\to 0^+} \frac{x^x-1}{x}$
 
-```{julia}
-#| echo: false
-choices = (L"$\infty$", L"$-\infty$", L"1", "0", "NaN")
-answer = 2
-radioq(choices, answer)
-```
+    ```{julia}
+    #| echo: false
+    choices = (L"$\infty$", L"$-\infty$", L"1", "0", "NaN")
+    answer = 2
+    radioq(choices, answer)
+    ```
 
-a. $\displaystyle \lim_{x\to 1}\frac{a^{1-x}-1}{1-x}$.
+a.  $\displaystyle \lim_{x\to 1}\frac{a^{1-x}-1}{1-x}$.
 
-```{julia}
-#| echo: false
-choices = (L"1/a", L"e^a", L"$\sqrt{a}$", L"\ln(a)", "Las otras opciones son falsas.")
-answer = 4
-radioq(choices, answer)
-```
+    ```{julia}
+    #| echo: false
+    choices = (L"1/a", L"e^a", L"$\sqrt{a}$", L"\ln(a)", "Las otras opciones son falsas.")
+    answer = 4
+    radioq(choices, answer)
+    ```
 :::
 
 :::{#exr-asintotas}
@@ -624,7 +624,7 @@ $$
 h(x)=
 \begin{cases}
 x^3-x-2 & \mbox{si } x\leq 0,\\
-\cos(x-\pi/2)+a & \mbox{si } x>0
+\cos(x-\pi/4)+a & \mbox{si } x>0
 \end{cases}
 $$
 
@@ -635,7 +635,7 @@ $$
 using Latexify
 @syms a::real
 h1(x) = x^3-x-2
-h2(x) = cos(x-Sym(pi)/4)+a 
+h2(x) = cos(x-PI/4)+a 
 l1 = limit(h1(x), x=>0, dir="-")
 l2 = limit(h2(x),x=>0, dir="+")
 sol=solve(Eq(l1,l2))
