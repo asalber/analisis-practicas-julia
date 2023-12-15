@@ -10,11 +10,7 @@ Para la realización de esta práctica se requieren los siguientes paquetes:
 
 ```{julia}
 using SymPy  # Para el cálculo simbólico.
-using Plots  # Para el dibujo de gráficas.
-using Makie, GLMakie # Para el dibujo de gráficas en 3d.
 using HCubature # Para el cálculo numérico de integrales múltiples.
-using LaTeXStrings  # Para usar código LaTeX en los gráficos.
-using LinearAlgebra # Para el módulo y el producto escalar de vectores.
 ```
 
 :::{#exr-volumen-figuras-geometricas}
@@ -155,15 +151,22 @@ a.  Calcular la integral anterior invirtiendo el orden de integración.
     ```
     :::
 
-a.  $\int_0^1\int_0^{\sqrt{x}} x^2y\,dy\,dx$.
+a.  $\int_0^1\int_x^{\sqrt{x}} x^2y\,dy\,dx$.
 
     :::{.callout-tip collapse="true"}
     ## Solución
     ```{julia}
-    using SymPy
-    @syms x y
     f(x, y) = x^2*y
     integrate(f(x,y), (y, x, sqrt(x)), (x, 0, 1))
+    ```
+    :::
+
+a.  Calcular la integral anterior invirtiendo el orden de integración.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    integrate(f(x,y), (x, y^2, y), (y, 0, 1))
     ```
     :::
 
@@ -216,6 +219,23 @@ a.  $f(x,y) = xy$ en $[-1,1]\times [-1,1]$.
 
 :::{#exr-volumen-balsa}
 Un balsa de residuos líquidos con forma elíptica de ecuación $2x^2 + y^2 = 9$ tiene una profundidad dada por la función $f(x,y) = \frac{x^2}{2} + \frac{y^2}{2} - 10$. Calcular el volumen de la balsa.
+
+:::{.callout-tip collapse="true"}
+## Solución
+```{julia}
+using SymPy
+@syms x y
+# Función de la superficie
+f(x, y) = x^2/2 + y^2/2 - 10 
+# Función de la región de integración
+g(x, y) = 2x^2 + y^2 - 9
+# Límites de integración en y
+soly = solve(g(x, y), y)
+# Límites de integración en x
+solx = solve(g(x, 0))
+integrate(f(x, y), (y, soly[1], soly[2]), (x, solx[1], solx[2]))
+```
+:::
 :::
 
 :::{#exr-volumen-entre-superficies}
@@ -234,7 +254,42 @@ integrate(g(x,y)-f(x,y), (y, sol[1], sol[2]), (x, 0, 2))
 :::
 :::
 
-:::{#exr-volumen-entre-superficies}
+:::{#exr-area-superficie}
+Una tolva tiene forma cónica dada por la función $f(x,y)=2\sqrt{x^2+y^2}$ con altura 4 m. Calcular el volumen de la tolva y la cantidad de chapa necesaria para construirla.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+El área de la superficie de una función $f(x,y)$ sobre una región $R$ puede calcularse mediante la integral 
+
+$$
+A_{R}(f) = \int_R \sqrt{f'_x(x_i,y_j)^2 + f'_y(x_i,y_j)^2 + 1}\,dA.
+$$
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+Para calcular el volumen es más sencillo trabajar en coordenadas polares.
+
+```{julia}
+using SymPy
+@syms x y r θ
+f(x, y) = 2*sqrt(x^2+y^2)
+g(r, θ) = f(r*cos(θ), r*sin(θ))
+solr = solve(g(r,θ)-4, r)
+integrate(4 - g(r,θ)*r, (r, 0, solr[2]), (θ, 0, 2PI))
+```
+
+Para calcular en área de la superficie trabajamos en coordenadas rectangulares.
+
+```{julia}
+soly = solve(f(x,y)-4, y)
+solx = solve(f(x,0)-4)
+integrate(sqrt(diff(f(x,y), x)^2 + diff(f(x,y), y)^2 +1), (y, soly[1], soly[2]), (x, solx[1], solx[2]))
+```
+:::
+:::
+
+:::{#exr-centro-masas-placa-metalica}
 Una placa metálica delimitada por las curvas $y=2-x^2$ e $y=-3+2x^2$ tiene una densidad dada por la función $d(x,y)=x^2y^2$.
 
 a.  Calcular la masa de la placa.
@@ -246,7 +301,9 @@ a.  Calcular la masa de la placa.
     $$
     \int_R \delta(x,y)\,dA.
     $$
-    :::
+    ::::::
+
+:::{.column}
 
     :::{.callout-tip collapse="true"}
     ## Solución
@@ -299,4 +356,99 @@ a.  Calcular el centro de masas de la placa
     ```
     :::
 :::
+
+## Ejercicios propuestos
+
+```{julia}
+#| echo: false
+#| results: "hidden"
+using QuizQuestions, SymPy
+nothing
+```
+
+:::{#integrales-funciones-varias-variables-propuesto-1}
+Calcular la integral $\int_{-1}^1\int_{-2y}^{2} e^{x^2}\,dx\,dy$
+
+```{julia}
+#| echo: false
+using SymPy
+@syms x, y::real
+f(x, y) = exp(x^2)
+sol = N(integrate(f(x,y), (y, -x^2, 1), (x, -2, 2)))
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#integrales-funciones-varias-variables-propuesto-2}
+Calcular el volumen de la región encerrada por las superficies $z^2=4-x$, $y^2=4-x$ y $x=0$.
+
+```{julia}
+#| echo: false
+using SymPy
+@syms x, y, z::real
+solz = solve(z^2-4+x, z)
+soly = solve(y^2-4+x, y)
+solx = solve(-4+x)
+sol = N(integrate(solz[2]-solz[1], (y, soly[1], soly[2]), (x, 0, solx[1])))
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#integrales-funciones-varias-variables-propuesto-3}
+Calcular el volumen encerrado por la superficie de la función $f(x,y)=\ln(\cos(x+y)+2)$ y el plano $z=0$ en la región delimitada por la circunferencia de radio $1$ centrada en el origen de coordenadas.
+
+```{julia}
+#| echo: false
+using HCubature
+f(x, y) = x^2+y^2 <= 1 ? log(cos(x*y)+2) : 0
+f(v) = f(v...)
+#sol = hcubature(f, [-1,-1], [1, 1])
+numericq(3.42958314, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#integrales-funciones-varias-variables-propuesto-4}
+Calcular el area de la superficie de la función $f(x,y)=\sqrt{x+y}$ en el intervalo $[0,1]\times[0,1]$.
+
+```{julia}
+#| echo: false
+using SymPy, HCubature
+@syms x y
+f(x, y) = sqrt(x+y)
+#sol = N(integrate(sqrt(diff(f(x,y), x)^2 + diff(f(x,y), y)^2 +1), (x, 0, 1), (y, 0, 1)))
+numericq(1.2823707050179478, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#integrales-funciones-varias-variables-propuesto-5}
+Calcular el centro de masas de la región plana delimitada por las funciones $y=\sqrt{x}$ e $y=x^2$ con densidad $d(x,y)= \ln(x+2y+1)$.
+
+:::{.columns}
+:::{.column}
+Coordenada x
+```{julia}
+#| echo: false
+# using SymPy
+# @syms x y
+# f(x, y) = ln(x+2y+1)
+# m = integrate(f(x,y), (y, x^2, sqrt(x)), (x, 0, 1))
+# my = integrate(x * f(x,y), (y, x^2, sqrt(x)), (x, 0, 1))
+# sol = N(my / m)
+numericq(0.5313566449, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{.column}
+Coordenada y
+```{julia}
+#| echo: false
+# mx = integrate(y * f(x,y), (y, x^2, sqrt(x)), (x, 0, 1))
+# sol = N(mx / m)
+numericq(0.5354903136, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+:::
+:::
+
+
 

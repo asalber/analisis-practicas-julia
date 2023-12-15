@@ -788,7 +788,7 @@ a.  Polinomio de Taylor de grado 20 en el punto $\pi/6$.
     using SymPy
     @syms x::real
     f(x)=sin(x)
-    p1 = SymPy.series(f(x), x, Sym(pi)/6, 20).removeO()
+    p1 = SymPy.series(f(x), x, PI/6, 20).removeO()
     sol1 = float(p1(0.5))
     numericq(sol1, 1e-20, "Introducir al menos 20 decimales")
     ```
@@ -797,7 +797,6 @@ a.  Polinomio de MacLaurin de grado 100.
 
     ```{julia}
     #| echo: false
-    f(x) = tan(x)
     p2 = SymPy.series(f(x), x, 0, 100).removeO()
     sol2 = BigFloat(N(p2(0.5)))
     numericq(sol2, 1e-20, "Introducir al menos 20 decimales")
