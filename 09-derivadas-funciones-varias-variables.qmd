@@ -788,7 +788,7 @@ a.  ¿Cómo cambiará la velocidad de reacción en ese instante si la temperatur
 :::{#exr-derivadas-funciones-varias-variables-propuesto-4}
 La superficie $\frac{e^{z\cos(xy)}}{xz}=\frac{1}{e}$ define a $z$ como función implícita $z=f(x,y)$.
 
-a.  ¿Cuál de las siguientes afirmaciones es cierta?
+a.  ¿Cuál de las siguientes afirmaciones es cierta en el punto $(1,\pi,1)$?
 
     ```{julia}
     #| echo: false  
@@ -799,7 +799,7 @@ a.  ¿Cuál de las siguientes afirmaciones es cierta?
     fy = diff.(f(x,y,z), y)
     fz = diff.(f(x,y,z), z)
     - subs(fx, x=>1, y=>pi, z=>1) / subs(fz, x=>1, y=>pi, z=>1)
-    choices = (L"La variable $z$ aumenta $1/e$ unidades por cada unidad que aumente $x$, si $y$ se mantiene constante.", L"La variable $z$ aumenta la mitad de lo que aumenta $x$, si $y$ se mantiene constante.", L"La variable $z$ disminuye lo mismo que aumenta $y$, si $x$ se mantiene constante.", L"La variable $z$ se mantiene constante cuando se incrementa $x$, si $y$ se mantiene constante.", "Las otras opciones son falsas.")
+    choices = (L"La variable $z$ aumenta $1/e$ unidades por cada unidad que aumente $x$, si $y$ se mantiene constante.", L"La variable $z$ disminuye la mitad de lo que aumenta $x$, si $y$ se mantiene constante.", L"La variable $z$ disminuye lo mismo que aumenta $y$, si $x$ se mantiene constante.", L"La variable $z$ se mantiene constante cuando se incrementa $x$, si $y$ se mantiene constante.", "Las otras opciones son falsas.")
     answer = 2
     radioq(choices, answer)
     ```

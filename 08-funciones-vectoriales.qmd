@@ -868,10 +868,10 @@ Un coche circula por una circuito elíptico cuya trayectoria viene dada por la f
 
 a.  Calcular la rapidez del vehículo en el instante $t=\pi$.
 
-
     ```{julia}
     #| echo: false
-    using SymPy
+    using SymPy, LinearAlgebra
+    @syms t
     a = pi
     f(t) = [400cos(10t), 100sin(10t)] 
     vel = diff.(f(t))

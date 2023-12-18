@@ -1,0 +1,140 @@
+---
+title: Campos vectoriales
+lang: es
+#jupyter: julia-1.9
+---
+
+## Ejercicios Resueltos
+
+Para la realización de esta práctica se requieren los siguientes paquetes:
+
+```{julia}
+using SymPy  # Para el cálculo simbólico.
+using Plots  # Para el dibujo de gráficas.
+using Makie, GLMakie # Para el dibujo de gráficas en 3d.
+using VectorFieldPlots # Para el dibujo de campos vectoriales.
+using LaTeXStrings  # Para usar código LaTeX en los gráficos.
+using LinearAlgebra # Para el módulo y el producto escalar de vectores.
+```
+
+:::{#exr-dibujo-campos-vectoriales}
+Calcular el volumen de las siguientes figuras geométricas usando integrales múltiples.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular numéricamente integrales definidas de funciones de varias variables usar la función [`hcubature`](https://juliapackages.com/p/hcubature) del paquete `HCubature`.
+:::
+
+a.  $\mathbf{f}(x,y) = (x, y)$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    :::{.panel-tabset}
+    ## Plots
+
+    ```{julia}
+    using Plots
+    f(x, y) = [x, y] 
+    xs = ys = -1:0.2:1
+    Plots.quiver(xs', ys, quiver = f, color = :blue)
+    ```
+
+    ## Makie
+
+    ```{julia}
+    using GLMakie
+    f(x, y) = [x, y]
+    xs = ys = -1:0.2:1
+    points = vec(Point2.(xs, ys'))
+    vectors = vec(Point2.(f.(xs, ys')))
+    lengths = norm.(vectors)
+    arrows(points, vectors, arrowsize = 10, lengthscale = 0.1, arrowcolor = lengths, linecolor = lengths)
+    ```
+
+    ## VectorFieldPlots
+
+    ```{julia}
+    using VectorFieldPlots
+    f(x, y) = [x, y]
+    xs = ys = -1:0.2:1
+    plot_vector_field(xs, ys, f, scale=0.1)
+    ```
+    :::
+    :::
+
+a.  $\mathbf{g}(x,y) = (x+y, y-x)$.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    :::{.panel-tabset}
+    ## Plots
+
+    ```{julia}
+    using Plots
+    g(x, y) = [x+y, y-x] 
+    xs = ys = -1:0.2:1
+    Plots.quiver(xs', ys, quiver = g, color = :blue)
+    ```
+
+    ## Makie
+
+    ```{julia}
+    using GLMakie
+    g(x, y) = [x+y, y-x] 
+    xs = ys = -1:0.2:1
+    points = vec(Point2.(xs, ys'))
+    vectors = vec(Point2.(g.(xs, ys')))
+    lengths = norm.(vectors)
+    arrows(points, vectors, arrowsize = 10, lengthscale = 0.1, arrowcolor = lengths, linecolor = lengths)
+    ```
+
+    ## VectorFieldPlots
+
+    ```{julia}
+    using VectorFieldPlots
+    g(x, y) = [x+y, y-x] 
+    xs = ys = -1:0.2:1
+    plot_vector_field(xs, ys, g, scale=0.1)
+    ```
+    :::
+    :::
+:::
+
+:::{#exr-campo-vectorial-gradiente}
+Calcular y dibujar los campos vectoriales de los gradientes de las siguientes funciones 
+
+a.  $f(x, y)=x^2+y^2$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy, GLMakie
+    @syms x y
+    f(x, y) = 1 - x^2 - y^2
+    ∇f = lambdify(diff.(f(x,y), [x, y]), [x,y])
+    xs = ys = -1:0.2:1
+    points = vec(Point2.(xs, ys'))
+    vectors = vec(Point2.(∇f.(xs, ys')))
+    lengths = norm.(vectors)
+    arrows(points, vectors, arrowsize = 10, lengthscale = 0.1, arrowcolor = lengths, linecolor = lengths)
+    ```
+    :::
+
+a.  $g(x, y)=x^2-y^2$
+
+    ```{julia}
+    using SymPy, GLMakie
+    @syms x y
+    g(x, y) = x^2 - y^2
+    ∇g = lambdify(diff.(g(x,y), [x, y]), [x,y])
+    xs = ys = -1:0.2:1
+    points = vec(Point2.(xs, ys'))
+    vectors = vec(Point2.(∇g.(xs, ys')))
+    lengths = norm.(vectors)
+    arrows(points, vectors, arrowsize = 10, lengthscale = 0.1, arrowcolor = lengths, linecolor = lengths)
+    ```
+    :::
+:::

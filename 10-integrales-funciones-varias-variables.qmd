@@ -301,9 +301,7 @@ a.  Calcular la masa de la placa.
     $$
     \int_R \delta(x,y)\,dA.
     $$
-    ::::::
-
-:::{.column}
+    :::
 
     :::{.callout-tip collapse="true"}
     ## Solución
@@ -366,7 +364,7 @@ using QuizQuestions, SymPy
 nothing
 ```
 
-:::{#integrales-funciones-varias-variables-propuesto-1}
+:::{#exr-integrales-funciones-varias-variables-propuesto-1}
 Calcular la integral $\int_{-1}^1\int_{-2y}^{2} e^{x^2}\,dx\,dy$
 
 ```{julia}
@@ -374,12 +372,12 @@ Calcular la integral $\int_{-1}^1\int_{-2y}^{2} e^{x^2}\,dx\,dy$
 using SymPy
 @syms x, y::real
 f(x, y) = exp(x^2)
-sol = N(integrate(f(x,y), (y, -x^2, 1), (x, -2, 2)))
+sol = N(integrate(f(x,y), (y, -x/2, 1), (x, -2, 2)))
 numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
-:::{#integrales-funciones-varias-variables-propuesto-2}
+:::{#exr-integrales-funciones-varias-variables-propuesto-2}
 Calcular el volumen de la región encerrada por las superficies $z^2=4-x$, $y^2=4-x$ y $x=0$.
 
 ```{julia}
@@ -394,7 +392,7 @@ numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
-:::{#integrales-funciones-varias-variables-propuesto-3}
+:::{#exr-integrales-funciones-varias-variables-propuesto-3}
 Calcular el volumen encerrado por la superficie de la función $f(x,y)=\ln(\cos(x+y)+2)$ y el plano $z=0$ en la región delimitada por la circunferencia de radio $1$ centrada en el origen de coordenadas.
 
 ```{julia}
@@ -407,7 +405,7 @@ numericq(3.42958314, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
-:::{#integrales-funciones-varias-variables-propuesto-4}
+:::{#exr-integrales-funciones-varias-variables-propuesto-4}
 Calcular el area de la superficie de la función $f(x,y)=\sqrt{x+y}$ en el intervalo $[0,1]\times[0,1]$.
 
 ```{julia}
@@ -420,7 +418,7 @@ numericq(1.2823707050179478, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
 
-:::{#integrales-funciones-varias-variables-propuesto-5}
+:::{#exr-integrales-funciones-varias-variables-propuesto-5}
 Calcular el centro de masas de la región plana delimitada por las funciones $y=\sqrt{x}$ e $y=x^2$ con densidad $d(x,y)= \ln(x+2y+1)$.
 
 :::{.columns}
