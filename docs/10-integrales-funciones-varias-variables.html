@@ -292,12 +292,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ejercicios-resueltos" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="ejercicios-resueltos"><span class="header-section-number">10.1</span> Ejercicios Resueltos</h2>
 <p>Para la realización de esta práctica se requieren los siguientes paquetes:</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy  </span><span class="co"># Para el cálculo simbólico.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">HCubature </span><span class="co"># Para el cálculo numérico de integrales múltiples.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>[ Info: Precompiling HCubature [19dc6840-f33b-545b-b366-655c7e3ffd49]</code></pre>
-</div>
 </div>
 <div id="exr-volumen-figuras-geometricas" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 10.1 </strong></span>Calcular el volumen de las siguientes figuras geométricas usando integrales múltiples.</p>
@@ -331,11 +328,11 @@ Solución
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">HCubature</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fl">10</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="fl">0</span>,<span class="fl">0</span>], [<span class="fl">1</span>,<span class="fl">5</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">HCubature</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fl">10</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="fl">0</span>,<span class="fl">0</span>], [<span class="fl">1</span>,<span class="fl">5</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>(50.0, 7.105427357601002e-15)</code></pre>
 </div>
@@ -356,10 +353,10 @@ Solución
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fl">10</span>x</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="fl">0</span>,<span class="fl">0</span>], [<span class="fl">1</span>,<span class="fl">5</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fl">10</span>x</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="fl">0</span>,<span class="fl">0</span>], [<span class="fl">1</span>,<span class="fl">5</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>(25.0, 3.552713678800501e-15)</code></pre>
 </div>
@@ -380,10 +377,10 @@ Solución
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>y<span class="op">^</span><span class="fl">2</span><span class="op">&lt;</span><span class="fl">1</span> ? <span class="fl">10</span> <span class="op">:</span> <span class="fl">0</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="op">-</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span>], [<span class="fl">1</span>,<span class="fl">1</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>y<span class="op">^</span><span class="fl">2</span><span class="op">&lt;</span><span class="fl">1</span> ? <span class="fl">10</span> <span class="op">:</span> <span class="fl">0</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="op">-</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span>], [<span class="fl">1</span>,<span class="fl">1</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>(31.41598951201623, 4.6813472010342655e-7)</code></pre>
 </div>
@@ -404,10 +401,10 @@ Solución
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>y<span class="op">^</span><span class="fl">2</span><span class="op">&lt;</span><span class="fl">1</span> ? <span class="fu">sqrt</span>(<span class="fl">1</span><span class="op">-</span>x<span class="op">^</span><span class="fl">2</span><span class="op">-</span>y<span class="op">^</span><span class="fl">2</span>) <span class="op">:</span> <span class="fl">0</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="op">-</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span>], [<span class="fl">1</span>,<span class="fl">1</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>y<span class="op">^</span><span class="fl">2</span><span class="op">&lt;</span><span class="fl">1</span> ? <span class="fu">sqrt</span>(<span class="fl">1</span><span class="op">-</span>x<span class="op">^</span><span class="fl">2</span><span class="op">-</span>y<span class="op">^</span><span class="fl">2</span>) <span class="op">:</span> <span class="fl">0</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="op">-</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span>], [<span class="fl">1</span>,<span class="fl">1</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>(2.0943951101375893, 3.12087277156216e-8)</code></pre>
 </div>
@@ -449,11 +446,11 @@ Solución
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x <span class="op">+</span> y</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, <span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x <span class="op">+</span> y</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, <span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <p><span class="math inline">\(3\)</span></p>
 </div>
@@ -474,8 +471,8 @@ Solución
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (x, <span class="fl">0</span>, <span class="fl">1</span>), (y, <span class="fl">0</span>, <span class="fl">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (x, <span class="fl">0</span>, <span class="fl">1</span>), (y, <span class="fl">0</span>, <span class="fl">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <p><span class="math inline">\(3\)</span></p>
 </div>
@@ -496,10 +493,10 @@ Solución
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> z</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y, z) <span class="op">=</span> x <span class="op">*</span> y <span class="op">*</span> z</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y,z), (z, <span class="fl">0</span>, <span class="fl">3</span>), (y, <span class="fl">0</span>, <span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> z</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y, z) <span class="op">=</span> x <span class="op">*</span> y <span class="op">*</span> z</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y,z), (z, <span class="fl">0</span>, <span class="fl">3</span>), (y, <span class="fl">0</span>, <span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <p><span class="math inline">\(\frac{9}{2}\)</span></p>
 </div>
@@ -520,10 +517,10 @@ Solución
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> z</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y, z) <span class="op">=</span> x <span class="op">*</span> y <span class="op">*</span> z</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y,z), (y, <span class="fl">0</span>, <span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">1</span>), (z, <span class="fl">0</span>, <span class="fl">3</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> z</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y, z) <span class="op">=</span> x <span class="op">*</span> y <span class="op">*</span> z</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y,z), (y, <span class="fl">0</span>, <span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">1</span>), (z, <span class="fl">0</span>, <span class="fl">3</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <p><span class="math inline">\(\frac{9}{2}\)</span></p>
 </div>
@@ -549,11 +546,11 @@ Solución
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">exp</span>(x<span class="op">+</span>y)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, x<span class="op">/</span><span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">exp</span>(x<span class="op">+</span>y)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, x<span class="op">/</span><span class="fl">2</span>), (x, <span class="fl">0</span>, <span class="fl">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <p><span class="math inline">\(- e^{2} + \frac{1}{3} + \frac{2 e^{3}}{3}\)</span></p>
 </div>
@@ -574,8 +571,8 @@ Solución
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (x, <span class="fl">2</span>y, <span class="fl">2</span>), (y, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (x, <span class="fl">2</span>y, <span class="fl">2</span>), (y, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <p><span class="math inline">\(- e^{2} + \frac{1}{3} + \frac{2 e^{3}}{3}\)</span></p>
 </div>
@@ -596,9 +593,9 @@ Solución
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">*</span>y</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, x, <span class="fu">sqrt</span>(x)), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">*</span>y</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, x, <span class="fu">sqrt</span>(x)), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <p><span class="math inline">\(\frac{1}{40}\)</span></p>
 </div>
@@ -619,8 +616,8 @@ Solución
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (x, y<span class="op">^</span><span class="fl">2</span>, y), (y, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (x, y<span class="op">^</span><span class="fl">2</span>, y), (y, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <p><span class="math inline">\(\frac{1}{40}\)</span></p>
 </div>
@@ -641,16 +638,16 @@ Solución
 </div>
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">cos</span>(x<span class="op">^</span><span class="fl">2</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (x, y, <span class="fl">1</span>), (y, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">cos</span>(x<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (x, y, <span class="fl">1</span>), (y, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <p><span class="math inline">\(- \frac{\sqrt{2} \sqrt{\pi} \left(- \frac{\sqrt{2} \sin{\left(1 \right)} \Gamma\left(\frac{1}{4}\right)}{8 \sqrt{\pi} \Gamma\left(\frac{5}{4}\right)} + \frac{C\left(\frac{\sqrt{2}}{\sqrt{\pi}}\right) \Gamma\left(\frac{1}{4}\right)}{4 \Gamma\left(\frac{5}{4}\right)}\right) \Gamma\left(\frac{1}{4}\right)}{8 \Gamma\left(\frac{5}{4}\right)} + \frac{\sqrt{2} \sqrt{\pi} C\left(\frac{\sqrt{2}}{\sqrt{\pi}}\right) \Gamma\left(\frac{1}{4}\right)}{8 \Gamma\left(\frac{5}{4}\right)}\)</span></p>
 </div>
 </div>
 <p>Como la función <span class="math inline">\(\cos(x^2)\)</span> no tiene primitiva inmediata, el resultado aparece en función de a función de la <a href="https://es.wikipedia.org/wiki/Integral_de_Fresnel">integral de Fresnel</a>. Sin embargo, resulta más sencillo calcular esta integral doble iterada invirtiendo el orden de integración, es decir, <span class="math inline">\(\int_0^1\int_0^x \cos(x^2) \,dy\,dx\)</span>.</p>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, x), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, x), (x, <span class="fl">0</span>, <span class="fl">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <p><span class="math inline">\(\frac{\sin{\left(1 \right)}}{2}\)</span></p>
 </div>
@@ -676,12 +673,12 @@ Solución
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y z</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">solve</span>(x<span class="op">+</span><span class="fl">2</span>y<span class="op">+</span><span class="fl">3</span>z<span class="op">-</span><span class="fl">6</span>, z)[<span class="fl">1</span>]</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">f</span>(x,y), y)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, <span class="fu">g</span>(x)), (x, <span class="fl">0</span>, <span class="fl">6</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y z</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">solve</span>(x<span class="op">+</span><span class="fl">2</span>y<span class="op">+</span><span class="fl">3</span>z<span class="op">-</span><span class="fl">6</span>, z)[<span class="fl">1</span>]</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">f</span>(x,y), y)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x,y), (y, <span class="fl">0</span>, <span class="fu">g</span>(x)), (x, <span class="fl">0</span>, <span class="fl">6</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <p><span class="math inline">\(6\)</span></p>
 </div>
@@ -702,11 +699,11 @@ Solución
 </div>
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">HCubature</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">abs</span>(x<span class="op">*</span>y)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="op">-</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span>], [<span class="fl">1</span>,<span class="fl">1</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">HCubature</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fu">abs</span>(x<span class="op">*</span>y)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(v) <span class="op">=</span> <span class="fu">f</span>(v<span class="op">...</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hcubature</span>(f, [<span class="op">-</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span>], [<span class="fl">1</span>,<span class="fl">1</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>(1.0, 0.0)</code></pre>
 </div>
@@ -730,18 +727,18 @@ Solución
 </div>
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Función de la superficie</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">10</span> </span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Función de la región de integración</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x, y) <span class="op">=</span> <span class="fl">2</span>x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">9</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Límites de integración en y</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>soly <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">g</span>(x, y), y)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Límites de integración en x</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>solx <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">g</span>(x, <span class="fl">0</span>))</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x, y), (y, soly[<span class="fl">1</span>], soly[<span class="fl">2</span>]), (x, solx[<span class="fl">1</span>], solx[<span class="fl">2</span>]))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Función de la superficie</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">10</span> </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Función de la región de integración</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x, y) <span class="op">=</span> <span class="fl">2</span>x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">9</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Límites de integración en y</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>soly <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">g</span>(x, y), y)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Límites de integración en x</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>solx <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">g</span>(x, <span class="fl">0</span>))</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">f</span>(x, y), (y, soly[<span class="fl">1</span>], soly[<span class="fl">2</span>]), (x, solx[<span class="fl">1</span>], solx[<span class="fl">2</span>]))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <p><span class="math inline">\(- \frac{1197 \sqrt{2} \pi}{32}\)</span></p>
 </div>
@@ -764,13 +761,13 @@ Solución
 </div>
 <div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x, y) <span class="op">=</span> <span class="fl">2</span>x</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">f</span>(x,y)<span class="fu">-g</span>(x,y), y)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">g</span>(x,y)<span class="fu">-f</span>(x,y), (y, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]), (x, <span class="fl">0</span>, <span class="fl">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> y<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x, y) <span class="op">=</span> <span class="fl">2</span>x</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">f</span>(x,y)<span class="fu">-g</span>(x,y), y)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">g</span>(x,y)<span class="fu">-f</span>(x,y), (y, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]), (x, <span class="fl">0</span>, <span class="fl">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <p><span class="math inline">\(- \frac{\pi}{2}\)</span></p>
 </div>
@@ -813,22 +810,22 @@ Solución
 <div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Para calcular el volumen es más sencillo trabajar en coordenadas polares.</p>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y r θ</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fl">2</span><span class="fu">*sqrt</span>(x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>y<span class="op">^</span><span class="fl">2</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(r, θ) <span class="op">=</span> <span class="fu">f</span>(<span class="fu">r*cos</span>(θ), <span class="fu">r*sin</span>(θ))</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>solr <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">g</span>(r,θ)<span class="op">-</span><span class="fl">4</span>, r)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fl">4</span> <span class="op">-</span> <span class="fu">g</span>(r,θ)<span class="op">*</span>r, (r, <span class="fl">0</span>, solr[<span class="fl">2</span>]), (θ, <span class="fl">0</span>, <span class="fl">2</span>PI))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y r θ</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x, y) <span class="op">=</span> <span class="fl">2</span><span class="fu">*sqrt</span>(x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>y<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(r, θ) <span class="op">=</span> <span class="fu">f</span>(<span class="fu">r*cos</span>(θ), <span class="fu">r*sin</span>(θ))</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>solr <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">g</span>(r,θ)<span class="op">-</span><span class="fl">4</span>, r)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fl">4</span> <span class="op">-</span> <span class="fu">g</span>(r,θ)<span class="op">*</span>r, (r, <span class="fl">0</span>, solr[<span class="fl">2</span>]), (θ, <span class="fl">0</span>, <span class="fl">2</span>PI))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <p><span class="math inline">\(\frac{16 \pi}{3}\)</span></p>
 </div>
 </div>
 <p>Para calcular en área de la superficie trabajamos en coordenadas rectangulares.</p>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>soly <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">f</span>(x,y)<span class="op">-</span><span class="fl">4</span>, y)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>solx <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">f</span>(x,<span class="fl">0</span>)<span class="op">-</span><span class="fl">4</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">sqrt</span>(<span class="fu">diff</span>(<span class="fu">f</span>(x,y), x)<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fu">diff</span>(<span class="fu">f</span>(x,y), y)<span class="op">^</span><span class="fl">2</span> <span class="op">+</span><span class="fl">1</span>), (y, soly[<span class="fl">1</span>], soly[<span class="fl">2</span>]), (x, solx[<span class="fl">1</span>], solx[<span class="fl">2</span>]))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>soly <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">f</span>(x,y)<span class="op">-</span><span class="fl">4</span>, y)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>solx <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">f</span>(x,<span class="fl">0</span>)<span class="op">-</span><span class="fl">4</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="fu">sqrt</span>(<span class="fu">diff</span>(<span class="fu">f</span>(x,y), x)<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fu">diff</span>(<span class="fu">f</span>(x,y), y)<span class="op">^</span><span class="fl">2</span> <span class="op">+</span><span class="fl">1</span>), (y, soly[<span class="fl">1</span>], soly[<span class="fl">2</span>]), (x, solx[<span class="fl">1</span>], solx[<span class="fl">2</span>]))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <p><span class="math inline">\(4 \sqrt{5} \pi\)</span></p>
 </div>
@@ -872,14 +869,14 @@ Solución
 </div>
 <div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">d</span>(x,y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span> <span class="op">*</span> y<span class="op">^</span><span class="fl">2</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> <span class="fl">2</span> <span class="op">-</span> x<span class="op">^</span><span class="fl">2</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(x) <span class="op">=</span> <span class="op">-</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">2</span>x<span class="op">^</span><span class="fl">2</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">g</span>(x)<span class="fu">-h</span>(x), x)</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="fu">integrate</span>(<span class="fu">d</span>(x,y), (y, <span class="fu">h</span>(x), <span class="fu">g</span>(x)), (x, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@syms</span> x y</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">d</span>(x,y) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span> <span class="op">*</span> y<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(x) <span class="op">=</span> <span class="fl">2</span> <span class="op">-</span> x<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">h</span>(x) <span class="op">=</span> <span class="op">-</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">2</span>x<span class="op">^</span><span class="fl">2</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> <span class="fu">solve</span>(<span class="fu">g</span>(x)<span class="fu">-h</span>(x), x)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="fu">integrate</span>(<span class="fu">d</span>(x,y), (y, <span class="fu">h</span>(x), <span class="fu">g</span>(x)), (x, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <p><span class="math inline">\(\frac{460 \sqrt{15}}{729}\)</span></p>
 </div>
@@ -925,21 +922,21 @@ Solución
 <div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Calculamos primero la componente <span class="math inline">\(x\)</span> del centro de masas.</p>
-<div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Momento con respecto a y</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>my <span class="op">=</span> <span class="fu">integrate</span>(<span class="fu">x*d</span>(x,y), (y, <span class="fu">h</span>(x), <span class="fu">g</span>(x)), (x, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]))</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Centro de masas en x.</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>my <span class="op">/</span> m</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Momento con respecto a y</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>my <span class="op">=</span> <span class="fu">integrate</span>(<span class="fu">x*d</span>(x,y), (y, <span class="fu">h</span>(x), <span class="fu">g</span>(x)), (x, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]))</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Centro de masas en x.</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>my <span class="op">/</span> m</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <p><span class="math inline">\(0\)</span></p>
 </div>
 </div>
 <p>Y después la componente <span class="math inline">\(y\)</span> del centro de masas.</p>
-<div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Momento con respecto a x</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>mx <span class="op">=</span> <span class="fu">integrate</span>(<span class="fu">y*d</span>(x,y), (y, <span class="fu">h</span>(x), <span class="fu">g</span>(x)), (x, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]))</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Centro de masas en y.</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>mx <span class="op">/</span> m</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Momento con respecto a x</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>mx <span class="op">=</span> <span class="fu">integrate</span>(<span class="fu">y*d</span>(x,y), (y, <span class="fu">h</span>(x), <span class="fu">g</span>(x)), (x, sol[<span class="fl">1</span>], sol[<span class="fl">2</span>]))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Centro de masas en y.</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>mx <span class="op">/</span> m</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <p><span class="math inline">\(- \frac{4159}{5313}\)</span></p>
 </div>
@@ -952,39 +949,34 @@ Solución
 </section>
 <section id="ejercicios-propuestos" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="ejercicios-propuestos"><span class="header-section-number">10.2</span> Ejercicios propuestos</h2>
-<div class="cell" data-results="hidden" data-execution_count="26">
-<div class="cell-output cell-output-stderr">
-<pre><code>[ Info: Precompiling QuizQuestions [612c44de-1021-4a21-84fb-7261cf5eb2d4]</code></pre>
-</div>
-</div>
 <div id="exr-integrales-funciones-varias-variables-propuesto-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 10.9 </strong></span>Calcular la integral <span class="math inline">\(\int_{-1}^1\int_{-2y}^{2} e^{x^2}\,dx\,dy\)</span></p>
-<div class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display" data-execution_count="27">
 <script>
-var ID = "AwyUtWBf"
+var ID = "qLGSSWy1"
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="AwyUtWBf" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="qLGSSWy1" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_AwyUtWBf" correct="-1" attempts="0">
+      <div class="form" id="controls_qLGSSWy1" correct="-1" attempts="0">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group" aria-label="Input form: Numeric answer">
-    <input id="AwyUtWBf" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
+    <input id="qLGSSWy1" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
     <span class="input-group-append" href="#" title="Introducir hasta 5 decimales">&nbsp;🎁</span>
 </div>
 
     
         </div>
       </div>
-      <div id="AwyUtWBf_message" style="padding-bottom: 15px"></div>
+      <div id="qLGSSWy1_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 <script>
-document.getElementById('controls_AwyUtWBf').addEventListener("quizquestion_answer", (e) => {
-          var o = document.getElementById('controls_AwyUtWBf')
+document.getElementById('controls_qLGSSWy1').addEventListener("quizquestion_answer", (e) => {
+          var o = document.getElementById('controls_qLGSSWy1')
           var atts = Number(o.getAttribute("attempts"))
           o.setAttribute("correct",  e.detail.correct);
           o.setAttribute("attempts", atts + 1)
@@ -992,13 +984,13 @@ document.getElementById('controls_AwyUtWBf').addEventListener("quizquestion_answ
 </script>
 
 <script text="text/javascript">
-document.getElementById("AwyUtWBf").addEventListener("change", function() {
+document.getElementById("qLGSSWy1").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 32.90525553101446) <= 1.0e-5);
-  var msgBox = document.getElementById('AwyUtWBf_message');
+  var msgBox = document.getElementById('qLGSSWy1_message');
   
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_AwyUtWBf")
+    var explanation = document.getElementById("explanation_qLGSSWy1")
     if (explanation != null) {
        explanation.style.display = "none";
     }
@@ -1008,7 +1000,7 @@ document.getElementById("AwyUtWBf").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_AwyUtWBf")
+    var explanation = document.getElementById("explanation_qLGSSWy1")
     if (explanation != null) {
        explanation.style.display = "block";
     }
@@ -1026,32 +1018,32 @@ document.getElementById("AwyUtWBf").addEventListener("change", function() {
 </div>
 <div id="exr-integrales-funciones-varias-variables-propuesto-2" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 10.10 </strong></span>Calcular el volumen de la región encerrada por las superficies <span class="math inline">\(z^2=4-x\)</span>, <span class="math inline">\(y^2=4-x\)</span> y <span class="math inline">\(x=0\)</span>.</p>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="27">
 <div class="cell-output cell-output-display" data-execution_count="28">
 <script>
-var ID = "7SDJGbp1"
+var ID = "tHPzT2RL"
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="7SDJGbp1" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="tHPzT2RL" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_7SDJGbp1" correct="-1" attempts="0">
+      <div class="form" id="controls_tHPzT2RL" correct="-1" attempts="0">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group" aria-label="Input form: Numeric answer">
-    <input id="7SDJGbp1" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
+    <input id="tHPzT2RL" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
     <span class="input-group-append" href="#" title="Introducir hasta 5 decimales">&nbsp;🎁</span>
 </div>
 
     
         </div>
       </div>
-      <div id="7SDJGbp1_message" style="padding-bottom: 15px"></div>
+      <div id="tHPzT2RL_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 <script>
-document.getElementById('controls_7SDJGbp1').addEventListener("quizquestion_answer", (e) => {
-          var o = document.getElementById('controls_7SDJGbp1')
+document.getElementById('controls_tHPzT2RL').addEventListener("quizquestion_answer", (e) => {
+          var o = document.getElementById('controls_tHPzT2RL')
           var atts = Number(o.getAttribute("attempts"))
           o.setAttribute("correct",  e.detail.correct);
           o.setAttribute("attempts", atts + 1)
@@ -1059,13 +1051,13 @@ document.getElementById('controls_7SDJGbp1').addEventListener("quizquestion_answ
 </script>
 
 <script text="text/javascript">
-document.getElementById("7SDJGbp1").addEventListener("change", function() {
+document.getElementById("tHPzT2RL").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 32) <= 1.0e-5);
-  var msgBox = document.getElementById('7SDJGbp1_message');
+  var msgBox = document.getElementById('tHPzT2RL_message');
   
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_7SDJGbp1")
+    var explanation = document.getElementById("explanation_tHPzT2RL")
     if (explanation != null) {
        explanation.style.display = "none";
     }
@@ -1075,7 +1067,7 @@ document.getElementById("7SDJGbp1").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_7SDJGbp1")
+    var explanation = document.getElementById("explanation_tHPzT2RL")
     if (explanation != null) {
        explanation.style.display = "block";
     }
@@ -1093,32 +1085,32 @@ document.getElementById("7SDJGbp1").addEventListener("change", function() {
 </div>
 <div id="exr-integrales-funciones-varias-variables-propuesto-3" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 10.11 </strong></span>Calcular el volumen encerrado por la superficie de la función <span class="math inline">\(f(x,y)=\ln(\cos(x+y)+2)\)</span> y el plano <span class="math inline">\(z=0\)</span> en la región delimitada por la circunferencia de radio <span class="math inline">\(1\)</span> centrada en el origen de coordenadas.</p>
-<div class="cell" data-execution_count="29">
+<div class="cell" data-execution_count="28">
 <div class="cell-output cell-output-display" data-execution_count="29">
 <script>
-var ID = "BbmxbRyH"
+var ID = "HfQcJTS6"
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="BbmxbRyH" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="HfQcJTS6" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_BbmxbRyH" correct="-1" attempts="0">
+      <div class="form" id="controls_HfQcJTS6" correct="-1" attempts="0">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group" aria-label="Input form: Numeric answer">
-    <input id="BbmxbRyH" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
+    <input id="HfQcJTS6" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
     <span class="input-group-append" href="#" title="Introducir hasta 5 decimales">&nbsp;🎁</span>
 </div>
 
     
         </div>
       </div>
-      <div id="BbmxbRyH_message" style="padding-bottom: 15px"></div>
+      <div id="HfQcJTS6_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 <script>
-document.getElementById('controls_BbmxbRyH').addEventListener("quizquestion_answer", (e) => {
-          var o = document.getElementById('controls_BbmxbRyH')
+document.getElementById('controls_HfQcJTS6').addEventListener("quizquestion_answer", (e) => {
+          var o = document.getElementById('controls_HfQcJTS6')
           var atts = Number(o.getAttribute("attempts"))
           o.setAttribute("correct",  e.detail.correct);
           o.setAttribute("attempts", atts + 1)
@@ -1126,13 +1118,13 @@ document.getElementById('controls_BbmxbRyH').addEventListener("quizquestion_answ
 </script>
 
 <script text="text/javascript">
-document.getElementById("BbmxbRyH").addEventListener("change", function() {
+document.getElementById("HfQcJTS6").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 3.42958314) <= 1.0e-5);
-  var msgBox = document.getElementById('BbmxbRyH_message');
+  var msgBox = document.getElementById('HfQcJTS6_message');
   
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_BbmxbRyH")
+    var explanation = document.getElementById("explanation_HfQcJTS6")
     if (explanation != null) {
        explanation.style.display = "none";
     }
@@ -1142,7 +1134,7 @@ document.getElementById("BbmxbRyH").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_BbmxbRyH")
+    var explanation = document.getElementById("explanation_HfQcJTS6")
     if (explanation != null) {
        explanation.style.display = "block";
     }
@@ -1160,32 +1152,32 @@ document.getElementById("BbmxbRyH").addEventListener("change", function() {
 </div>
 <div id="exr-integrales-funciones-varias-variables-propuesto-4" class="theorem exercise">
 <p><span class="theorem-title"><strong>Ejercicio 10.12 </strong></span>Calcular el area de la superficie de la función <span class="math inline">\(f(x,y)=\sqrt{x+y}\)</span> en el intervalo <span class="math inline">\([0,1]\times[0,1]\)</span>.</p>
-<div class="cell" data-execution_count="30">
+<div class="cell" data-execution_count="29">
 <div class="cell-output cell-output-display" data-execution_count="30">
 <script>
-var ID = "OxPxW7cx"
+var ID = "nvJqJKrb"
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="OxPxW7cx" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="nvJqJKrb" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_OxPxW7cx" correct="-1" attempts="0">
+      <div class="form" id="controls_nvJqJKrb" correct="-1" attempts="0">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group" aria-label="Input form: Numeric answer">
-    <input id="OxPxW7cx" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
+    <input id="nvJqJKrb" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
     <span class="input-group-append" href="#" title="Introducir hasta 5 decimales">&nbsp;🎁</span>
 </div>
 
     
         </div>
       </div>
-      <div id="OxPxW7cx_message" style="padding-bottom: 15px"></div>
+      <div id="nvJqJKrb_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 <script>
-document.getElementById('controls_OxPxW7cx').addEventListener("quizquestion_answer", (e) => {
-          var o = document.getElementById('controls_OxPxW7cx')
+document.getElementById('controls_nvJqJKrb').addEventListener("quizquestion_answer", (e) => {
+          var o = document.getElementById('controls_nvJqJKrb')
           var atts = Number(o.getAttribute("attempts"))
           o.setAttribute("correct",  e.detail.correct);
           o.setAttribute("attempts", atts + 1)
@@ -1193,13 +1185,13 @@ document.getElementById('controls_OxPxW7cx').addEventListener("quizquestion_answ
 </script>
 
 <script text="text/javascript">
-document.getElementById("OxPxW7cx").addEventListener("change", function() {
+document.getElementById("nvJqJKrb").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 1.2823707050179478) <= 1.0e-5);
-  var msgBox = document.getElementById('OxPxW7cx_message');
+  var msgBox = document.getElementById('nvJqJKrb_message');
   
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_OxPxW7cx")
+    var explanation = document.getElementById("explanation_nvJqJKrb")
     if (explanation != null) {
        explanation.style.display = "none";
     }
@@ -1209,7 +1201,7 @@ document.getElementById("OxPxW7cx").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_OxPxW7cx")
+    var explanation = document.getElementById("explanation_nvJqJKrb")
     if (explanation != null) {
        explanation.style.display = "block";
     }
@@ -1230,32 +1222,32 @@ document.getElementById("OxPxW7cx").addEventListener("change", function() {
 <div class="columns">
 <div class="column">
 <p>Coordenada x</p>
-<div class="cell" data-execution_count="31">
+<div class="cell" data-execution_count="30">
 <div class="cell-output cell-output-display" data-execution_count="31">
 <script>
-var ID = "eo654zX1"
+var ID = "6b5moswA"
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="eo654zX1" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="6b5moswA" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_eo654zX1" correct="-1" attempts="0">
+      <div class="form" id="controls_6b5moswA" correct="-1" attempts="0">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group" aria-label="Input form: Numeric answer">
-    <input id="eo654zX1" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
+    <input id="6b5moswA" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
     <span class="input-group-append" href="#" title="Introducir hasta 5 decimales">&nbsp;🎁</span>
 </div>
 
     
         </div>
       </div>
-      <div id="eo654zX1_message" style="padding-bottom: 15px"></div>
+      <div id="6b5moswA_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 <script>
-document.getElementById('controls_eo654zX1').addEventListener("quizquestion_answer", (e) => {
-          var o = document.getElementById('controls_eo654zX1')
+document.getElementById('controls_6b5moswA').addEventListener("quizquestion_answer", (e) => {
+          var o = document.getElementById('controls_6b5moswA')
           var atts = Number(o.getAttribute("attempts"))
           o.setAttribute("correct",  e.detail.correct);
           o.setAttribute("attempts", atts + 1)
@@ -1263,13 +1255,13 @@ document.getElementById('controls_eo654zX1').addEventListener("quizquestion_answ
 </script>
 
 <script text="text/javascript">
-document.getElementById("eo654zX1").addEventListener("change", function() {
+document.getElementById("6b5moswA").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0.5313566449) <= 1.0e-5);
-  var msgBox = document.getElementById('eo654zX1_message');
+  var msgBox = document.getElementById('6b5moswA_message');
   
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_eo654zX1")
+    var explanation = document.getElementById("explanation_6b5moswA")
     if (explanation != null) {
        explanation.style.display = "none";
     }
@@ -1279,7 +1271,7 @@ document.getElementById("eo654zX1").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_eo654zX1")
+    var explanation = document.getElementById("explanation_6b5moswA")
     if (explanation != null) {
        explanation.style.display = "block";
     }
@@ -1296,32 +1288,32 @@ document.getElementById("eo654zX1").addEventListener("change", function() {
 </div>
 </div><div class="column">
 <p>Coordenada y</p>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="31">
 <div class="cell-output cell-output-display" data-execution_count="32">
 <script>
-var ID = "G2Ta93D9"
+var ID = "4yPz9XBY"
 </script>
-<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="G2Ta93D9" data-controltype="">
+<form class="mx-2 my-3 mw-100" name="WeaveQuestion" data-id="4yPz9XBY" data-controltype="">
   <div class="form-group ">
     <div class="controls">
-      <div class="form" id="controls_G2Ta93D9" correct="-1" attempts="0">
+      <div class="form" id="controls_4yPz9XBY" correct="-1" attempts="0">
         <div style="padding-top: 5px">
     <br>
 <div class="input-group" aria-label="Input form: Numeric answer">
-    <input id="G2Ta93D9" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
+    <input id="4yPz9XBY" type="number" class="form-control" placeholder="Numeric answer" aria-label="Numeric answer">
     <span class="input-group-append" href="#" title="Introducir hasta 5 decimales">&nbsp;🎁</span>
 </div>
 
     
         </div>
       </div>
-      <div id="G2Ta93D9_message" style="padding-bottom: 15px"></div>
+      <div id="4yPz9XBY_message" style="padding-bottom: 15px"></div>
     </div>
   </div>
 </form>
 <script>
-document.getElementById('controls_G2Ta93D9').addEventListener("quizquestion_answer", (e) => {
-          var o = document.getElementById('controls_G2Ta93D9')
+document.getElementById('controls_4yPz9XBY').addEventListener("quizquestion_answer", (e) => {
+          var o = document.getElementById('controls_4yPz9XBY')
           var atts = Number(o.getAttribute("attempts"))
           o.setAttribute("correct",  e.detail.correct);
           o.setAttribute("attempts", atts + 1)
@@ -1329,13 +1321,13 @@ document.getElementById('controls_G2Ta93D9').addEventListener("quizquestion_answ
 </script>
 
 <script text="text/javascript">
-document.getElementById("G2Ta93D9").addEventListener("change", function() {
+document.getElementById("4yPz9XBY").addEventListener("change", function() {
   var correct = (Math.abs(this.value - 0.5354903136) <= 1.0e-5);
-  var msgBox = document.getElementById('G2Ta93D9_message');
+  var msgBox = document.getElementById('4yPz9XBY_message');
   
   if(correct) {
     msgBox.innerHTML = "<div class='pluto-output admonition note alert alert-success'><span> 👍&nbsp; Correct </span></div>";
-    var explanation = document.getElementById("explanation_G2Ta93D9")
+    var explanation = document.getElementById("explanation_4yPz9XBY")
     if (explanation != null) {
        explanation.style.display = "none";
     }
@@ -1345,7 +1337,7 @@ document.getElementById("G2Ta93D9").addEventListener("change", function() {
 
   } else {
     msgBox.innerHTML = "<div class='pluto-output admonition alert alert-danger'><span>👎&nbsp; Incorrect </span></div>";
-    var explanation = document.getElementById("explanation_G2Ta93D9")
+    var explanation = document.getElementById("explanation_4yPz9XBY")
     if (explanation != null) {
        explanation.style.display = "block";
     }

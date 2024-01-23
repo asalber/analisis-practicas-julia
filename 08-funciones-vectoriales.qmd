@@ -444,7 +444,7 @@ A continuación calculamos la longitud de la espiral.
 ```{julia}
 using LinearAlgebra
 # Calculamos longitud de la trayectoria
-N(integrate(norm(diff.(f(t))), 0, h))
+N(integrate(norm(diff.(f(t))), (t, 0, h)))
 ```
 :::
 :::
@@ -483,7 +483,7 @@ ax = Axis(fig[1,1], autolimitaspect = 1)
 lines!(ax, -3..3, f, label = L"$f(t)= \frac{1}{\sqrt{2\pi}}e^{-x^2/2}$")
 fig
 # Calculamos la segunda derivada de la función.
-df2 = diff(f, 2)
+df2 = diff(f(x), x, 2)
 # Calculamos la función de curvatura.
 k(x) = abs(df2(x)) / (1 + df2(x)^2)^(3/2)
 # Definimos una serie de puntos de la función curvatura.
@@ -892,8 +892,8 @@ a.  Calcular la componente tangencial del vector aceleración en ese instante.
 
     ```{julia}
     #| echo: false
-    at = diff(norm(vel))
-    sol = N(subs.(at, t => a))
+    at =  diff(sqrt(sum(vel.^2)))
+    sol = N(at(a))
     numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
     ```
 
@@ -913,7 +913,7 @@ a.  Suponiendo que los neumáticos no proporcionan ningún agarre (por ejemplo p
 
     ```{julia}
     #| echo: false
-    sol = N(atand(subs.(an, t => a) / 9.8))
+    sol = N(atand(subs.(an, t => a) / (9.8*3600)))
     numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
     ```
 :::

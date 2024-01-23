@@ -521,7 +521,7 @@ a.  Calcular la derivada de $y$ como función implícita de $x$.
     ## Solución
     ```{julia}
     using SymPy
-    @syms x y u()
+    @syms x y
     y′ = -diff(f(x, y), x) / diff(f(x, y), y)
     ```
     :::

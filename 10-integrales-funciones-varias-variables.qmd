@@ -9,6 +9,7 @@ lang: es
 Para la realización de esta práctica se requieren los siguientes paquetes:
 
 ```{julia}
+#| output: false
 using SymPy  # Para el cálculo simbólico.
 using HCubature # Para el cálculo numérico de integrales múltiples.
 ```
@@ -360,6 +361,7 @@ a.  Calcular el centro de masas de la placa
 ```{julia}
 #| echo: false
 #| results: "hidden"
+#| output: false
 using QuizQuestions, SymPy
 nothing
 ```
