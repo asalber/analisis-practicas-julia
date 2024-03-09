@@ -1,0 +1,1033 @@
+---
+title: Integrales de funciones reales
+lang: es
+#jupyter: julia-1.10
+---
+
+## Ejercicios Resueltos
+
+Para la realización de esta práctica se requieren los siguientes paquetes:
+
+```{julia}
+using SymPy  # Para el cálculo simbólico de integrales.
+using QuadGK  # Para el cálculo numérico de integrales.
+using Plots  # Para el dibujo de gráficas.
+using LaTeXStrings  # Para usar código LaTeX en los gráficos.
+using PrettyTables # Para formatear tablas.
+using CalculusWithJulia # Utilidades varias para cálculo.
+```
+
+:::{#exr-sumas-riemann}
+Sea $f(x)=x^2$.
+
+a.  Calcular la suma inferior de Riemann de $f$ en el intervalo $[0,1]$, tomando una partición de 10 subinvervalos de igual amplitud.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    La [suma inferior de Riemann](https://aprendeconalf.es/analisis-manual/09-integrales.html#sumas-de-riemann) de una función $f$ en un intervalo $[a,b]$ se obtiene sumando las áreas de los rectángulos que resultan de tomar una partición del intervalo, tomando como base la amplitud de los subintervalos y el como altura el mínimo valor de $f$ en el subintervalo.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    f(x) = x^2
+    # Definimos la amplitud de los subintervalos.
+    Δx = 1/10
+    # Calculamos las áreas de los rectángulos tomando como altura el mínimo valor de la función en el subintervalo, que es el valor de la función en el extremo izquierdo del subintervalo.
+    areas_inf = [f((i-1)*Δx)*Δx for i = 1:10]
+    # Sumamos las áreas de los rectángulos.
+    sum_inf = sum(areas_inf)
+    ```
+    :::
+
+a.  Calcular la suma superior de Riemann de $f$ en el intervalo $[0,1]$, tomando una partición de 10 subinvervalos de igual amplitud.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    La [suma superior de Riemann](https://aprendeconalf.es/analisis-manual/09-integrales.html#sumas-de-riemann) de una función $f$ en un intervalo $[a,b]$ se obtiene sumando las áreas de los rectángulos que resultan de tomar una partición del intervalo, tomando como base la amplitud de los subintervalos y el como altura el máximo valor de $f$ en el subintervalo.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    f(x) = x^2
+    # Definiendo la amplitud de los subintervalos.
+    Δx = 1/10
+    # Calculamos las áreas de los rectángulos tomando como altura el máximo valor de la función en el subintervalo, que es el valor de la función en el extremo derecho del subintervalo.
+    areas_sup = [f(i*Δx)*Δx for i = 1:10]
+    # Sumamos las áreas de los rectángulos.
+    sum_sup = sum(areas_sup)
+    ```
+    :::
+
+a.  Dar una cota del error cometido en la aproximación del área encerrada entre la gráfica de $f$ y el eje $x$ en el intervalo $[0,1]$ tomando sumas de Riemann para una partición en 10 subintervalos.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    La suma inferior de Riemann nos da una cota inferior del área que queda encerrada entre la gráfica de la función y el eje $x$ en el intervalo $[a,b]$, mientras que la suma superior de Riemann nos da una cota superior. Por tanto, si tomamos cualquier valor entre la suma inferior y la suma superior de Riemann como aproximación del área encerrada entre la gráfica de $f$ y el eje $x$, una cota del error cometido será la diferencia entre la suma superior y la suma inferior.
+
+    ```{julia}
+    error = sum_sup - sum_inf
+    ```
+    :::
+
+a.  Definir una función para calcular de manera aproximada el área encerrada entre la gráfica de $f$ y el eje $x$ en el intervalo $[a,b]$ tomando sumas de Riemann para una partición en $n$ subintervalos, y el error cometido en la aproximación. Utilizarla para calcular los errores aproximados al aproximar el area de $f$ en el intervalo $[0,1]$ tomando particiones desde 10 a 100 subintervalos.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using PrettyTables
+    f(x) = x^2
+
+    function suma_inf(f, a, b, n)
+        """
+        Función que calcular la suma inferior de Riemann de una función f en el intervalo [a,b] tomando una partición de n subintervalos.
+        """
+        Δx = (b-a)/n
+        return sum([f(a+(i-1)*Δx)*Δx for i = 1:n])
+    end
+
+    function suma_sup(f, a, b, n)
+        """
+        Función que calcular la suma superior de Riemann de una función f en el intervalo [a,b] tomando una partición de n subintervalos.
+        """
+        Δx = (b-a)/n
+        return sum([f(a+i*Δx)*Δx for i = 1:n])
+    end
+
+    function area(f, a, b, n)
+        """
+        Función que calcular de manera aproximada el área encerrada entre la gráfica de f y el eje x en el intervalo [a,b] tomando sumas de Riemann para una partición en n subintervalos, y el error cometido en la aproximación.
+        """
+        area_inf = suma_inf(f, a, b, n)
+        area_sup = suma_sup(f, a, b, n)
+        area = (area_inf + area_sup) / 2
+        error = area_sup - area_inf
+        return area, error
+    end
+
+    suma_sup(f, 0, 1, 10)  
+    area(f, 0, 1, 10)
+    areas = [area(f, 0, 1, 10^n) for n=1:6]
+    pretty_table(hcat(first.(areas), last.(areas)); header = ["Aproximación", "Error"])
+    ```
+    :::
+:::
+
+:::{#exr-primitivas}
+Calcular las primitivas de las siguientes funciones.
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular la primitiva de una función se puede usar la función [`integrate(f)`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Integrals-1) del paquete [`SymPy`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/), donde `f` es la función a integrar.
+:::
+
+a.  $f(x)=x^2\ln(x)$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy
+    @syms x::real
+    primitiva = integrate(x^2*log(x))
+    ```
+
+    Obsérvese que la primitiva obtenida con la función `integrate` no incluye la típica constante que define la familia de primitivas. 
+
+    Podemos comprobar que efectivamente es la primitiva derivándola.
+
+    ```{julia}
+    diff(primitiva)
+    ```
+    :::
+
+    
+a.  $g(x)= \dfrac{\ln(\ln(x))}{x}$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    integrate(log(log(x))/x)
+    ```
+    :::
+
+a.  $h(x)= \dfrac{2x^3+x^2+6}{x^5-x}$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    Se trata de una función racional, así que hacemos primero la descomposición en fracciones simples. Para ello se puede usar la función [`apart(f)`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#Rational-expressions:-apart,-together,-cancel-1) del paquete [`SymPy`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/).
+
+    ```{julia}
+    h(x) = (2x^3+x^2+6)/(x^5-x)
+    # Descomposición en fracciones simples.
+    apart(h(x))
+    ```
+
+    Y ahora calculamos la primitiva.
+
+    ```{julia}
+    integrate(h(x))
+    ```
+    :::
+
+a.  $i(x)= x^a$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    Cuando en la función aparece algún parámetro, es necesario indicar la variable con respecto a la que calcular la integral. Para ello se utiliza la función `integrate(f, x)`, siendo `x` la variable con respecto a la que integrar.
+
+    ```{julia}
+    @syms a::real
+    integrate(x^a, x)
+    ```
+    :::
+
+a.  $j(x) = (1 + \log(x))\sqrt{1 + x^2\log(x)^2}$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    @syms x::real
+    j(x) = (1 + log(x)) * sqrt(1 + (x*log(x))^2 )
+    # El cálculo directo de la integral no funciona.
+    integrate(j(x))
+    # Ayudamos a SymPy con la sustitución.
+    h(x) = x*log(x)
+    @syms y::real dy::real
+    # Definimos la nueva función con el cambio de variable.
+    g(y) = j(x)(h(x) => y, diff(h(x), x) => 1)
+    # Integramos la nueva función y deshacemos el cambio de variable.
+    integrate(g(y))(y => h(x))
+    ```
+    :::
+:::
+
+:::{#exr-integrales-definidas}
+Calcular las siguientes integrales definidas:
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular una integral definida también se puede usar la función `integrate(f, (x, a, b))`, del paquete [`SymPy`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/), donde, además de la función `f`, hay que indicar la variable de integración `x` y los límites de integración `a` y `b`.
+:::
+
+a.  $\displaystyle \int_{-1/2}^0 \frac{x^3}{x^2+x+1}\, dx$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy
+    @syms x::real
+    integrate(x^3/(x^2+x+1), (x, -1/2, 0))
+    ```
+    :::
+
+a.  $\displaystyle \int_2^4 \frac{\sqrt{16-x^2}}{x}\, dx$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    integrate(sqrt(16-x^2)/x, (x, 2, 4))
+    ```
+    :::
+
+a.  $\displaystyle \int_0^{\pi/2} \frac{dx}{3+\cos(2x)}$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    integrate(1/(3+cos(2x)), (x, 0, PI/2))
+    ```
+    :::
+:::
+
+:::{#exr-integracion-numerica}
+Calcular la integral definida $\displaystyle \int_0^1 x^x\, dx$ con un error menor de $10^{-10}$.
+:::
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Esta función no tiene primitiva como se puede comprobar al realizar la integral con la función `integrate`. Para calcularla hay que recurrir a métodos numéricos de aproximación. Para ello se puede usar la función [`quadgk`](https://juliamath.github.io/QuadGK.jl/stable/functions/#QuadGK.quadgk) del paquete [`QuadGK`](https://juliamath.github.io/QuadGK.jl/stable/) que realiza el cálculo de la integral mediante el método de la cuadratura de Gauss-Kronrod.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+```{julia}
+using SymPy
+@syms x::real
+f(x) = x^x
+integrate(f(x), (x, 0, 1))
+```
+
+No es posible calcular la primitiva con `integrate` porque esta función no tiene primitiva, así que hay que calcular la integral definida de manera aproximada por métodos numéricos.
+
+```{julia}
+using QuadGK
+quadgk(f(x), 0, 1, rtol = 10^-10)
+```
+:::
+
+:::{#exr-area-una-funcion}
+Dibujar y calcular el área encerrada por la parábola $y=x^{2}-7x+6$ y el eje de abscisas en el intervalo $[2,7]$.
+:::
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para [calcular el área encerrada entre la gráfica de una función y el eje $x$](https://aprendeconalf.es/analisis-manual/09-integrales.html#sec-calculo-area-funcion-ejex) en un intervalo $[a,b]$, hay que descomponer el intervalo de integración en los subintervalos donde la función es positiva y los subintervalos donde es negativa, e integrar la función en cada intervalo por separado.
+
+Otra opción es calcular el área mediante la integral del valor absoluto de la función.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución 1
+Dibujamos primero la región.
+
+:::{.panel-tabset}
+
+## Makie
+
+```{julia}
+using SymPy, LaTeXStrings, GLMakie
+@syms x::real
+f(x) = x^2-7x+6
+# Definimos un rango de valores para x.
+xs = range(2, 7, length=100)
+# Creamos la figura.
+fig = Figure()
+# Definimos los ejes.
+ax = Axis(fig[1, 1])
+# Dibujamos la región.
+band!(ax, xs, f.(xs), [0], color = :blue, alpha = 0.3)
+# Dibujamos la función.
+lines!(ax, xs, f.(xs), color = :blue, label = L"$f(x)=x^2-7x+6$")
+# Añadimos la leyenda.
+axislegend(ax)
+# Mostramos la figura.
+fig
+```
+
+## Plots
+
+```{julia}
+using Plots, SymPy, LaTeXStrings
+@syms x::real
+f(x) = x^2-7x+6
+# Dibujamos la región y la gráfica de la función.
+Plots.plot(f, 2, 7, fillrange = 0, fillalpha = 0.3, label = L"$f(x)=x^2-7x+6$")
+```
+:::
+
+Y ahora calculamos el área de la región sombreada.
+
+```{julia}
+# Calculamos primero las raíces de la función
+solve(f(x))
+# Descomponemos el intervalo de integración en los subintervalos [2,6] (función negativa) y [6,7] (función positiva) y calculamos las integrales por separado
+-integrate(f(x), (x, 2, 6)) + integrate(f(x), (x, 6, 7))
+```
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución 2
+En general, para calcular áreas bajo una curva, es más rápido integrar el valor absoluto de la función.
+
+```{julia}
+integrate(abs(f(x)), (x, 2, 7))
+```
+:::  
+
+:::{#exr-area-dos-funciones}
+Calcular y dibujar el área comprendida entre las parábolas $y=-x^2+6x$ e $y=x^2-2x$.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+Calculamos primero el área comprendida entre las dos funciones.
+
+```{julia}
+using Plots, SymPy, LaTeXStrings
+@syms x::real
+f(x) = -x^2+6x
+g(x) = x^2-2x
+# Calculamos primero los puntos de corte de la función.
+a, b = solve(f(x)-g(x))
+# Calculamos el área comprendida entre las dos funciones entre los puntos de corte.
+sol = integrate(f(x)-g(x), (x, a, b))
+```
+
+Y ahora dibujamos el área calculada.
+
+:::{.panel-tabset}
+
+## Makie
+
+```{julia}
+using GLMakie
+# Definimos un rango de valores para x.
+xs = range(-1, 5, length=100)
+# Definimos un rango de valores para x en el intervalo de intersección.
+xs2 = range(a, b, length=100)
+# Creamos la figura.
+fig = Figure()
+# Definimos los ejes.
+ax = Axis(fig[1, 1])
+# Dibujamos la región.
+band!(ax, xs2, f.(xs2), g.(xs2), color = :blue, alpha = 0.3)
+# Dibujamos la función.
+lines!(ax, xs, f.(xs), color = :blue, label = L"$f(x)=-x^2+6x$")
+lines!(ax, xs, g.(xs), color = :red, label = L"$g(x)=x^2-2x$")
+# Añadimos el area calculada.
+text!(2, 4, text = "$sol")
+# Añadimos la leyenda.
+axislegend(ax)
+# Mostramos la figura.
+fig
+```
+
+## Plots
+
+```{julia}
+using Plots
+Plots.plot!(g, a, b, fillrange = f, fillalpha = 0.3, label = "")
+Plots.plot(f, -1, 5, label = L"$f(x)=-x^2+6x$")
+Plots.plot!(g, label = L"$g(x)=x^2-2x$")
+annotate!(2, 4, sol)
+```
+:::
+:::
+
+:::{#exr-integral-impropia}
+Dibujar la gráfica de la función $f(x)=e^{-x}$ y calcular el área total encerrada entre la gráfica y el eje $x$ para $x>0$.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+Dibujamos primero la gráfica.
+
+:::{.panel-tabset}
+
+## Makie
+
+```{julia}
+using SymPy, LaTeXStrings, GLMakie
+@syms x::real
+f(x) = exp(-x)
+# Definimos un rango de valores para x.
+xs = range(0, 10, length=100)
+# Creamos la figura.
+fig = Figure()
+# Definimos los ejes.
+ax = Axis(fig[1, 1])
+# Dibujamos la región.
+band!(ax, xs, f.(xs), 0, color = :blue, alpha = 0.3)
+# Dibujamos la función.
+lines!(ax, xs, f.(xs), color = :blue, label = L"$f(x)=e^{-x}$")
+# Añadimos la leyenda.
+axislegend(ax)
+# Mostramos la figura.
+fig
+```
+
+## Plots
+
+```{julia}
+using SymPy, LaTeXStrings, Plots
+@syms x::real
+f(x) = exp(-x)
+Plots.plot(f(x), 0, 10, fillrange = 0, fillalpha = 0.3, label = L"$f(x)=e^{-x}$")
+```
+:::
+
+Y ahora calculamos el área mediante la integral impropia entre $0$ y $\infty$.
+
+```{julia}
+integrate(f(x), (x, 0, oo))
+```
+:::
+
+:::{#exr-areas-curvas-polares}
+Dibujar la región encerrada por la curvas polares $f(\theta)=1+\cos(\theta)$ y $g(\theta) = 3\cos(\theta)$ y calcular su área.
+:::
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para dibujar curvas polares se pueden definir los ejes polares con la función [`PolarAxis`](https://docs.makie.org/stable/reference/blocks/polaraxis/) del paquete `Makie`, o bien se puede usar la función `plot` del paquete `Plots` con el argumento `proj = :polar`.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+Dibujamos primero las curvas polares.
+
+:::{.panel-tabset}
+## Makie
+
+```{julia}
+using SymPy, GLMakie
+@syms θ::real
+f(θ) = 1 + cos(θ)
+g(θ) = 3cos(θ)
+# Generamos los valores de θ
+θs = range(0, 2pi, 100)
+fig = Figure()
+ax = PolarAxis(fig[1, 1], radius_at_origin = 0)
+lines!(ax, θs, g.(θs), label =  L"g(\theta) = 3\cos(\theta)")
+lines!(ax, θs, f.(θs), label = L"f(\theta) = 1 + \cos(\theta)")
+fig
+```
+
+## Plots
+
+```{julia}
+using SymPy, Plots
+@syms θ::real
+f(θ) = 1 + cos(θ)
+g(θ) = 3*cos(θ)
+Plots.plot(g, 0, pi, proj = :polar, label = L"g(\theta) = 3\cos(\theta)")
+Plots.plot!(f, 0, 2pi, proj = :polar, label = L"f(\theta) = 1 + \cos(\theta)")
+```
+:::
+
+Y ahora calculamos el area encerrada entre ellas.
+
+```{julia}
+# Calculamos los puntos de corte de las funciones.
+a, b = solve(f(θ)-g(θ))
+# Ajustamos los ángulos para recorrer la región en el sentido correcto.
+a, b = b - 2pi, a  
+# Calculamos el de la región con forma de media luna encerrada entre g y f.
+area_luna = integrate(g(θ)^2/2, (θ, a, b)) - integrate(f(θ)^2/2, (θ, a, b))
+# Finalmente calculamos el area de g y le restamos el área de la media luna.
+N(integrate(g(θ)^2/2, (θ, 0, pi)) - area_luna)
+```
+:::
+
+:::{#exr-valor-medio}
+Un vehículo se mueve con una velocidad dada por la función $\operatorname{sen}(t)^2$. ¿Cuál es la velocidad media en el intervalo $[0,2\pi]$?
+:::
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular el [valor medio de una función](https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-la-media-de-una-funci%C3%B3n) $f(x)$ en un intervalo $[a,b]$ tenemos que calcular la integral definida
+
+$$
+\frac{1}{b-a}\int_a^b f(x)\,dx.
+$$
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+```{julia}
+using SymPy
+@syms x::real
+f(x) = sin(x)^2
+1/(2*PI) * integrate(f(x), (x, 0, 2PI))
+```
+:::
+
+:::{#exr-solido-revolucion-discos}
+Representar gráficamente la región del primer cuadrante limitada por la función $f(x)=2+\operatorname{sen}(x)$ y el eje $x$ en el intervalo $[0,2\pi]$ y hallar el volumen del sólido de revolución generado al rotar esta región alrededor del eje $x$.
+:::
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular el [volumen de un sólido de revolución](https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-vol%C3%BAmenes-de-s%C3%B3lidos-de-revoluci%C3%B3n) generado al rotar la gráfica de una función $f(x)$ alrededor del eje $x$ en el intervalo $[a,b]$, mediante discos cilíndricos perpendiculares al eje $x$, hay que calcular la integral definida
+
+$$
+\int_a^b \pi f(x)^2\, dx
+$$
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+Dibujamos primero la región.
+
+```{julia}
+using SymPy, Plots
+@syms x::real
+f(x) = sin(x)+2
+Plots.plot(f, 0, 2pi, ylim=(0,3), fillrange = 0, fillalpha = 0.3, label = "")
+```
+
+A continuación dibujamos el sólido de revolución parametrizado en 3D.
+
+:::{.panel-tabset}
+
+## Makie
+
+```{julia}
+using GLMakie
+# Generamos los valores de x y θ
+x = LinRange(0, 2pi, 100)
+θ = LinRange(0, 2pi, 100)
+# Generamos los valores de X, Y y Z de la superficie de revolución.
+xs = [i for i in x, j in θ]
+ys = [f(i) * cos(j) for i in x, j in θ]
+zs = [f(i) * sin(j) for i in x, j in θ]
+# Creamos la figura.
+fig = Figure()
+# Definimos los ejes.
+ax = Axis3(fig[1, 1], azimuth = -pi/3, title = "Sólido de revolución", xlabel = "X", ylabel = "Y", zlabel = "Z")
+# Dibujamos la superficie de revolución
+Makie.surface!(ax, xs, ys, zs, alpha = 0.9)
+# Mostamos la figura.
+fig
+```
+
+## Plots
+
+```{julia}
+using CalculusWithJulia
+@syms x::real u::real v::real
+f(x) = sin(x)+2
+S(u, v) = (u, f(u)*cos(v), f(u)*sin(v))
+us = range(0, 2pi, length=100)
+vs = range(0, 2pi, length=100)
+ws = unzip(S.(us, vs'))
+Plots.surface(ws...)
+```
+:::
+
+Finalmente, calculamos el volumen del sólido de revolución.
+
+```{julia}
+N(integrate(pi*f(x)^2, (x, 0, 2pi)))
+```
+:::
+
+:::{#exr-solido-revolucion-envolventes}
+Calcular el volumen del toro que se obtiene al rotar la circunferencia de ecuación $(x-2)^2+y^2=1$ alrededor del eje $y$.
+:::
+
+:::{.callout-note collapse="true"}
+## Ayuda
+En este caso, usaremos [envoltorios cilíndricos](https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-vol%C3%BAmenes-con-envoltorios-cil%C3%ADndricos) para calcular el volumen del sólido de revolución. Para calcular el volumen del sólido de revolución que se obtiene al rotar alrededor del eje $y$ la gráfica de una función $f(x)$ en el intervalo $[a,b]$, mediante envoltorios cilíndricos, hay que calcular la integral definida
+
+$$
+\int_a^b 2\pi x f(x)\,dx.
+$$
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+Dibujamos primero la región.
+
+```{julia}
+using SymPy, Plots
+@syms x::real
+f(x) = sqrt(1-(x-2)^2)
+Plots.plot(f(x), 0, 4, fillrange = 0, fillalpha = 0.3, aspect_ratio = 1, label = "")
+Plots.plot!(-f(x), 0, 4, fillrange = 0, fillalpha = 0.3, aspect_ratio = 1, label = "")
+```
+
+Para el caso particular del toro, como el círculo que lo genera es simétrico con respecto al eje $X$, calcularemos la mitad de su volumen aprovechando la simetría y lo multiplicaremos por 2.
+
+```{julia}
+2 * integrate(2PI*x*f(x), (x, 1, 3))
+```
+:::
+
+:::{#exr-longitud-curva}
+Una empresa fabrica tejas de chapa con forma ondulada cuyo perfil viene dado por la curva $y=\operatorname{sin}\left(\frac{x}{2}\right)$. Si se quieren obtener tejas de 100 cm de longitud, ¿qué longitud tienen que tener las planchas de chapa para fabricarlas?
+:::
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular la [longitud de una curva](https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-la-longitud-de-una-curva) dada por la gráfica de una función $f(x)$ en un intervalo $[a,b]$, hay que calcular la integral 
+
+$$
+\int_a^b \sqrt{1+f'(x)^2}\,dx.
+$$
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+Dibujamos primero el perfil de las chapas.
+
+```{julia}
+using SymPy, Plots
+@syms x::real
+f(x) = sin(x/2)
+Plots.plot(f(x), 0, 100, aspect_ratio = 1, label = "")
+```
+
+```{julia}
+using QuadGK
+quadgk(sqrt(1+diff(f(x))^2), 0, 100)
+```
+:::
+
+:::{#exr-superficie-solido-revolucion}
+El [cuerno de Gabriel](https://es.wikipedia.org/wiki/Cuerno_de_Gabriel) es un sólido de revolución que se obtiene al rotar la función $f(x)=1/x$ alrededor del eje $x$ para $x\geq 1$.
+
+```{julia}
+#| echo: false
+using GLMakie
+f(x) = 1/x
+x = range(1, 10, 100)
+θ = range(0, 2pi, 100)
+# Generamos los valores de x, y y z de la superficie de revolución.
+xs = [i for i in x, j in θ]
+ys = [f(i) * cos(j) for i in x, j in θ]
+zs = [f(i) * sin(j) for i in x, j in θ]
+# Creamos la figura.
+fig = Figure()
+# Definimos los ejes.
+ax = Axis3(fig[1, 1], azimuth = -pi/3, title = "Cuerno de Gabriel", xlabel = "X", ylabel = "Y", zlabel = "Z")
+# Dibujamos la superficie de revolución
+Makie.surface!(ax, xs, ys, zs, alpha = 0.9)
+# Mostramos la figura.
+fig
+```
+
+a.  El volumen del cuerno de Gabriel.
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    Calculamos su volumen mediante discos cilíndricos transversales al eje $x$.
+
+    ```{julia}
+    using SymPy
+    @syms x::real
+    f(x) = 1/x
+    integrate(PI*f(x)^2, (x, 1, oo))
+    ```
+    :::
+
+b.  Calcular la superficie del cuerno de Gabriel.
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Para calcular la [superficie del sólido de revolución](https://aprendeconalf.es/analisis-manual/09-integrales.html#c%C3%A1lculo-de-superficies-de-s%C3%B3lidos-de-revoluci%C3%B3n) que se obtiene al rotar la gráfica de la función $f(x)$ alrededor del eje $x$ en el intervalo $[a,b]$ hay que calcular la integral definida
+
+    $$
+    \int_a^b 2\pi f(x)\sqrt{1+f'(x)^2}\,dx.
+    $$
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+
+    ```{julia}
+    using SymPy
+    @syms x::real
+    f(x) = 1/x
+    integrate(2PI*f(x)*sqrt(1+diff(f(x))^2), (x, 1, oo))
+    ```
+
+    Así pues, se da la paradoja de que el cuerno de Gabriel tiene un volumen finito, pero una superficie infinita. 
+    :::
+:::
+
+:::{#exr-centro-masas}
+Un depósito con forma de sólido de revolución generado al rotar la gráfica de la función $f(x)=\frac{x^2}{2}$ alrededor del eje $y$ en el intervalo de $0$ a $4$ m, contiene $100000$ l de aceite con una densidad de $\delta = 900$ kg/m$^3$. ¿Qué trabajo se realiza al vaciar el depósito por arriba?
+:::
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular el [trabajo realizado por una fuerza](https://aprendeconalf.es/analisis-manual/09-integrales.html#trabajo) aplicada sobre un objeto y que provoca un desplazamiento desde $x=a$ hasta $x=b$, basta con calcular la integral definida 
+
+$$
+\int_a^b f(x)\,dx
+$$
+
+En este caso, tomando discos cilíndricos perpendiculares al eje $y$, el volumen de cada disco viene dado por la función $V(y)=\pi f^{-1}(y)^2\Delta y$ y, por tanto, la masa de cada uno de estos discos es $M(y)=\delta\pi f^{-1}(y)^2\Delta y$. Como la única fuerza que actúa sobre la masa es la gravedad, la fuerza aplicada a la masa de cada disco es $F(y) = gM(y)= g\delta\pi f^{-1}(y)^2\Delta y$. Finalmente, como la masa de cada uno de los discos debe elevarse una distancia $4-y$, el trabajo realizado para vaciar el depósito se calcula mediante la integral definida 
+
+$$
+\int_0^h g\delta\pi f^{-1}(y)^2(4-y)\,dy
+$$
+
+donde $h$ es el nivel del aceite.
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+Calculamos primero el nivel del aceite en el depósito. Para ello necesitamos el volumen contenido en el depósito hasta una altura $h$.
+
+```{julia}
+using SymPy
+@syms x::real y::real
+f(x) = x^2/2
+f⁻¹(y) = solve(y-f(x), x)[2]
+# Volumen hasta una altura h
+V(x) = integrate(PI*f⁻¹(y)^2, (y, 0, x))
+# Nivel para un volumen de 100 m³
+nivel = solve(V(x)-100)[2]
+```
+
+Ahora calculamos el trabajo realizado al vaciar el depósito por arriba.
+
+```{julia}
+δ = 900
+gravedad = 9.81
+N(integrate(gravedad*δ*PI*f⁻¹(y)^2*(8-y), (y, 0, nivel)))
+```
+:::
+
+:::{#exr-centro-masas}
+Dibujar la región que se obtiene con la intersección de la recta $y=x-1$ y la parábola $y=(x-1)^2$, y dibujar su centroide. ¿Cuál es le volumen del sólido de revolución generado al rotar esta región sobre el eje $x$? ¿Y al rotarla sobre el eje $y$?
+:::
+
+:::{.callout-note collapse="true"}
+## Ayuda
+Para calcular el [centroide $(\bar x, \bar y)$ de una región plana](https://aprendeconalf.es/analisis-manual/09-integrales.html#centro-de-masas-de-una-regi%C3%B3n-plana-con-densidad-fija) encerrada por dos curvas $f(x)$ y $g(x)$ en el intervalo $[a,b]$ hay que calcular por separado el centro de masas $\bar x$ con respecto al eje $y$, y el centro de masas $\bar y$ con respecto al eje $x$, mediante cociente de las siguientes integrales definidas
+
+\begin{align*}
+\bar x &=\frac{\int_a^b x (f(x)-g(x))\,dx}{\int_a^b f(x)-g(x)\,dx}\\
+\bar y &=\frac{\frac{1}{2}\int_a^b f(x)^2-g(x)^2\,dx}{\int_a^b f(x)-g(x)\,dx}
+\end{align*}
+:::
+
+:::{.callout-tip collapse="true"}
+## Solución
+
+Dibujamos primero la región. Para ello hay que calcular primero los puntos de corte de las dos curvas.
+
+:::{.panel-tabset}
+## Makie
+
+```{julia}
+using SymPy, GLMakie
+@syms x::real
+f(x) = x-1
+g(x) = (x-1)^2
+# Calculo de los puntos de corte.
+a, b = float(solve(f(x)-g(x)))
+# Definimos un rango de valores para x.
+xs = range(a, b, length=100)
+# Creamos la figura.
+fig = Figure()
+# Definimos los ejes.
+ax = Axis(fig[1, 1])
+# Dibujamos la región.
+band!(ax, xs, f.(xs), g.(xs), color = :blue, alpha = 0.3)
+# Dibujamos la función.
+lines!(ax, xs, f.(xs), color = :blue, label = L"$f(x)=-x^2+6x$")
+lines!(ax, xs, g.(xs), color = :red, label = L"$g(x)=x^2-2x$")
+# Añadimos la leyenda.
+axislegend(ax, position = :lt)
+# Mostramos la figura.
+fig
+```
+
+## Plots
+
+```{julia}
+using SymPy, Plots
+@syms x::real
+f(x) = x-1
+g(x) = (x-1)^2
+# Calculo de los puntos de corte.
+a, b = float(solve(f(x)-g(x)))
+# Dibujamos la región. 
+Plots.plot(g, a, b, fillrange = f, fillalpha = 0.3, label = "")
+# Dibujamos la gráfica de f.
+Plots.plot!(f, a, b, label = L"$f(x)=-x^2+6x$")
+# Dibujamos la gráfica de g.
+Plots.plot!(g, label = L"$g(x)=x^2-2x$")
+```
+:::
+
+Ahora calculamos el centroide de la región y lo dibujamos.
+
+```{julia}
+# Coordenada x del centroide.
+cx = integrate(x*(f(x)-g(x)), (x, a, b)) / integrate(f(x)-g(x), (x, a, b))
+# Coordenada y del centroide
+cy = 1/2 * integrate(f(x)^2-g(x)^2, (x, a, b)) / integrate(f(x)-g(x), (x, a, b))
+```
+
+:::{.panel-tabset}
+## Makie
+
+```{julia}
+Makie.scatter!(Point2(cx, cy), color = :green, markersize = 10, label = "Centroide")
+fig
+```
+
+## Plots
+
+```{julia}
+Plots.scatter!([cx], [cy], color = :green, label = "Centroide")
+```
+:::
+
+Para calcular el volumen del sólido de revolución generado al rotar esta región sobre el eje $x$ podemos usar el teorema de Pappus que establece que el volumen es el area de la región multiplicada por la longitud del camino recorrido por el centroide. 
+
+Al rotar la región sobre el eje $x$ el camino recorrido por el centroide es $2\pi \bar y$.
+
+```{julia}
+2*PI*cy*integrate(f(x)-g(x), (x,a, b))
+```
+
+Y al rotarla sobre el eje $y$ el camino recorrido por el centroide es $2\pi \bar x$.
+
+```{julia}
+2*PI*cx*integrate(f(x)-g(x), (x, a, b))
+```
+:::
+
+
+## Ejercicios propuestos
+
+```{julia}
+#| echo: false
+#| results: "hidden"
+using QuizQuestions, SymPy
+nothing
+```
+
+:::{#exr-integrales-propuesto-1}
+Calcular la suma superior de Riemann de la función $f(x)=\sqrt{\ln(x)}$ en el intervalo $[1,2]$, tomando una partición de 100 subinvervalos de igual amplitud.
+
+
+```{julia}
+#| hold: true
+#| echo: false
+f(x) = sqrt(log(x))
+Δx = 1/100
+areas_sup = [f(1+i*Δx)*Δx for i = 1:100]
+sol = sum(areas_sup)
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-integrales-propuesto-2}
+Calcular el area encerrada entre las funciones $f(x)=\operatorname{sin}(x)$ y $\cos(x)$ en el intervalo $[0,2\pi]$.
+
+```{julia}
+#| hold: true
+#| echo: false
+@syms x::real
+f(x) = sin(x)
+g(x) = cos(x)
+sol = N(integrate(abs(f(x)-g(x)), (x, 0, 2pi)))
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-integrales-propuesto-3}
+Dibujar la gráfica de la función $f(x)=\dfrac{1}{\sqrt{2\pi}}e^{\frac{-x^2}{2}}$ y calcular el área total encerrada entre la gráfica y el eje $x$.
+
+```{julia}
+#| hold: true
+#| echo: false
+using QuadGK
+@syms x::real
+f(x) = exp(-1/2 * x^2)/sqrt(2*pi)
+sol = N(integrate(f(x), (x, -oo, oo)))
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-integrales-propuesto-4}
+Calcular el área encerrada entre las curvas polares $f(\theta)=2\operatorname{sen}(3\theta)$ y $g(\theta)=1$.
+
+```{julia}
+#| hold: true
+#| echo: false
+@syms θ::real
+f(θ) = 2sin(3θ)
+g(θ) = Sym(1)
+a, b = solve(f(θ)-g(θ))
+sol = N(3 * (integrate(f(θ)^2/2, (θ, a, b)) - integrate(g(θ)^2/2, (θ, a, b))))
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-integrales-propuesto-4}
+La función $T(t)=100te^{-t}$ define la temperatura de un sistema en cada instante $t$. Calcular la temperatura media en el intervalo $[0,5]$.
+
+```{julia}
+#| hold: true
+#| echo: false
+@syms t::real
+T(t) = 100t*exp(-t)
+sol = N(1/5 * integrate(T(t), (x, 0, 5)))
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-integrales-propuesto-5}
+Calcular el volumen del sólido de revolución generado por la rotación al rededor del eje $x$ de la región comprendida entre las funciones $f(x)=\ln(x)$ y $g(x)=\frac{x-1}{2}$.
+
+```{julia}
+#| hold: true
+#| echo: false
+@syms x::real
+f(x) = log(x)
+g(x) = (x-1)/2
+a, b = solve(f(x)-g(x))
+sol = N(integrate(PI*(f(x)-g(x))^2, (x, a, b)))
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+
+Calcular también el volumen del sólido de revolución generado al rotar la misma región alrededor del eje $y$.
+
+```{julia}
+#| hold: true
+#| echo: false
+sol = N(integrate(2PI*x*(f(x)-g(x)), (x, a, b)))
+numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-integrales-propuesto-6}
+La curva $y=a\cosh(x/a)$ se conoce como _catenaria_. ¿Cuál es la longitud de la catenaria con $a=2$ entre $-1$ y $1$?
+
+```{julia}
+#| hold: true
+#| echo: false
+@syms x::real
+c(x) = 2cosh(x/2)
+sol = quadgk(sqrt(1+diff(c(x))^2), -1, 1)
+numericq(sol[1], 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-integrales-propuesto-7}
+Un depósito metálico tiene la forma del elipsoide que se obtiene al rotar la elipse $\frac{x^2}{4}+y^2=1$ alrededor del eje $x$. Calcular la cantidad de chapa metálica necesaria para construir el depósito.
+
+```{julia}
+#| hold: true
+#| echo: false
+using SymPy, QuadGK
+@syms x::real
+f(x) = sqrt(1-x^2/4)
+sol = quadgk(2PI*f(x)*sqrt(1+diff(f(x))^2), -2, 2)
+numericq(N(sol[1]), 1e-5, hint="Introducir hasta 5 decimales")
+```
+:::
+
+:::{#exr-integrales-propuesto-8}
+La función de densidad del modelo de distribución de probabilidad exponencial $\mbox{Exp}(1)$ es 
+
+$$
+f(x)=
+\begin{cases}
+0 & \mbox{si $x<0$}\\
+e^{-x} & \mbox{si $x\geq 0$}
+\end{cases}
+$$
+
+¿Cuál de las siguientes afirmaciones es cierta?
+
+```{julia}
+#| hold: true
+#| echo: false
+choices = ("La media es mayor que la mediana.", "La media es igual que la mediana", "La media es menor que la mediana")
+answer = 3
+radioq(choices, answer)
+```
+:::

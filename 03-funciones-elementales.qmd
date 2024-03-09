@@ -1,7 +1,7 @@
 ---
 title: Funciones elementales
 lang: es
-#jupyter: julia-1.9
+#jupyter: julia-1.10
 ---
 
 ## Ejercicios Resueltos
@@ -119,7 +119,7 @@ Para dibujar la gráfica de la función, usar la función [lines!](https://apren
 
 ## Makie
 ```{julia}
-using Makie, SymPy
+using GLMakie, SymPy
 @syms t  #Declaramos t como una variable simbólica
 y₀ = 5
 v₀ = 10
@@ -184,8 +184,8 @@ Plots.plot!(y1, label="Ascensor")
 
 ## Makie
 ```{julia}
-sol = N(solve(y0(t)-y1(t)))
-Makie.scatter!(ax, sol, y1.(sol), label="Intersección")
+sol = float(solve(y0(t)-y1(t)))
+Makie.scatter!(ax, sol, y1.(sol), color = :red, label="Intersección")
 fig
 ```
 

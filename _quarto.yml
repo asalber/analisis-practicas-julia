@@ -43,8 +43,8 @@ book:
     - 03-funciones-elementales.qmd
     - 04-limites.qmd
     - 05-derivadas.qmd
-    - 06-series.qmd
-    - 07-integrales.qmd
+    - 06-integrales.qmd
+    - 07-series.qmd
     - 08-funciones-vectoriales.qmd
     - 09-derivadas-funciones-varias-variables.qmd
     - 10-integrales-funciones-varias-variables.qmd
