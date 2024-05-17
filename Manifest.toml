@@ -2,7 +2,7 @@
 
 julia_version = "1.10.2"
 manifest_format = "2.0"
-project_hash = "d5b0930eb5b2e605605936c32865c67b393aed4e"
+project_hash = "1bd775519c47e4ce2fe65635b10e37f4a69c4f01"
 
 [[deps.ADTypes]]
 git-tree-sha1 = "41c37aa88889c171f1300ceac1313c06e891d245"
@@ -132,6 +132,11 @@ version = "0.4.7"
 
 [[deps.Base64]]
 uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
+
+[[deps.Bessels]]
+git-tree-sha1 = "4435559dc39793d53a9e3d278e185e920b4619ef"
+uuid = "0e736298-9ec6-45e8-9647-e4fc86a2fe38"
+version = "0.2.8"
 
 [[deps.BitFlags]]
 git-tree-sha1 = "2dc09997850d68179b69dafb58ae806167a32b1b"
@@ -1764,9 +1769,9 @@ version = "2.9.4"
 
 [[deps.QuizQuestions]]
 deps = ["Base64", "Markdown", "Mustache", "Random"]
-git-tree-sha1 = "abe7fe1e2e2c3ac1d432eeb81334cc460d2eccdc"
+git-tree-sha1 = "6b0963a6bc20ba9c7806d4e7e5ff6cd3b406ba62"
 uuid = "612c44de-1021-4a21-84fb-7261cf5eb2d4"
-version = "0.3.21"
+version = "0.3.23"
 
 [[deps.REPL]]
 deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]

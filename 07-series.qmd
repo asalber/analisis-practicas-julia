@@ -11,7 +11,7 @@ Para la realización de esta práctica se requieren los siguientes paquetes:
 ```{julia}
 using SymPy  # Para el cálculo simbólico de límites.
 using Plots  # Para el dibujo de gráficas.
-#plotlyjs()  # Para obtener gráficos interactivos.
+using Makie # Para obtener gráficos interactivos.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 using Bessels  # Para definir funciones de Bessel.
 ```
@@ -34,39 +34,48 @@ a.  Calcular los 50 primeras sumas parciales de la serie.
     :::
 
     :::{.callout-tip collapse="true"}
+    ## Solución
+    :::{.panel-tabset}
     ## Solución 1
-    ```{julia}
-    N = 50
-    a(n) = 1/2^n
-    an = [a(n) for n = 1:N]
-    An = cumsum(an)
-    ```
-    :::
 
-    :::{.callout-tip collapse="true"}
+    ```{julia}
+    a(n) = 1/2^n
+    an = [a(n) for n = 1:50]
+    cumsum(an)    
+    ```
+    
     ## Solución 2
     ```{julia}
-    N = 50
     a(n) = 1/2^n
     A(n) = sum(a, 1:n)
-    An = [A(n) for n = 1:N]
+    An = [A(n) for n = 1:50]
     ```
     :::
+    :::
 
-a.  Dibujar en una gráfica las 50 primeras sumas parciales de la serie.
+a.  Dibujar en una gráfica las primeras sumas parciales de la serie.
 
     :::{.callout-note collapse="true"}
     ## Ayuda
-    Definir una función para el término general y aplicar la función a los naturales de 1 a 100 usando compresiones de arrays como en el ejercicio anterior y usar la función `cumsum` para calcular las sumas parciales.
-    Después usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` para dibujar el array de las sumas parciales.
+    Definir una función para el término general y aplicar la función a los naturales de 1 a 50 usando compresiones de arrays como en el ejercicio anterior y usar la función `cumsum` para calcular las sumas parciales.
+    Después usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots`, o bien la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-puntos) del paquete `Makie`,  para dibujar el array de las sumas parciales.
     :::
 
     :::{.callout-tip collapse="true"}
     ## Solución
+    :::{.panel-tabset}
+    ## Plots
     ```{julia}
     using Plots, LaTeXStrings
-    scatter(An, legend=false)
+    Plots.scatter(An, legend=false)
     ```
+
+    ## Makie
+    ```{julia}
+    using GLMakie
+    Makie.scatter(An)
+    ```
+    :::
     :::
 
 a.  ¿Es cierto que el corredor nunca llegará a la meta?
@@ -86,13 +95,12 @@ Para que no se desborde cálculo del factorial deben usarse enteros de la clase 
 :::
 
 :::{.callout-tip collapse="true"}
-## Solución 1
+## Solución
 ```{julia}
-N = 50
 a(n) = 1/factorial(big(n))
-an = [a(n) for n = 0:N]
+an = [a(n) for n = 0:50]
 An = cumsum(an)
-decimales = round(abs(log10(abs(ℯ-An[N]))))
+decimales = round(abs(log10(abs(ℯ-last(An)))))
 println(An)
 println("Cifras del número e correctas: $decimales")
 ```
@@ -105,34 +113,79 @@ Dibujar una gráfica con los 10 primeros términos de las series geométricas $\
 :::{.callout-tip collapse="true"}
 ## Solución
 
-```{julia}
-using Plots, LaTeXStrings
-an = [(-2)^n for n = 0:9]
-scatter(0:9, cumsum(an), label=L"$\sum (-2)^n$")
-```
+a.  $r=-2$.
 
-La serie diverge.
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots, LaTeXStrings
+    an = [(-2)^n for n = 0:9]
+    Plots.scatter(0:9, cumsum(an), label=L"$\sum (-2)^n$")
+    ```
 
-```{julia}
-bn = [(-1/2)^n for n = 1:9]
-scatter(0:9, cumsum(bn), label=L"$\sum (-1/2)^n$")
-```
+    ## Makie
+    ```{julia}
+    using GLMakie
+    an = [(-2)^n for n = 0:9]
+    Makie.scatter(0:9, cumsum(an))
+    ```
+    :::
 
-La serie converge.
+    La serie diverge.
 
-```{julia}
-cn = [(1/2)^n for n = 0:9]
-scatter(0:9, cumsum(cn), label=L"$\sum (1/2)^n$")
-```
+a.  $r=-1/2$.
 
-La serie converge.
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    bn = [(-1/2)^n for n = 0:9]
+    Plots.scatter(0:9, cumsum(bn), label=L"$\sum (-1/2)^n$")
+    ```
 
-```{julia}
-dn = [2^n for n = 0:9]
-scatter(0:9, cumsum(dn), label=L"$\sum 2^n$")
-```
+    ## Makie
+    ```{julia}e
+    bn = [(-1/2)^n for n = 0:9]
+    Makie.scatter(0:9, cumsum(bn))
+    ```
+    :::
 
-La serie diverge.
+    La serie converge.
+
+a.  $r=1/2$.
+
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    cn = [(1/2)^n for n = 0:9]
+    Plots.scatter(0:9, cumsum(cn), label=L"$\sum (1/2)^n$")
+    ```
+
+    ## Makie
+    ```{julia}
+    cn = [(1/2)^n for n = 0:9]
+    Makie.scatter(0:9, cumsum(cn))
+    ```
+    :::
+
+    La serie converge.
+
+a.  $r=2$.
+
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    dn = [2^n for n = 0:9]
+    Plots.scatter(0:9, cumsum(dn), label=L"$\sum 2^n$")
+    ```
+
+    ## Makie
+    ```{julia}
+    dn = [2^n for n = 0:9]
+    Makie.scatter(0:9, cumsum(dn))
+    ```
+    :::
+
+    La serie diverge.
 
 Se puede concluir que la serie converge para $|r|<1$.
 :::
@@ -149,13 +202,13 @@ Dibujar en la misma gráfica los 100 primeros términos de las series $\sum \fra
 using Plots, LaTeXStrings
 a(n,p) = 1/n^p
 an = [a(n,1/2) for n = 1:100]
-scatter(cumsum(an), label=L"$\sum \frac{1}{p^{1/2}}$", legend=:topleft)
+Plots.scatter(cumsum(an), label=L"$\sum \frac{1}{p^{1/2}}$", legend=:topleft)
 bn = [a(n,1) for n = 1:100]
-scatter!(cumsum(bn), label=L"$\sum \frac{1}{p}$")
+Plots.scatter!(cumsum(bn), label=L"$\sum \frac{1}{p}$")
 cn = [a(n,3/2) for n = 1:100]
-scatter!(cumsum(cn), label=L"$\sum \frac{1}{p^{3/2}}$")
+Plots.scatter!(cumsum(cn), label=L"$\sum \frac{1}{p^{3/2}}$")
 dn = [a(n,2) for n = 1:100]
-scatter!(cumsum(dn), label=L"$\sum \frac{1}{p^2}$")
+Plots.scatter!(cumsum(dn), label=L"$\sum \frac{1}{p^2}$")
 ```
 
 Se puede concluir que la serie converge para $p>1$.
@@ -204,6 +257,27 @@ a.  $\sum \frac{(-1)^n\ln(n)}{n^2}$
     :::
 :::
 
+:::{#exr-aproximación-suma-series}
+Usar las sumas parciales hasta orden 100 de las siguientes series para calcular de manera aproximada el valor de $\pi$. ¿Qué serie converge más rápidamente?
+
+a.  $\sum \frac{1}{n^2}$
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms x::real
+    a(n) = 1/n^2
+    An = cumsum([a(i) for i=1:100])
+    n = [10*i for i = 1:10]
+    for i in n
+        error = float(integrate(a(x), (x, i, oo)) - integrate(a(x), (x, i+1, oo))) 
+        println("Aproximación de π con $i términos: $(sqrt(6*An[i])), error: $error")
+    end
+    ```
+    :::
+:::
+
 :::{#exr-serie-maclaurin}
 Calcular hasta la suma funcional parcial de orden $9$ de la serie de Maclaurin para la función $\operatorname{arctg}(x)$. Deducir el término general de la serie y estudiar su radio de convergencia. 
 
@@ -221,7 +295,7 @@ Para calcular el radio de convergencia utilizar el [criterio de la razón](https
 ```{julia}
 using SymPy
 @syms x::real
-p(n) = series(atan(x), x, 0, n+1).removeO()
+p(n) = SymPy.series(atan(x), x, 0, n+1).removeO()
 for i = 1:5
     println("Suma funcional parcial de grado $(2i-1): $(p(2i-1))")
 end
@@ -293,8 +367,8 @@ a.  Dibujar en una misma gráfica la suma funcional parcial de orden 10 de la se
     N = 10
     an = [a(x,n) for n=0:N]
     An = sum(an)
-    plot(An, -8, 8,  ylims = (-1,1), label=L"$\sum_{n=0}^{10} (-1)^n\frac{x^{2n}}{2^{2n}(n!)^2}$")
-    plot!(besselj0, label = L"$J_0(x)$")
+    Plots.plot(An, -8, 8,  ylims = (-1,1), label=L"$\sum_{n=0}^{10} (-1)^n\frac{x^{2n}}{2^{2n}(n!)^2}$")
+    Plots.plot!(besselj0, label = L"$J_0(x)$")
     ```
     La serie converge para todo $\mathbb{R}$.
     :::
@@ -325,9 +399,9 @@ an = [a(t,n) for n=1:N]
 An = cumsum(an)
 plots = []  # Array para guardar las gráficas
 for i in An
-    push!(plots, plot(i, label=latexify(i), legend=:outertop))
+    push!(plots, Plots.plot(i, label=latexify(i), legend=:outertop))
 end
-plot(plots..., layout=(5,2), size=(800,1600))
+Plots.plot(plots..., layout=(5,2), size=(800,1600))
 ```
 
 Converge aproximadamente a la función de tipo _pulso_, que se anula en todo su dominio excepto en los puntos $x=2n\pi$ donde se produce discontinuidad de salto.
@@ -346,9 +420,9 @@ an = [a(t,n) for n=1:N]
 An = cumsum(an)
 plots = []  # Array para guardar las gráficas
 for i in An
-    push!(plots, plot(i, label=latexify(i), legend=:outertop))
+    push!(plots, Plots.plot(i, label=latexify(i), legend=:outertop))
 end
-plot(plots..., layout=(5,2), size=(800,1600))
+Plots.plot(plots..., layout=(5,2), size=(800,1600))
 ```
 
 Converge aproximadamente a la función de tipo _diente de sierra_ con periodo $2\pi$.
@@ -367,9 +441,9 @@ an = [a(t,n) for n=1:N]
 An = cumsum(an)
 plots = []  # Array para guardar las gráficas
 for i in An
-    push!(plots, plot(i, label=latexify(i), legend=:outertop))
+    push!(plots, Plots.plot(i, label=latexify(i), legend=:outertop))
 end
-plot(plots..., layout=(5,2), size=(800,1600))
+Plots.plot(plots..., layout=(5,2), size=(800,1600))
 ```
 
 Converge aproximadamente a la función 
@@ -486,11 +560,10 @@ using SymPy
 const R = 6371
 error = 0.01
 F(h) = m*g*R^2/(R+h)^2
-aprox = series(F(h), h, 0, 5).removeO()(h => 100) 
+aprox = SymPy.series(F(h), h, 0, 5).removeO()(h => 100) 
 sol = float(abs((F(100) - aprox)/F(100)))
 numericq(sol, 1e-20, hint="Introducir hasta 10 decimales")
 ```
-:::
 
 Aplicar el teorema de la serie alternada para dar una cota superior del error relativo cometido en la aproximación anterior.
 
@@ -523,18 +596,18 @@ d(t,n) = cos(n*t)/n
 N = 10
 an = [a(t,n) for n=1:N]
 An = cumsum(an)
-p1 = plot(An[N], legend=false)
+p1 = Plots.plot(An[N], legend=false)
 bn = [b(t,n) for n=1:N]
 Bn = cumsum(bn)
-p2 = plot(Bn[N], legend=false)
+p2 = Plots.plot(Bn[N], legend=false)
 cn = [c(t,n) for n=1:N]
 Cn = cumsum(cn)
-p3 = plot(Cn[N], legend=false)
+p3 = Plots.plot(Cn[N], legend=false)
 dn = [d(t,n) for n=1:N]
 Dn = cumsum(dn)
-p4 = plot(Dn[N], legend=false)
+p4 = Plots.plot(Dn[N], legend=false)
 l = @layout [a b; c d]
-plt = plot(p1, p2, p3, p4, layout=l)
+plt = Plots.plot(p1, p2, p3, p4, layout=l)
 imgfile = "img/series/graficas-series-fourier.png"
 savefig(plt, imgfile)
 hotspotq(imgfile, (0,1/2), (1/2, 1))
