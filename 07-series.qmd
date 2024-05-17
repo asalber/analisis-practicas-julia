@@ -258,9 +258,14 @@ a.  $\sum \frac{(-1)^n\ln(n)}{n^2}$
 :::
 
 :::{#exr-aproximación-suma-series}
-Usar las sumas parciales hasta orden 100 de las siguientes series para calcular de manera aproximada el valor de $\pi$. ¿Qué serie converge más rápidamente?
+Usar las sumas parciales de las siguientes series para calcular de manera aproximada el valor de $\pi$. ¿Hasta qué orden de la suma parcial es necesario llegar para obtener una error menor de $10^-4$? ¿Qué serie converge más rápidamente?
 
-a.  $\sum \frac{1}{n^2}$
+a.  $\sum_{n=1}^\infty \frac{1}{n^2}$
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Usar el hecho de que $\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$.
+    :::
 
     :::{.callout-tip collapse="true"}
     ## Solución
@@ -268,12 +273,34 @@ a.  $\sum \frac{1}{n^2}$
     using SymPy
     @syms x::real
     a(n) = 1/n^2
-    An = cumsum([a(i) for i=1:100])
-    n = [10*i for i = 1:10]
-    for i in n
-        error = float(integrate(a(x), (x, i, oo)) - integrate(a(x), (x, i+1, oo))) 
-        println("Aproximación de π con $i términos: $(sqrt(6*An[i])), error: $error")
+    error = 10^-4
+    i = 1
+    while integrate(a(x), (x, i, oo)) > error
+        i += 1
     end
+    println("Suma parcial de orden $i: $(sqrt(6*sum(a, 1:i)))")
+    ```
+    :::
+
+a.  $\sum_{n=0}^\infty \frac{(-1)^n}{2n+1}$
+
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Usar el hecho de que la suma de la serie de Leibniz es $\sum_{n=0}^\infty \frac{(-1)^n}{2n+1} = \frac{\pi}{4}$.
+    :::
+
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms x::real
+    a(n) = (-1)^n/(2n+1)    
+    error = 10^-4
+    i = 0
+    while abs(a(i)) > error
+        i += 1
+    end
+    println("Suma parcial de orden $i: $(4*sum(a, 0:i))")
     ```
     :::
 :::
