@@ -232,7 +232,7 @@ a.  $\sum \frac{(-1)^n}{n!}$
     error = 10^-10
     a(n) = (-1)^n/factorial(n)
     i = 0
-    while abs(a(i)) >= error
+    while abs(a(i)) > error
         i += 1
     end
     println("Suma parcial de orden $i")
@@ -248,7 +248,7 @@ a.  $\sum \frac{(-1)^n\ln(n)}{n^2}$
     error = 10^-10
     a(n) = (-1)^n*log(n)/n^2
     i = 2
-    while abs(a(i)) >= error
+    while abs(a(i)) > error
         i += 1
     end
     println("Suma parcial de orden $i")
@@ -258,13 +258,13 @@ a.  $\sum \frac{(-1)^n\ln(n)}{n^2}$
 :::
 
 :::{#exr-aproximación-suma-series}
-Usar las sumas parciales de las siguientes series para calcular de manera aproximada el valor de $\pi$. ¿Hasta qué orden de la suma parcial es necesario llegar para obtener una error menor de $10^-4$? ¿Qué serie converge más rápidamente?
+Usar las sumas parciales de las siguientes series para calcular de manera aproximada el valor de $\pi$. ¿Hasta qué orden de la suma parcial es necesario llegar para obtener una error menor de $10^{-4}$? ¿Qué serie converge más rápidamente?
 
 a.  $\sum_{n=1}^\infty \frac{1}{n^2}$
 
     :::{.callout-note collapse="true"}
     ## Ayuda
-    Usar el hecho de que $\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$.
+    Usar el hecho de que la suma de la [serie de Basilea](https://es.wikipedia.org/wiki/Problema_de_Basilea) es $\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$.
     :::
 
     :::{.callout-tip collapse="true"}
@@ -286,7 +286,7 @@ a.  $\sum_{n=0}^\infty \frac{(-1)^n}{2n+1}$
 
     :::{.callout-note collapse="true"}
     ## Ayuda
-    Usar el hecho de que la suma de la serie de Leibniz es $\sum_{n=0}^\infty \frac{(-1)^n}{2n+1} = \frac{\pi}{4}$.
+    Usar el hecho de que la suma de la [serie de Leibniz](https://es.wikipedia.org/wiki/Serie_de_Leibniz) es $\sum_{n=0}^\infty \frac{(-1)^n}{2n+1} = \frac{\pi}{4}$.
     :::
 
     :::{.callout-tip collapse="true"}
