@@ -954,7 +954,7 @@ La función $T(t)=100te^{-t}$ define la temperatura de un sistema en cada instan
 #| echo: false
 @syms t::real
 T(t) = 100t*exp(-t)
-sol = N(1/5 * integrate(T(t), (x, 0, 5)))
+sol = N(1/5 * integrate(T(t), (t, 0, 5)))
 numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 :::
