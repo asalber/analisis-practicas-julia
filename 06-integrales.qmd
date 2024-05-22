@@ -969,7 +969,7 @@ Calcular el volumen del sólido de revolución generado por la rotación al rede
 f(x) = log(x)
 g(x) = (x-1)/2
 a, b = solve(f(x)-g(x))
-sol = N(integrate(PI*(f(x)-g(x))^2, (x, a, b)))
+sol = N(integrate(PI*(f(x)^2-g(x)^2), (x, a, b)))
 numericq(sol, 1e-5, hint="Introducir hasta 5 decimales")
 ```
 
@@ -1027,7 +1027,7 @@ $$
 #| hold: true
 #| echo: false
 choices = ("La media es mayor que la mediana.", "La media es igual que la mediana", "La media es menor que la mediana")
-answer = 3
+answer = 1
 radioq(choices, answer)
 ```
 :::
