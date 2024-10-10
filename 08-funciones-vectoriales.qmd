@@ -8,14 +8,13 @@ lang: es
 
 Para la realización de esta práctica se requieren los siguientes paquetes:
 
-```{julia}
+```julia
 using SymPy  # Para el cálculo simbólico.
 using Plots  # Para el dibujo de gráficas.
 using Makie, GLMakie # Para el dibújo de gráficas en 3d.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 using LinearAlgebra # Para el módulo, producto escalar y vectorial de vectores.
 using Roots # Para calcular soluciones de ecuaciones numéricamente.
-using CalculusWithJulia # Utilidades para dibujar vectores.
 ```
 
 :::{#exr-vectores}
@@ -23,26 +22,46 @@ Representar gráficamente los vectores $\mathbf{u}=(3,1)$, $\mathbf{v}=(1,2)$ y 
 
 :::{.callout-note collapse="true"}
 ## Ayuda
-Usar la función [`arrow`](https://docs.juliahub.com/CalculusWithJulia/AZHbv/0.1.2/#CalculusWithJulia.arrow-Tuple) del paquete `CalculusWithJulia` para dibujar flechas que representan vectores.
+Usar la función [`plot`](https://aprendeconalf.es/manual-julia/graficos.html#gr%C3%A1fica-de-una-funci%C3%B3n-de-una-variable) del paquete `Plots`, añadiendo el parámetro `arrow = true` para dibujar flechas que representan vectores.
+También se puede usar la función [`arrows!`](https://docs.makie.org/stable/reference/plots/arrows) del paquete `Makie` para dibujar flechas.
 :::
 
 :::{.callout-tip collapse="true"}
 ## Solución
 
+:::{.panel-tabset}
+
+## Plots
 ```{julia}
-using CalculusWithJulia
+using Plots
 using LaTeXStrings
-O = [0, 0] # Origin
-u = [3, 1]
-v = [1, 2]
-Plots.plot()
-arrow!(O, u)
-arrow!(O, v)
-arrow!(v, u-v)
+Plots.plot([0, 3], [0, 1], arrow = true, linewidth = 2, legend = false)
 annotate!(1.5, 0.4, L"$\mathbf{u}$")
+Plots.plot!([0, 1], [0, 2], arrow = true, linewidth = 2)
 annotate!(0.4, 1, L"$\mathbf{v}$")
+Plots.plot!([3, 1], [1, 2], arrow = true, linewidth = 2)
 annotate!(2.1, 1.6, L"$\mathbf{u}-\mathbf{v}$")
 ```
+
+## Makie
+
+```{julia}
+using GLMakie
+using LaTeXStrings
+o = Point2(0, 0)
+u = Vec2(3, 1)
+v = Vec2(1, 2)
+fig = Figure()
+ax = Axis(fig[1,1])
+arrows!(ax, [o], [u], color = :blue)
+text!(ax, 1.5, 0.4, text = L"$\mathbf{u}$")
+arrows!(ax, [o], [v], color = :red)
+text!(ax, 0.4, 1, text = L"$\mathbf{v}$")
+arrows!(ax, [o+v], [u-v], color = :green)
+text!(ax, 2.1, 1.6, text = L"$\mathbf{u}-\mathbf{v}$")
+fig
+```
+:::
 :::
 :::
 
@@ -112,12 +131,11 @@ a.  Dibujar $\mathbf{u}$, $\mathbf{v}$ y $\mathbf{u}\times\mathbf{v}$ en el espa
     ## Plots
 
     ```{julia}
-    using CalculusWithJulia
-    Plots.plot(xlabel = "X", ylabel = "Y", zlabel = "Z", legend = false)
-    O = [0, 0 ,0]
-    arrow!(O, u)
-    arrow!(O, v)
-    arrow!(O, u × v)
+    using Plots
+    uv = u × v
+    Plots.plot([0, u[1]], [0, u[2]], [0, u[3]], arrow = true, linewidth = 2, xlabel = "X", ylabel = "Y", zlabel = "Z", legend = false)
+    Plots.plot!([0, v[1]], [0, v[2]], [0, v[3]], arrow = true, linewidth = 2)
+    Plots.plot!([0, uv[1]], [0, uv[2]], [0, uv[3]], arrow = true, linewidth = 2)
     ```
     
     ## Makie
@@ -154,10 +172,10 @@ a.  $f(t)=(\operatorname{sen}(t), \cos(t))$.
 
     ```{julia}
     using Plots
-    using CalculusWithJulia
     f(t) = [sin(t), cos(t)] 
     ts = range(0, 2pi, length = 200)
-    xs, ys = unzip(f.(ts))
+    xs = [f(t)[1] for t in ts]
+    ys = [f(t)[2] for t in ts]
     Plots.plot(xs, ys, aspect_ratio = :equal)
     ```
 
@@ -186,7 +204,9 @@ a.  $\mathbf{g}(t) = (\cos(t), \operatorname{sen}(t), t/4)$.
     ```{julia}
     g(t) = [cos(t), sin(t), t/4] 
     ts = range(0, 2pi, length = 200)
-    xs, ys, zs = unzip(g.(ts))
+    xs = [g(t)[1] for t in ts]
+    ys = [g(t)[2] for t in ts]
+    zs = [g(t)[3] for t in ts]
     Plots.plot(xs, ys, zs, aspect_ratio = :equal, xlabel = "X", ylabel = "Y", zlabel = "Z", label = "")
     ```
 
@@ -228,7 +248,7 @@ a.  Dibujar el nudo tórico  con $p=2$ y $q=3$.
     fig = Figure()
     ax = Axis3(fig[1,1], aspect = (3, 3, 1))
     # Dibujamos el toro.
-    Makie.surface!(ax, x1, y1, z1; colormap = :viridis, shading = false, transparency = true, alpha = 0.5)
+    Makie.surface!(ax, x1, y1, z1; colormap = :viridis, transparency = true, alpha = 0.5)
     # Definimos la función vectorial de nudo tórico.
     f(t) = [(2+cos(3t))cos(2t), (2+cos(3t))sin(2t), -sin(3t)] 
     # Generamos los puntos de la trayectoria del nudo tórico.
@@ -265,7 +285,7 @@ a.  Definir una función para crear nudos tóricos con parámetros `p` y `q` par
         y1 = [2sin(u) + sin(u) * cos(v) for u in U, v in V]
         z1 = [sin(v) for u in U, v in V]
         # Dibujamos el toro en los ejes.
-        Makie.surface!(ax, x1, y1, z1; colormap = :viridis, shading = false, transparency = true, alpha = alpha)
+        Makie.surface!(ax, x1, y1, z1; colormap = :viridis, transparency = true, alpha = alpha)
         # Definimos la función vectorial de nudo tórico.
         f(t) = [(2+cos(q*t))cos(p*t), (2+cos(q*t))sin(p*t), -sin(q*t)] 
         # Generamos los puntos de la trayectoria del nudo tórico.
@@ -750,8 +770,7 @@ a.  Determinar las componentes tangencial y normal del vector aceleración, para
 ## Ejercicios propuestos
 
 ```{julia}
-#| echo: false
-#| results: "hidden"
+#| include: false
 using QuizQuestions, SymPy
 nothing
 ```
