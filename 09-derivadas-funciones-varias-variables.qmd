@@ -1,7 +1,7 @@
 ---
 title: Derivadas de funciones de varias variables
 lang: es
-#jupyter: julia-1.10
+#jupyter: julia-1.11
 ---
 
 ## Ejercicios Resueltos
@@ -385,8 +385,7 @@ a.  Si un mosquito está en la posición $(1, 1, 1)$, ¿en qué dirección debe 
     using SymPy, LinearAlgebra
     @syms x y z
     f(x, y, z) = exp(-x-2y-3z)
-    ex = diff.(f(x, y, z), [x, y, z])
-    ∇f = lambdify(ex, (x, y, z))
+    ∇f = lambdify(diff.(f(x, y, z), [x, y, z]))
     println("Dirección de máximo decrecimiento : $(-∇f(1, 1, 1))")
     println("Tasa de variación en esa dirección: $(-norm(∇f(1, 1, 1)))")
     ```
@@ -437,8 +436,8 @@ Dibujamos primero la superficie.
 
 ```{julia}
 using SymPy, GLMakie
-f(x, y, z) = x + 2y - log(z) + 4
 @syms x y z
+f(x, y, z) = x + 2y - log(z) + 4
 f1 = lambdify(solve(f(x,y,z), z)[1])
 xs = range(-0.5, 0.5, 30)
 ys = range(-2.5, -1.5, 30)
@@ -452,12 +451,10 @@ fig
 Calculamos primero la ecuación de la recta normal.
 
 ```{julia}
-using SymPy
-ex = diff.(f(x, y, z), [x, y, z])
-∇f = lambdify(ex, (x, y, z))
-nl(t) = [0, -2, 1] + t*∇f(0, -2, 1) 
+∇f = lambdify(diff.(f(x, y, z), [x, y, z]), [x, y, z])
 @syms t
-println("Ecuación de la recta normal $(nl(t))")
+nl(t) = [0, -2, 1] + t * ∇f(0, -2, 1) 
+println("Ecuación de la recta normal: $(nl(t))")
 ```
 
 Y la dibujamos sobre la misma gráfica de la superficie.
@@ -480,7 +477,7 @@ println("Ecuación del plano tangente z = $(tp(x,y))")
 Y finalmente lo dibujamos en la misma gráfica de la superficie.
 
 ```{julia}
-Makie.surface!(ax, xs, ys, tp, colormap = ["red"], alpha = 0.5, transparency = true)
+Makie.surface!(ax, xs, ys, lambdify(tp(x,y)), colormap = ["red"], alpha = 0.5, transparency = true)
 fig
 ```
 :::

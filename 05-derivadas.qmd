@@ -1,7 +1,7 @@
 ---
 title: Derivadas de funciones reales
 lang: es
-#jupyter: julia-1.10
+#jupyter: julia-1.11
 ---
 
 ## Ejercicios Resueltos
@@ -417,12 +417,12 @@ a.  Dibujar la gráfica de la curva.
 
     :::{.callout-tip collapse="true"}
     ## Solución
-    ```{julia}
-    using ImplicitPlots, Plots, SymPy, LaTeXStrings, Latexify
-    @syms x::real y::real
-    f(x,y) = x^4 - 3x^2 + 2y^2
-    implicit_plot(f; xlims=(-3,3), ylims=(-1.5,1.5), label=L"x^4-3x^2+2y^2=0", legend=:topleft)
-    ```
+```{julia}
+using ImplicitPlots, Plots, SymPy, LaTeXStrings, Latexify
+@syms x::real y::real
+f(x,y) = x^4 - 3x^2 + 2y^2
+ImplicitPlots.implicit_plot(f; xlims=(-3,3), ylims=(-1.5,1.5), label=L"x^4-3x^2+2y^2=0", legend=:topleft)
+```
     :::
 
 a.  Calcular la tasa de variación de $y$ con respecto a $x$ en el punto $(1,1)$.

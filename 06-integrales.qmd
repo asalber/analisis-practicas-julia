@@ -1,7 +1,7 @@
 ---
 title: Integrales de funciones reales
 lang: es
-#jupyter: julia-1.10
+#jupyter: julia-1.11
 ---
 
 ## Ejercicios Resueltos
@@ -14,7 +14,6 @@ using QuadGK  # Para el cálculo numérico de integrales.
 using Plots  # Para el dibujo de gráficas.
 using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 using PrettyTables # Para formatear tablas.
-using CalculusWithJulia # Utilidades varias para cálculo.
 ```
 
 :::{#exr-sumas-riemann}
@@ -357,7 +356,7 @@ using Plots, SymPy, LaTeXStrings
 f(x) = -x^2+6x
 g(x) = x^2-2x
 # Calculamos primero los puntos de corte de la función.
-a, b = solve(f(x)-g(x))
+a, b = N.(solve(f(x)-g(x)))
 # Calculamos el área comprendida entre las dos funciones entre los puntos de corte.
 sol = integrate(f(x)-g(x), (x, a, b))
 ```
@@ -566,12 +565,12 @@ A continuación dibujamos el sólido de revolución parametrizado en 3D.
 ```{julia}
 using GLMakie
 # Generamos los valores de x y θ
-x = LinRange(0, 2pi, 100)
-θ = LinRange(0, 2pi, 100)
+u = range(0, 2pi, 100)
+θ = range(0, 2pi, 100)
 # Generamos los valores de X, Y y Z de la superficie de revolución.
-xs = [i for i in x, j in θ]
-ys = [f(i) * cos(j) for i in x, j in θ]
-zs = [f(i) * sin(j) for i in x, j in θ]
+xs = [i for i in u, j in θ]
+ys = [f(i) * cos(j) for i in u, j in θ]
+zs = [f(i) * sin(j) for i in u, j in θ]
 # Creamos la figura.
 fig = Figure()
 # Definimos los ejes.
@@ -585,14 +584,15 @@ fig
 ## Plots
 
 ```{julia}
-using CalculusWithJulia
-@syms x::real u::real v::real
-f(x) = sin(x)+2
-S(u, v) = (u, f(u)*cos(v), f(u)*sin(v))
-us = range(0, 2pi, length=100)
-vs = range(0, 2pi, length=100)
-ws = unzip(S.(us, vs'))
-Plots.surface(ws...)
+# Generamos los valores de x y θ
+u = range(0, 2pi, 100)
+θ = range(0, 2pi, 100)
+# Generamos los valores de X, Y y Z de la superficie de revolución.
+xs = [i for i in u, j in θ]
+ys = [f(i) * cos(j) for i in u, j in θ]
+zs = [f(i) * sin(j) for i in u, j in θ]
+# Dibujamos la superficie de revolución
+Plots.surface(xs, ys, zs)
 ```
 :::
 
@@ -843,9 +843,9 @@ Ahora calculamos el centroide de la región y lo dibujamos.
 
 ```{julia}
 # Coordenada x del centroide.
-cx = integrate(x*(f(x)-g(x)), (x, a, b)) / integrate(f(x)-g(x), (x, a, b))
+cx = N(integrate(x*(f(x)-g(x)), (x, a, b)) / integrate(f(x)-g(x), (x, a, b)))
 # Coordenada y del centroide
-cy = 1/2 * integrate(f(x)^2-g(x)^2, (x, a, b)) / integrate(f(x)-g(x), (x, a, b))
+cy = 1/2 * N(integrate(f(x)^2-g(x)^2, (x, a, b)) / integrate(f(x)-g(x), (x, a, b)))
 ```
 
 :::{.panel-tabset}
