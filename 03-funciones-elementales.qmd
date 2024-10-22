@@ -31,70 +31,70 @@ La siguiente tabla contiene el número de bacterias en un cultivo cada hora que 
 | 6 | 64 |
 | 7 | 128 |
 
-Dibujar una gráfica con la evolución del la población de bacterias.
+a.  Dibujar una gráfica con la evolución del la población de bacterias.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Definir los valores de las horas en un vector `x` y el número de bacterias en otro `y` y luego utilizar la función [`scater(x,y)`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Makie`, o [`scatter(x,y)`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` para dibujar una gráfica de puntos.
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Definir los valores de las horas en un vector `x` y el número de bacterias en otro `y` y luego utilizar la función [`scater(x,y)`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Makie`, o [`scatter(x,y)`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots` para dibujar una gráfica de puntos.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
+    :::{.callout-tip collapse="true"}
+    ## Solución
 
-:::{.panel-tabset}
+    :::{.panel-tabset}
 
-## Makie
-```{julia}
-using GLMakie
-horas = 0:7
-bacterias = [1, 2, 4, 8, 16, 32, 64, 128]
-fig = Figure()
-ax = Axis(fig[1,1], xlabel="Horas", ylabel="Bacterias", title="Evolución de la población de bacterias")
-Makie.scatter!(ax, horas, bacterias)
-fig
-```
+    ## Makie
+    ```{julia}
+    using GLMakie
+    horas = 0:7
+    bacterias = [1, 2, 4, 8, 16, 32, 64, 128]
+    fig = Figure()
+    ax = Axis(fig[1,1], xlabel="Horas", ylabel="Bacterias", title="Evolución de la población de bacterias")
+    Makie.scatter!(ax, horas, bacterias)
+    fig
+    ```
 
-## Plots
-```{julia}
-using Plots
-horas = 0:7
-bacterias = [1, 2, 4, 8, 16, 32, 64, 128]
-Plots.scatter(horas, bacterias, xlab="Horas", ylab="Bacterias", title="Evolución de la población de bacterias", legend=false)
-```
-:::
-:::
+    ## Plots
+    ```{julia}
+    using Plots
+    horas = 0:7
+    bacterias = [1, 2, 4, 8, 16, 32, 64, 128]
+    Plots.scatter(horas, bacterias, xlab="Horas", ylab="Bacterias", title="Evolución de la población de bacterias", legend=false)
+    ```
+    :::
+    :::
 
-¿Los pares dados en la tabla forman una función?
+a.  ¿Los pares dados en la tabla forman una función?
 
-:::{.callout-tip collapse="true"}
-## Solución
-Si, porque para cada hora hay a lo sumo un número de bacterias con el que se relaciona.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Si, porque para cada hora hay a lo sumo un número de bacterias con el que se relaciona.
+    :::
 
-¿Qué fórmula crees que explica la evolución del número de bacterias en función de las horas que pasan? Dibuja en la gráfica anterior la función con esa fórmula.
+a.  ¿Qué fórmula crees que explica la evolución del número de bacterias en función de las horas que pasan? Dibuja en la gráfica anterior la función con esa fórmula.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Para añadir una nueva gráfica a una anterior se añade un signo de exclamación `!` a la función de graficación. Para una gráfica de líneas, utilizar la función  [`lines!`](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-l%C3%ADneas) del paquete `Makie`, o [`plot!`](https://aprendeconalf.es/manual-julia/graficos.html#gr%C3%A1fica-de-una-funci%C3%B3n-de-una-variable) del paquete `Plots`, pasándole el nombre de la función si se ha definido previamente o la [definición anónima de la función](https://aprendeconalf.es/manual-julia/funciones.html#funciones-an%C3%B3nimas) 
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Para añadir una nueva gráfica a una anterior se añade un signo de exclamación `!` a la función de graficación. Para una gráfica de líneas, utilizar la función  [`lines!`](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-l%C3%ADneas) del paquete `Makie`, o [`plot!`](https://aprendeconalf.es/manual-julia/graficos.html#gr%C3%A1fica-de-una-funci%C3%B3n-de-una-variable) del paquete `Plots`, pasándole el nombre de la función si se ha definido previamente o la [definición anónima de la función](https://aprendeconalf.es/manual-julia/funciones.html#funciones-an%C3%B3nimas) 
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-:::{.panel-tabset}
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    :::{.panel-tabset}
 
-## Makie
-```{julia}
-Makie.lines!(ax, 0..7, x -> 2^x)
-fig
-```
+    ## Makie
+    ```{julia}
+    Makie.lines!(ax, 0..7, x -> 2^x)
+    fig
+    ```
 
-## Plots
-```{julia}
-using Plots
-Plots.plot!(x -> 2^x)
-```
-:::
-:::
+    ## Plots
+    ```{julia}
+    using Plots
+    Plots.plot!(x -> 2^x)
+    ```
+    :::
+    :::
 :::
 
 :::{#exr-resolucion-grafica-ecuacion}
@@ -104,186 +104,190 @@ $$
 y(t) =  y_0+v_0t+\frac{1}{2}gt^2
 $$
 
-donde $y_0$ es la altura inicial del objeto, $v_0$ la velocidad inicial con que se lanza, y $g$ es la aceleración de la gravedad. Una pelota se lanza verticalmente desde la ventada de un edificio a 5 m de altura, con una velocidad inicial de $10$ m/s. Dibujar la gráfica de la posición de la pelota en función del tiempo, tomando una aceleración de la gravedad $g=-9.8$ m/s².
+donde $y_0$ es la altura inicial del objeto, $v_0$ la velocidad inicial con que se lanza, y $g$ es la aceleración de la gravedad. Una pelota se lanza verticalmente desde la ventada de un edificio a 5 m de altura, con una velocidad inicial de $10$ m/s. 
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Declarar $t$ como una variable simbólica usando el paquete [`SymPy`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#Symbols-1), definir después las constantes $y_0$, $v_0$ y $g$, y luego definir la función $y(t)$ mediante la fórmula dada.
+a.  Dibujar la gráfica de la posición de la pelota en función del tiempo, tomando una aceleración de la gravedad $g=-9.8$ m/s².
 
-Para dibujar la gráfica de la función, usar la función [lines!](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-l%C3%ADneas) del paquete `Makie` o la función `plot` del paquete `Plots`, pasándole el nombre de la función. Como no tienen sentido los instantes negativos, ni las posiciones negativas, restringir la ventana de graficación a valores de $t$ y de $y$ positivos usando los parámetros [`xlim`](https://aprendeconalf.es/manual-julia/graficos.html#ventana-de-graficaci%C3%B3n) e [`ylim`](https://aprendeconalf.es/manual-julia/graficos.html#ventana-de-graficaci%C3%B3n).
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Declarar $t$ como una variable simbólica usando el paquete [`SymPy`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#Symbols-1), definir después las constantes $y_0$, $v_0$ y $g$, y luego definir la función $y(t)$ mediante la fórmula dada.
 
-:::{.callout-tip collapse="true"}
-## Solución
-:::{.panel-tabset}
+    Para dibujar la gráfica de la función, usar la función [lines!](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-l%C3%ADneas) del paquete `Makie` o la función `plot` del paquete `Plots`, pasándole el nombre de la función. Como no tienen sentido los instantes negativos, ni las posiciones negativas, restringir la ventana de graficación a valores de $t$ y de $y$ positivos usando los parámetros [`xlim`](https://aprendeconalf.es/manual-julia/graficos.html#ventana-de-graficaci%C3%B3n) e [`ylim`](https://aprendeconalf.es/manual-julia/graficos.html#ventana-de-graficaci%C3%B3n).
+    :::
 
-## Makie
-```{julia}
-using GLMakie, SymPy
-@syms t  #Declaramos t como una variable simbólica
-y₀ = 5
-v₀ = 10
-const gravedad = -9.8  #Declaramos la gravedad como una constante
-y0(t) = y₀+v₀*t+ 1/2*gravedad*t^2
-fig = Figure()
-ax = Axis(fig[1,1], limits=(0, 3, 0, 15), xlabel="Tiempo (s)", ylabel="Altura (m)")
-Makie.lines!(ax, 0..3, y0, label="Pelota")
-fig
-```
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    :::{.panel-tabset}
 
-## Plots
+    ## Makie
+    ```{julia}
+    using GLMakie, SymPy
+    @syms t  #Declaramos t como una variable simbólica
+    y₀ = 5
+    v₀ = 10
+    const gravedad = -9.8  #Declaramos la gravedad como una constante
+    y0(t) = y₀+v₀*t+ 1/2*gravedad*t^2
+    fig = Figure()
+    ax = Axis(fig[1,1], limits=(0, 3, 0, 15), xlabel="Tiempo (s)", ylabel="Altura (m)")
+    Makie.lines!(ax, 0..3, y0, label="Pelota")
+    fig
+    ```
 
-```{julia}
-using Plots, SymPy
-@syms t  #Declaramos t como una variable simbólica
-y₀ = 5
-v₀ = 10
-const gravedad = -9.8  #Declaramos la gravedad como una constante
-y0(t) = y₀+v₀*t+ 1/2*gravedad*t^2
-Plots.plot(y0, xlims=(0,3), ylims=(0,15), label="Pelota", xlab="Tiempo (s)", ylab="Altura (m)")
-```
-:::
-:::
+    ## Plots
 
-Al mismo tiempo que se lanza la pelota, un ascensor exterior baja por la fachada del mismo edificio desde una altura de $8$ m con una velocidad constante de $2$ m/s. Dibujar la gráfica de la posición del ascensor junto a la gráfica de la pelota.
+    ```{julia}
+    using Plots, SymPy
+    @syms t  #Declaramos t como una variable simbólica
+    y₀ = 5
+    v₀ = 10
+    const gravedad = -9.8  #Declaramos la gravedad como una constante
+    y0(t) = y₀+v₀*t+ 1/2*gravedad*t^2
+    Plots.plot(y0, xlims=(0,3), ylims=(0,15), label="Pelota", xlab="Tiempo (s)", ylab="Altura (m)")
+    ```
+    :::
+    :::
 
-:::{.callout-note collapse="true"}
-## Ayuda
-La función que define la posición del ascensor que baja desde una altura $y_1$ con una velocidad constante $v_1$ en cada instante $t$ es $y(t) = y_1-v_1t$.
-:::
+a.  Al mismo tiempo que se lanza la pelota, un ascensor exterior baja por la fachada del mismo edificio desde una altura de $8$ m con una velocidad constante de $2$ m/s. Dibujar la gráfica de la posición del ascensor junto a la gráfica de la pelota.
 
-:::{.callout-tip collapse="true"}
-## Solución
-:::{.panel-tabset}
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    La función que define la posición del ascensor que baja desde una altura $y_1$ con una velocidad constante $v_1$ en cada instante $t$ es $y(t) = y_1-v_1t$.
+    :::
 
-## Makie
-```{julia}
-y₁ = 8
-v₁ = 2
-y1(t) = y₁-v₁*t
-Makie.lines!(ax, 0..3, y1, label="Ascensor")
-axislegend()
-fig
-```
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    :::{.panel-tabset}
 
-## Plots
-```{julia}
-y₁ = 8
-v₁ = 2
-y1(t) = y₁-v₁*t
-Plots.plot!(y1, label="Ascensor")
-```
-:::
-:::
+    ## Makie
+    ```{julia}
+    y₁ = 8
+    v₁ = 2
+    y1(t) = y₁-v₁*t
+    Makie.lines!(ax, 0..3, y1, label="Ascensor")
+    axislegend()
+    fig
+    ```
 
-¿En qué instantes el ascensor estará a la misma altura de la pelota? Dibujar los puntos correspondientes a esos instantes en la gráfica anterior.
+    ## Plots
+    ```{julia}
+    y₁ = 8
+    v₁ = 2
+    y1(t) = y₁-v₁*t
+    Plots.plot!(y1, label="Ascensor")
+    ```
+    :::
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-:::{.panel-tabset}
+a.  ¿En qué instantes el ascensor estará a la misma altura de la pelota? Dibujar los puntos correspondientes a esos instantes en la gráfica anterior.
 
-## Makie
-```{julia}
-sol = float(solve(y0(t)-y1(t)))
-Makie.scatter!(ax, sol, y1.(sol), color = :red, label="Intersección")
-fig
-```
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    :::{.panel-tabset}
 
-## Plots
-```{julia}
-sol = solve(y0(t)-y1(t))
-print("Instantes: ", sol)
-Plots.scatter!(sol, y1.(sol), label="Intersección")
-```
-:::
-:::
+    ## Makie
+    ```{julia}
+    sol = float(solve(y0(t)-y1(t)))
+    Makie.scatter!(ax, sol, y1.(sol), color = :red, label="Intersección")
+    fig
+    ```
+
+    ## Plots
+    ```{julia}
+    sol = solve(y0(t)-y1(t))
+    print("Instantes: ", sol)
+    Plots.scatter!(sol, y1.(sol), label="Intersección")
+    ```
+    :::
+    :::
 :::
 
 :::{#exr-grafica-funcion-polinomica}
-El volumen de un globo esférico depende del radio según la función $v(r)= \frac{4}{3}\pi r^3$. Calcular la función que expresa el radio en función del volumen y dibujar su gráfica.
+El volumen de un globo esférico depende del radio según la función $v(r)= \frac{4}{3}\pi r^3$. 
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Declarar las variables simbólicas `r` y `v` usando el paquete `SymPy` y definir la función `vol(r)` que expresa el volumen del globo en función del radio.
+a.  Calcular la función que expresa el radio en función del volumen y dibujar su gráfica.
 
-Después utilizar la función [`solve`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#The-solve-function-1) del paquete `SymPy` para despejar `r` de la ecuación `v-vol(r)=0`.
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Declarar las variables simbólicas `r` y `v` usando el paquete `SymPy` y definir la función `vol(r)` que expresa el volumen del globo en función del radio.
 
-:::{.callout-tip collapse="true"}
-## Solución
-:::{.panel-tabset}
+    Después utilizar la función [`solve`](https://docs.juliahub.com/SymPy/KzewI/1.0.29/introduction/#The-solve-function-1) del paquete `SymPy` para despejar `r` de la ecuación `v-vol(r)=0`.
+    :::
 
-## Makie
-```{julia}
-using GLMakie, SymPy
-@syms r v
-vol(r) = 4/3*pi*r^3
-rad = lambdify(solve(v-vol(r),r)[1])
-fig = Figure()
-ax = Axis(fig[1,1], xlabel="Volumen (m³)", ylabel="Radio (m)")
-Makie.lines!(ax, 0..10, rad)
-fig
-```
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    :::{.panel-tabset}
 
-## Plots
-```{julia}
-using Plots, SymPy
-@syms r v
-vol(r) = 4/3*pi*r^3
-rad2 = solve(v-vol(r),r)[1]
-Plots.plot(rad2, xlim=(0,10), xlab="Volumen (m³)", ylab="Radio (m)", legend=false)
-```
-:::
-:::
+    ## Makie
+    ```{julia}
+    using GLMakie, SymPy
+    @syms r v
+    vol(r) = 4/3*pi*r^3
+    rad = lambdify(solve(v-vol(r),r)[1])
+    fig = Figure()
+    ax = Axis(fig[1,1], xlabel="Volumen (m³)", ylabel="Radio (m)")
+    Makie.lines!(ax, 0..10, rad)
+    fig
+    ```
 
-Si empezamos a introducir helio en el globo de manera que su volumen a los $t$ minutos viene dado por la función $v(t)=t^2+2t$, dibujar la gráfica de la función que da el radio en cada instante.
+    ## Plots
+    ```{julia}
+    using Plots, SymPy
+    @syms r v
+    vol(r) = 4/3*pi*r^3
+    rad2 = solve(v-vol(r),r)[1]
+    Plots.plot(rad2, xlim=(0,10), xlab="Volumen (m³)", ylab="Radio (m)", legend=false)
+    ```
+    :::
+    :::
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Declarar las variables simbólicas `t` usando el paquete `SymPy` y definir la función `vol(t)` que expresa el volumen del globo en función del tiempo.
+a.  Si empezamos a introducir helio en el globo de manera que su volumen a los $t$ minutos viene dado por la función $v(t)=t^2+2t$, dibujar la gráfica de la función que da el radio en cada instante.
 
-Después utilizar a el operador de composición $\circ$ para componer la función del volumen con la función del radio.
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Declarar las variables simbólicas `t` usando el paquete `SymPy` y definir la función `vol(t)` que expresa el volumen del globo en función del tiempo.
 
-:::{.callout-tip collapse="true"}
-## Solución
-:::{.panel-tabset}
+    Después utilizar a el operador de composición $\circ$ para componer la función del volumen con la función del radio.
+    :::
 
-## Makie
-```{julia}
-using GLMakie
-vol(t)=t^2+2t
-fig = Figure()
-ax = Axis(fig[1,1], xlabel = "Tiempo (min)", ylabel = "Radio (m)")
-Makie.lines!(ax, 0..10, rad∘vol)
-fig
-```
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    :::{.panel-tabset}
 
-## Plots
-```{julia}
-using Plots, SymPy
-@syms t
-vol(t)=t^2+2t
-Plots.plot(rad2∘vol, xlim = (0,10), xlab = "Tiempo (min)", ylab = "Radio (m)", legend = false)
-```
-:::
-:::
+    ## Makie
+    ```{julia}
+    using GLMakie
+    vol(t)=t^2+2t
+    fig = Figure()
+    ax = Axis(fig[1,1], xlabel = "Tiempo (min)", ylabel = "Radio (m)")
+    Makie.lines!(ax, 0..10, rad∘vol)
+    fig
+    ```
 
-Si el globo explota cuando el radio alcanza los 3 m, ¿cuándo explotará el globo?
+    ## Plots
+    ```{julia}
+    using Plots, SymPy
+    @syms t
+    vol(t)=t^2+2t
+    Plots.plot(rad2∘vol, xlim = (0,10), xlab = "Tiempo (min)", ylab = "Radio (m)", legend = false)
+    ```
+    :::
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-sol = solve((rad∘vol)(t)-3)
-```
+a.  Si el globo explota cuando el radio alcanza los 3 m, ¿cuándo explotará el globo?
 
-```{julia}
-#| echo: false
-using Markdown
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    sol = solve((rad∘vol)(t)-3)
+    ```
 
-md"El globo explotará a los $(sol[2]) minutos."
-```
-:::
+    ```{julia}
+    #| echo: false
+    using Markdown
+
+    md"El globo explotará a los $(sol[2]) minutos."
+    ```
+    :::
 :::
 
 :::{#exr-grafica-funcion-polinomica}
@@ -324,74 +328,74 @@ Plots.plot(f, -3, 4, label=L"$f(x) = 2x^3-3x^2-12x+4$")
 :::
 :::
 
-a. Dominio
+a.  Dominio
 
-:::{.callout-tip collapse="true"}
-## Solución
-$\operatorname{Dom}(f)=\mathbb{R}$
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    $\operatorname{Dom}(f)=\mathbb{R}$
+    :::
 
-b. Imagen
+a.  Imagen
 
-:::{.callout-tip collapse="true"}
-## Solución
-$\operatorname{Im}(f)=\mathbb{R}$
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    $\operatorname{Im}(f)=\mathbb{R}$
+    :::
 
-c. Raíces
+a.  Raíces
 
-:::{.callout-tip collapse="true"}
-## Solución
+    :::{.callout-tip collapse="true"}
+    ## Solución
 
-```{julia}
-using SymPy
-@syms x
-f(x) = 2x^3-3x^2-12x+4
-raices = solve(f(x))  # Solución exacta
-print(raices)
-N(raices)  # Solución aproximada con decimales
-```
-Hay tres raíces en $x=-2$, $x=0.31$ y $x=3.19$ aproximadamente.
-:::
+    ```{julia}
+    using SymPy
+    @syms x
+    f(x) = 2x^3-3x^2-12x+4
+    raices = solve(f(x))  # Solución exacta
+    print(raices)
+    N(raices)  # Solución aproximada con decimales
+    ```
+    Hay tres raíces en $x=-2$, $x=0.31$ y $x=3.19$ aproximadamente.
+    :::
 
-d. Signo
+a.  Signo
 
-:::{.callout-tip collapse="true"}
-## Solución
-Intervalos con $f(x)$ negativa: $(-\infty, -2)\cup (0.31,3.19)$.  
-Intervalos con $f(x)$ positiva: $(-2,0.31)\cup (3.19,\infty)$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Intervalos con $f(x)$ negativa: $(-\infty, -2)\cup (0.31,3.19)$.  
+    Intervalos con $f(x)$ positiva: $(-2,0.31)\cup (3.19,\infty)$.
+    :::
 
-e. Crecimiento
+a.  Crecimiento
 
-:::{.callout-tip collapse="true"}
-## Solución
-Intervalos con $f(x)$ creciente: $(-\infty, -1)\cup (2,\infty)$.  
-Intervalos con $f(x)$ decreciente: $(-1,2)$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Intervalos con $f(x)$ creciente: $(-\infty, -1)\cup (2,\infty)$.  
+    Intervalos con $f(x)$ decreciente: $(-1,2)$.
+    :::
 
-f. Extremos
+a.  Extremos
 
-:::{.callout-tip collapse="true"}
-## Solución
-Máximo relativo en $x=-1$ y el valor máximo es $f(-1)=11$.  
-Mínimo relativo en $x=2$ y el valor del mínimo es $f(2)=-16$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Máximo relativo en $x=-1$ y el valor máximo es $f(-1)=11$.  
+    Mínimo relativo en $x=2$ y el valor del mínimo es $f(2)=-16$.
+    :::
 
-g. Concavidad
+a.  Concavidad
 
-:::{.callout-tip collapse="true"}
-## Solución
-Intervalos de concavidad hacia arriba: $(0.5,\infty)$.  
-Intervalos de concavidad hacia abajo: $(-\infty, 0.5)$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Intervalos de concavidad hacia arriba: $(0.5,\infty)$.  
+    Intervalos de concavidad hacia abajo: $(-\infty, 0.5)$.
+    :::
 
-h. Puntos de inflexión
+a.  Puntos de inflexión
 
-:::{.callout-tip collapse="true"}
-## Solución
-Punto de inflexión en $x=0.5$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Punto de inflexión en $x=0.5$.
+    :::
 :::
 
 :::{#exr-grafica-funcion-racional}
@@ -435,106 +439,105 @@ Plots.plot(rangeclamp(g), -8, 8, aspect_ratio=1.0, ylims=(-5,5) , xticks =Vector
 :::
 :::
 
-a. Dominio. ¿Qué pasa si aplicamos la función a algún valor fuera de su dominio?
+a.  Dominio. ¿Qué pasa si aplicamos la función a algún valor fuera de su dominio?
 
-:::{.callout-tip collapse="true"}
-## Solución
-$\operatorname{Dom}(f)=\mathbb{R}\setminus\{-1,1\}$
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    $\operatorname{Dom}(f)=\mathbb{R}\setminus\{-1,1\}$
 
-```{julia}
-g(-1), g(1)
-```
+    ```{julia}
+    g(-1), g(1)
+    ```
 
-Como se observa, al aplicar la función a $-1$ y $1$ se obtiene $\infty$.
-:::
+    Como se observa, al aplicar la función a $-1$ y $1$ se obtiene $\infty$.
+    :::
 
-b. Imagen
+a.  Imagen
 
-:::{.callout-tip collapse="true"}
-## Solución
-$\operatorname{Im}(f)=\mathbb{R}\setminus (0.5,1]$
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    $\operatorname{Im}(f)=\mathbb{R}\setminus (0.5,1]$
+    :::
 
-c. Asíntotas. Dibujarlas.
+a.  Asíntotas. Dibujarlas.
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Buscar las asíntotas verticales en los puntos fuera del dominio de la función.
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Buscar las asíntotas verticales en los puntos fuera del dominio de la función.
 
-Para dibujar asíntotas verticales usar la función
-[`vlines!`](https://docs.makie.org/stable/reference/plots/hvlines/index.html) del paquete `Makie`, o [`vline`](https://docs.juliaplots.org/latest/api/#Plots.vline-Tuple) del paquete `Plots`, y para dibujar las asíntotas horizontales usar la función [`hlines!`](https://docs.makie.org/stable/reference/plots/hvlines/index.html) del paquete `Makie`, o [`hline`](https://docs.juliaplots.org/latest/api/#Plots.hline-Tuple) del paquete `Plots`.
-:::
+    Para dibujar asíntotas verticales usar la función
+    [`vlines!`](https://docs.makie.org/stable/reference/plots/hvlines/index.html) del paquete `Makie`, o [`vline`](https://docs.juliaplots.org/latest/api/#Plots.vline-Tuple) del paquete `Plots`, y para dibujar las asíntotas horizontales usar la función [`hlines!`](https://docs.makie.org/stable/reference/plots/hvlines/index.html) del paquete `Makie`, o [`hline`](https://docs.juliaplots.org/latest/api/#Plots.hline-Tuple) del paquete `Plots`.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-:::{.panel-tabset}
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    :::{.panel-tabset}
 
-## Makie
+    ## Makie
 
-```{julia}
-av = Makie.vlines!(ax, [-1,1], color = :red)
-ah = Makie.hlines!([1], color = :green)
-axislegend(ax, [av, ah], ["Asíntotas verticales", "Asíntotas Horizontales"], position = :rb)
-fig
-```
+    ```{julia}
+    av = Makie.vlines!(ax, [-1,1], color = :red)
+    ah = Makie.hlines!([1], color = :green)
+    axislegend(ax, [av, ah], ["Asíntotas verticales", "Asíntotas Horizontales"], position = :rb)
+    fig
+    ```
 
-## Plots
-```{julia}
-Plots.vline!([-1,1], label="Asíntotas verticales")
-Plots.hline!([1], label="Asíntotas horizontales", legend=:bottomright)
-```
-Asíntotas verticales en $x=-1$ y $x=1$.  
-Asíntotas horizontales en $y=1$.  
-No hay asíntotas oblicuas.
-:::
-:::
+    ## Plots
+    ```{julia}
+    Plots.vline!([-1,1], label="Asíntotas verticales")
+    Plots.hline!([1], label="Asíntotas horizontales", legend=:bottomright)
+    ```
+    Asíntotas verticales en $x=-1$ y $x=1$.  
+    Asíntotas horizontales en $y=1$.  
+    No hay asíntotas oblicuas.
+    :::
+    :::
 
-d. Raíces
+a.  Raíces
 
-:::{.callout-tip collapse="true"}
-## Solución
-Hay dos raíces en $x=-0.5$ y $x=0.5$ aproximadamente.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Hay dos raíces en $x=-0.5$ y $x=0.5$ aproximadamente.
+    :::
 
-e. Signo
+a.  Signo
 
-:::{.callout-tip collapse="true"}
-## Solución
-Intervalos con $f(x)$ positiva: $(-\infty,-1)\cup (-0.5,0.5)\cup (1,\infty)$.  
-Intervalos con $f(x)$ negativa: $(-1,-0.5)\cup (0.5,1)$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Intervalos con $f(x)$ positiva: $(-\infty,-1)\cup (-0.5,0.5)\cup (1,\infty)$.  
+    Intervalos con $f(x)$ negativa: $(-1,-0.5)\cup (0.5,1)$.
+    :::
 
-e. Crecimiento
+a.  Crecimiento
 
-:::{.callout-tip collapse="true"}
-## Solución
-Intervalos con $f(x)$ creciente: $(-\infty, -1)\cup (-1,0)$.  
-Intervalos con $f(x)$ decreciente: $(0,1)\cup (1,\infty)$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Intervalos con $f(x)$ creciente: $(-\infty, -1)\cup (-1,0)$.  
+    Intervalos con $f(x)$ decreciente: $(0,1)\cup (1,\infty)$.
+    :::
 
-f. Extremos
+a.  Extremos
 
-:::{.callout-tip collapse="true"}
-## Solución
-Máximo relativo en $x=0$ y el valor máximo es $g(0)=0.5$.  
-No hay mínimos relativos.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Máximo relativo en $x=0$ y el valor máximo es $g(0)=0.5$.  
+    No hay mínimos relativos.
+    :::
 
-g. Concavidad
+a.  Concavidad
 
-:::{.callout-tip collapse="true"}
-## Solución
-Intervalos de concavidad hacia arriba: $(-\infty,-1)\cup (1,\infty)$.  
-Intervalos de concavidad hacia abajo: $(-1,1)$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Intervalos de concavidad hacia arriba: $(-\infty,-1)\cup (1,\infty)$.  
+    Intervalos de concavidad hacia abajo: $(-1,1)$.
+    :::
 
-h. Puntos de inflexión
+a.  Puntos de inflexión
 
-:::{.callout-tip collapse="true"}
-## Solución
-No hay puntos de inflexión.
-:::
-
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    No hay puntos de inflexión.
+    :::
 :::
 
 :::{#exr-funciones-exponenciales}
@@ -569,41 +572,40 @@ Plots.plot!(0.7^x, label=L"$2^x$")
 :::
 :::
 
-a. ¿Cuál es el dominio de una función exponencial?
+a.  ¿Cuál es el dominio de una función exponencial?
 
-:::{.callout-tip collapse="true"}
-## Solución
-$\mathbb{R}$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    $\mathbb{R}$.
+    :::
 
-b. ¿Cuál es la imagen de una función exponencial?
+a.  ¿Cuál es la imagen de una función exponencial?
 
-:::{.callout-tip collapse="true"}
-## Solución
-$\mathbb{R}^+$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    $\mathbb{R}^+$.
+    :::
 
-c. ¿Cómo es el crecimiento de una función exponencial?
+a.  ¿Cómo es el crecimiento de una función exponencial?
 
-:::{.callout-tip collapse="true"}
-## Solución
-$a^x$ es creciente si $a>1$ y decreciente si $0<a<1$.
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    $a^x$ es creciente si $a>1$ y decreciente si $0<a<1$.
+    :::
 
-d. ¿Tienen extremos una función exponencial?
+a.  ¿Tienen extremos una función exponencial?
 
-:::{.callout-tip collapse="true"}
-## Solución
-No
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    No
+    :::
 
-e. ¿Cómo es la curvatura de una función exponencial?
+a.  ¿Cómo es la curvatura de una función exponencial?
 
-:::{.callout-tip collapse="true"}
-## Solución
-Es cóncava hacia arriba.
-:::
-
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    Es cóncava hacia arriba.
+    :::
 :::
 
 :::{#exr-funciones-trigonométricas}

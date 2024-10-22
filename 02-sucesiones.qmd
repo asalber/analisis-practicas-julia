@@ -18,65 +18,65 @@ using LaTeXStrings  # Para usar código LaTeX en los gráficos.
 :::{#exr-sucesiones}
 Dar los 10 primeros términos de las siguientes sucesiones:
 
-a. $(2n+1)_{n=1}^\infty$
+a.  $(2n+1)_{n=1}^\infty$
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Definir una función para el término general y aplicar la función a los naturales de 1 a 10 usando [compresiones de arrays](https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html#comprensi%C3%B3n-de-arrays).
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Definir una función para el término general y aplicar la función a los naturales de 1 a 10 usando [compresiones de arrays](https://aprendeconalf.es/manual-julia/tipos-datos-compuestos.html#comprensi%C3%B3n-de-arrays).
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-a(n) = 2n + 1
-println([a(n) for n = 1:10])
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    a(n) = 2n + 1
+    println([a(n) for n = 1:10])
+    ```
+    :::
 
 
-b. $\left(\frac{1}{n}\right)_{n=1}^\infty$
+a.  $\left(\frac{1}{n}\right)_{n=1}^\infty$
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-# Como reales
-a(n) = 1 / n
-println([a(n) for n = 1:10])
-# Como racionales
-a(n) = 1//n
-println([a(n) for n = 1:10])
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    # Como reales
+    a(n) = 1 / n
+    println([a(n) for n = 1:10])
+    # Como racionales
+    a(n) = 1//n
+    println([a(n) for n = 1:10])
+    ```
+    :::
 
-c. $\left((-1)^n\right)_{n=1}^\infty$
+a.  $\left((-1)^n\right)_{n=1}^\infty$
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-a(n) = (-1)^n
-println([a(n) for n = 1:10])
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    a(n) = (-1)^n
+    println([a(n) for n = 1:10])
+    ```
+    :::
 
-d. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
+a.  $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-a(n) = (1 + 1 / n)^n
-println([a(n) for n = 1:10])
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    a(n) = (1 + 1 / n)^n
+    println([a(n) for n = 1:10])
+    ```
+    :::
 
-e. $a_1=1$ y $a_{n+1}=\sqrt{1+a_n}$ $\forall n\in\mathbb{N}$
+a.  $a_1=1$ y $a_{n+1}=\sqrt{1+a_n}$ $\forall n\in\mathbb{N}$
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-a(n) = n == 1 ? 1 : sqrt(1+a(n-1))
-println([a(n) for n = 1:10])
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    a(n) = n == 1 ? 1 : sqrt(1+a(n-1))
+    println([a(n) for n = 1:10])
+    ```
+    :::
 :::
 
 :::{#exr-limite-grafica-sucesiones}
@@ -87,178 +87,178 @@ Dibujar en una gráfica los 50 primeros términos de las siguientes sucesiones y
 Definir una función para el término general y aplicar la función a los naturales de 1 a 50 usando compresiones de arrays como en el ejercicio anterior. Después usar la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#a%C3%B1adir-puntos-a-una-gr%C3%A1fica) del paquete `Plots`, o bien la función [`scatter`](https://aprendeconalf.es/manual-julia/graficos.html#diagrama-de-puntos) del paquete `Makie`, para dibujar el array de términos.
 :::
 
-a. $\left(\frac{n}{4n+2}\right)_{n=1}^\infty$
+a.  $\left(\frac{n}{4n+2}\right)_{n=1}^\infty$
 
-:::{.callout-tip collapse="true"}
-## Solución 
+    :::{.callout-tip collapse="true"}
+    ## Solución 
 
-:::{.panel-tabset}
+    :::{.panel-tabset}
 
-## Plots
+    ## Plots
 
-```{julia}
-using Plots
-a(n) = n / (4n + 2)
-scatter([a(n) for n = 1:50], legend=false)
-```
+    ```{julia}
+    using Plots
+    a(n) = n / (4n + 2)
+    scatter([a(n) for n = 1:50], legend=false)
+    ```
 
-## Makie
+    ## Makie
 
-```{julia}
-using GLMakie
-a(n) = n / (4n + 2)
-Makie.scatter([a(n) for n = 1:50])
-```
-:::
+    ```{julia}
+    using GLMakie
+    a(n) = n / (4n + 2)
+    Makie.scatter([a(n) for n = 1:50])
+    ```
+    :::
 
-La sucesión converge al número $0.25$.
-:::
+    La sucesión converge al número $0.25$.
+    :::
 
-b. $\left(\frac{2^n}{n^2}\right)_{n=1}^\infty$
+a.  $\left(\frac{2^n}{n^2}\right)_{n=1}^\infty$
 
-:::{.callout-tip collapse="true"}
-## Solución
+    :::{.callout-tip collapse="true"}
+    ## Solución
 
-:::{.panel-tabset}
+    :::{.panel-tabset}
 
-## Plots
-```{julia}
-using Plots
-a(n) = 2^n / (4n + 2)
-scatter([a(n) for n = 1:50], legend=false)
-```
+    ## Plots
+    ```{julia}
+    using Plots
+    a(n) = 2^n / (4n + 2)
+    scatter([a(n) for n = 1:50], legend=false)
+    ```
 
-## Makie
+    ## Makie
 
-```{julia}
-using GLMakie
-a(n) = 2^n / (4n + 2)
-Makie.scatter([a(n) for n = 1:50])
-```
-:::
+    ```{julia}
+    using GLMakie
+    a(n) = 2^n / (4n + 2)
+    Makie.scatter([a(n) for n = 1:50])
+    ```
+    :::
 
-La sucesión diverge.
-:::
+    La sucesión diverge.
+    :::
 
-c. $\left(\frac{(-1)^n}{n}\right)_{n=1}^\infty$
+a.  $\left(\frac{(-1)^n}{n}\right)_{n=1}^\infty$
 
-:::{.callout-tip collapse="true"}
-## Solución
+    :::{.callout-tip collapse="true"}
+    ## Solución
 
-:::{.panel-tabset}
-## Plots
-```{julia}
-using Plots
-a(n) = (-1)^n / n
-scatter([a(n) for n = 1:50], legend=false)
-```
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    a(n) = (-1)^n / n
+    scatter([a(n) for n = 1:50], legend=false)
+    ```
 
-## Makie
+    ## Makie
 
-```{julia}
-using GLMakie
-a(n) = (-1)^n / n
-Makie.scatter([a(n) for n = 1:50])
-```
-:::
+    ```{julia}
+    using GLMakie
+    a(n) = (-1)^n / n
+    Makie.scatter([a(n) for n = 1:50])
+    ```
+    :::
 
-La sucesión converge al $0$.
-:::
+    La sucesión converge al $0$.
+    :::
 
-d. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
+a.  $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
 
-:::{.callout-tip collapse="true"}
-## Solución
+    :::{.callout-tip collapse="true"}
+    ## Solución
 
-:::{.panel-tabset}
-## Plots
+    :::{.panel-tabset}
+    ## Plots
 
-```{julia}
-using Plots
-a(n) = (1 + 1 / n)^n
-scatter([a(n) for n = 1:50], legend=false)
-```
+    ```{julia}
+    using Plots
+    a(n) = (1 + 1 / n)^n
+    scatter([a(n) for n = 1:50], legend=false)
+    ```
 
-## Makie
+    ## Makie
 
-```{julia}
-using GLMakie
-a(n) = (1 + 1 / n)^n
-Makie.scatter([a(n) for n = 1:50])
-```
-:::
+    ```{julia}
+    using GLMakie
+    a(n) = (1 + 1 / n)^n
+    Makie.scatter([a(n) for n = 1:50])
+    ```
+    :::
 
-La sucesión converge aproximadamente a $2.7$.
-:::
+    La sucesión converge aproximadamente a $2.7$.
+    :::
 
-e. $a_1 = 0.5$ y $a_{n+1}=\frac{3}{2+a_n}$ $\forall n\in\mathbb{N}$
+a.  $a_1 = 0.5$ y $a_{n+1}=\frac{3}{2+a_n}$ $\forall n\in\mathbb{N}$
 
-:::{.callout-tip collapse="true"}
-## Solución
+    :::{.callout-tip collapse="true"}
+    ## Solución
 
-:::{.panel-tabset}
-## Plots
+    :::{.panel-tabset}
+    ## Plots
 
-```{julia}
-using Plots
-a(n) =  n == 1 ? 0.5 : 3/(2+a(n-1))
-scatter([a(n) for n = 1:50], legend=false)
-```
+    ```{julia}
+    using Plots
+    a(n) =  n == 1 ? 0.5 : 3/(2+a(n-1))
+    scatter([a(n) for n = 1:50], legend=false)
+    ```
 
-## Makie
+    ## Makie
 
-```{julia}
-using GLMakie
-a(n) = n == 1 ? 0.5 : 3/(2+a(n-1))
-Makie.scatter([a(n) for n = 1:50])
-```
-:::
+    ```{julia}
+    using GLMakie
+    a(n) = n == 1 ? 0.5 : 3/(2+a(n-1))
+    Makie.scatter([a(n) for n = 1:50])
+    ```
+    :::
 
-La sucesión converge aproximadamente a $1$.
-:::
+    La sucesión converge aproximadamente a $1$.
+    :::
 :::
 
 :::{#exr-limite-sucesiones}
 Calcular el límite, si existe, de las siguiente sucesiones.
 
-a. $\left(\frac{1}{n}\right)_{n=1}^\infty$
+a.  $\left(\frac{1}{n}\right)_{n=1}^\infty$
 
-:::{.callout-note collapse="true"}
-## Ayuda
-Definir una función para el término general y usar la función [`limit`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Limits-1) del paquete `SymPy` para calcular el límite de la sucesión.
-:::
+    :::{.callout-note collapse="true"}
+    ## Ayuda
+    Definir una función para el término general y usar la función [`limit`](https://docs.juliahub.com/SymPy/KzewI/1.0.31/Tutorial/calculus/#Limits-1) del paquete `SymPy` para calcular el límite de la sucesión.
+    :::
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using SymPy
-@syms n  # Declaración de la variable simbólica n.
-a(n) = 1/n
-limit(a(n), n=>oo)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms n  # Declaración de la variable simbólica n.
+    a(n) = 1/n
+    limit(a(n), n=>oo)
+    ```
+    :::
 
-b. $\left((-1)^n\right)_{n=1}^\infty$
+a.  $\left((-1)^n\right)_{n=1}^\infty$
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-@syms n
-a(n) = (-1)^n
-limit(a(n), n=>oo)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    @syms n
+    a(n) = (-1)^n
+    limit(a(n), n=>oo)
+    ```
+    :::
 
-c. $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
+a.  $\left(\left(1+\frac{1}{n}\right)^n\right)_{n=1}^\infty$
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-@syms n
-a(n) = (1 + 1 / n)^n
-limit(a(n), n=>oo)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    @syms n
+    a(n) = (1 + 1 / n)^n
+    limit(a(n), n=>oo)
+    ```
+    :::
 :::
 
 :::{#exr-calculo-pi}
@@ -282,183 +282,182 @@ $$
 p_n = 2nr\operatorname{sen}\left(\frac{\pi}{n}\right)
 $$
 
- y el área puede calcularse con la fórmula
+y el área puede calcularse con la fórmula
 
 $$
 a_n = \frac{1}{2}nr^2\operatorname{sen}\left(\frac{2\pi}{n}\right).
 $$
 
-a. Calcular el perímetro de los polígonos de 
-e $10^i$ lados, para $i=1,\ldots, 6$ tomando $r=1$.
+a.  Calcular el perímetro de los polígonos de $10^i$ lados, para $i=1,\ldots, 6$ tomando $r=1$.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-p(n) = 2n*sin(pi/n)
-println([p(10^i) for i = 1:6])
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    p(n) = 2n*sin(pi/n)
+    println([p(10^i) for i = 1:6])
+    ```
+    :::
 
-a. Calcular el área de los polígonos de $10^i$ lados, para $i=1,\ldots, 6$ tomando $r=1$.
+a.  Calcular el área de los polígonos de $10^i$ lados, para $i=1,\ldots, 6$ tomando $r=1$.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-a(n) = n*sin(2*pi/n)/2
-println([a(10^i) for i = 1:6])
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    a(n) = n*sin(2*pi/n)/2
+    println([a(10^i) for i = 1:6])
+    ```
+    :::
 
-a. Dibujar con los primeros 50 términos de la sucesión de los perímetros de los polígonos tomando $r=1$.
+a.  Dibujar con los primeros 50 términos de la sucesión de los perímetros de los polígonos tomando $r=1$.
 
-:::{.callout-tip collapse="true"}
-## Solución
+    :::{.callout-tip collapse="true"}
+    ## Solución
 
-:::{.panel-tabset}
-## Plots
-```{julia}
-using Plots
-a(n) = 2n*sin(pi/n)
-scatter([a(n) for n = 1:50], legend=false)
-```
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    a(n) = 2n*sin(pi/n)
+    scatter([a(n) for n = 1:50], legend=false)
+    ```
 
-## Makie
+    ## Makie
 
-```{julia}
-using GLMakie
-a(n) = 2n*sin(pi/n)
-Makie.scatter([a(n) for n = 1:50])
-```
-:::
-:::
+    ```{julia}
+    using GLMakie
+    a(n) = 2n*sin(pi/n)
+    Makie.scatter([a(n) for n = 1:50])
+    ```
+    :::
+    :::
 
-b. Dibujar con los primeros 50 términos de la sucesión de las areas de los polígonos tomando $r=1$.
+a.  Dibujar con los primeros 50 términos de la sucesión de las areas de los polígonos tomando $r=1$.
 
-:::{.callout-tip collapse="true"}
-## Solución
+    :::{.callout-tip collapse="true"}
+    ## Solución
 
-:::{.panel-tabset}
-## Plots
-```{julia}
-using Plots
-a(n) = n*sin(2*pi/n)/2
-scatter([a(n) for n = 1:50], legend=false)
-```
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    a(n) = n*sin(2*pi/n)/2
+    scatter([a(n) for n = 1:50], legend=false)
+    ```
 
-## Makie
+    ## Makie
 
-```{julia}
-using GLMakie
-a(n) = n*sin(2*pi/n)/2
-Makie.scatter([a(n) for n = 1:50])
-```
-:::
-:::
+    ```{julia}
+    using GLMakie
+    a(n) = n*sin(2*pi/n)/2
+    Makie.scatter([a(n) for n = 1:50])
+    ```
+    :::
+    :::
 
-a. Calcular el límite de la sucesión de los perímetros de los polígonos tomando $r=1$.
+a.  Calcular el límite de la sucesión de los perímetros de los polígonos tomando $r=1$.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using SymPy
-@syms n
-a(n) = 2n*sin(PI/n)  # Para cálculo simbólico es mejor utilizar la constante simbólica PI en lugar de pi.
-limit(a(n), n=>oo)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms n
+    a(n) = 2n*sin(PI/n)  # Para cálculo simbólico es mejor utilizar la constante simbólica PI en lugar de pi.
+    limit(a(n), n=>oo)
+    ```
+    :::
 
-a. Usando el resultado anterior, calcular el perímetro del círculo de radio $r$.
+a.  Usando el resultado anterior, calcular el perímetro del círculo de radio $r$.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using SymPy
-@syms n, r
-a(n) = 2n*r*sin(PI/n)
-limit(a(n), n=>oo)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms n, r
+    a(n) = 2n*r*sin(PI/n)
+    limit(a(n), n=>oo)
+    ```
+    :::
 
-a. Calcular el límite de la sucesión de las areas de los polígonos tomando $r=1$.
+a.  Calcular el límite de la sucesión de las areas de los polígonos tomando $r=1$.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using SymPy
-@syms n
-a(n) = n*sin(2*PI/n)/2
-limit(a(n), n=>oo)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms n
+    a(n) = n*sin(2*PI/n)/2
+    limit(a(n), n=>oo)
+    ```
+    :::
 
-a. Usando el resultado anterior, calcular el area del círculo de radio $r$.
+a.  Usando el resultado anterior, calcular el area del círculo de radio $r$.
 
-:::{.callout-tip collapse="true"}
-## Solución
-```{julia}
-using SymPy
-@syms n, r
-a(n) = n*r^2*sin(2*PI/n)/2
-limit(a(n), n=>oo)
-```
-:::
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    ```{julia}
+    using SymPy
+    @syms n, r
+    a(n) = n*r^2*sin(2*PI/n)/2
+    limit(a(n), n=>oo)
+    ```
+    :::
 :::
 
 :::{#exr-subsucesiones}
 Dada la sucesión $a_1=1$ y $a_{n+1}=1+\frac{1}{a_n}$ $\forall n\in\mathbb{N}$, se pide:
 
-a. Dibujar la gráfica de los 10 primeros términos de la sucesión. ¿Es una sucesión monótona?
+a.  Dibujar la gráfica de los 10 primeros términos de la sucesión. ¿Es una sucesión monótona?
 
-:::{.callout-tip collapse="true"}
-## Solución
+    :::{.callout-tip collapse="true"}
+    ## Solución
 
-:::{.panel-tabset}
-## Plots
-```{julia}
-using Plots
-a(n) =  n == 1 ? 1 : 1 + 1 / a(n-1)
-scatter([a(n) for n = 1:10], legend=false)
-```
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots
+    a(n) =  n == 1 ? 1 : 1 + 1 / a(n-1)
+    scatter([a(n) for n = 1:10], legend=false)
+    ```
 
-## Makie
+    ## Makie
 
-```{julia}
-using GLMakie
-a(n) = n == 1 ? 1 : 1 + 1 / a(n-1)
-Makie.scatter([a(n) for n = 1:10])
-```
-:::
+    ```{julia}
+    using GLMakie
+    a(n) = n == 1 ? 1 : 1 + 1 / a(n-1)
+    Makie.scatter([a(n) for n = 1:10])
+    ```
+    :::
 
-La sucesión no es monótona.
-:::
+    La sucesión no es monótona.
+    :::
 
-b. Dibujar la gráfica de los 5 primeros términos de las subsucesiones con los términos pares e impares. ¿Son monótonas?
+a.  Dibujar la gráfica de los 5 primeros términos de las subsucesiones con los términos pares e impares. ¿Son monótonas?
 
-:::{.callout-tip collapse="true"}
-## Solución
-:::{.panel-tabset}
-## Plots
-```{julia}
-using Plots, LaTeXStrings
-a(n) =  n == 1 ? 1 : 1 + 1 / a(n-1)
-Plots.scatter([a(2i-1) for i=1:5], label = L"$a_{2n-1}$")
-Plots.scatter!([a(2i) for i=1:5], label = L"$a_{2n}$")
-```
+    :::{.callout-tip collapse="true"}
+    ## Solución
+    :::{.panel-tabset}
+    ## Plots
+    ```{julia}
+    using Plots, LaTeXStrings
+    a(n) =  n == 1 ? 1 : 1 + 1 / a(n-1)
+    Plots.scatter([a(2i-1) for i=1:5], label = L"$a_{2n-1}$")
+    Plots.scatter!([a(2i) for i=1:5], label = L"$a_{2n}$")
+    ```
 
-## Makie
+    ## Makie
 
-```{julia}
-using GLMakie
-a(n) = n == 1 ? 1 : 1 + 1 / a(n-1)
-fig, ax = Makie.scatter([a(2i-1) for i = 1:5], label = L"$a_{2n-1}$" )
-Makie.scatter!(ax,[a(2i) for i=1:5], label = L"$a_{2n}$")
-axislegend()
-fig
-```
-:::
+    ```{julia}
+    using GLMakie
+    a(n) = n == 1 ? 1 : 1 + 1 / a(n-1)
+    fig, ax = Makie.scatter([a(2i-1) for i = 1:5], label = L"$a_{2n-1}$" )
+    Makie.scatter!(ax,[a(2i) for i=1:5], label = L"$a_{2n}$")
+    axislegend()
+    fig
+    ```
+    :::
 
-La sucesión de los términos impares es creciente y la de los pares es decreciente.
-:::
+    La sucesión de los términos impares es creciente y la de los pares es decreciente.
+    :::
 :::
 
 ## Ejercicios propuestos
